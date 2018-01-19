@@ -519,20 +519,227 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
         }
 
-        #endregion
-
-        #region Operations
+        /// <summary>
+        /// Speed of the tool during material removal, <see cref="SurfaceSpeed"/> represents the rate at which the cutting edges of the tool can be driven through the material.
+        /// <remarks>Any changes made to <see cref="SurfaceSpeed"/> value recalculates <see cref="SpindleSpeed"/>, <see cref="CuttingFeed"/> Rate, and <see cref="PlungingFeed"/> Rate.</remarks>
+        /// </summary>
+        public double SurfaceSpeed
+        {
+            get { return double.Parse(GetParameter(Resources.SurfaceSpeed)); }
+            set { SetParameter(Resources.SurfaceSpeed, value); }
+        }
 
         /// <summary>
-        /// Set the tool's start position.
+        /// Cutting feed rate.
+        /// <remarks>Any changes made to <see cref="CuttingFeed"/> value updates <see cref="FeedPerTooth"/> </remarks>
         /// </summary>
-        /// <param name="method">
-        ///     <see cref="StartPointMethod"/>
-        /// </param>
-        /// <param name="x">tool's x position axis </param>
-        /// <param name="y">tool's y position axis</param>
-        /// <param name="z">tool's z position axis</param>
-        public void SetStartPointMethod(StartPointMethod method, double x = 0, double y = 0, double z = 0)
+        public double CuttingFeed
+        {
+            get { return double.Parse(GetParameter(Resources.CuttingFeed)); }
+            set { SetParameter(Resources.CuttingFeed, value); }
+        }
+
+        /// <summary>
+        /// Cutting feed per tooth, <see cref="FeedPerTooth"/> is determined by the construction of the tool, and may be limited by the strength of the cutting edges or the capacity of the tool to remove swarf.
+        /// <remarks> Any changes made to <see cref="FeedPerTooth"/> value recalculates  <see cref="CuttingFeed"/> Rate and <see cref="PlungingFeed"/> Rate </remarks>
+        /// </summary>
+        public MM FeedPerTooth
+        {
+            get { return double.Parse(GetParameter(Resources.FeedPerTooth)); }
+            set { SetParameter(Resources.FeedPerTooth, (double)value); }
+        }
+
+        /// <summary>
+        /// Controls the speed of the tool as it approaches the stock, before beginning a cutting move.
+        /// </summary>
+        public double LeadInFactor
+        {
+            get { return double.Parse(GetParameter(Resources.LeadInFactor)); }
+            set { SetParameter(Resources.LeadInFactor, value); }
+        }
+
+        /// <summary>
+        /// Controls the speed of the tool after it leaves the stock, at the end of a cutting move.
+        /// </summary>
+        public double LeadOutFactor
+        {
+            get { return double.Parse(GetParameter(Resources.LeadOutFactor)); }
+            set { SetParameter(Resources.LeadOutFactor, value); }
+        }
+
+        /// <summary>
+        /// Speed of the tool when entering the material ready for its cutting moves. When 3-axis machining, these are vertical moves.
+        /// </summary>
+        public double PlungingFeed
+        {
+            get { return double.Parse(GetParameter(Resources.PlungingFeed)); }
+            set { SetParameter(Resources.PlungingFeed, value); }
+        }
+
+        /// <summary>
+        /// Feed rate for straight line moves from point A to point B.
+        /// <remarks> If everything is totally safe, the machine moves at rapid which usually appears as G0 in the output file. For skim moves, the machine performs a linear move (which G0 moves do not guarantee), normally G1 in the output file, at a very high feed rate. </remarks>
+        /// </summary>
+        public double SkimFeed
+        {
+            get { return double.Parse(GetParameter(Resources.SkimFeed)); }
+            set { SetParameter(Resources.SkimFeed, value); }
+        }
+
+        /// <summary>
+        /// Rotation of the spindle, measured in revolutions per minute.
+        /// <remarks> If you edit this value then <see cref="SurfaceSpeed"/> value automatically updates to reflect your change. </remarks>
+        /// </summary>
+        public double SpindleSpeed
+        {
+            get { return double.Parse(GetParameter(Resources.SpindleSpeed)); }
+            set { SetParameter(Resources.SpindleSpeed, value); }
+        }
+
+        /// <summary>
+        /// Enter the length of the approach move at the start of the toolpath.
+        /// </summary>
+        public MM StartPointApproachDistance
+        {
+            get { return double.Parse(GetParameter(Resources.StartPointApproachDistance)); }
+            set { SetParameter(Resources.StartPointApproachDistance, (double)value); }
+        }
+
+        /// <summary>
+        /// These options determine the orientation of the First approach. This is equivalent to the Links functionality
+        /// </summary>
+        /// <returns></returns>
+        public PointApproach StartPointApproachAlong
+        {
+            get
+            {
+                var output = GetParameter(Resources.StartPointApproachAlong);
+                var resourceset =
+                    Resources.ResourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, false, true);
+                return Extensions.EnumExtensions.GetEnumByResourceValue<PointApproach>(output, resourceset);
+            }
+            set { SetParameter(Resources.StartPointApproachAlong, Resources.ResourceManager.GetString(value.ToString())); }
+        }
+
+        /// <summary>
+        /// Select the location of the start point.
+        /// </summary>
+        /// <returns></returns>
+        public StartPointMethod StartPointMethod
+        {
+            get
+            {
+                var output = GetParameter(Resources.StartPointMethod);
+                var resourceset =
+                    Resources.ResourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, false, true);
+                return Extensions.EnumExtensions.GetEnumByResourceValue<StartPointMethod>(output, resourceset);
+            }
+            set { SetParameter(Resources.StartPointMethod, Resources.ResourceManager.GetString(value.ToString())); }
+        }
+
+        /// <summary>
+        /// X Coordinate of the tool at the start
+        /// </summary>
+        public double StartPointPositionX
+        {
+            get { return double.Parse(GetParameter(Resources.StartPointPositionX)); }
+        }
+
+        /// <summary>
+        /// Y Coordinate of the tool at the start
+        /// </summary>
+        public double StartPointPositionY
+        {
+            get { return double.Parse(GetParameter(Resources.StartPointPositionY)); }
+        }
+
+        /// <summary>
+        /// X Coordinate of the tool at the start
+        /// </summary>
+        public double StartPointPositionZ
+        {
+            get { return double.Parse(GetParameter(Resources.StartPointPositionZ)); }
+        }
+
+        /// <summary>
+        /// Enter the length of the approach move at the  retract move at the end of the toolpath.
+        /// </summary>
+        public MM EndPointApproachDistance
+        {
+            get { return double.Parse(GetParameter(Resources.EndPointApproachDistance)); }
+            set { SetParameter(Resources.EndPointApproachDistance, (double)value); }
+        }
+
+        /// <summary>
+        /// These options determine the orientation of the Final retract moves. This is equivalent to the Links functionality
+        /// </summary>
+        /// <returns></returns>
+        public PointApproach EndPointApproachAlong
+        {
+            get
+            {
+                var output = GetParameter(Resources.EndPointApproachAlong);
+                var resourceset =
+                    Resources.ResourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, false, true);
+                return Extensions.EnumExtensions.GetEnumByResourceValue<PointApproach>(output, resourceset);
+            }
+            set { SetParameter(Resources.EndPointApproachAlong, Resources.ResourceManager.GetString(value.ToString())); }
+        }
+
+        /// <summary>
+        /// Select the location of the end point.
+        /// </summary>
+        /// <returns></returns>
+        public EndPointMethod EndPointMethod
+        {
+            get
+            {
+                var output = GetParameter(Resources.EndPointMethod);
+                var resourceset =
+                    Resources.ResourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, false, true);
+                return Extensions.EnumExtensions.GetEnumByResourceValue<EndPointMethod>(output, resourceset);
+            }
+            set { SetParameter(Resources.EndPointMethod, Resources.ResourceManager.GetString(value.ToString())); }
+        }
+
+        /// <summary>
+        /// X Coordinate of the tool at the end
+        /// </summary>
+        public double EndPointPositionX
+        {
+            get { return double.Parse(GetParameter(Resources.EndPointPositionX)); }
+        }
+
+        /// <summary>
+        /// Y Coordinate of the tool at the end
+        /// </summary>
+        public double EndPointPositionY
+        {
+            get { return double.Parse(GetParameter(Resources.EndPointPositionY)); }
+        }
+
+        /// <summary>
+        /// Z Coordinate of the tool at the end
+        /// </summary>
+        public double EndPointPositionZ
+        {
+            get { return double.Parse(GetParameter(Resources.EndPointPositionZ)); }
+        }
+    
+    #endregion
+
+    #region Operations
+
+    /// <summary>
+    /// Set the tool's start position.
+    /// </summary>
+    /// <param name="method">
+    ///     <see cref="StartPointMethod"/>
+    /// </param>
+    /// <param name="x">tool's x position axis </param>
+    /// <param name="y">tool's y position axis</param>
+    /// <param name="z">tool's z position axis</param>
+    public void SetStartPointMethod(StartPointMethod method, double x = 0, double y = 0, double z = 0)
         {
             SetParameter(Resources.StartPointMethod, Resources.ResourceManager.GetString(method.ToString()));
             if (method == StartPointMethod.Absolute)
