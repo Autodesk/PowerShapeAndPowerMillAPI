@@ -1,0 +1,2 @@
+*.dgk filter=lfs diff=lfs merge=lfs -text
+*.dmt filter=lfs diff=lfs merge=lfs -text

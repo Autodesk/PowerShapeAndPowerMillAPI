@@ -1,0 +1,130 @@
+<html>
+<head>
+<title></title>
+<!--
+PLEASE NOTE: Before editing this document take a copy and call it dmt_xxx.htm
+where xxx is the last revision number. Then add a link in the history section
+to the old document before adding a new history line to the new dmt.htm. So
+at the time of writing the current revision is 2.00 so copy this file as
+dmt_200.htm and then edit the history in dmt.htm to link to dmt_200.htm
+
+--></head>
+
+
+
+
+<body><h1 align="center"><font color="#0000ff">Delcam Machining Triangles</font></h1>
+<table border="1">
+<tbody><tr><td>Title</td><td>      Binary File Format For Machining Triangles</td></tr>
+<tr><td>Subject</td><td>     Delcam Machining Libraries</td></tr>
+<tr><td>Author </td><td> Chris Hobson </td></tr>
+<tr><td>Department</td><td> PowerMILL Development  </td></tr>
+<tr><td>Position</td><td> Ex-Chief Software Development Engineer</td></tr>
+</tbody></table>
+
+<h2>Introduction</h2>
+This document details the format for Delcam's Machining Triangle file. This
+file is designed to allow fast reading and writing of triangles which are to
+be used specifically for machining.
+<p>
+Code exists in the <b>dmkdmt</b> library to allow DMT files to
+be <a href="/devdisk/dmkman/int/dmkdmt.dev/dmkdmt/file/dmkDMTFileWrite.h">written</a>
+ and <a href="/devdisk/dmkman/int/dmkdmt.dev/dmkdmt/file/dmkDMTFileRead.h">read</a>.
+This document defines the file format, but under
+<b>no</b> circumstances should Delcam products read and write these files
+themselves the classes should <b>always</b> be used. Provided that these
+classes are used, DMT files can be transfered between all platforms
+supported by Delcam, the classes handle the porting issues.
+</p><p>
+By convention the files have the extension <b>.dmt</b>
+</p><h2>DMT File Format</h2>
+The file consists of a number of fields each in a fixed format. It is
+basically made up of any number of triangle blocks.
+<ul>
+<li>
+A NULL terminated string of arbitary length but it has an absolute maximum
+length of 256 bytes including the NULL. This string can contain anything that
+might be of use to the end user.
+</li><li>
+An <i>unsigned short</i> (VERSION) version number currently 1000. This will
+allow changes to the file format to be controlled.
+</li><li>
+An <i>unsigned integer</i> (FILEFLAGS). The bits of this integer are used as flags to
+detail file specific features.
+<ol>
+<li>
+If this bit is set then the triangle node data are stored as <i>float</i>s, else
+<i>double</i>s.
+
+<p>
+</p></li><li>
+If this bit is set then the file contains triangles which are known to have
+been written in units of MMs. If the flag is unset then the units used are
+unknown. This change was introduced by 
+<a href="http://gripe/bin/gripe_link?topic=api&amp;num=25">api#25</a> and 
+<a href="http://gripe/bin/dicc_view?num=34143">dicc34143</a>
+<p>
+New files (Since TVD release 2000111) MUST be written in MM. The
+code in 
+
+<a href="/devdisk/dmkman/int/dmkdmt.dev/dmkdmt/file/dmkDMTFileWrite.h">dmkdmt</a>
+
+always sets the flag and the <b>write_node()</b> API ensures that you 
+know about the requirement.
+</p><p>
+</p></li></ol>
+</li><li>
+An <i>unsigned int</i> (TOTBLK), the total number of triangle blocks in the file. 
+</li><li>
+An <i>unsigned int</i> (TOTNOD), the total number of triangles nodes in the file.
+</li><li>
+An <i>unsigned int</i> (TOTTRI), the total number of triangles in the file.
+</li><li>
+TOTBLK sets of triangle blocks. (see below)
+</li></ul>
+The TOTNOD and TOTTRI values can be used to compute total memory requirements,
+provide a percent read indication etc.
+
+<h2>Triangle Block Format</h2>
+<ul>
+<li>
+An <i>unsigned integer</i> (BLKFLAGS). The bits of this integer are used as flags to
+detail block specific features.
+<ol>
+<li>
+If this bit is set then each triangle node has an <b>ijk</b> normal vector
+associated with it.
+<p>
+</p></li></ol>
+</li><li>
+An <i>unsigned integer</i> (NUMNOD), the number of nodes in the block.
+</li><li>
+An unsigned integer (NUMTRI), the number of triangles in the block.
+</li><li>
+A set of NUMNOD nodes. These are either an array XYZ's or an array of
+XYZIJK's depending on BLKFLAGS:1. The arrays are in either <i>float</i> or 
+<i>double</i> format dependent on FILEFLAGS:1.
+</li><li>
+A set of NUMTRI triangles. These are made up of 3 indexes to the node data. If
+NUMNOD is less than or equal to the maximum value of an <i>unsigned short</i> + 1
+(basically 65536 on all Unix machines) then the 3 pointers are <i>unsigned
+short</i>  else <i>int</i>. Note that node numbers start at 0 and not the
+DUCT5 convention of 1.
+</li><li>
+An <i>unsigned short</i> (VERSION) version number. All blocks terminate with
+a VERSION to allow a check that everything is still synchronised correctly
+before reading the next block commences.
+</li></ul>
+
+<h2>History</h2>
+<table border="1">
+<tbody><tr><th>Rev</th><th>Who</th><th>When</th><th>What</th></tr>
+<tr><td>1.00</td><td>CLH</td><td>17/08/94</td><td>Initial Draft</td></tr>
+<tr><td>1.01</td><td>CLH</td><td>20/09/96</td><td>Correct some typos (file format unchanged)</td></tr>
+<tr><td>1.02</td><td>CLH</td><td>06/02/98</td><td>Convert to HTML from LaTeX</td></tr>
+<tr><td>1.03</td><td>CLH</td><td>28/09/99</td><td>Code moved from dmkutils to dmkdmt</td></tr>
+<tr><td>2.00</td><td>CLH</td><td>08/11/00</td><td>Add file flag 2 - If set file is in millimetres</td></tr>
+</tbody></table>
+
+
+</body></html>

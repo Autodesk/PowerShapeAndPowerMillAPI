@@ -1,0 +1,155 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0100D04D-AF83-45F4-BE06-2FCCFA1FAC66}"
+	ProjectSection(SolutionItems) = preProject
+		CustomSoftwareCore.msbuild = CustomSoftwareCore.msbuild
+		CustomSoftwareCore.vsmdi = CustomSoftwareCore.vsmdi
+		delcam.snk = delcam.snk
+		DocumentationGenerator.shfbproj = DocumentationGenerator.shfbproj
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{E967C156-F2D8-46E0-B726-DC989BD6032B}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation.chm = Documentation.chm
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.Utilities", "Delcam.Utilities\Delcam.Utilities.csproj", "{1E2EC09F-D066-4ED3-86F1-8C22E01DE694}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Delcam.WPFControls.WPF3DViewerVB", "Delcam.WPFControls.WPF3DViewerVB\Delcam.WPFControls.WPF3DViewerVB.vbproj", "{C7FF9282-00DE-4AB5-BBEA-AB587CA69337}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Delcam.WPFControls.ProductControlsVB", "Delcam.WPFControls.ProductControlsVB\Delcam.WPFControls.ProductControlsVB.vbproj", "{3EEF8229-443D-4013-8338-B2D1B8CEE358}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Delcam.WPFControls.ProductControls.PowerSHAPEVB", "Delcam.WPFControls.ProductControls.PowerSHAPE\Delcam.WPFControls.ProductControls.PowerSHAPEVB.vbproj", "{D9ED5E13-0BBB-498C-91A0-1C9C01DAA207}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Delcam.WPFControls.ProductControls.PowerMILLVB", "Delcam.WPFControls.ProductControls.PowerMILLVB\Delcam.WPFControls.ProductControls.PowerMILLVB.vbproj", "{052969FC-589F-4004-9906-05B66BB6BF91}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Delcam.WPFControls.ProductControls.PowerMILLVB.Test", "Delcam.WPFControls.ProductControls.PowerMILLVB.Test\Delcam.WPFControls.ProductControls.PowerMILLVB.Test.vbproj", "{0E8DF64E-D2AD-4965-8643-117B018D5616}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Delcam.WPFControls.ProductControls.PowerSHAPEVB.Test", "Delcam.WPFControls.ProductControls.PowerSHAPEVB.Test\Delcam.WPFControls.ProductControls.PowerSHAPEVB.Test.vbproj", "{AA6E9502-2634-4E27-A1C9-C5A1FC95D87F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.ProductInterface.PowerSHAPE.Test", "Delcam.ProductInterface.PowerSHAPE.Test\Delcam.ProductInterface.PowerSHAPE.Test.csproj", "{61D05A59-6E9E-43F3-A7AF-17C7B70C7DAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.Utilities.Test", "Delcam.Utilities.Test\Delcam.Utilities.Test.csproj", "{E2DFF6FB-6F44-423D-B0BF-13999CD2145D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.ProductInterface.PowerMILL.Test", "Delcam.ProductInterface.PowerMILL.Test\Delcam.ProductInterface.PowerMILL.Test.csproj", "{0CA8797F-1928-4FF0-B41B-2BB518E46EFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.ProductInterface.PowerMILL", "Delcam.ProductInterface.PowerMILL\Delcam.ProductInterface.PowerMILL.csproj", "{4F447014-2790-46B3-80B3-F26E37E1CE9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.Geometry", "Delcam.Geometry\Delcam.Geometry.csproj", "{A0D60FF2-DCB9-462F-ADCD-28E2A126ECC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.Geometry.Test", "Delcam.Geometry.Test\Delcam.Geometry.Test.csproj", "{6DBBA662-311E-4DA2-B54F-4411442BB880}"
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "DocumentationGenerator", "DocumentationGenerator\DocumentationGenerator.shfbproj", "{2C0F6169-7D29-4E19-A6A6-2C30163D9296}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AA6E9502-2634-4E27-A1C9-C5A1FC95D87F} = {AA6E9502-2634-4E27-A1C9-C5A1FC95D87F}
+		{D9ED5E13-0BBB-498C-91A0-1C9C01DAA207} = {D9ED5E13-0BBB-498C-91A0-1C9C01DAA207}
+		{3EEF8229-443D-4013-8338-B2D1B8CEE358} = {3EEF8229-443D-4013-8338-B2D1B8CEE358}
+		{6DBBA662-311E-4DA2-B54F-4411442BB880} = {6DBBA662-311E-4DA2-B54F-4411442BB880}
+		{0E8DF64E-D2AD-4965-8643-117B018D5616} = {0E8DF64E-D2AD-4965-8643-117B018D5616}
+		{61D05A59-6E9E-43F3-A7AF-17C7B70C7DAC} = {61D05A59-6E9E-43F3-A7AF-17C7B70C7DAC}
+		{0CA8797F-1928-4FF0-B41B-2BB518E46EFE} = {0CA8797F-1928-4FF0-B41B-2BB518E46EFE}
+		{C7FF9282-00DE-4AB5-BBEA-AB587CA69337} = {C7FF9282-00DE-4AB5-BBEA-AB587CA69337}
+		{1E2EC09F-D066-4ED3-86F1-8C22E01DE694} = {1E2EC09F-D066-4ED3-86F1-8C22E01DE694}
+		{A0D60FF2-DCB9-462F-ADCD-28E2A126ECC9} = {A0D60FF2-DCB9-462F-ADCD-28E2A126ECC9}
+		{E2DFF6FB-6F44-423D-B0BF-13999CD2145D} = {E2DFF6FB-6F44-423D-B0BF-13999CD2145D}
+		{052969FC-589F-4004-9906-05B66BB6BF91} = {052969FC-589F-4004-9906-05B66BB6BF91}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.WPFControls", "Delcam.WPFControls\Delcam.WPFControls.csproj", "{0311976B-F9AE-46A4-80A1-F9B64F868EC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.ProductInterface", "Delcam.ProductInterface\Delcam.ProductInterface.csproj", "{DD0B1C05-2E13-4671-B24C-D0A071E2A521}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delcam.ProductInterface.PowerShape", "Delcam.ProductInterface.PowerShape\Delcam.ProductInterface.PowerShape.csproj", "{F15770F3-1E63-4C18-BC4D-F75702436A75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E2EC09F-D066-4ED3-86F1-8C22E01DE694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2EC09F-D066-4ED3-86F1-8C22E01DE694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2EC09F-D066-4ED3-86F1-8C22E01DE694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2EC09F-D066-4ED3-86F1-8C22E01DE694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7FF9282-00DE-4AB5-BBEA-AB587CA69337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7FF9282-00DE-4AB5-BBEA-AB587CA69337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7FF9282-00DE-4AB5-BBEA-AB587CA69337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7FF9282-00DE-4AB5-BBEA-AB587CA69337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EEF8229-443D-4013-8338-B2D1B8CEE358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EEF8229-443D-4013-8338-B2D1B8CEE358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EEF8229-443D-4013-8338-B2D1B8CEE358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EEF8229-443D-4013-8338-B2D1B8CEE358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9ED5E13-0BBB-498C-91A0-1C9C01DAA207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9ED5E13-0BBB-498C-91A0-1C9C01DAA207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9ED5E13-0BBB-498C-91A0-1C9C01DAA207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9ED5E13-0BBB-498C-91A0-1C9C01DAA207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{052969FC-589F-4004-9906-05B66BB6BF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{052969FC-589F-4004-9906-05B66BB6BF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{052969FC-589F-4004-9906-05B66BB6BF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{052969FC-589F-4004-9906-05B66BB6BF91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E8DF64E-D2AD-4965-8643-117B018D5616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8DF64E-D2AD-4965-8643-117B018D5616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E8DF64E-D2AD-4965-8643-117B018D5616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E8DF64E-D2AD-4965-8643-117B018D5616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6E9502-2634-4E27-A1C9-C5A1FC95D87F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA6E9502-2634-4E27-A1C9-C5A1FC95D87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6E9502-2634-4E27-A1C9-C5A1FC95D87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6E9502-2634-4E27-A1C9-C5A1FC95D87F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D05A59-6E9E-43F3-A7AF-17C7B70C7DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D05A59-6E9E-43F3-A7AF-17C7B70C7DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D05A59-6E9E-43F3-A7AF-17C7B70C7DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D05A59-6E9E-43F3-A7AF-17C7B70C7DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2DFF6FB-6F44-423D-B0BF-13999CD2145D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2DFF6FB-6F44-423D-B0BF-13999CD2145D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2DFF6FB-6F44-423D-B0BF-13999CD2145D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2DFF6FB-6F44-423D-B0BF-13999CD2145D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA8797F-1928-4FF0-B41B-2BB518E46EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA8797F-1928-4FF0-B41B-2BB518E46EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA8797F-1928-4FF0-B41B-2BB518E46EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA8797F-1928-4FF0-B41B-2BB518E46EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F447014-2790-46B3-80B3-F26E37E1CE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F447014-2790-46B3-80B3-F26E37E1CE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F447014-2790-46B3-80B3-F26E37E1CE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F447014-2790-46B3-80B3-F26E37E1CE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0D60FF2-DCB9-462F-ADCD-28E2A126ECC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D60FF2-DCB9-462F-ADCD-28E2A126ECC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D60FF2-DCB9-462F-ADCD-28E2A126ECC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D60FF2-DCB9-462F-ADCD-28E2A126ECC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBBA662-311E-4DA2-B54F-4411442BB880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBBA662-311E-4DA2-B54F-4411442BB880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBBA662-311E-4DA2-B54F-4411442BB880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBBA662-311E-4DA2-B54F-4411442BB880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C0F6169-7D29-4E19-A6A6-2C30163D9296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0F6169-7D29-4E19-A6A6-2C30163D9296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0F6169-7D29-4E19-A6A6-2C30163D9296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0311976B-F9AE-46A4-80A1-F9B64F868EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0311976B-F9AE-46A4-80A1-F9B64F868EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0311976B-F9AE-46A4-80A1-F9B64F868EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0311976B-F9AE-46A4-80A1-F9B64F868EC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD0B1C05-2E13-4671-B24C-D0A071E2A521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD0B1C05-2E13-4671-B24C-D0A071E2A521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD0B1C05-2E13-4671-B24C-D0A071E2A521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD0B1C05-2E13-4671-B24C-D0A071E2A521}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15770F3-1E63-4C18-BC4D-F75702436A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15770F3-1E63-4C18-BC4D-F75702436A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15770F3-1E63-4C18-BC4D-F75702436A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15770F3-1E63-4C18-BC4D-F75702436A75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E967C156-F2D8-46E0-B726-DC989BD6032B} = {0100D04D-AF83-45F4-BE06-2FCCFA1FAC66}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {605A232E-B141-4E28-BBD2-4F63F8F6088B}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CustomSoftwareCore.vsmdi
+	EndGlobalSection
+EndGlobal

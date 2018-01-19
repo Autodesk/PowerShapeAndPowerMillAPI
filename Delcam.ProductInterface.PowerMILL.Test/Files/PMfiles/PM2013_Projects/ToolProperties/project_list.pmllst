@@ -1,0 +1,29 @@
+type list
+version 0
+MachineTool\
+NCProgram\
+Toolpath\
+Tool\
+Tool\EndMill
+Tool\BallNosed
+Tool\TipRadiused
+Tool\TaperedSpherical
+Tool\TaperedTipped
+Tool\Drill
+Tool\TippedDisc
+Tool\OffCentreTipRadiused
+Tool\Tap
+Tool\ThreadMill
+Tool\Form
+Tool\Routing
+Tool\ShankTest
+Boundary\
+Pattern\
+Featureset\
+Workplane\
+Level\
+Model\
+StockModel\
+Group\
+Macro\
+MachineTool\

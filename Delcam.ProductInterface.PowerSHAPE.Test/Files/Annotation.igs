@@ -1,0 +1,11 @@
+DDX PROCESSOR Ver1.5                                                    S      1
+,,14HNEW_MODEL_1_21,99HE:\DelcamCommon\DelcamProductInterface\DelcamAG      1
+utomationInterfaceCSharp.Test\Files\Annotation.igs,26HDelcam 10.2 by DelG      2
+cam plc.,20HDDX PROCESSOR Ver1.5,32,38,6,308,15,,1.0,2,2HMM,30,         G      3
+3.00000000D+000,15H20100624.122530,1.00000000D-005,,10HLiz Macfie,,11,0,G      4
+,,;                                                                     G      5
+     212       1       0       1       0       0       0       000000101D      1
+     212       3       8       2       0       0       01              1D      2
+212,1,17,53.9222042139,8.2982171799,1,1.57079632679,0.,0,0,            1P      1
+-101.,31.,0.,17HTest Annotation 1;                                     1P      2
+S      1G      5D      2P      2                                        T      1

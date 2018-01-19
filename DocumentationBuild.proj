@@ -1,0 +1,13 @@
+ <Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- 3rd Party Program Settings -->
+  <PropertyGroup>
+    <SandCastleHFBPath>c:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\</SandCastleHFBPath>
+    <SandCastleHFBCmd>$(SandCastleHFBPath)SandcastleBuilderConsole.exe</SandCastleHFBCmd>
+    <SandCastleHFBProject>C:\TeamCity\buildAgent\work\a69ad14978684568\DocumentationGenerator.shfbproj</SandCastleHFBProject>
+  </PropertyGroup>
+
+  <Target Name="BuildDocumentation">
+    <!-- Build source code docs -->
+    <Exec Command="%22$(SandCastleHFBCmd)%22 %22$(SandCastleHFBProject)%22" />
+  </Target>
+</Project>

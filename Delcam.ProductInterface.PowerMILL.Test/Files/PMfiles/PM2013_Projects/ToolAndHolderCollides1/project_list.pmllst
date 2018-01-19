@@ -1,0 +1,23 @@
+type list
+version 0
+MachineTool\
+NCProgram\
+Toolpath\
+Toolpath\1
+Tool\
+Tool\1
+Boundary\
+Pattern\
+Pattern\1
+Featureset\
+Featureset\2
+Workplane\
+Workplane\1
+Workplane\2
+Level\
+Level\General
+Model\
+Model\block1
+StockModel\
+Group\
+Macro\

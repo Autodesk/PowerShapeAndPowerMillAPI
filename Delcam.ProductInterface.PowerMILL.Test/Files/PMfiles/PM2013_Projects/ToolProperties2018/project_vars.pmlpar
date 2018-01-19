@@ -1,0 +1,45 @@
+{
+	"type" : "Project",
+	"time" : "1504094412",
+	"version" : "0"
+}
+{
+	"Programmer" "S" "Name of programmer that created this project." "440e1cf059a6a8a100002e3a00000000" : "edwardl",
+	"Customer" "S" "Name of customer that this project refers to." "0ecbf97052f235fa000018b900000000" : "",
+	"TextBlocks" "M" "A place holder for text objects." "0ecbacf052f235fa000018bb00000000" : {
+	},
+	"A360" "M" "A360 settings for this PowerMill project." : {
+		"Hub" "S" "A360 Hub ID" : "",
+		"Folder" "S" "A360 Folder ID" : "",
+		"Project" "S" "A360 Project ID" : ""
+	},
+	"ThicknessSets" "M" "A place holder for thickness sets." "0ecc053052f235fa000018bd00000000" : {
+	},
+	"PartName" "S" "Part name for this project." "0ecbf8f052f235fa000018bf00000000" : "",
+	"ProjectHistory" "LM" "project history." "0ecbf91052f235fa000018c100000000" : (
+		{
+			"ClientName" "S" "Client product name." "0ecbf2d052f235fa000018c300000000" : "PowerMILL",
+			"ClientVersion" "S" "Client product version." "0ecbf33052f235fa000018c500000000" : "15014",
+			"DmkCodebase" "S" "Delcam libraries codebase number." "0ecbf93052f235fa000018c700000000" : "1156041"
+		},
+		{
+			"ClientName" "S" "Client product name." "0f76de60537329b900001c3300000000" : "PowerMILL",
+			"ClientVersion" "S" "Client product version." "0f76f420537329b900001c3500000000" : "14007",
+			"DmkCodebase" "S" "Delcam libraries codebase number." "0f76f7e0537329b900001c3700000000" : "1148635"
+		},
+		{
+			"ClientName" "S" "Client product name." "0e5d43705385c226000025b000000000" : "PowerMILL",
+			"ClientVersion" "S" "Client product version." "0e5d5f105385c226000025b200000000" : "15014",
+			"DmkCodebase" "S" "Delcam libraries codebase number." "0e5d70b05385c226000025b400000000" : "1156041"
+		},
+		{
+			"ClientName" "S" "Client product name." "440e1c1059a6a8a100002e4e00000000" : "PowerMill",
+			"ClientVersion" "S" "Client product version." "440e1dd059a6a8a100002e5000000000" : "2018000",
+			"DmkCodebase" "S" "Delcam libraries codebase number." "43d161c059a6a8a100002e5200000000" : "1212103"
+		}
+	),
+	"Tolerances" "M" "A place holder for tolerance values." "0ecbfbf052f235fa000018c900000000" : {
+	},
+	"OrderNumber" "S" "Order number for this project." "0ecbeb7052f235fa000018cb00000000" : "",
+	"Notes" "S" "Notes for this project." "0ecbdd7052f235fa000018cd00000000" : ""
+}

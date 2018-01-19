@@ -1,0 +1,26 @@
+type list
+version 0
+MachineTool\
+NCProgram\
+Toolpath\
+Toolpath\alpha
+Toolpath\brava
+Toolpath\delta
+Toolpath\charlie
+Tool\
+Tool\12 ball
+Tool\10+1.6 tiprad
+Boundary\
+Pattern\
+Featureset\
+Workplane\
+Workplane\bravo
+Workplane\charlie
+Level\
+Level\component
+Model\
+Model\cowling
+StockModel\
+Group\
+Macro\
+MachineTool\

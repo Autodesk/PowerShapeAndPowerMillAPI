@@ -1,0 +1,71 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Autodesk.WPFControls.WPF3DViewer">
+
+    <!--Delcam3DViewer Default Style-->
+    <Style TargetType="{x:Type local:Delcam3DViewer}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5, 0"
+                                                 EndPoint="0.5, 1">
+                    <GradientStop Color="LightBlue"
+                                              Offset="0" />
+                    <GradientStop Color="White"
+                                              Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Delcam3DViewer}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Viewport3D x:Name="PART_Viewport3D">
+                            <Viewport3D.Camera>
+                                <OrthographicCamera x:Name="PART_Camera"
+                                                    LookDirection="0, 0.01, -1"
+                                                    UpDirection="0, 0, 1"
+                                                    Position="0, 50, 400"
+                                                    Width="200" 
+                                                    FarPlaneDistance="Infinity" 
+                                                    NearPlaneDistance="0">
+                                    <OrthographicCamera.Transform>
+                                        <RotateTransform3D />
+                                    </OrthographicCamera.Transform>
+                                </OrthographicCamera>
+                            </Viewport3D.Camera>
+                            <ModelVisual3D>
+                                <ModelVisual3D.Content>
+                                    <DirectionalLight x:Name="PART_Light"
+                                                      Color="White"
+                                                      Direction="0, 0.01, -1">
+                                        <DirectionalLight.Transform>
+                                            <RotateTransform3D />
+                                        </DirectionalLight.Transform>
+                                    </DirectionalLight>
+                                </ModelVisual3D.Content>
+                            </ModelVisual3D>
+                        </Viewport3D>
+                        <Canvas>
+                            <Expander x:Name="PART_Views"
+                                      Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ViewsBarVisibility}"
+                                      Header="Views"
+                                      Canvas.Right="10"
+                                      Canvas.Top="10">
+                                <StackPanel Orientation="Vertical">
+                                    <Button Command="{x:Static local:Delcam3DViewer.ViewTopCommand}">Top</Button>
+                                    <Button Command="{x:Static local:Delcam3DViewer.ViewBottomCommand}">Bottom</Button>
+                                    <Button Command="{x:Static local:Delcam3DViewer.ViewLeftCommand}" Margin="0,6,0,0">Left</Button>
+                                    <Button Command="{x:Static local:Delcam3DViewer.ViewRightCommand}">Right</Button>
+                                    <Button Command="{x:Static local:Delcam3DViewer.ViewFrontCommand}" Margin="0,6,0,0">Front</Button>
+                                    <Button Command="{x:Static local:Delcam3DViewer.ViewBackCommand}">Back</Button>
+                                </StackPanel>
+                            </Expander>
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,16 @@
+13 3 15014 1156041 64 # Entity Index (DO NOT EDIT!)
+0 0
+28 May 2014 12.08.45
+x0ee1004052f235c40000130a00000000.pmlent pmlEntTool 'EndMill'
+x0eaef39052f23a2b00000e2500000000.pmlent pmlEntTool 'BallNosed'
+x0ef6cf0052f23a3600000ffe00000000.pmlent pmlEntTool 'TipRadiused'
+x0ef70cc052f23a45000011d600000000.pmlent pmlEntTool 'TaperedSpherical'
+x0ef6c16052f23a530000155c00000000.pmlent pmlEntTool 'TaperedTipped'
+x0ef689a052f23a5c000017db00000000.pmlent pmlEntTool 'Drill'
+x0ef743a052f23a640000198400000000.pmlent pmlEntTool 'TippedDisc'
+x0efff2b052f23a6f00001b3f00000000.pmlent pmlEntTool 'OffCentreTipRadiused'
+x0ef74dc052f23a7c00001cf100000000.pmlent pmlEntTool 'Tap'
+x0efffa7052f23a8400001eaf00000000.pmlent pmlEntTool 'ThreadMill'
+x0f00035052f23a8d000021f900000000.pmlent pmlEntTool 'Form'
+x0ede029052f23a96000025a700000000.pmlent pmlEntTool 'Routing'
+x0f0f51c053732969000010e100000000.pmlent pmlEntTool 'ShankTest'

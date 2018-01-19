@@ -1,0 +1,7 @@
+
+$$This is a sub macro
+$$=====================================================================
+FOREACH $TP in folder('toolpath') {
+	print $TP.Name
+}
+

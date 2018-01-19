@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project DefaultTargets="ReleaseBuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+	<Target Name="ReleaseBuildAnyCPU">
+		<Message Text="Building Your Solution"/>
+		<MSBuild Projects="CustomSoftwareCore.sln" Targets="Rebuild" Properties="Configuration=Release;Platform=Any CPU"/>
+	</Target>
+</Project>

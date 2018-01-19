@@ -1,0 +1,44 @@
+type list
+version 0
+NCProgram\
+Toolpath\
+Toolpath\PIN_MACHINE_1
+Toolpath\Fin-O_2
+Toolpath\Fin-U_2
+Toolpath\PIN_MACHINE_3
+Toolpath\Fin-O_4
+Toolpath\Fin-U_4
+Tool\
+Tool\1mm_Ballnose
+Tool\3mm_Ballnose
+Tool\2mm_Ballnose
+Tool\3mm_BallNose
+Tool\2mm_BallNose
+Tool\1.5mm_BallNose
+Tool\1mm_BallNose
+Tool\1mm_Ballnose_1
+Tool\3mm_Ballnose_1
+Tool\2mm_Ballnose_1
+Tool\3mm_BallNose_1
+Tool\2mm_BallNose_1
+Tool\1.5mm_BallNose_1
+Tool\1mm_BallNose_1
+Boundary\
+Boundary\Part2_Boundary
+Boundary\Part1_Boundary
+Pattern\
+Featureset\
+Workplane\
+Workplane\Part2_Workplane
+Workplane\Part1_Workplane
+Level\
+Level\Triangle Model
+Level\Parts
+Level\Triangle Model_1
+Level\Parts_1
+Model\
+Model\Part2
+Model\Part1
+StockModel\
+Group\
+Macro\

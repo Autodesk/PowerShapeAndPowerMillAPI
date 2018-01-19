@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0CA8797F-1928-4FF0-B41B-2BB518E46EFE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Autodesk.ProductInterface.PowerMILLTest</RootNamespace>
+    <AssemblyName>Autodesk.ProductInterface.PowerMILL.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>delcam.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\Delcam.ProductInterface.PowerMILL.Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Delcam.ProductInterface.PowerMILL.Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.5.0\lib\net40\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CollectionTests\PMBoundariesCollectionTest.cs" />
+    <Compile Include="CollectionTests\PMModelsCollectionTest.cs" />
+    <Compile Include="CollectionTests\PMPatternsCollectionTest.cs" />
+    <Compile Include="CollectionTests\PMLevelOrSetsCollectionTest.cs" />
+    <Compile Include="CollectionTests\PMToolsCollectionTest.cs" />
+    <Compile Include="CollectionTests\PMToolpathsCollectionTest.cs" />
+    <None Include="Files\Macros\CreateThreeWorkplane.mac" />
+    <Compile Include="PMAutomationTest.cs" />
+    <Compile Include="CollectionTests\PMNCProgramsCollectionTest.cs" />
+    <Compile Include="Files\TestFiles.cs" />
+    <Compile Include="HelperClasses\MacroEventCatcher.cs" />
+    <Compile Include="HelperClasses\WorkPlaneCreator.cs" />
+    <Compile Include="PMEntityTests\PMBoundaryTests.cs" />
+    <Compile Include="PMEntityTests\PMMacroTest.cs" />
+    <Compile Include="PMEntityTests\PMModelTest.cs" />
+    <Compile Include="PMEntityTests\PMNCProgramTest.cs" />
+    <Compile Include="PMEntityTests\PMPatternTests.cs" />
+    <Compile Include="PMEntityTests\PMProjectTests.cs" />
+    <Compile Include="PMEntityTests\PMToolPathTestGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMToolPathTestGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PMEntityTests\PMToolTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PMEntityTests\PMEntityTestBase.cs" />
+    <Compile Include="PMEntityTests\PMToolpathTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="delcam.snk" />
+    <None Include="Files\Macros\TestMacro1.mac" />
+    <None Include="Files\Macros\TestMacro2.mac" />
+    <None Include="Files\Macros\TestMacro3.mac" />
+    <None Include="Files\Macros\CreateNCProgram.mac" />
+    <None Include="Files\Macros\TestMacroStepEventFires.mac" />
+    <None Include="Files\OptionFiles\Roeders_RXD5_RCS_DPP48.pmopt" />
+    <None Include="Files\PMfiles\DataFiles\silhouette.dgk" />
+    <None Include="Files\PMfiles\Models\f-f Bridge 1 CementGap 1.dgk" />
+    <None Include="Files\PMfiles\Models\SingleMesh.dmt" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\BasicToolPath.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\x1812d4a0577a92670005c50100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\x18f32f70577a93430005eff300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\x18f32f70577a93430005eff300000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\x19adec90577a93190005e95400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\x1d16a880577a92c50005cf7100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\BoundaryTypes.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e07e054aec14c00185c3100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e09e054aec1450018539800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e20a054aec17b001878b900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e3ae054aec13000183fbd00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e404054aec18b00188d2800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e4d4054aec1820018825900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e54a054aec1380018439900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e626054aec193001899f400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314e816054aec13f00184b7a00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314ea78054aec17200186e5600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\x314eadc054aec1630018650500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\TMP12115.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x142afb004e3130860008f34600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x185a49304e31307f0008e7a700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1af899e04e31307f0008e7a800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1af95fb04e31307f0008e7a100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1b0032904e3130860008f34500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1b7f9f204e31307f0008e7a400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1b80bbd04e3130860008f34700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1b920d104e31307f0008e7a500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1bbfea504e31307f0008e7a000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1c8343604e3130860008f34300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1c842b904e3130860008f34400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1d21f2104e3130860008f34e00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1d58f0704e31307f0008e79900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1d8e4f404e31307f0008e7a200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1d8ee0404e3130860008f34000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x1d8ee0404e3130860008f34000000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x2038dec04e3130860008f34900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x203902b04e31307f0008e79f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x2042b5204e312cd800046b9b00000000.pmlblk" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x208004e04e3130860008f34b00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x210759d04e3130860008f34c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x210addc04e31307f0008e79d00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x210b04304e31307f0008e79c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x210c68204e31307f0008e79e00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x21759f904e3130860008f34d00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x21db46804e31307f0008e7a600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x21dbb1604e3130860008f33f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x21f78a804e3130860008f34800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x225773c04e3130860008f34a00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x22938ab04e31307f0008e7a300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x234c7e104e3130860008f34200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x246baad04e31307f0008e79a00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\x246baad04e31307f0008e79a00000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\ncprograms\1.drp" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\PMwithNcProgram.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x137c55404ea67ba20004790600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x137c58604ea67ba20004790500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x137c79404ea67ba20004790f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x137c7b804ea67ba20004790c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x137cdda04ea67ba20004790700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a50d8804ea67ba2000478fc00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a50dd804ea67ba2000478ff00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a50dec04ea67ba2000478f900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a50df604ea67ba2000478fa00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a50e0a04ea67ba20004790400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a5142204ea67ba2000478f400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a5171204ea67ba2000478fd00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a518bc04ea67ba2000478f500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a518bc04ea67ba2000478f500000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a518be04ea67ba2000478f800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a5193204ea67ba20004790000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a5198804ea67ba2000478f300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51a8604ea67ba2000478f700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51bde04ea67ba2000478f100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51be604ea67ba20004791100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51c3c04ea67ba2000478fe00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51c8204ea67ba20004790200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51ca404ea67ba2000478f200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51ca804ea67ba2000478fb00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51cca04ea67ba20004790100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a51cde04ea67ba20004790300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a9896f04ea67ba2000478ef00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a9896f04ea67ba2000478ef00000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a9897704ea67ba2000478ee00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1a9de0104ea67b8f0003edcf00000000.pmlblk" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1ab524a04ea67ba20004791200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1caeec104ea67ba20004790a00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1ce085704ea67ba20004790e00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1ce08f704ea67ba20004790d00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1ce0fef04ea67ba20004791000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1d5a89304ea67ba20004790b00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1d5b36f04ea67ba20004790900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\x1d5b3f104ea67ba20004790800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\PMwithNcProgram.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x137c55404ea67ba20004790600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x137c58604ea67ba20004790500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x137c79404ea67ba20004790f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x137c7b804ea67ba20004790c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x137cdda04ea67ba20004790700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a50d8804ea67ba2000478fc00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a50dd804ea67ba2000478ff00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a50dec04ea67ba2000478f900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a50df604ea67ba2000478fa00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a50e0a04ea67ba20004790400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a5142204ea67ba2000478f400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a5171204ea67ba2000478fd00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a518bc04ea67ba2000478f500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a518bc04ea67ba2000478f500000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a518be04ea67ba2000478f800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a5193204ea67ba20004790000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a5198804ea67ba2000478f300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51a8604ea67ba2000478f700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51bde04ea67ba2000478f100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51be604ea67ba20004791100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51c3c04ea67ba2000478fe00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51c8204ea67ba20004790200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51ca404ea67ba2000478f200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51ca804ea67ba2000478fb00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51cca04ea67ba20004790100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a51cde04ea67ba20004790300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a9896f04ea67ba2000478ef00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a9896f04ea67ba2000478ef00000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a9897704ea67ba2000478ee00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1a9de0104ea67b8f0003edcf00000000.pmlblk" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1ab524a04ea67ba20004791200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1caeec104ea67ba20004790a00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1ce085704ea67ba20004790e00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1ce08f704ea67ba20004790d00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1ce0fef04ea67ba20004791000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1d5a89304ea67ba20004790b00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1d5b36f04ea67ba20004790900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\x1d5b3f104ea67ba20004790800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\SimpleProject1.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x0de68900524eb1910000c9a000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x10a90cd0524ad9b700000d5000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x10de9ae0524ad9b700000c4c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x10de9ae0524ad9b700000c4c00000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x10ec31f0524ad9b700000cb100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x1246b2a0524ad9b80000109e00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x126f4990524ad9c100001ff600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x126f4db0524ad9d0000024a000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x127f1c50524ada7c00006c5000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x127f4070524ada040000459d00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\SimpleProject1\x12864030524ada340000507600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\ToolAndHolderCollides1.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0d720c40524ebc51000016f500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0d994fd0524ebb7c0000125400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0da2d4d0524ebad500000bf800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0da2ded0524ebad500000bda00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0da2ded0524ebad500000bda00000000.pmlmz" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0da32370524ebad500000c5700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0db0fe50524ebc19000012f800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0db0fe90524ebc44000013c400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\x0db11870524ebc190000130000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\remove.log" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\ToolpathStrategies.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x0af6193054aea5180000684400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x0b0c32c054aea4cf000027ab00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x0b0c354054aea4d400002c6f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x0b390e0054aea4c6000022d000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x0b397d0054aea4c200001eb500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x0b39d4c054aea4d80000310c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x263f208054aea4de0000359200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x263f88a054aea4e300003a1c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x26842eb054aea4ee0000435f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2684ee9054aea508000059d100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x26eaf83054aea5290000756300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2717746054aea5230000716300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x271787c054aea51e00006cd200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2903698054aea5570000839f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2903dc2054aea5740000a1b100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2904098054aea55c000088d400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x292b23d054aea54800007f2e00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x295d91b054aea56100008e0300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x295da97054aea56a0000985700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x295db03054aea5650000932d00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2987c52054aea5790000a66900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2987f44054aea56f00009cfb00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x29b42a9054aea57e0000ab1600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x29b4879054aea5a10000cec100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x29b493f054aea5830000b0d200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x29b4b0f054aea5920000bffb00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x29e2ec8054aea5880000b57c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x29e36b8054aea58e0000bad500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2b7ce07054aea59c0000c9b100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2b7d0f9054aea5970000c52100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2ba73cc054aea5f700011e3400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2ba740a054aea5ab0000d8d700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2ba7470054aea5a50000d3cc00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2ba7676054aea5af0000dde200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2bdd47b054aea5c70000f74100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2bdd65d054aea5b40000e2e900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2bdd819054aea5b90000e80700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2bdd9e7054aea5c30000f23e00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2bddba1054aea5d00001006c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2c03ef4054aea5be0000eca000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2c315eb054aea5cb0000fbdb00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2c318c3054aea5d7000104ee00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2c58061054aea5dd0001098700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2c58763054aea5e200010e2000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2d3f016054aea5e90001151700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\x2d3f6d6054aea5ee000119a800000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\plugin_data\RobotInterface\RobotInterface.PriProj" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\ToolProperties2018.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0eaef39052f23a2b00000e2500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0ede029052f23a96000025a700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0ee1004052f235c40000130a00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0ef689a052f23a5c000017db00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0ef6c16052f23a530000155c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0ef6cf0052f23a3600000ffe00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0ef70cc052f23a45000011d600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0ef743a052f23a640000198400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0ef74dc052f23a7c00001cf100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0efff2b052f23a6f00001b3f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0efffa7052f23a8400001eaf00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0f00035052f23a8d000021f900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x0f0f51c053732969000010e100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x43f970e059a6a8ab000030da00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\x4410ff0059a6a8c1000035dd00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\desktop.ini" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\ToolProperties.pmlprj" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0eaef39052f23a2b00000e2500000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0ede029052f23a96000025a700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0ee1004052f235c40000130a00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0ef689a052f23a5c000017db00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0ef6c16052f23a530000155c00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0ef6cf0052f23a3600000ffe00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0ef70cc052f23a45000011d600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0ef743a052f23a640000198400000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0ef74dc052f23a7c00001cf100000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0efff2b052f23a6f00001b3f00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0efffa7052f23a8400001eaf00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0f00035052f23a8d000021f900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0f0f51c053732969000010e100000000.pmlent" />
+    <None Include="Files\PMfiles\PTFFiles\ImportPTFTest.ptf" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\PMfiles\DataFiles\Curves.pic" />
+    <Content Include="Files\PMfiles\DataFiles\SimpleProject_bravo_WP.txt" />
+    <Content Include="Files\PMfiles\PM2013_Projects\BasicToolPath\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\PMwithNcPrograms1\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\PMwithNcProgram\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\ReadMe.txt" />
+    <Content Include="Files\PMfiles\PM2013_Projects\SimpleProject1\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\ToolAndHolderCollides1\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2013_Projects\ToolProperties\pmill.ico" />
+    <Content Include="PMEntityTests\PMToolPathTestGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PMToolPathTestGenerator.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delcam.Geometry\Delcam.Geometry.csproj">
+      <Project>{a0d60ff2-dcb9-462f-adcd-28e2a126ecc9}</Project>
+      <Name>Delcam.Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.ProductInterface.PowerMILL\Delcam.ProductInterface.PowerMILL.csproj">
+      <Project>{4f447014-2790-46b3-80b3-f26e37e1ce9b}</Project>
+      <Name>Delcam.ProductInterface.PowerMILL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.ProductInterface\Delcam.ProductInterface.csproj">
+      <Project>{dd0b1c05-2e13-4671-b24c-d0a071e2a521}</Project>
+      <Name>Delcam.ProductInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.Utilities\Delcam.Utilities.csproj">
+      <Project>{1e2ec09f-d066-4ed3-86f1-8c22e01de694}</Project>
+      <Name>Delcam.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

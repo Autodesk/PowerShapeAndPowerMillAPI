@@ -1,0 +1,201 @@
+﻿<#@ template debug="false" hostspecific="True" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ assembly name="System.IO" #>
+<#@ import namespace="System.IO" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ assembly name="Microsoft.CSharp, Version=4.0.0.0, Culture=neutral" #>
+<#@ output extension=".cs" #>
+// **************************************************************************
+// *    © COPYRIGHT 2016 DELCAM LTD, BIRMINGHAM, UK. ALL RIGHTS RESERVED    *
+// **************************************************************************
+
+using System;
+using System.Linq;
+using NUnit.Framework;
+using Autodesk.Geometry;
+using Autodesk.ProductInterface.PowerMILL;
+using Autodesk.ProductInterface.PowerMILLTest.Files;
+
+namespace Autodesk.ProductInterface.PowerMILLTest
+{
+    [TestFixture]
+    public partial class PMToolpathTest
+    {
+        private readonly Random _random = new Random();
+<#
+var directory = Directory.GetParent(Path.GetDirectoryName(Host.TemplateFile));
+var directoryName = directory.ToString().Replace(".Test",string.Empty);
+var path = Path.Combine(directoryName,"Classes",@"ToolpathPropertiesToGenerate.xml");
+
+IEnumerable<XElement> elements;
+using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read)){
+        elements=  XElement.Load(fileStream).Elements("item");
+		}
+
+dynamic	items =  elements.Select( el => new { 
+							name = el.Attribute( "name" ).Value,
+							type = el.Attribute("type").Value,
+							isEnum = Convert.ToBoolean(el.Attribute("enum")?.Value),
+							set= Convert.ToBoolean(el.Attribute("set")?.Value),
+							readOnly = Convert.ToBoolean(el.Attribute("readOnly")?.Value),
+							calculated =  Convert.ToBoolean(el.Attribute("testCalculated" )?.Value)});
+foreach ( var item in items)
+{
+var varType = item.type=="MM"?"MM":"var";
+#>
+<# if(item.readOnly){ #>
+
+        [Test]
+        public void <#= item.name#>ReadOnlyTest()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var toolpath = _powerMill.ActiveProject.Toolpaths.First();
+
+            var result = toolpath.<#= item.name#>;
+            Assert.That(result, Is.GreaterThan(0));
+        }
+<# } #>
+<# else if(item.isEnum){ #>
+
+        [Test]
+        public void <#=item.name#>WhileToolPathIsCalculatedTest()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var toolpath = _powerMill.ActiveProject.Toolpaths.First();
+			foreach (var item in typeof(<#=item.type#>).GetEnumValues())
+			{
+			    toolpath.<#=item.name#> = (<#=item.type#>) item;
+				Assert.That(toolpath.<#=item.name#>, Is.EqualTo(item));
+			}
+        }
+<# } #>
+<# else if(item.set){ #>
+
+        [Test]
+        public void Edit<#= item.name#>WhileToolPathIsCalculatedTest()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var toolpath = _powerMill.ActiveProject.Toolpaths.First();
+
+            <#=varType#> value = _random.Next(1, 1000);
+            toolpath.<#= item.name#> = value;
+
+            var result = toolpath.<#= item.name#>;
+            Assert.That(result, Is.EqualTo(value));
+        }
+<# } #>
+<# } #>
+<#
+var leads = new[]{"LeadIn", "LeadInSecond","LeadOut", "LeadOutSecond","FirstLeadIn","LastLeadOut","LeadInExtension","LeadOutExtension"};
+foreach(var lead in leads){
+var extension = lead.Contains("Extension"); 
+#>
+
+        [Test]
+        public void <#=lead#>Test()
+        {
+            var angle = _random.NextDouble();
+            var distance = _random.Next();
+            var radius = _random.NextDouble();
+<# if(!extension){ #>
+            var diameter = _random.Next();
+            var rampFollow = (RampFollow) _random.Next(typeof(RampFollow).GetEnumValues().Length);
+            var rampHeight = (RampHeight) _random.Next(typeof(RampHeight).GetEnumValues().Length);
+<# } #>
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var lead = _powerMill.ActiveProject.Toolpaths.First().Connections.<#=lead#>;
+
+            lead.Angle = angle;
+            lead.Distance = distance;
+            lead.Radius = radius;
+<# if(!extension){ #>
+            lead.Ramp.CircleDiameter = diameter;
+            lead.Ramp.ClosedSegments = true;
+            lead.Ramp.Extend = true;
+            lead.Ramp.FiniteRamp = true;
+            lead.Ramp.FiniteRampLenght = distance;
+            lead.Ramp.Follow = rampFollow;
+            lead.Ramp.MaxZigAngle = angle;
+            lead.Ramp.RampHeight = rampHeight;
+            lead.Ramp.RampHeightValue = distance;
+            lead.Ramp.MaxZigAngle = angle;
+            lead.Ramp.ZagAngle = true;
+            lead.Ramp.ZagAngleMaximum = angle;
+<# } #>
+
+            Assert.That(lead.LeadType, Is.EqualTo(LeadTypes.<#=lead#>));
+            Assert.That(lead.Angle.Value, Is.EqualTo(angle).Within(TOLERANCE));
+            Assert.That(lead.Distance.Value, Is.EqualTo(distance).Within(TOLERANCE));
+            Assert.That(lead.Radius.Value, Is.EqualTo(radius).Within(TOLERANCE));
+<# if(!extension){ #>
+            Assert.That(lead.Ramp.CircleDiameter.Value, Is.EqualTo(diameter).Within(TOLERANCE));
+            Assert.That(lead.Ramp.ClosedSegments, Is.True);
+            Assert.That(lead.Ramp.Extend, Is.True);
+            Assert.That(lead.Ramp.FiniteRamp, Is.True);
+            Assert.That(lead.Ramp.FiniteRampLenght.Value, Is.EqualTo(distance).Within(TOLERANCE));
+            Assert.That(lead.Ramp.Follow, Is.EqualTo(rampFollow));
+            Assert.That(lead.Ramp.MaxZigAngle.Value, Is.EqualTo(angle).Within(TOLERANCE));
+            Assert.That(lead.Ramp.RampHeight, Is.EqualTo(rampHeight));
+            Assert.That(lead.Ramp.RampHeightValue.Value, Is.EqualTo(distance).Within(TOLERANCE));
+            Assert.That(lead.Ramp.MaxZigAngle.Value, Is.EqualTo(angle).Within(TOLERANCE));
+            Assert.That(lead.Ramp.ZagAngle, Is.True);
+            Assert.That(lead.Ramp.ZagAngleMaximum.Value, Is.EqualTo(angle).Within(TOLERANCE));
+<# } #>
+        }
+
+        [Test]
+        public void MoveTypeOn<#=lead#>Test()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var lead = _powerMill.ActiveProject.Toolpaths.First().Connections.<#=lead#>;
+<# if(!extension){ #>
+            foreach (var moveType in typeof(MoveType).GetEnumValues())
+            {
+                lead.MoveType = (MoveType)moveType;
+                Assert.That(lead.MoveType, Is.EqualTo(moveType));
+            }
+<# } else { #>
+            foreach (var moveType in typeof(ExtensionLeadMoveTypes).GetEnumValues())
+            {
+                lead.MoveType = (ExtensionLeadMoveTypes)moveType;
+                Assert.That(lead.MoveType, Is.EqualTo(moveType));
+            }
+<# } #>
+        }
+<# if(!extension){ #>
+
+        public void RampFollowOn<#=lead#>Test()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var lead = _powerMill.ActiveProject.Toolpaths.First().Connections.LeadIn;
+			foreach (var rampFollow in typeof(RampFollow).GetEnumValues())
+            {
+                lead.Ramp.Follow  = (RampFollow)rampFollow;
+                Assert.That(lead.Ramp.Follow, Is.EqualTo(rampFollow));
+            }
+        }
+
+        [Test]
+        public void RampHeightOn<#=lead#>Test()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var lead = _powerMill.ActiveProject.Toolpaths.First().Connections.<#=lead#>;
+            foreach (var rampHeight in typeof(RampHeight).GetEnumValues())
+            {
+                lead.Ramp.RampHeight = (RampHeight)rampHeight;
+                Assert.That(lead.Ramp.RampHeight, Is.EqualTo(rampHeight));
+            }
+        }
+<# } #>
+<# } #>
+
+    }
+}

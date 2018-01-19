@@ -1,0 +1,26 @@
+type list
+version 0
+MachineTool\
+NCProgram\
+Toolpath\
+Tool\
+Boundary\
+Boundary\1
+Boundary\2
+Boundary\3
+Boundary\4
+Boundary\5
+Boundary\6
+Boundary\7
+Boundary\8
+Boundary\9
+Boundary\10
+Boundary\11
+Pattern\
+Featureset\
+Workplane\
+Level\
+Model\
+StockModel\
+Group\
+Macro\

@@ -1,0 +1,39 @@
+{
+	"type" : "powermill",
+	"time" : "1311846559",
+	"version" : "1"
+}
+{
+	"Units" : "metric",
+	"CurveEditor" : {
+		"Tolerances" : {
+			"Polygonisation" : "0.005",
+			"ArcFit" : "0.01",
+			"SplineFit" : "0.01"
+		}
+	},
+	"Import" : {
+		"DeferLoading" : "0",
+		"SplitSolids" : "1",
+		"Tolerance" : "0.001"
+	},
+	"TPCalculation" : {
+		"Activate" : "1"
+	},
+	"Tolerances" : {
+		"Polygonisation" : "0.005",
+		"Closure" : "0.1"
+	},
+	"Tool" : {
+		"FeedSpeed" : {
+			"PlungeFactor" : "0.1",
+			"AutoLoad" : {
+				"FeedRate" : "0",
+				"DepthOfCut" : "0"
+			}
+		}
+	},
+	"ToolpathTransform" : {
+		"AlwaysCreateWorkplane" : "0"
+	}
+}

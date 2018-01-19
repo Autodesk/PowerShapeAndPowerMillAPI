@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion />
+    <SchemaVersion />
+    <ProjectGuid>{4F447014-2790-46B3-80B3-F26E37E1CE9B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Autodesk.ProductInterface</RootNamespace>
+    <AssemblyName>Autodesk.ProductInterface.PowerMILL</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName />
+    <SccLocalPath />
+    <SccAuxPath />
+    <SccProvider />
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>delcam.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>bin\Debug\Autodesk.ProductInterface.PowerMILL.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x64\Debug\Delcam.ProductInterface.PowerMILL.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\Autodesk.ProductInterface.PowerMILL.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x64\Release\Delcam.ProductInterface.PowerMILL.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Version>$(BUILD_NUMBER)</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Boundary\PMBoundaryBlock.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryBooleanOperation.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryCollisionSafe.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryContactConversion.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryContactPoint.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryEntityFactory.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryRest.cs" />
+    <Compile Include="Classes\Boundary\PMBoundarySelectedSurface.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryShallow.cs" />
+    <Compile Include="Classes\Boundary\PMBoundarySilhouette.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryStockModelRest.cs" />
+    <Compile Include="Classes\Boundary\PMBoundaryUserDefined.cs" />
+    <Compile Include="Classes\PowerMillException.cs" />
+    <Compile Include="Classes\InvalidPowerMillParameterException.cs" />
+    <Compile Include="Classes\InvalidPowerMillVersionException.cs" />
+    <Compile Include="Classes\PMLeadExtension.cs" />
+    <Compile Include="Classes\Tool\PMToolGroovingTurning.cs" />
+    <Compile Include="Classes\Tool\PMToolProfilingTurning.cs" />
+    <Compile Include="Enums\DefaultLinkTypes.cs" />
+    <Compile Include="Enums\MoveDirection.cs" />
+    <Compile Include="Classes\PMConnections.cs" />
+    <Compile Include="Enums\ExtensionLeadMoveTypes.cs" />
+    <Compile Include="Enums\RampFollow.cs" />
+    <Compile Include="Enums\RampHeight.cs" />
+    <Compile Include="Enums\LinkTypes.cs" />
+    <Compile Include="Enums\CoolantOptions.cs" />
+    <Compile Include="Enums\EndPointMethod.cs" />
+    <Compile Include="Enums\LeadTypes.cs" />
+    <Compile Include="Classes\PMLead.cs" />
+    <Compile Include="Enums\MoveType.cs" />
+    <Compile Include="Classes\PMBoundariesCollection.cs" />
+    <Compile Include="Classes\PMBoundary.cs" />
+    <Compile Include="Classes\PMEntitiesCollection.cs" />
+    <Compile Include="Classes\PMEntity.cs" />
+    <Compile Include="Classes\PMEntityFactory.cs" />
+    <Compile Include="Classes\PMFeatureSet.cs" />
+    <Compile Include="Classes\PMFeatureSetsCollection.cs" />
+    <Compile Include="Classes\PMGroup.cs" />
+    <Compile Include="Classes\PMGroupsCollection.cs" />
+    <Compile Include="Classes\PMLevelOrSet.cs" />
+    <Compile Include="Classes\PMLevelOrSetsCollection.cs" />
+    <Compile Include="Classes\PMMachineTool.cs" />
+    <Compile Include="Classes\PMMachineToolsCollection.cs" />
+    <Compile Include="Classes\PMMacro.cs" />
+    <Compile Include="Classes\PMModel.cs" />
+    <Compile Include="Classes\PMModelsCollection.cs" />
+    <Compile Include="Classes\PMNCProgram.cs" />
+    <Compile Include="Classes\PMNCProgramsCollection.cs" />
+    <Compile Include="Classes\PMPattern.cs" />
+    <Compile Include="Classes\PMPatternsCollection.cs" />
+    <Compile Include="Classes\PMProject.cs" />
+    <Compile Include="Classes\PMRamp.cs" />
+    <Compile Include="Classes\PMStockModel.cs" />
+    <Compile Include="Classes\PMStockModelsCollection.cs" />
+    <Compile Include="Classes\PMSubstitutionToken.cs" />
+    <Compile Include="Classes\PMSubstitutionTokensCollection.cs" />
+    <Compile Include="Classes\PMTool.cs" />
+    <Compile Include="Classes\PMToolpath.cs" />
+    <Compile Include="Classes\PMToolpathsCollection.cs" />
+    <Compile Include="Classes\PMToolsCollection.cs" />
+    <Compile Include="Classes\PMWorkplane.cs" />
+    <Compile Include="Classes\PMWorkplanesCollection.cs" />
+    <Compile Include="Enums\PointApproach.cs" />
+    <Compile Include="Enums\StartPointMethod.cs" />
+    <Compile Include="Classes\ToolpathSafety.cs" />
+    <Compile Include="Classes\ToolpathStrategies\DrillCycleTypes.cs" />
+    <Compile Include="Classes\Tool\PMToolBallNosed.cs" />
+    <Compile Include="Classes\Tool\PMToolBarrel.cs" />
+    <Compile Include="Classes\Tool\PMToolDovetail.cs" />
+    <Compile Include="Classes\Tool\PMToolDrill.cs" />
+    <Compile Include="Classes\Tool\PMToolEndMill.cs" />
+    <Compile Include="Classes\Tool\PMToolEntityFactory.cs" />
+    <Compile Include="Classes\Tool\PMToolForm.cs" />
+    <Compile Include="Classes\Tool\PMToolOffCentreTipRadiused.cs" />
+    <Compile Include="Classes\Tool\PMToolRouting.cs" />
+    <Compile Include="Classes\Tool\PMToolTap.cs" />
+    <Compile Include="Classes\Tool\PMToolTaperedSpherical.cs" />
+    <Compile Include="Classes\Tool\PMToolTaperedTipped.cs" />
+    <Compile Include="Classes\Tool\PMToolThreadMill.cs" />
+    <Compile Include="Classes\Tool\PMToolTippedDisc.cs" />
+    <Compile Include="Classes\Tool\PMToolTipRadiused.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpath3DOffsetFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathAdaptiveAreaClearance.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathAlongCornerFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathBladeFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathBladeMachining.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathBliskAreaClearance.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathChamferMilling.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathConstantZFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathCornerClearance.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathCornerFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathCurveAreaClearance.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathCurveProfile.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathCurveProjectionFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathDiscProfileFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathDrilling.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathEmbeddedPatternFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathEntityFactory.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathFaceMilling.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathFlowlineFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathHubFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathLineProjectionFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathMethod.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathMultiPencilCornerFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathOffsetAreaClearance.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathOffsetFlatFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathOptimisedConstantZFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathParametricOffsetFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathParametricSpiralFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathPatternFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathPencilCornerFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathPlaneProjectionFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathPlungeMilling.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathPointProjectionFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathPortAreaClearance.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathPortPlungeFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathPortSpiralFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathProfileAreaClearance.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathProfileFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathRadialFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathRasterAreaClearance.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathRasterFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathRasterFlatFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathRibMachining.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathRotaryFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathSpiralFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathSteepAndShallowFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathStitchCornerFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathSurfaceFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathSurfaceProjectionFinishing.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathSwarfMachining.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathWireframeProfileMachining.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathWireframeSwarfMachining.cs" />
+    <Compile Include="Enums\Modes.cs" />
+    <Compile Include="Enums\ToolChangePositions.cs" />
+    <Compile Include="Enums\ToolChanges.cs" />
+    <Compile Include="Enums\ToolNumberings.cs" />
+    <Compile Include="Enums\ToolValues.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PMAutomation.cs" />
+    <Compile Include="PMCollection.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="delcam.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delcam.Geometry\Delcam.Geometry.csproj">
+      <Project>{a0d60ff2-dcb9-462f-adcd-28e2a126ecc9}</Project>
+      <Name>Delcam.Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.ProductInterface\Delcam.ProductInterface.csproj">
+      <Project>{dd0b1c05-2e13-4671-b24c-d0a071e2a521}</Project>
+      <Name>Delcam.ProductInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.Utilities\Delcam.Utilities.csproj">
+      <Project>{1e2ec09f-d066-4ed3-86f1-8c22e01de694}</Project>
+      <Name>Delcam.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

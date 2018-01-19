@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion />
+    <SchemaVersion />
+    <ProjectGuid>{A0D60FF2-DCB9-462F-ADCD-28E2A126ECC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Autodesk.Geometry</RootNamespace>
+    <AssemblyName>Autodesk.Geometry</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName />
+    <SccLocalPath />
+    <SccAuxPath />
+    <SccProvider />
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>delcam.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>bin\Debug\Autodesk.Geometry.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x64\Debug\Delcam.Geometry.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\Autodesk.Geometry.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x64\Release\Delcam.Geometry.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Version>$(BUILD_NUMBER)</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Angles\Degree.cs" />
+    <Compile Include="Angles\Radian.cs" />
+    <Compile Include="Euler\Angles.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelReaders\AsciiStlFileReader.cs" />
+    <Compile Include="GeometricEntities\BoundingBox.cs" />
+    <Compile Include="GeometricEntities\CubicBezier.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelReaders\BinaryStlFileReader.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelReaders\DMTFileReader.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelWriters\BinaryStlFileWriter.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelFilters\DMTModelFilterByNone.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelReaders\DMTModelReader.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelWriters\DMTFileWriter.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelWriters\DMTModelWriter.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModelFilters\IDMTModelFilter.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTModel.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTTriangle.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTTriangleBlock.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTTriangleZone.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTTriangleZoneEntry.cs" />
+    <Compile Include="GeometricEntities\DMTModel\DMTVertex.cs" />
+    <Compile Include="GeometricEntities\DMTModel\Exception Classes\DMTFileException.cs" />
+    <Compile Include="GeometricEntities\Line.cs" />
+    <Compile Include="GeometricEntities\Point.cs" />
+    <Compile Include="GeometricEntities\PointCloud.cs" />
+    <Compile Include="GeometricEntities\Polyline.cs" />
+    <Compile Include="GeometricEntities\Spline.cs" />
+    <Compile Include="GeometricEntities\SplinePoint.cs" />
+    <Compile Include="GeometricEntities\Surface.cs" />
+    <Compile Include="GeometricEntities\Vector.cs" />
+    <Compile Include="GeometricEntities\Workplane.cs" />
+    <Compile Include="Lengths\Inch.cs" />
+    <Compile Include="Lengths\MM.cs" />
+    <Compile Include="MathsFunctions\ArcFunctions.cs" />
+    <Compile Include="MathsFunctions\CurveFunctions.cs" />
+    <Compile Include="Matrix\Matrix.cs" />
+    <Compile Include="MSRFile\MSRFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="delcam.snk" />
+    <None Include="Documentation\DMTFileFormat.htm" />
+    <None Include="Documentation\DUCTPictureFileFormat.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delcam.Utilities\Delcam.Utilities.csproj">
+      <Project>{1e2ec09f-d066-4ed3-86f1-8c22e01de694}</Project>
+      <Name>Delcam.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets. -->
+</Project>

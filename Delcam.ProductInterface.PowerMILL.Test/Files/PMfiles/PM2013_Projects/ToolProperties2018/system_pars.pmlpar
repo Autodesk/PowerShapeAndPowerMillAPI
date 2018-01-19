@@ -1,0 +1,235 @@
+{
+	"type" : "powermill",
+	"time" : "1504094412",
+	"version" : "1"
+}
+{
+	"Export" : {
+		"TriangleTolerance" : "0.01",
+		"OutputMetricSTL" : "1"
+	},
+	"Units" : "metric",
+	"CLData" : {
+		"DecimalPlaces" : "3",
+		"StripZeros" : "1"
+	},
+	"CurveEditor" : {
+		"CompositeCurveCreator" : {
+			"BranchPointDirection" : "straight",
+			"SearchBothWays" : "1",
+			"KeepOriginal" : "0",
+			"DisplaySurfaceTags" : "0",
+			"FollowEdgesOnly" : "1",
+			"MaxDiscontinuityAngle" : "45.0",
+			"CurveFit" : "none",
+			"TangentialJumpCurve" : "0",
+			"GapJumpMultiplier" : "1.0"
+		},
+		"HelixCurve" : {
+			"CloseBase" : "0",
+			"Pitch" : "10.0",
+			"PointsInTurn" : "8",
+			"ConstantRadii" : "0",
+			"Reverse" : "0",
+			"TopRadius" : "20.0",
+			"CloseTop" : "0",
+			"Height" : "60.0",
+			"BaseRadius" : "20.0"
+		},
+		"SpiralCurve" : {
+			"Turns" : "3.0",
+			"EndRadius" : "60.0",
+			"PointsInTurn" : "8",
+			"Reverse" : "0",
+			"StartRadius" : "0.0"
+		},
+		"SpunProfile" : {
+			"Tolerance" : "0.01"
+		},
+		"EllipseCurve" : {
+			"MinorAxisLength" : "30.0",
+			"MajorAxisLength" : "60.0",
+			"PointsInQuadrant" : "20.0"
+		},
+		"ObliqueCurve" : {
+			"Tolerance" : "0.001",
+			"Origin" : {
+				"Y" : "0.0",
+				"X" : "0.0",
+				"Z" : "0.0"
+			},
+			"SurfJoinTolerance" : "0.1"
+		},
+		"Tolerances" : {
+			"Polygonisation" : "0.005",
+			"ArcFit" : "0.01",
+			"SplineFit" : "0.01"
+		}
+	},
+	"Setup" : {
+		"Stock" : {
+			"DrawStatus" : {
+				"Opacity" : "100.0",
+				"Drawn" : "0"
+			},
+			"DefaultMaterial" : "",
+			"LimitEstimation" : {
+				"Expansion" : "0.0",
+				"IncludeReferenceSurfaces" : "0",
+				"Type" : "model",
+				"Tolerance" : "0.1"
+			}
+		}
+	},
+	"Import" : {
+		"DeferLoading" : "0",
+		"DefaultExtensionIndex" : "1",
+		"CreateSplitSets" : "0",
+		"SplitSolids" : "1",
+		"Tolerance" : "0.001",
+		"IgnoreNewModels" : "0"
+	},
+	"TPCalculation" : {
+		"Activate" : "1"
+	},
+	"Mirror" : {
+		"Optimize" : "0",
+		"Calculate" : "1"
+	},
+	"StockSimulation" : {
+		"ProcessRapid" : "1"
+	},
+	"FeatureFilter" : {
+		"IncludeCircularBoss" : "1",
+		"IncludeSlot" : "1",
+		"IncludeRectangularPocket" : "1",
+		"IncludeRectangularBoss" : "1",
+		"IncludeTurningParametricGroove" : "1",
+		"IncludeTurningProfile" : "1",
+		"IncludeCircularPocket" : "1",
+		"IncludeFreeformPocket" : "1",
+		"IncludeFreeformBoss" : "1",
+		"IncludeFace" : "1",
+		"Constraint" : (
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			},
+			{
+				"Type" : "unspecified"
+			}
+		),
+		"IncludeTurningBore" : "1",
+		"IncludeTurningFreeformGroove" : "1",
+		"IncludeTurningFace" : "1"
+	},
+	"A360" : {
+		"LineWidth" : "1.0"
+	},
+	"Simulation" : {
+		"Interpolation" : "linear",
+		"PlayMode" : "feedrate",
+		"Speed" : "100.0",
+		"Issues" : {
+			"PlaybackSetting" : "firstonly"
+		},
+		"Step" : "point"
+	},
+	"HoleCreation" : {
+		"MaxGapComponentDepth" : "5.0",
+		"CreateFrom" : "model",
+		"FindDirection" : {
+			"FromSurfaces" : "1",
+			"FromBlock" : "1",
+			"FromDiameter" : "1"
+		},
+		"AddGapComponents" : "1",
+		"MinPartialHoleArcAngle" : "300.0"
+	},
+	"Tool" : {
+		"FeedSpeed" : {
+			"PlungeFactor" : "0.1",
+			"AutoLoad" : {
+				"FeedRate" : "0",
+				"DepthOfCut" : "0"
+			},
+			"LeadOutFactor" : "100.0",
+			"LeadInFactor" : "100.0"
+		}
+	},
+	"Tolerances" : {
+		"Polygonisation" : "0.005",
+		"Closure" : "0.1"
+	},
+	"Tooltip" : {
+		"InitialWait" : "1000.0",
+		"ShowTooltips" : "1",
+		"ShowExtended" : "1",
+		"ExtendedDuration" : "10000.0",
+		"BasicDuration" : "3000.0"
+	},
+	"FeatureReader" : {
+		"IgnoreXmlNames" : "0"
+	},
+	"Boundaries" : {
+		"EditHistory" : {
+			"Replay" : "1"
+		},
+		"Private" : {
+			"Display" : "0",
+			"Availability" : "1",
+			"AutoDelete" : "1"
+		}
+	},
+	"ToolpathTransform" : {
+		"AlwaysCreateWorkplane" : "0"
+	},
+	"Plugins" : {
+		"HideSingleTab" : "1",
+		"LoadOnStartup" : "1"
+	},
+	"Transform" : {
+		"ActiveWorkplaneDefaultOrigin" : "0"
+	}
+}

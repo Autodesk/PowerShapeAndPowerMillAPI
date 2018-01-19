@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion />
+    <SchemaVersion />
+    <ProjectGuid>{6DBBA662-311E-4DA2-B54F-4411442BB880}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Autodesk.Geometry.Test</RootNamespace>
+    <AssemblyName>Autodesk.Geometry.Test</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ReferencePath>$(DevEnvDir)PublicAssemblies\</ReferencePath>
+    <SccProjectName />
+    <SccLocalPath />
+    <SccAuxPath />
+    <SccProvider />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>delcam.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\Delcam.Geometry.Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Delcam.Geometry.Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Angles\Degree.Test.cs" />
+    <Compile Include="Angles\Radian.Test.cs" />
+    <Compile Include="GeometricEntities\CubicBezier.Test.cs" />
+    <Compile Include="GeometricEntities\DMTModel.Test.cs" />
+    <Compile Include="GeometricEntities\DMTModelReaderTest.cs" />
+    <Compile Include="GeometricEntities\DMTModelWriterTest.cs" />
+    <Compile Include="GeometricEntities\DMTTriangleBlock.Test.cs" />
+    <Compile Include="GeometricEntities\Point.Test.cs" />
+    <Compile Include="GeometricEntities\Polyline.Test.cs" />
+    <Compile Include="GeometricEntities\Spline.Test.cs" />
+    <Compile Include="GeometricEntities\Surface.Test.cs" />
+    <Compile Include="GeometricEntities\TestFiles.cs" />
+    <Compile Include="GeometricEntities\Vector.Test.cs" />
+    <Compile Include="GeometricEntities\Workplane.Test.cs" />
+    <Compile Include="Matrix.Test.cs" />
+    <Compile Include="MSRFile\MSRFile.Test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="delcam.snk" />
+    <Compile Include="Lengths\MM.Test.cs" />
+    <Compile Include="GeometricEntities\Line.Test.cs" />
+    <None Include="packages.config" />
+    <None Include="TestFiles\DMTTestFiles\BaseLeftFootTopSurface.dmt" />
+    <None Include="TestFiles\DMTTestFiles\GetTrianglesByMeshMain.dmt" />
+    <None Include="TestFiles\DMTTestFiles\MeshForBoundaryCount.dmt" />
+    <None Include="TestFiles\DMTTestFiles\MeshForBoundaryCountAfterStitching.dmt" />
+    <None Include="TestFiles\DMTTestFiles\NormalDmt.dmt" />
+    <None Include="TestFiles\DMTTestFiles\Point Projection.dmt" />
+    <None Include="TestFiles\DMTTestFiles\smallModel.dmt" />
+    <None Include="TestFiles\DMTTestFiles\TwoBlocks.dmt" />
+    <None Include="TestFiles\MSRTestFiles\Culture Agnostic.msr" />
+    <None Include="TestFiles\MSRTestFiles\TwoEnds.msr" />
+    <None Include="TestFiles\MSRTestFiles\TwoStarts.msr" />
+    <None Include="TestFiles\PicForOpenPolylineTest.pic" />
+    <None Include="TestFiles\PicForPolylineTest.pic" />
+    <None Include="TestFiles\SplineTestFiles\FreedByPowershape.pic" />
+    <None Include="TestFiles\SplineTestFiles\RawPoints.pic" />
+    <None Include="TestFiles\STLTestFiles\BoundariesTestSquare.stl" />
+    <None Include="TestFiles\STLTestFiles\CoincidentPointsInATriangle.stl" />
+    <None Include="TestFiles\STLTestFiles\CoincidentPointsInATriangle_Expected.stl" />
+    <None Include="TestFiles\STLTestFiles\GetTrianglesByMeshMain.stl" />
+    <None Include="TestFiles\STLTestFiles\GetTrianglesByMeshReference.stl" />
+    <None Include="TestFiles\STLTestFiles\NormalSTL.stl" />
+    <None Include="TestFiles\SurfaceTestFiles\ClosedCurves.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\ClosedCurvesPerpendiculars.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\DifferentNumberOfPoints.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\Laterals.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\Laterals_1.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\Longitudinals.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\Longitudinals_2.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\NonCoincidentPoints.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\Offset_Laterals_2.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\Offset_Longitudinals_2.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\OpenCurves.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\OpenCurvesPerpendiculars.pic" />
+    <None Include="TestFiles\SurfaceTestFiles\SingleSurfaceCurve.pic" />
+    <None Include="TestFiles\WokplaneTestFiles\BigAlignment.mat" />
+    <None Include="TestFiles\WokplaneTestFiles\BigAlignmentWorkplane.dgk" />
+    <None Include="TestFiles\WokplaneTestFiles\CADToMachineAlignment.mat" />
+    <None Include="TestFiles\WokplaneTestFiles\CADToMachineAlignmentInverted.mat" />
+    <None Include="TestFiles\WokplaneTestFiles\HERMLE_Nominal_OWP.trx" />
+    <None Include="TestFiles\WokplaneTestFiles\WorkplaneFromCADToMachineAlignment.dgk" />
+    <None Include="TestFiles\WokplaneTestFiles\WorkplaneFromCADToMachineAlignmentInverted.dgk" />
+    <None Include="TestFiles\WokplaneTestFiles\x_30_ty10.mat" />
+    <None Include="TestFiles\WokplaneTestFiles\x_30_ty10.matrix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestFiles\MSRTestFiles\Empty File.msr" />
+    <Content Include="TestFiles\MSRTestFiles\Extra Ordinate.msr" />
+    <Content Include="TestFiles\MSRTestFiles\G330 Detransformed.msr" />
+    <Content Include="TestFiles\MSRTestFiles\G330 Untransformed.msr" />
+    <Content Include="TestFiles\MSRTestFiles\Line Number Error.msr" />
+    <Content Include="TestFiles\MSRTestFiles\Missing G800 Line.msr" />
+    <Content Include="TestFiles\MSRTestFiles\Missing G801 Line.msr" />
+    <Content Include="TestFiles\MSRTestFiles\No Data.msr" />
+    <Content Include="TestFiles\MSRTestFiles\Odd Characters.msr" />
+    <Content Include="TestFiles\PicFromCompCurve.pic" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delcam.Geometry\Delcam.Geometry.csproj">
+      <Project>{a0d60ff2-dcb9-462f-adcd-28e2a126ecc9}</Project>
+      <Name>Delcam.Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.Utilities\Delcam.Utilities.csproj">
+      <Project>{1e2ec09f-d066-4ed3-86f1-8c22e01de694}</Project>
+      <Name>Delcam.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

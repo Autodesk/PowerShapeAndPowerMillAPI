@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion />
+    <SchemaVersion />
+    <ProjectGuid>{F15770F3-1E63-4C18-BC4D-F75702436A75}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Autodesk.ProductInterface</RootNamespace>
+    <AssemblyName>Autodesk.ProductInterface.PowerSHAPE</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName />
+    <SccLocalPath />
+    <SccAuxPath />
+    <SccProvider />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>delcam.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>bin\Debug\Autodesk.ProductInterface.PowerSHAPE.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x64\Debug\Delcam.ProductInterface.PowerSHAPE.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\Autodesk.ProductInterface.PowerSHAPE.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x64\Release\Delcam.ProductInterface.PowerSHAPE.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Version>$(BUILD_NUMBER)</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Wireframe\CompCurve\PSCompCurvesCollection.cs" />
+    <Compile Include="Entities\Wireframe\Curve\PSCurvesCollection.cs" />
+    <Compile Include="Entities\Annotation\PSAnnotationsCollection.cs" />
+    <Compile Include="Entities\Arc\PSArcsCollection.cs" />
+    <Compile Include="Entities\Electrode\PSElectrodesCollection.cs" />
+    <Compile Include="Entities\PSGenericCurvesCollection.cs" />
+    <Compile Include="Entities\Wireframe\Line\PSLinesCollection.cs" />
+    <Compile Include="Entities\Mesh\PSMeshesCollection.cs" />
+    <Compile Include="Entities\Point\PSPointsCollection.cs" />
+    <Compile Include="Entities\Solid\PSSolidsCollection.cs" />
+    <Compile Include="Entities\PSSurfaceCurvesCollection.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfacesCollection.cs" />
+    <Compile Include="Entities\Workplane\PSWorkplanesCollection.cs" />
+    <Compile Include="Entities\Wireframe\Lateral\PSLateralsCollection.cs" />
+    <Compile Include="Entities\Wireframe\Longitudinal\PSLongitudinalsCollection.cs" />
+    <Compile Include="Entities\PSEntitiesCollection.cs" />
+    <Compile Include="Entities\Model\PSModelsCollection.cs" />
+    <Compile Include="Entities\Annotation\PSAnnotation.cs" />
+    <Compile Include="Entities\Arc\PSArc.cs" />
+    <Compile Include="Entities\Electrode\PSElectrode.cs" />
+    <Compile Include="Entities\Mesh\PSMesh.cs" />
+    <Compile Include="Entities\Point\PSPoint.cs" />
+    <Compile Include="Entities\Solid\PSSolid.cs" />
+    <Compile Include="Entities\Solid\PSSolidFactory.cs" />
+    <Compile Include="Entities\Surfaces\PSSurface.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceFactory.cs" />
+    <Compile Include="Entities\Wireframe\PSWireframe.cs" />
+    <Compile Include="Entities\Workplane\PSWorkplane.cs" />
+    <Compile Include="Entities\Solid\PSSolidBlock.cs" />
+    <Compile Include="Entities\Solid\PSSolidCone.cs" />
+    <Compile Include="Entities\Solid\PSSolidCylinder.cs" />
+    <Compile Include="Entities\Solid\PSSolidExtrusion.cs" />
+    <Compile Include="Entities\Solid\PSSolidPlane.cs" />
+    <Compile Include="Entities\Solid\PSSolidRevolution.cs" />
+    <Compile Include="Entities\Solid\PSSolidSphere.cs" />
+    <Compile Include="Entities\Solid\PSSolidSpring.cs" />
+    <Compile Include="Entities\Solid\PSSolidTorus.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceBlock.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceCone.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceCylinder.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceExtrusion.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfacePlane.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceRevolution.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceSphere.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceSpring.cs" />
+    <Compile Include="Entities\Surfaces\PSSurfaceTorus.cs" />
+    <Compile Include="Entities\Surfaces\PSPrimitive.cs" />
+    <Compile Include="Entities\Wireframe\CompCurve\PSCompCurve.cs" />
+    <Compile Include="Entities\Wireframe\Curve\PSCurve.cs" />
+    <Compile Include="Entities\Wireframe\PSGenericCurve.cs" />
+    <Compile Include="Entities\Wireframe\Line\PSLine.cs" />
+    <Compile Include="Entities\Wireframe\PSpCurve.cs" />
+    <Compile Include="Entities\Wireframe\PSSpine.cs" />
+    <Compile Include="Entities\Wireframe\PSSurfaceCurve.cs" />
+    <Compile Include="Entities\Wireframe\Lateral\PSLateral.cs" />
+    <Compile Include="Entities\Wireframe\Longitudinal\PSLongitudinal.cs" />
+    <Compile Include="Entities\PSEntity.cs" />
+    <Compile Include="Entities\PSCollection.cs" />
+    <Compile Include="Entities\DatabaseEntity\PSDatabaseEntitiesCollection.cs" />
+    <Compile Include="Entities\DatabaseEntity\PSDatabaseEntity.cs" />
+    <Compile Include="Entities\PSEntityFactory.cs" />
+    <Compile Include="Entities\Level\PSLevel.cs" />
+    <Compile Include="Entities\Level\PSLevelsCollection.cs" />
+    <Compile Include="Entities\PSMacro.cs" />
+    <Compile Include="Entities\Material\PSMaterial.cs" />
+    <Compile Include="Entities\Material\PSMaterialsCollection.cs" />
+    <Compile Include="Entities\Model\PSModel.cs" />
+    <Compile Include="Entities\Window\PSWindow.cs" />
+    <Compile Include="Entities\Window\PSWindowsCollection.cs" />
+    <Compile Include="Entities\CurveTypes.cs" />
+    <Compile Include="Entities\ExportItemsOptions.cs" />
+    <Compile Include="Entities\Workplane\ExportWorkplanes.cs" />
+    <Compile Include="Entities\Wireframe\ExtensionType.cs" />
+    <Compile Include="Helpers\FeatureTypes.cs" />
+    <Compile Include="Helpers\Limiter\LimitingKeepOptions.cs" />
+    <Compile Include="Helpers\Limiter\LimitingModes.cs" />
+    <Compile Include="Helpers\Limiter\LimitingTrimOptions.cs" />
+    <Compile Include="Entities\Mesh\MeshDoctorFixOptions.cs" />
+    <Compile Include="Entities\Mesh\MeshDoctorRepairTypes.cs" />
+    <Compile Include="Entities\Workplane\NewWorkplaneInEntityPositions.cs" />
+    <Compile Include="PSAutomation\Modes.cs" />
+    <Compile Include="PSAutomation\MultipleViewAngles.cs" />
+    <Compile Include="PSAutomation\OptionsSections.cs" />
+    <Compile Include="PSAutomation\TrimRegionEditingModes.cs" />
+    <Compile Include="PSAutomation\ViewRelationships.cs" />
+    <Compile Include="Entities\PSGenericCurve\CornerBehaviours.cs" />
+    <Compile Include="Entities\PSGenericCurve\ExtensionEnd.cs" />
+    <Compile Include="Entities\PSGenericCurve\ProjectionType.cs" />
+    <Compile Include="Entities\Surfaces\FilletCornerTypes.cs" />
+    <Compile Include="Entities\Surfaces\FilletCreaseOptions.cs" />
+    <Compile Include="Entities\Surfaces\FilletRouteOptions.cs" />
+    <Compile Include="Entities\Surfaces\FilletTrimOptions.cs" />
+    <Compile Include="Entities\Surfaces\FilletTypes.cs" />
+    <Compile Include="Entities\Surfaces\AdvancedInteriorInterpolationMethods.cs" />
+    <Compile Include="Entities\Surfaces\AutomaticSurfaceOptions.cs" />
+    <Compile Include="Entities\Surfaces\AutomaticSurfaceTypes.cs" />
+    <Compile Include="Entities\Surfaces\AutomaticSurfacingMethods.cs" />
+    <Compile Include="Entities\Surfaces\ExtensionEdges.cs" />
+    <Compile Include="Entities\Surfaces\OffsetCornerTypes.cs" />
+    <Compile Include="Entities\Surfaces\OffsetSplitAtDiscontinuity.cs" />
+    <Compile Include="Entities\Surfaces\StitchDirectionAcross.cs" />
+    <Compile Include="Entities\Surfaces\StitchDirectionAlong.cs" />
+    <Compile Include="Entities\Surfaces\StitchTypes.cs" />
+    <Compile Include="Entities\Surfaces\SurfaceCurveInsertionMethod.cs" />
+    <Compile Include="Entities\Surfaces\SurfaceCurveTypes.cs" />
+    <Compile Include="Entities\Surfaces\SurfaceShapes.cs" />
+    <Compile Include="Entities\Surfaces\SurfaceTypes.cs" />
+    <Compile Include="Entities\SculptTypes.cs" />
+    <Compile Include="Entities\Solid\SolidTypes.cs" />
+    <Compile Include="Entities\Solid\SolidVersions.cs" />
+    <Compile Include="Entities\TextJustifications.cs" />
+    <Compile Include="Entities\TextOrigins.cs" />
+    <Compile Include="Entities\TrianglePickMode.cs" />
+    <Compile Include="Entities\TriangleStitchIterationModes.cs" />
+    <Compile Include="Entities\Window\WindowTypes.cs" />
+    <Compile Include="Helpers\AutomaticFitSurfacesToMeshTool.cs" />
+    <Compile Include="Helpers\ManualFitSurfaceToMeshTool.cs" />
+    <Compile Include="Helpers\PSCancelPointPicker.cs" />
+    <Compile Include="Helpers\Cutter\PSEntityCutter.cs" />
+    <Compile Include="Helpers\Limiter\PSEntityLimiter.cs" />
+    <Compile Include="Helpers\Mirrorer\PSEntityMirrorer.cs" />
+    <Compile Include="Helpers\Morpher\PSEntityMorpher.cs" />
+    <Compile Include="Helpers\Mover\PSEntityMover.cs" />
+    <Compile Include="Helpers\Offester\PSEntityOffseter.cs" />
+    <Compile Include="Helpers\Rotater\PSEntityRotater.cs" />
+    <Compile Include="Helpers\Scaler\PSEntityScaler.cs" />
+    <Compile Include="Helpers\PSMeshTrianglePicker.cs" />
+    <Compile Include="Helpers\ICancelPointPickCheck.cs" />
+    <Compile Include="Helpers\IPSAddable.cs" />
+    <Compile Include="Helpers\Cutter\IPSCuttable.cs" />
+    <Compile Include="Helpers\IPSIntersectable.cs" />
+    <Compile Include="Helpers\Limiter\IPSLimitable.cs" />
+    <Compile Include="Helpers\Mirrorer\IPSMirrorable.cs" />
+    <Compile Include="Helpers\Mover\IPSMoveable.cs" />
+    <Compile Include="Helpers\Offester\IPSOffsetable.cs" />
+    <Compile Include="Helpers\Rotater\IPSRotateable.cs" />
+    <Compile Include="Helpers\Scaler\IPSScaleable.cs" />
+    <Compile Include="Helpers\IPSSubtractable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSAutomation\PSAutomation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="delcam.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delcam.Geometry\Delcam.Geometry.csproj">
+      <Project>{a0d60ff2-dcb9-462f-adcd-28e2a126ecc9}</Project>
+      <Name>Delcam.Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.ProductInterface\Delcam.ProductInterface.csproj">
+      <Project>{dd0b1c05-2e13-4671-b24c-d0a071e2a521}</Project>
+      <Name>Delcam.ProductInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.Utilities\Delcam.Utilities.csproj">
+      <Project>{1e2ec09f-d066-4ed3-86f1-8c22e01de694}</Project>
+      <Name>Delcam.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

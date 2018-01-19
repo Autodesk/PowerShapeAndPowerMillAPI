@@ -1,0 +1,30 @@
+{
+	"type" : "Project",
+	"time" : "1311846559",
+	"version" : "0"
+}
+{
+	"DEPTH" "R" "" "182c27e04e312fe800081c7900000000" : "0.1",
+	"BLOCKADD5" "R" "" "201bbff04e312fe200080ec900000000" : "40.0",
+	"Customer" "S" "Name of customer that this project refers to." "1d5a1f404e312d8e000549d200000000" : "",
+	"TextBlocks" "M" "A place holder for text objects." "1d59a5604e312d8e000549d400000000" : {
+	},
+	"PINS" "R" "" "201e00504e312fe800081be400000000" : "50.0",
+	"PINDIAMETER" "R" "" "210685f04e312fdc0008025100000000" : "0.0",
+	"ThicknessSets" "M" "A place holder for thickness sets." "1d5a58704e312d8e000549d600000000" : {
+	},
+	"PartName" "S" "Part name for this project." "1d5a05504e312d8e000549d800000000" : "",
+	"EXCESS" "R" "" "1b0522e04e312fe800081d0e00000000" : "0.0",
+	"BLOCKADD1" "R" "" "218b61d04e312fe700081b4f00000000" : "36.0",
+	"ProjectHistory" "LM" "project history." "1da5a8104e312d8e000549da00000000" : (
+		{
+			"ClientName" "S" "Client product name." "1da5c4304e312d8e000549dc00000000" : "PowerMILL",
+			"ClientVersion" "S" "Client product version." "1da476c04e312d8e000549de00000000" : "12005",
+			"DmkCodebase" "S" "delcam libraries codebase number." "1d5a53c04e312d8e000549e000000000" : "1137220"
+		}
+	),
+	"Tolerances" "M" "A place holder for tolerance values." "1d5911404e312d8e000549e200000000" : {
+	},
+	"OrderNumber" "S" "Order number for this project." "1d5a3e804e312d8e000549e400000000" : "",
+	"Notes" "S" "Notes for this project." "1d5a64504e312d8e000549e600000000" : ""
+}

@@ -1,0 +1,2742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmp:option-file xmlns:pmp="urn:aerokom">
+<pmp:header>
+<pmp:version value="3,0,4,9" pmpost="4,80,0,1100"/>
+<pmp:protection protected="false" password="" configurationProtected="false"/>
+<pmp:history created="1135335675120" lm="1270038541015" author="Dipl. - Ing. Mike Richter [Delcam GmbH]" lastuser="Keil" customer="" mtool="Röders" mtoolmodel="Allgemein 5AX" controller="Röders" csoft="RMS 6" spnote="PMPost Version 4.0.00">
+<pmp:notes><![CDATA[
+]]></pmp:notes>
+<pmp:revision date="1115808688369" author="richter"><![CDATA[Defition als Standard für 3AX, 3+2AX und 5AX
+]]></pmp:revision>
+<pmp:revision date="1183619401752" author="Update info"><![CDATA[
+
+CODEBASE 0217
+Added Tables. Added Time and Date Parameters.
+
+CODEBASE 0208
+Added 'Current User' parameter.
+
+CODEBASE 0228
+Added 'disabled' attribute for blocks.]]></pmp:revision>
+<pmp:revision date="1268839110671" author="Update info"><![CDATA[
+
+CODEBASE 0489
+Added 'Output to Tape' flag for text items and nested commands.
+
+CODEBASE 0497
+Added lock option for parameters' initialisation.
+
+CODEBASE 502
+Added 'align' property for formats.
+
+CODEBASE 0506
+Added 'Postprocessing Action on Error' settings.
+Removed 'Tool Gauge Length' parameter.
+
+CODEBASE 0565
+Added following parameters:
+  Drilling Draft Angle
+  Drilling Feed Reduction Distance Start
+  Drilling Feed Reduction Start
+  Drilling Overlap Angle
+  Drilling Retract Factor
+  Drilling Retract Feed Factor
+  Drilling Chamfer Diameter
+  Drilling Sub Peck
+  Drilling Rapid Retract
+  Drilling Hole Depth
+  Toolpath Strategy Subtype
+  Variable Feed Rate
+  Skim Distance
+
+CODEBASE 0574
+Added password protection of an option file.
+
+CODEBASE 0576
+Added Access Control for User parameters.
+
+CODEBASE 0604
+Added "Duration" type of parameters.
+
+CODEBASE 0606
+Added "Character Substitution" tool.
+
+CODEBASE 0607
+Added using script functions as values of block items.
+
+CODEBASE 0648
+Added permanent machine axis parameters in optfile editor.
+
+CODEBASE 0649
+Added Parameters configuration.
+
+CODEBASE 0649
+Added Minimum Arc Height option.
+
+CODEBASE 0654
+Added Access control for parameters.
+
+CODEBASE 0655
+Added comments for NC program.
+
+CODEBASE 0657
+Added additional arc interpolation settings for 3+2 toopathes.
+
+CODEBASE 0660
+Arcs support table added.
+
+CODEBASE 0699
+Added Inverse Time Feed Rate Settings.
+
+CODEBASE 0797
+Added parameter 'Join-up Axis Mode'.
+
+CODEBASE 0798
+Threading milling cycle expansion supported.
+
+CODEBASE 806
+Added Reconfigure Mode 'manual' option.
+
+CODEBASE 828
+Added 'Heid-based spatial' workplane definition mode.
+
+CODEBASE 839
+Added 'Workplane ITC convention' setting.]]></pmp:revision>
+</pmp:history>
+</pmp:header>
+<pmp:configuration>
+<pmp:config-time-format value="HH.MM"/>
+<pmp:config-date-format value="dd.mm.yyyy"/>
+<pmp:config-duration-format value="0"/>
+<pmp:config-nc-file-extension value="nc"/>
+<pmp:config-units linear="THE SAME" angular="DEG"/>
+<pmp:config-spline value="0"/>
+<pmp:config-number-formatting decimalSeparator="." exponentLetter="e"/>
+<pmp:config-separator value=""/>
+<pmp:config-trim-spaces value="0"/>
+<pmp:config-line-end value=""/>
+<pmp:config-arc-tolerance mode="1" value="0.01"/>
+<pmp:config-wp-definition value="machine" eulerConvention="0" itvConvention="traditional"/>
+<pmp:config-frame-number output="0" start="10" end="-99999" step="1"/>
+<pmp:config-arcs origin="0" min="-180" max="180"/>
+<pmp:config-circular interpolation_xy="0" interpolation_xz="0" interpolation_yz="0" interp_3p2_wp_xy="0" interp_3p2_wp_xz="0" interp_3p2_wp_yz="0" interp_3p2_mxs_xy="0" interp_3p2_mxs_xz="0" interp_3p2_mxs_yz="0" quadrant="0" linSource="0" minRadius="0.5" maxRadius="10000" minHeight="0"/>
+<pmp:config-feedrates min="1" maxRapid="40000" maxCutting="40000" maxInverseTime="40000" useAdvInverseTime="false" restrictiveCoefficient="0.1"/>
+<pmp:config-multiaxis linearization="0"/>
+<pmp:config-multiaxis-feedrate useConstantSurfaceSpeed="false"/>
+<pmp:config-multiaxis-drilling mxsDrillEnable="ON" mxsDrillAvoidACC="ON"/>
+<pmp:config-mtd-type value="5axis_table_table"/>
+<pmp:config-mtd-path value=""/>
+<pmp:config-mtd-listing value="&lt;?xml version=&quot;1.0&quot;?&gt;&#xA;&lt;machine xmlns=&quot;x-schema:PowermillMachineTool&quot;&gt;&#xA;&lt;table_attach_point PART=&quot;table&quot; X=&quot;0&quot; Y=&quot;0&quot; Z=&quot;0&quot;/&gt;&#xA;&lt;head_attach_point PART=&quot;head&quot; X=&quot;0&quot; Y=&quot;0&quot; Z=&quot;0&quot; I=&quot;0&quot; J=&quot;0&quot; K=&quot;1&quot;/&gt;&#xA;&lt;machine_part&gt;&#xA;&lt;model_list&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/symbol_head_linear_z.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;200&quot; G=&quot;0&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/symbol_table_linear_x.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;200&quot; G=&quot;0&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/symbol_table_linear_y.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;200&quot; G=&quot;0&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/symbol_table_rotary_x.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;200&quot; G=&quot;0&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/symbol_table_rotary_z.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;200&quot; G=&quot;0&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/linear_table_axis_y.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;0&quot; G=&quot;0&quot; B=&quot;130&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/linear_head_axis_z.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;0&quot; G=&quot;0&quot; B=&quot;130&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;/model_list&gt;&#xA;&lt;/machine_part&gt;&#xA;&lt;machine_part&gt;&#xA;&lt;axis&gt;&#xA;&lt;control_info ADDRESS=&quot;Y&quot;/&gt;&#xA;&lt;simple_linear I=&quot;0&quot; J=&quot;-1&quot; K=&quot;0&quot;/&gt;&#xA;&lt;/axis&gt;&#xA;&lt;model_list&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/linear_sub_table_axis_y.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;0&quot; G=&quot;80&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/linear_table_axis_x.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;0&quot; G=&quot;0&quot; B=&quot;130&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;/model_list&gt;&#xA;&lt;machine_part&gt;&#xA;&lt;axis&gt;&#xA;&lt;control_info ADDRESS=&quot;X&quot;/&gt;&#xA;&lt;simple_linear I=&quot;-1&quot; J=&quot;0&quot; K=&quot;0&quot;/&gt;&#xA;&lt;/axis&gt;&#xA;&lt;model_list&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/linear_sub_table_axis_x.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;0&quot; G=&quot;80&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;/model_list&gt;&#xA;&lt;machine_part&gt;&#xA;&lt;axis&gt;&#xA;&lt;control_info ADDRESS=&quot;A&quot; MIN=&quot;0&quot; MAX=&quot;100&quot;/&gt;&#xA;&lt;simple_rotary X=&quot;0&quot; Y=&quot;0&quot; Z=&quot;0&quot; I=&quot;-1&quot; J=&quot;0&quot; K=&quot;0&quot;/&gt;&#xA;&lt;/axis&gt;&#xA;&lt;model_list&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/rotary_table_z.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;30&quot; G=&quot;30&quot; B=&quot;30&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/rotary_table_x.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;170&quot; G=&quot;60&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;/model_list&gt;&#xA;&lt;machine_part&gt;&#xA;&lt;axis&gt;&#xA;&lt;control_info ADDRESS=&quot;C&quot; MIN=&quot;-1999800&quot; MAX=&quot;1999800&quot;/&gt;&#xA;&lt;simple_rotary X=&quot;0&quot; Y=&quot;0&quot; Z=&quot;0&quot; I=&quot;0&quot; J=&quot;0&quot; K=&quot;-1&quot;/&gt;&#xA;&lt;/axis&gt;&#xA;&lt;model_list&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/table.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;120&quot; G=&quot;120&quot; B=&quot;120&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;/model_list&gt;&#xA;&lt;machine_part NAME=&quot;table&quot;/&gt;&#xA;&lt;/machine_part&gt;&#xA;&lt;/machine_part&gt;&#xA;&lt;/machine_part&gt;&#xA;&lt;/machine_part&gt;&#xA;&lt;machine_part&gt;&#xA;&lt;axis&gt;&#xA;&lt;control_info ADDRESS=&quot;Z&quot;/&gt;&#xA;&lt;simple_linear I=&quot;0&quot; J=&quot;0&quot; K=&quot;1&quot;/&gt;&#xA;&lt;/axis&gt;&#xA;&lt;model_list&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/head.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;80&quot; G=&quot;80&quot; B=&quot;80&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/head_tool.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;30&quot; G=&quot;30&quot; B=&quot;30&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/head_tool_end.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;30&quot; G=&quot;30&quot; B=&quot;30&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;dmt_file&gt;&#xA;&lt;path FILE=&quot;PMPost:5-axis_table_table/linear_sub_head_axis_z.dmt&quot;/&gt;&#xA;&lt;rgb R=&quot;0&quot; G=&quot;80&quot; B=&quot;0&quot;/&gt;&#xA;&lt;/dmt_file&gt;&#xA;&lt;/model_list&gt;&#xA;&lt;machine_part NAME=&quot;head&quot;/&gt;&#xA;&lt;/machine_part&gt;&#xA;&lt;/machine&gt;&#xA;"/>
+<pmp:config-multiaxis-tolerance source="0" linear="0.001" angular="0.001"/>
+<pmp:config-drill-clear-plane origin="2" negative="0"/>
+<pmp:config-drill-first-depth origin="2" negative="0"/>
+<pmp:config-drill-hole-top origin="4" negative="0"/>
+<pmp:config-drill-peck-depth negative="0"/>
+<pmp:config-drill-total-depth origin="2" negative="-1"/>
+<pmp:config-drill-retract-2nd-height origin="0" negative="0"/>
+<pmp:config-drill-cycle-expansion helical="false" threading="false"/>
+<pmp:config-retract-reconfig limitMode="stop_program" minMode="1" rotateLimit="3" reconfigMode="simple" withdrawal="100" plungeDistPerc="10" retractRateMode="0" retractRate="1" plungeRateMode="0" plungeRate="1"/>
+<pmp:config-automatic-coordinate-control accEnable="0" accPreset="acc_preset_mxs_rtcp" cfg3axis="acc_cfg_3axis_fff" cfg3plus2="acc_cfg_3plus2_fff" cfgMultiaxis="acc_cfg_multiaxis_fnf"/>
+<pmp:config-machine-attach-point mapoPointType="tool_tip" mapo3AxisTT="OFF"/>
+<pmp:config-comments enable="true" startToken="" endToken="" enableMultiLine="false" uppercase="false"/>
+<pmp:config-pp-events>
+<pmp:pp-event id="PPE_1" value="1"/>
+<pmp:pp-event id="PPE_2" value="2"/>
+<pmp:pp-event id="PPE_3" value="0"/>
+<pmp:pp-event id="PPE_4" value="1"/>
+</pmp:config-pp-events>
+<pmp:config-substitution-table remove-international-characters="false">
+</pmp:config-substitution-table>
+</pmp:configuration>
+<pmp:parameters>
+<pmp:format name="Default format" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="4" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:group id="SC" prefix="" postfix="">
+<pmp:group-value state="MM"> MM</pmp:group-value>
+<pmp:group-value state="INCH"> INCH</pmp:group-value>
+</pmp:group>
+<pmp:param id="SG" prefix="" postfix="" access="false"/>
+<pmp:param id="VE" prefix="" postfix="" access="false"/>
+<pmp:param id="PG" prefix="" postfix="" access="false"/>
+<pmp:param id="NC" prefix="" postfix="" access="false"/>
+<pmp:param id="TM" prefix="" postfix="" access="false"/>
+<pmp:param id="CL" prefix="" postfix="" access="false"/>
+<pmp:param id="TP" prefix="// WKZ-Weg Name   : " postfix="" access="false"/>
+<pmp:group id="SR" prefix="" postfix="" access="false">
+<pmp:group-value state="ROUGHING"/>
+<pmp:group-value state="FINISHING"/>
+<pmp:group-value state="DRILLING"/>
+<pmp:group-value state="SEMIFINISHING"/>
+<pmp:group-value state="PROBING"/>
+</pmp:group>
+<pmp:param id="SF" prefix="" postfix="" access="false"/>
+<pmp:group id="MW" prefix="" postfix="" outputted="0" initType="0" initOrder="10">
+<pmp:group-value state="ON"/>
+<pmp:group-value state="OFF" init="true"/>
+</pmp:group>
+<pmp:param id="ROX" prefix="" postfix="" access="false"/>
+<pmp:param id="ROY" prefix="" postfix="" access="false"/>
+<pmp:param id="ROZ" prefix="" postfix="" access="false"/>
+<pmp:param id="RSX" prefix="" postfix="" access="false"/>
+<pmp:param id="RSY" prefix="" postfix="" access="false"/>
+<pmp:param id="RSZ" prefix="" postfix="" access="false"/>
+<pmp:param id="RPX" prefix="" postfix="" access="false"/>
+<pmp:param id="RPY" prefix="" postfix="" access="false"/>
+<pmp:param id="RPZ" prefix="" postfix="" access="false"/>
+<pmp:group id="MK" prefix="; MOVE TYPE: " postfix="">
+<pmp:group-value state="CUTTING"> CUTTING</pmp:group-value>
+<pmp:group-value state="LINK"> LINK</pmp:group-value>
+<pmp:group-value state="APPROACH"> APPROACH</pmp:group-value>
+<pmp:group-value state="RETRACT"> RETRACT</pmp:group-value>
+<pmp:group-value state="PLUNGE"> PLUNGE</pmp:group-value>
+<pmp:group-value state="LEAD_IN"> LEAD_IN</pmp:group-value>
+<pmp:group-value state="LEAD_OUT"> LEAD_OUT</pmp:group-value>
+<pmp:group-value state="CYCLE_LINK"> CYCLE_LINK</pmp:group-value>
+<pmp:group-value state="CYCLE_PLUNGE"> CYCLE_PLUNGE</pmp:group-value>
+<pmp:group-value state="CYCLE_RAPID"> CYCLE_RAPID</pmp:group-value>
+<pmp:group-value state="CYCLE_OUTPUT"> CYCLE_OUTPUT</pmp:group-value>
+<pmp:group-value state="JOINUP_3AXIS"> JOINUP_3AXIS</pmp:group-value>
+<pmp:group-value state="JOINUP"> JOINUP</pmp:group-value>
+<pmp:group-value state="LEAD"> LEAD</pmp:group-value>
+</pmp:group>
+<pmp:param id="PN" prefix=" TN" postfix=""/>
+<pmp:param id="TN" prefix="T" postfix=""/>
+<pmp:param id="TS" prefix="TT=&quot;" postfix="&quot;"/>
+<pmp:param id="WZ" prefix=" WP mxs" postfix=""/>
+<pmp:param axis="" rotary="0" id="MACHB" prefix="" postfix=""/>
+<pmp:param wp-axis="X" linear="1" id="WMACHX" prefix="" postfix=""/>
+<pmp:param wp-axis="Y" linear="2" id="WMACHY" prefix="" postfix=""/>
+<pmp:param wp-axis="Z" linear="3" id="WMACHZ" prefix="" postfix=""/>
+<pmp:param wp-axis="" rotary="0" id="WMACHB" prefix="" postfix=""/>
+<pmp:group id="WM" prefix="" postfix="" outputted="0" initType="0" initOrder="13">
+<pmp:group-value state="EULER" init="true"/>
+<pmp:group-value state="MACHINE"/>
+<pmp:group-value state="HEID_SPATIAL"/>
+</pmp:group>
+<pmp:param id="RM" prefix="" postfix=" ; Eilgang"/>
+<pmp:param id="MN" prefix="" postfix=" "/>
+<pmp:param id="VA" prefix="" postfix="" access="false"/>
+<pmp:param id="CN" prefix="" postfix="" access="false"/>
+<pmp:param id="CS" prefix=" " postfix=""/>
+<pmp:param id="FV" prefix="" postfix="" access="false"/>
+<pmp:param id="AU" prefix="" postfix="" access="false"/>
+<pmp:param id="CM" prefix="" postfix="" access="false"/>
+<pmp:param id="CR" prefix="" postfix="" access="false"/>
+<pmp:param id="LM" prefix="" postfix="" access="false"/>
+<pmp:param id="VB" prefix="" postfix="" access="false"/>
+<pmp:param id="VC" prefix="" postfix="" access="false"/>
+<pmp:group id="ZT" prefix="" postfix="" outputted="0" initType="0" initOrder="14">
+<pmp:group-value state="ON"/>
+<pmp:group-value state="OFF" init="true"/>
+</pmp:group>
+<pmp:param id="ST" prefix="// " postfix=""/>
+<pmp:param id="PA" prefix="" postfix="" access="false"/>
+<pmp:param id="CT" prefix="" postfix="" access="false"/>
+<pmp:param id="CD" prefix="" postfix="" access="false"/>
+<pmp:param id="PM" prefix="" postfix="" access="false"/>
+<pmp:param id="UC" prefix=" : " postfix=""/>
+<pmp:user-param name="TCC at End" type="s" id="guid559C919922924befB2290A3CA5CEA8E5" prefix="TCC                      // Kontrolle der Eckenradien ( &gt; 0.25 ) " postfix="" outputted="1" initType="0" initOrder="15">
+<pmp:init-value><![CDATA[]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="TLM at End" type="s" id="guid4636D3C668A94a908F9BF023CD61F3D4" prefix="TLM                 // control of tool" postfix="" outputted="1" initType="0" initOrder="16">
+<pmp:init-value><![CDATA[]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="Vorschubwert" type="r" id="guid0B86BC4AE8054c228B022420DC5E2C93" prefix="" postfix=""/>
+<pmp:user-param name="Previous Tool Number" type="r" id="guidD9D9FA0D64304bc3A6948DD20613AAE3" prefix=" PTN" postfix="" outputted="1" initType="0" initOrder="17">
+<pmp:init-value><![CDATA[0]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="SW_Joinup" type="i" id="guid3F48FCDD15574d86ADC9AFB28F3FA7EE" prefix="" postfix="" outputted="0" initType="0" initOrder="18">
+<pmp:init-value><![CDATA[0]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="inta_MoveTypeOld" type="i" id="guid961AF67C2C054d239F4CE74BC1A7B717" prefix="" postfix=""/>
+<pmp:user-param name="SW_TCPM_Active" type="i" id="guid19CBA22A0ACE435c8371D5BC0D936FCE" prefix="" postfix="" outputted="0" initType="0" initOrder="19">
+<pmp:init-value><![CDATA[0]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="MoveTypeOld" type="i" id="guid2157F21903684c94979B02DD6A8E9979" prefix="" postfix=""/>
+<pmp:user-group name="PrevMoveType" type="g" id="guid0FE786F6D664428b9D6188EE17C3E0E9" prefix=" Prev: " postfix="" outputted="0" initType="0" initOrder="20">
+<pmp:group-value state="3A" init="true">3A</pmp:group-value>
+<pmp:group-value state="3p2">3p2</pmp:group-value>
+<pmp:group-value state="5A">5A</pmp:group-value>
+<pmp:group-value state="ToolChange">ToolChange</pmp:group-value>
+</pmp:user-group>
+<pmp:user-param name="FirstMove" type="i" id="guidEFA419D297534a3dB08EB1F27FD0BDFB" prefix="" postfix="" outputted="0" initType="0" initOrder="21">
+<pmp:init-value><![CDATA[0]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-group name="AutoClean" type="g" id="guid26D3382672E848c2B720C09D0AEDE706" prefix="" postfix="">
+<pmp:group-value state="Clean"> -clean </pmp:group-value>
+<pmp:group-value state="AutoClean"> -auto -clean </pmp:group-value>
+</pmp:user-group>
+<pmp:user-param name="Cool_Buffer" type="s" id="guid46C48C6CC3A549618FD52CD26196C587" prefix="" postfix="" outputted="0" initType="0" initOrder="22">
+<pmp:init-value><![CDATA[]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="NULLPUNKT" type="s" id="guidC78976A4F6C04831B2D05AA5888BEC1C" prefix="" postfix=""/>
+<pmp:user-group name="DYNAUTO" type="g" id="guidCB0D3A9422014b77BE4856B7668112F9" prefix="DYNAUTO" postfix="" outputted="0" initType="0" initOrder="9">
+<pmp:group-value state="FAST"> -fast</pmp:group-value>
+<pmp:group-value state="PRECISE"> -precise</pmp:group-value>
+<pmp:group-value state="GENERAL" init="true"> -general</pmp:group-value>
+<pmp:group-value state="DENT">="Dent"</pmp:group-value>
+</pmp:user-group>
+<pmp:user-param name="Coolant_1" type="s" id="guid334B1413177A4b0a9FFF96C926187FE4" prefix="" postfix=""/>
+<pmp:user-param name="Coolant_2" type="s" id="guid52372BE094834ebd9005A7DF4958254E" prefix="" postfix=""/>
+<pmp:user-param name="Coolant_3" type="s" id="guid89C2E56DEE664b0393FF8FCE3AAE9C69" prefix="" postfix=""/>
+<pmp:user-param name="Coolant_4" type="s" id="guid2DAE18675EA646dbA6435796530F43D0" prefix="" postfix=""/>
+<pmp:user-param name="TOOLPATHNAME" type="s" id="guidBED6D2442B9A425e8E4D47FB45A3B912" prefix="" postfix=""/>
+<pmp:user-param name="Xcall" type="s" id="guid0767B54CD5014bfaA5C03354689003E8" prefix="Xcall " postfix=" -ac" outputted="0" initType="0" initOrder="3">
+<pmp:init-value><![CDATA[Error]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="Coolant_5" type="s" id="guid9F20CDD160C24b7d95258ADABF20D530" prefix="" postfix=""/>
+<pmp:user-param name="Coolant_6" type="s" id="guid0B2CDECB6246449cAA3D17A92D8A3A4B" prefix="" postfix=""/>
+<pmp:user-param name="Coolant_7" type="s" id="guid917B2944A9884fce899B18FA8B8D5C24" prefix="" postfix=""/>
+<pmp:user-param name="PinCutString" type="s" id="guid7E622CCB19804fc29693F4F932AF916A" prefix="" postfix="" outputted="0" initType="0" initOrder="2">
+<pmp:init-value><![CDATA[PIN_CUT]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="TrayLoad" type="s" id="guidFB501640C3B84051837D4E3B800C276B" prefix="" postfix="" outputted="0" initType="0" initOrder="5">
+<pmp:init-value><![CDATA[C:/RMS/TOOLS/Dent_Tray_load.tap]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="TrayUnLoad" type="s" id="guid76D2FA084A0F48219C4D96CE419DEE15" prefix="" postfix="" outputted="0" initType="0" initOrder="7">
+<pmp:init-value><![CDATA[C:/RMS/TOOLS/Dent_Tray_unload.tap]]></pmp:init-value>
+</pmp:user-param>
+</pmp:format>
+<pmp:format name="Blockform" outputToTape="1" dependency="2" incremental="0" sign="1" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="9" decSep="0" mZeroString=";not-used" mDecPlaces="0" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="X1" prefix=" X" postfix=""/>
+<pmp:param id="Y1" prefix=" Y" postfix=""/>
+<pmp:param id="Z1" prefix=" Z" postfix=""/>
+<pmp:param id="X2" prefix=" X" postfix=""/>
+<pmp:param id="Y2" prefix=" Y" postfix=""/>
+<pmp:param id="Z2" prefix=" Z" postfix=""/>
+</pmp:format>
+<pmp:format name="Bohrzyklus Kommentar" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="30" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1"/>
+<pmp:format name="Bohrzyklus Parameter" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="4" decSep="0" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="DQ" prefix="" postfix=""/>
+</pmp:format>
+<pmp:format name="Blocknummer" outputToTape="1" dependency="2" incremental="0" sign="2" leadZeros="1" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="5" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="N" prefix="" postfix=""/>
+</pmp:format>
+<pmp:format name="Initiale Koordinaten" outputToTape="2" dependency="0" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="1" exponent="0" widthMode="0" width="9" decSep="1" mZeroString=";not-used" mDecPlaces="5" mScale="1" iZeroString=";not-used" iDecPlaces="4" iScale="1">
+<pmp:param id="XF" prefix=" X" postfix=""/>
+<pmp:param id="YF" prefix=" Y" postfix=""/>
+<pmp:param id="ZF" prefix=" Z" postfix=""/>
+<pmp:group id="MM" prefix="G" postfix=" " outputted="1" initType="0" initOrder="-1">
+<pmp:group-value state="LIN" init="true">01</pmp:group-value>
+<pmp:group-value state="RAP">00</pmp:group-value>
+<pmp:group-value state="CW">02</pmp:group-value>
+<pmp:group-value state="CCW">03</pmp:group-value>
+<pmp:group-value state="SPL"/>
+<pmp:group-value state="CYC"/>
+</pmp:group>
+<pmp:group id="XP" prefix="" postfix="" outputted="0" initType="0" initOrder="8">
+<pmp:group-value state="OFF" init="true">TCORROFF</pmp:group-value>
+<pmp:group-value state="ON">TCORRON -RT</pmp:group-value>
+</pmp:group>
+<pmp:param id="X" prefix="X" postfix=" "/>
+<pmp:param id="Y" prefix="Y" postfix=" "/>
+<pmp:param id="Z" prefix="Z" postfix=" "/>
+<pmp:param axis="X" linear="1" id="MACHX" prefix=" X" postfix=""/>
+<pmp:param axis="Y" linear="2" id="MACHY" prefix=" Y" postfix=""/>
+<pmp:param axis="Z" linear="3" id="MACHZ" prefix=" Z" postfix=""/>
+<pmp:param axis="A" rotary="2" id="MACHA" prefix="A" postfix=" " outputted="1" initType="0" initOrder="11">
+<pmp:init-value><![CDATA[0]]></pmp:init-value>
+</pmp:param>
+<pmp:param axis="C" rotary="1" id="MACHC" prefix="C" postfix=" " outputted="1" initType="0" initOrder="12">
+<pmp:init-value><![CDATA[0]]></pmp:init-value>
+</pmp:param>
+<pmp:param id="I" prefix=" X" postfix=""/>
+<pmp:param id="J" prefix=" Y" postfix=""/>
+<pmp:param id="K" prefix=" Z" postfix=""/>
+<pmp:user-param name="Link_Moves" type="s" id="guid24E828E94E34451bBEA41856E4B29695" prefix="; " postfix="" outputted="1" initType="0" initOrder="23">
+<pmp:init-value><![CDATA[ ---------- VERBINDUNG ENDE ----------]]></pmp:init-value>
+</pmp:user-param>
+</pmp:format>
+<pmp:format name="Integer Format" outputToTape="2" dependency="2" incremental="0" sign="2" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="9" decSep="0" mZeroString=";not-used" mDecPlaces="0" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:group id="SE" prefix=" M" postfix="" outputted="1" initType="0" initOrder="-1">
+<pmp:group-value state="OFF">05</pmp:group-value>
+<pmp:group-value state="CW">03</pmp:group-value>
+<pmp:group-value state="CCW">04</pmp:group-value>
+<pmp:group-value state="STOP" init="true">05</pmp:group-value>
+</pmp:group>
+<pmp:group id="CO" prefix="" postfix="" outputted="1" initType="0" initOrder="4">
+<pmp:group-value state="ON">M08</pmp:group-value>
+<pmp:group-value state="OFF" init="true">M09</pmp:group-value>
+<pmp:group-value state="FLOOD"/>
+<pmp:group-value state="MIST">07</pmp:group-value>
+<pmp:group-value state="TAPPING">07</pmp:group-value>
+<pmp:group-value state="VACUUM">07</pmp:group-value>
+<pmp:group-value state="THROUGH"/>
+<pmp:group-value state="AIR"/>
+<pmp:group-value state="DOUBLE"/>
+</pmp:group>
+<pmp:group id="CU" prefix=" G" postfix="" outputted="1" initType="0" initOrder="6">
+<pmp:group-value state="ON">0</pmp:group-value>
+<pmp:group-value state="OFF" init="true">0</pmp:group-value>
+<pmp:group-value state="LEFT">41</pmp:group-value>
+<pmp:group-value state="RIGHT">42</pmp:group-value>
+</pmp:group>
+<pmp:param id="S" prefix="S" postfix=""/>
+<pmp:param id="F" prefix="F" postfix=" "/>
+<pmp:user-param name="DIADIFF" type="i" id="guidF4B79A4DFD144ca292E5BF74CB71FBA8" prefix=" -TD=$DIADIFF" postfix=" "/>
+<pmp:user-param name="TIPDIFF" type="i" id="guid604C8ED7245340ef9688F0B19BC18A98" prefix=" -TRE=$TIPDIFF" postfix=" -act"/>
+<pmp:user-param name="-S" type="r" id="guid3E37AEBFCE50433fAD9100B00C3F315A" prefix=" -S=" postfix=""/>
+</pmp:format>
+<pmp:format name="Bohrzyklus_3" outputToTape="1" dependency="2" incremental="0" sign="1" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="16" decSep="1" mZeroString="0" mDecPlaces="3" mScale="1" iZeroString="0" iDecPlaces="3" iScale="1">
+<pmp:param id="FD" prefix="" postfix=" "/>
+<pmp:param id="DI" prefix="" postfix=" "/>
+<pmp:param id="DT" prefix="" postfix=" "/>
+<pmp:param id="CP" prefix="" postfix=" "/>
+<pmp:param id="CF" prefix="" postfix=" "/>
+<pmp:param id="BT" prefix="" postfix=" "/>
+<pmp:param id="RT" prefix="" postfix=" "/>
+</pmp:format>
+<pmp:format name="Bohrzyklus_2" outputToTape="1" dependency="2" incremental="0" sign="1" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="16" decSep="1" mZeroString=";not-used" mDecPlaces="2" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="DW" prefix="" postfix=" "/>
+</pmp:format>
+<pmp:format name="Bohrzyklus_1" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="0" trailZeros="1" intZero="1" decZero="0" exponent="0" widthMode="0" width="16" decSep="1" mZeroString="0" mDecPlaces="1" mScale="1" iZeroString="0" iDecPlaces="3" iScale="1"/>
+<pmp:format name="Bohrzyklus_0" outputToTape="1" dependency="2" incremental="0" sign="2" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="16" decSep="0" mZeroString="0" mDecPlaces="0" mScale="1" iZeroString="0" iDecPlaces="3" iScale="1"/>
+<pmp:format name="DatumZeit" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="1" trailZeros="0" intZero="0" decZero="3" exponent="0" widthMode="2" width="2" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="GY" prefix="20" postfix=""/>
+<pmp:param id="GM" prefix="" postfix="."/>
+<pmp:param id="GD" prefix="" postfix="."/>
+<pmp:param id="GH" prefix="" postfix=":"/>
+<pmp:param id="GT" prefix="" postfix=" Uhr"/>
+<pmp:param id="GS" prefix="" postfix=""/>
+</pmp:format>
+<pmp:format name="Vorschubformat" outputToTape="1" dependency="0" incremental="0" sign="2" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="15" decSep="0" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="RS" prefix="" postfix=" ; Ueberstreichvorschub"/>
+<pmp:param id="RP" prefix="" postfix=" ; Anfahrvorschub"/>
+<pmp:param id="RC" prefix="" postfix=" ; Fraesvorschub"/>
+<pmp:user-param name="-F" type="r" id="guid55FCD0223F9E4667A7A5211F3DD4EDA3" prefix=" -F=" postfix=""/>
+</pmp:format>
+<pmp:format name="DL" outputToTape="1" dependency="0" incremental="0" sign="1" leadZeros="0" trailZeros="0" intZero="1" decZero="1" exponent="0" widthMode="0" width="4" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="TX" prefix=" DL" postfix=""/>
+</pmp:format>
+<pmp:format name="Vorschub" outputToTape="2" dependency="0" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="2" decSep="0" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1"/>
+<pmp:format name="Bohrzyklus" outputToTape="1" dependency="2" incremental="0" sign="2" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="16" decSep="0" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:group id="SJ" prefix=" CYCL DEF " postfix=" ~">
+<pmp:group-value state="NONE"/>
+<pmp:group-value state="SINGLE_PECKING">200 ZENTRIEREN</pmp:group-value>
+<pmp:group-value state="DEEP_DRILL">205 UNIVERSAL-TIEFBOHREN</pmp:group-value>
+<pmp:group-value state="DEEP_DRILL_2"/>
+<pmp:group-value state="BREAK_CHIP">203 SPANBRECHEN</pmp:group-value>
+<pmp:group-value state="TAPPING">207 GEWINDEBOHREN</pmp:group-value>
+<pmp:group-value state="RIGID_TAPPING"/>
+<pmp:group-value state="HELICAL">208 BOHRFRAESEN</pmp:group-value>
+<pmp:group-value state="REVERSE_HELICAL"/>
+<pmp:group-value state="REAM">201 REIBEN</pmp:group-value>
+<pmp:group-value state="COUNTER_BORE">240 ZENTRIEREN</pmp:group-value>
+<pmp:group-value state="BORE_3">201 REIBEN</pmp:group-value>
+<pmp:group-value state="BORE_4"/>
+<pmp:group-value state="BORE_5"/>
+<pmp:group-value state="HELICAL_CLOCKWISE"/>
+<pmp:group-value state="REVERSE_HELICAL_CW"/>
+<pmp:group-value state="PROFILE"/>
+<pmp:group-value state="PROFILE_CW"/>
+<pmp:group-value state="FINE_BORING"/>
+<pmp:group-value state="CYCLE_1"/>
+<pmp:group-value state="CYCLE_2"/>
+<pmp:group-value state="CYCLE_3"/>
+<pmp:group-value state="CYCLE_4"/>
+<pmp:group-value state="CYCLE_5"/>
+<pmp:group-value state="THREAD_MILL_UP_CCW"/>
+<pmp:group-value state="THREAD_MILL_UP_CW"/>
+<pmp:group-value state="THREAD_MILL_DOWN_CCW"/>
+<pmp:group-value state="THREAD_MILL_DOWN_CW"/>
+</pmp:group>
+</pmp:format>
+<pmp:format name="Bohrzyklus Koordinaten" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="1" exponent="0" widthMode="0" width="15" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="HD" prefix="" postfix=""/>
+</pmp:format>
+<pmp:format name="Workplane" outputToTape="1" dependency="0" incremental="0" sign="1" leadZeros="0" trailZeros="0" intZero="1" decZero="1" exponent="0" widthMode="0" width="4" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="AW" prefix="A" postfix=""/>
+<pmp:param id="BW" prefix="B" postfix=""/>
+<pmp:param id="CW" prefix="C" postfix=""/>
+</pmp:format>
+<pmp:format name="Tool List Output 1" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="2" width="10" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:user-param name="string_8_1" type="s" id="guid7170F35ED04E493086106EA706D6E109" prefix="" postfix=""/>
+<pmp:user-param name="string_8_4" type="s" id="guidD0791D6ED6D74fdeB898048324D306E3" prefix="" postfix=""/>
+<pmp:user-param name="string_8_5" type="s" id="guidB22266BDBF2A4298828352BCA53C1E96" prefix="" postfix=""/>
+<pmp:user-param name="string_8_6" type="s" id="guid324FD346425B4ad9A5C702C7ABBAD2FE" prefix="" postfix=""/>
+</pmp:format>
+<pmp:format name="Tool List Output 2" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="2" width="14" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:user-param name="string_8_2" type="s" id="guid31CBBAD3BEA04272A5F79D9D6B8E07BA" prefix="" postfix=""/>
+<pmp:user-param name="string_8_3" type="s" id="guid36C30FDF649C4273B3CF7E2468313A46" prefix="" postfix=""/>
+</pmp:format>
+<pmp:format name="ToolInfo" outputToTape="2" dependency="0" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="1" exponent="0" widthMode="0" width="4" decSep="1" mZeroString=";not-used" mDecPlaces="4" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:param id="OT" prefix="" postfix=""/>
+<pmp:param id="TK" prefix="" postfix=""/>
+<pmp:param id="TD" prefix="" postfix=""/>
+<pmp:param id="TI" prefix="" postfix=""/>
+<pmp:param wp-axis="A" rotary="2" id="WMACHA" prefix="" postfix=""/>
+<pmp:param wp-axis="C" rotary="1" id="WMACHC" prefix="" postfix=""/>
+<pmp:user-param name="Previous Tool Tip Radius" type="r" id="guid875459B9D7D94e528DC8813F93E18912" prefix=" PTT" postfix="" outputted="1" initType="0" initOrder="24">
+<pmp:init-value><![CDATA[0]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="TDM" type="r" id="guidABB2D31590624de1A7142FA3AF906616" prefix="TDM=" postfix=""/>
+<pmp:user-param name="TLCR" type="r" id="guidDD6AB715D9CD4ae3A4925BB88B8A93CC" prefix=" -r=" postfix=""/>
+<pmp:user-param name="ROTZERO_A" type="r" id="guid0B8E7F2EEF7A4090A76B1B892C3C3A7D" prefix="ROTZERO=A= " postfix=""/>
+<pmp:user-param name="ROTZERO_C" type="r" id="guidE4BDF778A18D4e2e960F0C024C6259EF" prefix="ROTZERO=C= " postfix=""/>
+<pmp:user-param name="-D" type="r" id="guid79106437C61745f2B21ABE80F3959926" prefix="PROTOCOL -D=" postfix=""/>
+<pmp:user-param name="-RE" type="r" id="guid490443263D914398BFB3D47D6659A3DC" prefix=" -RE=" postfix=""/>
+</pmp:format>
+<pmp:format name="Always Out" outputToTape="1" dependency="0" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="4" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="1" iZeroString=";not-used" iDecPlaces="3" iScale="1">
+<pmp:group id="TA" prefix="// WKZ-WEG Typ    :" postfix="">
+<pmp:group-value state="3AXIS"> 3-Achsen</pmp:group-value>
+<pmp:group-value state="5AXIS"> 5-Achsen</pmp:group-value>
+<pmp:group-value state="3+2"> 3+2-Achsen</pmp:group-value>
+</pmp:group>
+<pmp:user-group name="Bea_Art" type="g" id="guidEE8B24F959764a919BF88ADF0730FB13" prefix="" postfix="">
+<pmp:group-value state="3AXIS">         // 3axis toolpath</pmp:group-value>
+<pmp:group-value state="3plus2">         // 3plus2axis toolpath</pmp:group-value>
+<pmp:group-value state="5AXIS">         // 5axis toolpath</pmp:group-value>
+</pmp:user-group>
+</pmp:format>
+<pmp:format name="HEADER" outputToTape="2" dependency="1" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="4" decSep="1" mZeroString="" mDecPlaces="0" mScale="1" iZeroString="0" iDecPlaces="0" iScale="1">
+<pmp:user-param name="Header_End" type="i" id="guid5BB4F93BEA814a4c965D864105007755" prefix="  HEADEREND //" postfix="" outputted="0" initType="0" initOrder="25">
+<pmp:init-value><![CDATA[0]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="HEADEREND" type="s" id="guid25574BE75BD24060828FEAEADF17E65C" prefix="" postfix="" outputted="0" initType="0" initOrder="26">
+<pmp:init-value><![CDATA[  HEADEREND]]></pmp:init-value>
+</pmp:user-param>
+<pmp:user-param name="-strat" type="s" id="guidB16D8B42AEF649d28EDFDF3142555AFB" prefix=" -strat=" postfix=""/>
+</pmp:format>
+<pmp:format name="WPZ" outputToTape="1" dependency="2" incremental="0" sign="0" leadZeros="0" trailZeros="0" intZero="1" decZero="3" exponent="0" widthMode="0" width="4" decSep="1" mZeroString=";not-used" mDecPlaces="3" mScale="-1" iZeroString=";not-used" iDecPlaces="3" iScale="-1">
+<pmp:param id="XO" prefix=" : " postfix=""/>
+<pmp:param id="YO" prefix=" : " postfix=""/>
+<pmp:param id="ZO" prefix=" : " postfix=""/>
+</pmp:format>
+</pmp:parameters>
+<pmp:commands>
+<pmp:command advResponse="Start_Toolpath_Not_First" id="TP" state="active">
+<pmp:definition>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="guidEFA419D297534a3dB08EB1F27FD0BDFB" outputToTape="0">
+<pmp:item-value type="1"><![CDATA[0]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[--------------------------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[ Finish Toolpath]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[--------------------------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="PS" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" outputToTape="0" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[----- INFO ---------------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" outputToTape="0" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[Programmed by]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="UC"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" outputToTape="0" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[Postprozessor Name : ]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="VC"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" outputToTape="0" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[Maschine     : ]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="VA"/>
+<pmp:cmd-item-param id="CS"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" outputToTape="0" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[Output Workplane Verschiebung - ]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="WI"/>
+<pmp:cmd-item-param id="ZO"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" outputToTape="0" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[DATUM        : ]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="CD"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" outputToTape="0" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[ZEIT         : ]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="CT"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-table id="guid675BFF42F7E343d59554D8309C95A335" tableItemType="0" outputBlockNumber="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[TCORROFF]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                          // RTCP Funktion ausschalten]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[RMO]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                               // zuruecksetzen der A-Achse auf den Rest von 180°]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[MACOOR -ALL]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                       // Reset aller Achsveraenderungen]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[LOADZERO="]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="guidC78976A4F6C04831B2D05AA5888BEC1C" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[Nullpunkt]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA["]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SP]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                                // Anfahren der Sicherheitsposition]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SSA]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                               // Startachssuche]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Coolant_On" id="CO" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="MN" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="MF" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="WN" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ CYCL DEF 7.0 NULLPUNKT]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="XO" outputToTape="1" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="YO" outputToTape="1" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ZO" outputToTape="1" dependency="0"/>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="WF" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ CYCL DEF 7.0 NULLPUNKT]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="XO" outputToTape="1" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="YO" outputToTape="1" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ZO" outputToTape="1" dependency="0"/>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="ON" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="S" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-param id="SE" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[CW]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Motion_Part_Start" id="MS" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[--------------------------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="TA" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="TP" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[Motion Part Start]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[PROTOCOL -start]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[--------------------------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="First_Move" id="BR" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-param id="X" outputToTape="1"/>
+<pmp:cmd-item-param id="Y" outputToTape="1"/>
+<pmp:cmd-item-param id="F" outputToTape="1"/>
+<pmp:cmd-item-param id="DW" outputToTape="0">
+<pmp:item-value type="1"><![CDATA[0]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-param id="Z" outputToTape="1"/>
+<pmp:cmd-item-param id="F"/>
+<pmp:cmd-item-param id="guidEFA419D297534a3dB08EB1F27FD0BDFB" outputToTape="0">
+<pmp:item-value type="1"><![CDATA[1]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="RM" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-param id="X"/>
+<pmp:cmd-item-param id="Y"/>
+<pmp:cmd-item-param id="Z"/>
+<pmp:cmd-item-param id="F">
+<pmp:item-value type="1"><![CDATA[20000]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Move_Linear" id="LM" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" outputToTape="0" longBlock="0"/>
+<pmp:cmd-item-param id="MM"/>
+<pmp:cmd-item-param id="X" outputToTape="0"/>
+<pmp:cmd-item-param id="Y" outputToTape="0"/>
+<pmp:cmd-item-param id="Z" outputToTape="0"/>
+<pmp:cmd-item-param id="F" outputToTape="0"/>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="LF" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="LT" advanced="true" outputToTape="1"/>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="LT" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[Durchmesser     : ]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="TD" outputToTape="1"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[  , Eckenradius: ]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="TI" outputToTape="1" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[Werkzeuglänge   : ]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="TL" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="TS" outputToTape="1" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[IF (($L_ < 0.01) or ($D_ < 0.01)) // Setze Durchmesser und Eckenradius, wenn Laenge oder D unbekamnt]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[  SetToolData -D=]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="TD" outputToTape="1"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[  -RE=]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="TI" outputToTape="1"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[    // Setze Durchmesser und Eckenradius]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ENDIF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="S" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-param id="SE" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[CW]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//TDM -auto]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                       // Wzg-Vermessung (Laenge + Durchm), wenn Wzg Laenge unbekannt]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[TLC -auto]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                         // Wzg-Vermessung (nur Laenge), wenn Wzg Laenge unbekannt]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid961AF67C2C054d239F4CE74BC1A7B717" outputToTape="0">
+<pmp:item-value type="1"><![CDATA[0]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="guid6A378230DD944c6e9BCA6D9740EABF0F" outputToTape="1"/>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="SY" state="disallowed" disallowedMessage="Keine Unterstützung für Bohrzyklen">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Bohrzyklen_Vorbereitung" id="CS" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Bohrzyklen_Vorbereitung" id="CD" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Bohrzyklen_Vorbereitung" id="CB" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Bohrzyklen_Vorbereitung" id="CT" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Bohrzyklen_Vorbereitung" id="CH" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Bohrzyklen_Vorbereitung" id="BA" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Bohrzyklen_Vorbereitung" id="BB" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Bohrzyklen_Vorbereitung" id="BC" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="CI" state="inactive">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[ CC]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="I"/>
+<pmp:cmd-item-param id="J"/>
+<pmp:cmd-item-param id="K"/>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command advResponse="Schalenablage" id="TE" state="active">
+<pmp:definition>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid89C2E56DEE664b0393FF8FCE3AAE9C69" outputToTape="2" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid2DAE18675EA646dbA6435796530F43D0" outputToTape="2" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid9F20CDD160C24b7d95258ADABF20D530" outputToTape="2" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0B2CDECB6246449cAA3D17A92D8A3A4B" outputToTape="2" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//     Toolpath End]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0767B54CD5014bfaA5C03354689003E8" dependency="1"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[  // Ablegen der Auffangschale]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:command id="PE" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="guidC6C098D1B5B24f91A91B449C70C7D41C" advanced="true" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="guid41A4EF45F03943cbB2F1D57C52EF1836" advanced="true" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="guid56A36B100060417a850B7F74D29199D8" advanced="true" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[-------------------------------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//        Finish Program]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" dependency="0">
+<pmp:item-value type="1"><![CDATA[-------------------------------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SP                                // Anfahren der Sicherheitsposition]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[G0 A0 C0]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[TLM                               // Werkzeuglaengenvermessung]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[NPT                               // nach Programmende bleibt das Werkzeug in der Spindel]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid79106437C61745f2B21ABE80F3959926" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[TD]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guid490443263D914398BFB3D47D6659A3DC" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[TI]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guid3E37AEBFCE50433fAD9100B00C3F315A" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[S]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guid55FCD0223F9E4667A7A5211F3DD4EDA3" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[RC]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guidB16D8B42AEF649d28EDFDF3142555AFB" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[SF]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[M30]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:command>
+<pmp:user-command name="Set Dynamic" id="guid6A378230DD944c6e9BCA6D9740EABF0F" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//--------------Begin of machine dynamic parameters--------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[CAM_STOCK=]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="TK" outputToTape="1"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                    // Uebergabe des CAM-Aufmaßes von der aktuellen Fraesoperation]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[CAM_TOL=]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="OT" outputToTape="1"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                    // Uebergabe der CAM-Toleranz von der aktuellen Fraesoperation]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guidCB0D3A9422014b77BE4856B7668112F9" dependency="0">
+<pmp:item-value type="1"><![CDATA[DENT]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                  // automatische Berechnung der Maschinen-Dynamikparameter TOL, SM und RMAX]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[// Programm K-Sys : ]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="WN" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[// Ausgabe K-Sys  : ]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="WI" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//--------------End of machine dynamic parameters--------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Coolant_Off" advResponse="Coolant_Off" id="guidC6C098D1B5B24f91A91B449C70C7D41C" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[ DUMMY COOLANT AUS]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Finish Program 3p2" advResponse="Schalenablage" id="guid41A4EF45F03943cbB2F1D57C52EF1836" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//--------------------------------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//   User Block Finish Program 3p2  ]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="TP"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//--------------------------------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0767B54CD5014bfaA5C03354689003E8" dependency="1"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[  // Ablegen der Auffangschale]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[XCALL Dent_Tray_unload.tap -ac]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guidE4BDF778A18D4e2e960F0C024C6259EF" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[0]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[                 // zuruecksetzen der Nullpunktverschiebung ]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0B8E7F2EEF7A4090A76B1B892C3C3A7D" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[0]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[                 // zuruecksetzen der Nullpunktverschiebung ]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Finish Program 5Axis" advResponse="Finish_Program_5A" id="guid56A36B100060417a850B7F74D29199D8" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//     User Block Finish Program 5Axis]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="XP" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[OFF]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0767B54CD5014bfaA5C03354689003E8" dependency="1"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[  // Ablegen der Auffangschale]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[RMO]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                               // zuruecksetzen der A-Achse auf den Rest von 180°]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Thickness_1" id="guid2E001BFDEA70440f9DCACEB4F1843FDB" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[CheckTool -D=]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="TD" outputToTape="1"/>
+<pmp:cmd-item-param id="guidF4B79A4DFD144ca292E5BF74CB71FBA8">
+<pmp:item-value type="1"><![CDATA[1]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[-act]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Toolpath End*" id="guidF6C9E6A941A64ce2B204CD46516C060E" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//     User Block end_of_toolpath]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guidE4BDF778A18D4e2e960F0C024C6259EF" outputToTape="2" dependency="0">
+<pmp:item-value type="1"><![CDATA[0]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0B8E7F2EEF7A4090A76B1B892C3C3A7D" outputToTape="2" dependency="0">
+<pmp:item-value type="1"><![CDATA[0]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SP                                // goto security position]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="guidC6C098D1B5B24f91A91B449C70C7D41C" advanced="true" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid89C2E56DEE664b0393FF8FCE3AAE9C69" outputToTape="2" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid2DAE18675EA646dbA6435796530F43D0" outputToTape="2" dependency="0"/>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SYNCHRONIZE]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[TLM]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid79106437C61745f2B21ABE80F3959926" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[TD]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guid490443263D914398BFB3D47D6659A3DC" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[TI]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guid3E37AEBFCE50433fAD9100B00C3F315A" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[S]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guid55FCD0223F9E4667A7A5211F3DD4EDA3" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[RC]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guidB16D8B42AEF649d28EDFDF3142555AFB" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[SF]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Go_Home_5Axis" id="guidE494C219DACA43d998AFB2C7F9FE17EE" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//     Postinfo, block user go_home_5axis]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="XP" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[OFF]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[RMO -C]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SP                                  // goto security position  ]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[//-----------------------------------------------------]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Coolant_ON" advResponse="Coolant_On" id="guid037736A911AC4ea19D263850C7858A96" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid334B1413177A4b0a9FFF96C926187FE4" outputToTape="2" dependency="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0">
+<pmp:item-links>
+<pmp:item-link id="guid52372BE094834ebd9005A7DF4958254E" sign="1"/>
+</pmp:item-links>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="guid52372BE094834ebd9005A7DF4958254E" outputToTape="2" dependency="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid89C2E56DEE664b0393FF8FCE3AAE9C69" outputToTape="2" dependency="1"/>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Forbidden Toolpath" id="guidD2B9B37E4ED24979A5EAFE00507F2525" state="disallowed" disallowedMessage="Zusammenhängende Mehrachsfräswege sind nicht erlaubt!">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="PP Error" id="guid2F965CEAE79D45c09F6F268B8FA7FABA" state="disallowed" disallowedMessage="Error in Postprozessor">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="AddMove3A" id="guid7E861A1F7DB941b38407C2CA32EE26A9" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="2"/>
+<pmp:cmd-item-param id="CU"/>
+<pmp:cmd-item-param id="X"/>
+<pmp:cmd-item-param id="Y"/>
+<pmp:cmd-item-param id="Z"/>
+<pmp:cmd-item-param id="F"/>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="AddMove5A" id="guid4064B41F10954ad495507AD73104D4F8" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="2"/>
+<pmp:cmd-item-param id="X"/>
+<pmp:cmd-item-param id="Y"/>
+<pmp:cmd-item-param id="Z"/>
+<pmp:cmd-item-param id="MACHA"/>
+<pmp:cmd-item-param id="MACHC"/>
+<pmp:cmd-item-param id="F"/>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="First Move" id="guidC4A4C9816966470aB5A72CE79E06E83A" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-param id="X" outputToTape="1"/>
+<pmp:cmd-item-param id="Y" outputToTape="1"/>
+<pmp:cmd-item-param id="F" outputToTape="1"/>
+<pmp:cmd-item-param id="DW" outputToTape="0">
+<pmp:item-value type="1"><![CDATA[0]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-param id="Z" outputToTape="1"/>
+<pmp:cmd-item-param id="guidEFA419D297534a3dB08EB1F27FD0BDFB" outputToTape="0">
+<pmp:item-value type="1"><![CDATA[1]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="MoveTypeCheck" id="guid8901C5609CEE4039A358BF9C2979ACC0" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[; ------- MoveTypeCheck -------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="TA"/>
+<pmp:cmd-item-param id="guid0FE786F6D664428b9D6188EE17C3E0E9" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-param id="MW">
+<pmp:item-value type="1"><![CDATA[OFF]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="ST" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[; ------- MoveTypeCheck -------]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Tool Preload String" id="guid793B6931EDDB48cf8BAFBF62003B7ABB" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[// (]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="guid7170F35ED04E493086106EA706D6E109"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[||]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="guid31CBBAD3BEA04272A5F79D9D6B8E07BA"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[||]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="guid36C30FDF649C4273B3CF7E2468313A46"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[||]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="guidD0791D6ED6D74fdeB898048324D306E3"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[||]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="guidB22266BDBF2A4298828352BCA53C1E96"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[||]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="guid324FD346425B4ad9A5C702C7ABBAD2FE"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[ )]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Thickness_2" id="guidA34B1868890C4d1097B494719165B938" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[CheckTool -D=]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="TD" outputToTape="1"/>
+<pmp:cmd-item-param id="guidF4B79A4DFD144ca292E5BF74CB71FBA8"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[-RE=]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-param id="TI" outputToTape="1"/>
+<pmp:cmd-item-param id="guid604C8ED7245340ef9688F0B19BC18A98"/>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Start TP 3 Axis" id="guidAABF8519E7E54cda94004ADBD71CF989" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[// start_of_3axis]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SP]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                                // Anfahren der Sicherheitsposition]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SSA]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                               // Startachssuche]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guidE4BDF778A18D4e2e960F0C024C6259EF" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[WMACHC]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[                    // Nullpunktverschiebung bei Rundachsmaschinen, in Bezug auf die C-Achs Schwenkung]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0B8E7F2EEF7A4090A76B1B892C3C3A7D" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[WMACHA]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[                    // Nullpunktverschiebung bei Rundachsmaschinen, in Bezug auf die A-Achs Schwenkung]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[LIN]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="MACHC" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[WMACHC]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="F" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[15000]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[LIN]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="MACHA" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[WMACHA]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="F" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[15000]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="guid037736A911AC4ea19D263850C7858A96" advanced="true" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid25574BE75BD24060828FEAEADF17E65C" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[                       // Kopfende, bis hier wird bei einem Zeilensprung das Programm abgearbeitet]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Start TP 3plus2 Axis" advResponse="Schalenaufruf" id="guid51CA205AF1D0425587DE4BEA3F33FE51" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[// start_of_3plus2axis]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SP]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                                // Anfahren der Sicherheitsposition]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SSA]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                               // Startachssuche]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guidE4BDF778A18D4e2e960F0C024C6259EF" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[WMACHC]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[                    // Nullpunktverschiebung bei Rundachsmaschinen, in Bezug auf die C-Achs Schwenkung]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0B8E7F2EEF7A4090A76B1B892C3C3A7D" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[WMACHA]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[                    // Nullpunktverschiebung bei Rundachsmaschinen, in Bezug auf die A-Achs Schwenkung]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[LIN]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="MACHC" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[WMACHC]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="F" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[15000]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[LIN]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="MACHA" outputToTape="1">
+<pmp:item-value type="2"><![CDATA[WMACHA]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="F" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[15000]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0767B54CD5014bfaA5C03354689003E8" dependency="1"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[  // Holen der Auffangschale]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block disabled="true">
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[XCALL Dent_Tray_load.tap -ac]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="guid037736A911AC4ea19D263850C7858A96" advanced="true" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid25574BE75BD24060828FEAEADF17E65C" outputToTape="1" dependency="0"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[                       // Kopfende, bis hier wird bei einem Zeilensprung das Programm abgearbeitet]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Start TP 5 Axis" id="guid56E278C9E2AA43bbA00AC228D065F746" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[// start_of_5axis]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SP]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                                // Anfahren der Sicherheitsposition]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[SSA]]></pmp:text>
+</pmp:cmd-item-text>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[                               // Startachssuche]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid0767B54CD5014bfaA5C03354689003E8" dependency="1"/>
+<pmp:cmd-item-text dependency="2" outputToTape="1">
+<pmp:text><![CDATA[  // Holen der Auffangschale]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-cmd id="guid037736A911AC4ea19D263850C7858A96" advanced="true" outputToTape="1"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[LIN]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="MACHC" outputToTape="1"/>
+<pmp:cmd-item-param id="F" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[15000]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[LIN]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="MACHA" outputToTape="1"/>
+<pmp:cmd-item-param id="F" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[15000]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="XP" outputToTape="1">
+<pmp:item-value type="1"><![CDATA[ON]]></pmp:item-value>
+</pmp:cmd-item-param>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="guid25574BE75BD24060828FEAEADF17E65C" outputToTape="1" dependency="0"/>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-param id="MM" outputToTape="1" dependency="0">
+<pmp:item-value type="1"><![CDATA[LIN]]></pmp:item-value>
+</pmp:cmd-item-param>
+<pmp:cmd-item-param id="MACHA" outputToTape="1"/>
+<pmp:cmd-item-param id="MACHC" outputToTape="1"/>
+<pmp:cmd-item-param id="F" outputToTape="1"/>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool On Flood" id="guidC116860152EF485b8F765BAED7506460" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[IF ($MACHINETYP == 1)]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[   M8]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ENDIF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[IF ($MACHINETYP == 3)]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[  EMUON -out]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[  HAZEVACON]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ENDIF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool On Air" id="guid73E0A7008FF34f6fB82AB57BA3F44664" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[VACON]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[CLEANON]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool On Double" id="guid696986D96EAB4f31B1836331EC8541C4" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[VACON]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[CLEANON -ON=5 -CYCLE=10]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool On Through" id="guid300710D2BA5644c492840CB4BB1CB195" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[EMUON -in]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[HAZEVACON]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool On Tap" id="guid9C09A8B686E642d09374D7BA43E02F4A" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[GRINDOILON]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool On Standard" id="guidD0F982DAD5DB4ad89CC27C9A302E6664" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[VACON]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool On Mist" id="guid746111393F094e1fA1BAE80368120C9D" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[M8]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[IF ($MACHINETYP == 3)]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[  HAZEVACON]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ENDIF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool Off Air" id="guid23D6F7F1BFD4409e9237F559A981CBA3" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[VACOFF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[CLEANOFF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool Off Double" id="guidCE77464E089F4cd8ABA430CA873C82DE" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[VACOFF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[CLEANOFF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool Off Flood" id="guidE4F47A5ED4664b04BBCDD42303D5B275" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[IF ($MACHINETYP == 1)]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[   M9]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ENDIF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[IF ($MACHINETYP == 3)]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[  EMUOFF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[  wait=10]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ENDIF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool Off Mist" id="guidA923A99BB196459b8DD0E431805AF159" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[IF ($MACHINETYP == 1)]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[   M9]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ENDIF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[IF ($MACHINETYP == 3)]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[   M9]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[   wait=10]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[ENDIF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool Off Standard" id="guidDA7A022126AE422d9044B997501C75A0" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[VACOFF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool Off Tap" id="guid03CF288856504b4d9DDB84AACFA3B67B" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[GRINDOILOFF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+<pmp:user-command name="Cool Off Through" id="guidA41526AE281F4d83A7B9F926A0B387A4" state="active">
+<pmp:definition>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[  EMUOFF]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:cmd-item-param id="N" longBlock="0"/>
+<pmp:cmd-item-text dependency="0" outputToTape="1">
+<pmp:text><![CDATA[  wait=10]]></pmp:text>
+</pmp:cmd-item-text>
+</pmp:block>
+</pmp:definition>
+</pmp:user-command>
+</pmp:commands>
+<pmp:structures/>
+<pmp:tables>
+<pmp:table id="guid675BFF42F7E343d59554D8309C95A335" name="WKZ Tabelle" type="Tool Table" viewAsComment="0" outputHeading="0" heading="WKZ Tabelle" totalString="Total:" commentStart="// ( " commentEnd=" )" horizontalSeparator="-" verticalSeparator=" | " configReference="none">
+<pmp:block>
+<pmp:description><![CDATA[]]></pmp:description>
+<pmp:column name="column2" parameter="TN" caption="Nummer" prefix="" postfix="" outputTotal="0" alignment="right"/>
+<pmp:column name="column10" parameter="TS" caption="WKZ-Typ" prefix="" postfix="" outputTotal="0" alignment="right"/>
+<pmp:column name="column5" parameter="TT" caption="Typ" prefix="" postfix="" outputTotal="0" alignment="right"/>
+<pmp:column name="column6" parameter="TL" caption="Laenge" prefix="" postfix="" outputTotal="0" alignment="right"/>
+<pmp:column name="column7" parameter="TD" caption="Durchm." prefix="" postfix="" outputTotal="0" alignment="right"/>
+<pmp:column name="column8" parameter="TI" caption="Eckenrad." prefix="" postfix="" outputTotal="0" alignment="right"/>
+</pmp:block>
+</pmp:table>
+</pmp:tables>
+<pmp:script language="JScript"><![CDATA[//-----------------------------------------------------------------------------------
+// This Function is used for Drilling Cycles data recalculation to Heidenhain format
+// Used for Block : Bohrzyklen
+//-----------------------------------------------------------------------------------
+function Bohrzyklen_Vorbereitung()
+{
+	core.SetParam("%pr(RT)%" ,1);
+	core.SetParam("%pr(RT)%" , GetParam("%pr(ZF)%")-GetParam("%pr(BT)%"));
+	return  StandardResponse("") ;
+}
+
+
+
+function Move_Linear()
+{
+	var OutStr="";
+	
+	if ( GetParam("%pr(MK)%") == "JOINUP" ) {
+		if ( GetParam("%pr(TA)%") == "5AXIS" ) {
+			SetParam("%pr(guid3F48FCDD15574d86ADC9AFB28F3FA7EE)%",1);
+		}
+		return "";
+	}
+
+// DEBUG
+//	OutStr += StandardResponse("%br(guid8901C5609CEE4039A358BF9C2979ACC0)%");
+// DEBUG
+
+	var TPAM = GetParam("%pr(TA)%");
+	var FirstMove = GetParam("%pr(guidEFA419D297534a3dB08EB1F27FD0BDFB)%");
+
+	if ( FirstMove == 0 ) {
+		OutStr += StandardResponse("%br(guidC4A4C9816966470aB5A72CE79E06E83A)%");
+	} else if ( FirstMove == 2 ) {
+		// Check if we had joinup moves
+		if ( GetParam("%pr(guid3F48FCDD15574d86ADC9AFB28F3FA7EE)%") == 0 ) {
+			OutStr += StandardResponse("%br(guidC4A4C9816966470aB5A72CE79E06E83A)%");
+		} else {
+			OutStr += StandardResponse("%br(guidC4A4C9816966470aB5A72CE79E06E83A)%");
+		}
+	} else {
+		if ( TPAM == "3AXIS" ) {
+			SetParam("%pr(guid0FE786F6D664428b9D6188EE17C3E0E9)%","3A");
+			OutStr +=  StandardResponse("%br(guid7E861A1F7DB941b38407C2CA32EE26A9)%");
+		} else if ( TPAM == "3+2" ) {
+			SetParam("%pr(guid0FE786F6D664428b9D6188EE17C3E0E9)%","3p2");
+			OutStr +=  StandardResponse("%br(guid7E861A1F7DB941b38407C2CA32EE26A9)%");
+		} else {
+			SetParam("%pr(guid0FE786F6D664428b9D6188EE17C3E0E9)%","5A");
+			OutStr +=  StandardResponse("%br(guid4064B41F10954ad495507AD73104D4F8)%");
+		}
+	}
+	SetParam("%pr(guidEFA419D297534a3dB08EB1F27FD0BDFB)%",1,2);
+	return OutStr ;
+}
+
+
+
+function AddMoveFree()
+{
+	var OutStr = StandardResponse("");
+	var TPAM =  GetParam("%pr(TA)%");
+	var PMT = GetParam("%pr(guid0FE786F6D664428b9D6188EE17C3E0E9)%");
+
+//	OutStr += StandardResponse("%br(guid8901C5609CEE4039A358BF9C2979ACC0)%");
+
+	if ( TPAM == "3AXIS" ) {
+		//	Previous was ToolChange
+		if ( PMT == "ToolChange" ) {
+
+		//	Previous movement was 3 axis
+		} else if ( PMT == "3A" ) {
+
+		//	Previous movement was 3+2 axis
+		} else if ( PMT == "3p2" ) {
+
+		//	Previous movement was 3+2 axis
+		} else if ( PMT == "5A" ) {
+
+		} else {
+			OutStr = StandardResponse("%br(guid2F965CEAE79D45c09F6F268B8FA7FABA)%");
+		}
+	} else if (TPAM == "3+2" ) {
+		//	Previous was ToolChange
+		if ( PMT == "ToolChange" ) {
+
+		//	Previous movement was 3 axis
+		} else if ( PMT == "3A" ) {
+
+		//	Previous movement was 3+2 axis
+		} else if ( PMT == "3p2" ) {
+
+		} else if ( PMT == "5A" ) {
+
+		} else {
+			OutStr = StandardResponse("%br(guid2F965CEAE79D45c09F6F268B8FA7FABA)%");
+		}
+	} else if (TPAM == "5AXIS" ) {
+		//	Previous was ToolChange
+		if ( PMT == "ToolChange" ) {
+
+		//	Previous movement was 3 axis
+		} else if ( PMT == "3A" ) {
+
+		//	Previous movement was 3+2 axis
+		} else if ( PMT == "3p2" ) {
+
+		//	Previous movement was 5 axis
+		} else if ( PMT == "5A" ) {
+
+		} else {
+			OutStr = StandardResponse("%br(guid2F965CEAE79D45c09F6F268B8FA7FABA)%");
+		}
+	}
+	return OutStr;
+}
+
+
+function First_Move()
+{
+	var OutStr="";
+      if (GetParam("%pr(guidEFA419D297534a3dB08EB1F27FD0BDFB)%") == 2 )
+	{
+		if ( GetParam("%pr(guid3F48FCDD15574d86ADC9AFB28F3FA7EE)%") == 0 ) {
+			SetParam("%pr(guidEFA419D297534a3dB08EB1F27FD0BDFB)%",1,2);
+		} else {
+			SetParam("%pr(guidEFA419D297534a3dB08EB1F27FD0BDFB)%",1,2);
+		}
+	}
+
+// DEBUG
+//	OutStr = StandardResponse("%br(guid8901C5609CEE4039A358BF9C2979ACC0)%");
+// DEBUG
+
+	return OutStr + StandardResponse("");
+}
+
+
+//----------------------------------------------------------
+//----------------------------------------------------------
+//----------------------------------------------------------
+//----------------------------------------------------------
+
+function AxisMode() {
+  var OutStr;
+  var am = GetParam("%pr(TA)%"); 
+  var on = GetParam("%pr(WI)%"); 
+  var wn = GetParam("%pr(WN)%"); 
+
+  if ( am == "3AXIS") {
+    if ( on != wn ) {
+      SetParam("%pr(guidEE8B24F959764a919BF88ADF0730FB13)%","3plus2",2);
+      OutStr = StandardResponse("");
+	OutStr += StandardResponse("%br(guid51CA205AF1D0425587DE4BEA3F33FE51)%");
+	SetParam("%pr(TA)%","3+2");
+    } else {
+      SetParam("%pr(guidEE8B24F959764a919BF88ADF0730FB13)%","3AXIS",2);
+      OutStr = StandardResponse("");
+	OutStr += StandardResponse("%br(guidAABF8519E7E54cda94004ADBD71CF989)%");
+	SetParam("%pr(TA)%","3AXIS");
+    }
+  } else if ( am == "3+2") {
+    if ( on == wn ) {
+      SetParam("%pr(guidEE8B24F959764a919BF88ADF0730FB13)%","3AXIS",2);
+      SetParam("%pr(guidEE8B24F959764a919BF88ADF0730FB13)%","3AXIS",2);
+      OutStr = StandardResponse("");
+	OutStr += StandardResponse("%br(guidAABF8519E7E54cda94004ADBD71CF989)%");
+    } else {
+      SetParam("%pr(guidEE8B24F959764a919BF88ADF0730FB13)%","3plus2",2);
+      SetParam("%pr(guidEE8B24F959764a919BF88ADF0730FB13)%","3AXIS",2);
+      OutStr = StandardResponse("");
+	OutStr += StandardResponse("%br(guid51CA205AF1D0425587DE4BEA3F33FE51)%");
+    } 
+  } else {
+    SetParam("%pr(guidEE8B24F959764a919BF88ADF0730FB13)%","5AXIS",2);
+      OutStr = StandardResponse("");
+	OutStr += StandardResponse("%br(guid56E278C9E2AA43bbA00AC228D065F746)%");
+  }
+  return OutStr;
+}
+
+//-----------------------------------------------------------------------------------
+// This Function is used for output of start conditions of toolpath
+// Used for Block : Motion Part Start
+//-----------------------------------------------------------------------------------
+function Motion_Part_Start() {
+  var OutStr;
+  var am = GetParam("%pr(TA)%"); 
+
+  if ( am == "3AXIS") {
+	OutStr = StandardResponse("%br(guidAABF8519E7E54cda94004ADBD71CF989)%");
+  } else if ( am == "3+2") {
+	OutStr = AdvancedResponse("%br(guid51CA205AF1D0425587DE4BEA3F33FE51)%");
+SetParam("%pr(guidEFA419D297534a3dB08EB1F27FD0BDFB)%",0,2);
+
+  } else {
+	OutStr = StandardResponse("%br(guid56E278C9E2AA43bbA00AC228D065F746)%");
+  }
+  return StandardResponse("") + OutStr;
+}
+
+
+//-----------------------------------------------------------------------------------
+// This Function is used for output of block Toolpath End
+// Used for Block : Start Toolpath
+//-----------------------------------------------------------------------------------
+function Start_Toolpath_Not_First() {
+  var TN = GetParam("%pr(TN)%");
+  var PTN = GetParam("%pr(guidD9D9FA0D64304bc3A6948DD20613AAE3)%");
+  var PTR = GetParam("%pr(guid875459B9D7D94e528DC8813F93E18912)%");
+  var OutStr = "" ;
+
+
+  var PMT = GetParam("%pr(guid0FE786F6D664428b9D6188EE17C3E0E9)%");
+
+  if ( PMT == "3A" || PMT == "3p2" ) {
+	SetParam("%pr(guidE4BDF778A18D4e2e960F0C024C6259EF)%",0,2);
+	SetParam("%pr(guid0B8E7F2EEF7A4090A76B1B892C3C3A7D)%",0,2);
+  } else {
+	SetParam("%pr(guidE4BDF778A18D4e2e960F0C024C6259EF)%",0,1);
+	SetParam("%pr(guid0B8E7F2EEF7A4090A76B1B892C3C3A7D)%",0,1);
+      OutStr = StandardResponse("%br(guidE494C219DACA43d998AFB2C7F9FE17EE)%");
+  }
+
+  if (GetParam("%pr(guidEFA419D297534a3dB08EB1F27FD0BDFB)%") == 0) {
+    return StandardResponse("");
+  } else {
+    OutStr += AdvancedResponse("%br(guidF6C9E6A941A64ce2B204CD46516C060E)%");
+    OutStr +=  StandardResponse("");
+    return OutStr ;
+  }
+}
+
+function Finish_Program_3p2() {
+  var PMT = GetParam("%pr(guid0FE786F6D664428b9D6188EE17C3E0E9)%");
+
+  if ( PMT == "3p2" ) {
+    return StandardResponse("");
+  } else {
+    return "";
+  }
+}
+
+function Finish_Program_5A() {
+  var PMT = GetParam("%pr(guid0FE786F6D664428b9D6188EE17C3E0E9)%");
+
+  if ( PMT == "5A" ) {
+    return StandardResponse("");
+  } else {
+    return "";
+  }
+}
+
+function Coolant_On() {
+  var PCM = GetParam("%pr(CO)%");
+  if ( PCM == "ON" ) {
+    SetParam("%pr(guid334B1413177A4b0a9FFF96C926187FE4)%","VacAutoOn",2);
+    SetParam("%pr(guid52372BE094834ebd9005A7DF4958254E)%","CLEANON -ON=$ON -CYCLE=$Cycle",1);
+    SetParam("%pr(guid89C2E56DEE664b0393FF8FCE3AAE9C69)%","",1);
+    SetParam("%pr(guid2DAE18675EA646dbA6435796530F43D0)%","// VacAutoOFF",2);
+    SetParam("%pr(guid9F20CDD160C24b7d95258ADABF20D530)%","CLEANOFF",1);
+    SetParam("%pr(guid0B2CDECB6246449cAA3D17A92D8A3A4B)%","",1);
+  } else if ( PCM == "OFF" ) {
+  } else if ( PCM == "FLOOD" ) {
+    SetParam("%pr(guid334B1413177A4b0a9FFF96C926187FE4)%","VacOFF",2);
+    SetParam("%pr(guid52372BE094834ebd9005A7DF4958254E)%","EMUON -out",2);
+    SetParam("%pr(guid89C2E56DEE664b0393FF8FCE3AAE9C69)%","HAZEVACON",2);
+    SetParam("%pr(guid2DAE18675EA646dbA6435796530F43D0)%","",1);
+    SetParam("%pr(guid9F20CDD160C24b7d95258ADABF20D530)%","EMUOFF",2);
+    SetParam("%pr(guid0B2CDECB6246449cAA3D17A92D8A3A4B)%","HAZEVACOFF",2);
+  } else if ( PCM == "DOUBLE" ) {
+    SetParam("%pr(guid334B1413177A4b0a9FFF96C926187FE4)%","VacOFF",2);
+    SetParam("%pr(guid52372BE094834ebd9005A7DF4958254E)%","CLEANON -ON=$ON -CYCLE=$Cycle",2);
+    SetParam("%pr(guid89C2E56DEE664b0393FF8FCE3AAE9C69)%","M8",2);
+    SetParam("%pr(guid2DAE18675EA646dbA6435796530F43D0)%","",1);
+    SetParam("%pr(guid9F20CDD160C24b7d95258ADABF20D530)%","CLEANOFF",2);
+    SetParam("%pr(guid0B2CDECB6246449cAA3D17A92D8A3A4B)%","M9",2);
+  } else if ( PCM == "THROUGH" ) {
+    SetParam("%pr(guid334B1413177A4b0a9FFF96C926187FE4)%","VacOFF",2);
+    SetParam("%pr(guid52372BE094834ebd9005A7DF4958254E)%","EMUON -in",2);
+    SetParam("%pr(guid89C2E56DEE664b0393FF8FCE3AAE9C69)%","HAZEVACON",2);
+    SetParam("%pr(guid2DAE18675EA646dbA6435796530F43D0)%","",1);
+    SetParam("%pr(guid9F20CDD160C24b7d95258ADABF20D530)%","EMUOFF",2);
+    SetParam("%pr(guid0B2CDECB6246449cAA3D17A92D8A3A4B)%","HAZEVACOFF",2);
+  } else if ( PCM == "AIR" ) {
+    SetParam("%pr(guid334B1413177A4b0a9FFF96C926187FE4)%","",1);
+    SetParam("%pr(guid52372BE094834ebd9005A7DF4958254E)%","",2);
+    SetParam("%pr(guid89C2E56DEE664b0393FF8FCE3AAE9C69)%","CLEANON",2);
+    SetParam("%pr(guid2DAE18675EA646dbA6435796530F43D0)%","",1);
+    SetParam("%pr(guid9F20CDD160C24b7d95258ADABF20D530)%","",1);
+    SetParam("%pr(guid0B2CDECB6246449cAA3D17A92D8A3A4B)%","CLEANOFF",2);
+  } else if ( PCM == "MIST" ) {
+    SetParam("%pr(guid334B1413177A4b0a9FFF96C926187FE4)%","VacOFF",2);
+    SetParam("%pr(guid52372BE094834ebd9005A7DF4958254E)%","M8",2);
+    SetParam("%pr(guid89C2E56DEE664b0393FF8FCE3AAE9C69)%","",1);
+    SetParam("%pr(guid2DAE18675EA646dbA6435796530F43D0)%","",1);
+    SetParam("%pr(guid9F20CDD160C24b7d95258ADABF20D530)%","M9",2);
+    SetParam("%pr(guid0B2CDECB6246449cAA3D17A92D8A3A4B)%","",1);
+  } else if ( PCM == "TAPPING" ) {
+    SetParam("%pr(guid334B1413177A4b0a9FFF96C926187FE4)%","VacAutoOn",2);
+    SetParam("%pr(guid52372BE094834ebd9005A7DF4958254E)%","CLEANON",2);
+    SetParam("%pr(guid89C2E56DEE664b0393FF8FCE3AAE9C69)%","",1);
+    SetParam("%pr(guid2DAE18675EA646dbA6435796530F43D0)%","// VacAutoOFF",2);
+    SetParam("%pr(guid9F20CDD160C24b7d95258ADABF20D530)%","CLEANOFF",2);
+    SetParam("%pr(guid0B2CDECB6246449cAA3D17A92D8A3A4B)%","",1);
+  }
+  return StandardResponse("");
+}
+
+
+function Coolant_Off() {
+  var PCM = GetParam("%pr(guid46C48C6CC3A549618FD52CD26196C587)%");
+
+  if ( PCM == "ON" ) {
+    return StandardResponse("%br(guidDA7A022126AE422d9044B997501C75A0)%");
+  } else if ( PCM == "OFF" ) {
+  } else if ( PCM == "FLOOD" ) {
+    return StandardResponse("%br(guidE4F47A5ED4664b04BBCDD42303D5B275)%");
+  } else if ( PCM == "MIST" ) {
+    return StandardResponse("%br(guidA923A99BB196459b8DD0E431805AF159)%");
+  } else if ( PCM == "TAPPING" ) {
+    return StandardResponse("%br(guid03CF288856504b4d9DDB84AACFA3B67B)%");
+  } else if ( PCM == "VACUUM" ) {
+    UserError("Fehler Kuehlmittel");
+  } else if ( PCM == "THROUGH" ) {
+    return StandardResponse("%br(guidA41526AE281F4d83A7B9F926A0B387A4)%");
+  } else if ( PCM == "AIR" ) {
+    return StandardResponse("%br(guid23D6F7F1BFD4409e9237F559A981CBA3)%");
+  } else if ( PCM == "DOUBLE" ) {
+    return StandardResponse("%br(guidCE77464E089F4cd8ABA430CA873C82DE)%");
+  }
+  return StandardResponse("");
+}
+
+function GetStartParam() {
+  PromptParam("%pr(guidC78976A4F6C04831B2D05AA5888BEC1C)%",GetParam("%pr(WI)%"));
+  PromptParam("%pr(guidCB0D3A9422014b77BE4856B7668112F9)%", "GENERAL");
+
+  
+  return StandardResponse("");
+}
+
+function Schalenaufruf() {
+
+  var TrayLoadSTR = GetParam("%pr(guidFB501640C3B84051837D4E3B800C276B)%");
+  var TrayUnLoadSTR = GetParam("%pr(guid76D2FA084A0F48219C4D96CE419DEE15)%");
+  var tpn = GetParam("%pr(TP)%");
+  var PinCutString = GetParam("%pr(guid7E622CCB19804fc29693F4F932AF916A)%");
+  var IsPinCut = GetParam("%pr(guid0767B54CD5014bfaA5C03354689003E8)%")
+
+ var instr = tpn.indexOf(PinCutString);
+
+ if (instr >= 0) {
+	SetParam("%pr(guid0767B54CD5014bfaA5C03354689003E8)%",TrayLoadSTR,2);
+ } else {
+       SetParam("%pr(guid0767B54CD5014bfaA5C03354689003E8)%","Error",1);
+  } 
+ return StandardResponse("");
+}
+
+function Schalenablage() {
+
+  var TrayLoadSTR = GetParam("%pr(guidFB501640C3B84051837D4E3B800C276B)%");
+  var TrayUnLoadSTR = GetParam("%pr(guid76D2FA084A0F48219C4D96CE419DEE15)%");
+  var tpn = GetParam("%pr(TP)%");
+  var PinCutString = GetParam("%pr(guid7E622CCB19804fc29693F4F932AF916A)%");
+  var IsPinCut = GetParam("%pr(guid0767B54CD5014bfaA5C03354689003E8)%")
+
+ var instr = tpn.indexOf(PinCutString);
+
+ if (IsPinCut == TrayLoadSTR ) {
+	SetParam("%pr(guid0767B54CD5014bfaA5C03354689003E8)%",TrayUnLoadSTR,2);
+ } else {
+       SetParam("%pr(guid0767B54CD5014bfaA5C03354689003E8)%","Error",1);
+  } 
+ return StandardResponse("");
+}
+
+]]></pmp:script>
+</pmp:option-file>

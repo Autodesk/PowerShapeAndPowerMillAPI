@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Absolute" xml:space="preserve">
+    <value>absolute</value>
+  </data>
+  <data name="AddLeadsAtToolAxisDiscontinuities" xml:space="preserve">
+    <value>LeadsAtAxisDiscontinuities</value>
+  </data>
+  <data name="AddLeadsToShortLinks" xml:space="preserve">
+    <value>LeadsOnShortLinks</value>
+  </data>
+  <data name="AllowStartPointToBeMoved" xml:space="preserve">
+    <value>MoveStartPoints</value>
+  </data>
+  <data name="AlwaysRamp" xml:space="preserve">
+    <value>AlwaysRamp</value>
+  </data>
+  <data name="Angle" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="AngularThreshold" xml:space="preserve">
+    <value>AxisDiscontinuityThreshold</value>
+  </data>
+  <data name="ApproachDistance" xml:space="preserve">
+    <value>ApproachDistance</value>
+  </data>
+  <data name="ArcFitRadius" xml:space="preserve">
+    <value>ArcFittingRadius.Value</value>
+  </data>
+  <data name="ArcFitRapidMove" xml:space="preserve">
+    <value>ArcFittingRadius.Active</value>
+  </data>
+  <data name="AutomaticallyExtend" xml:space="preserve">
+    <value>ExtendMove</value>
+  </data>
+  <data name="BlockCentre" xml:space="preserve">
+    <value>block_centre</value>
+  </data>
+  <data name="Boxed" xml:space="preserve">
+    <value>boxed</value>
+  </data>
+  <data name="Circle" xml:space="preserve">
+    <value>circle</value>
+  </data>
+  <data name="CircleDiameter" xml:space="preserve">
+    <value>CircleDiameter</value>
+  </data>
+  <data name="CircularArc" xml:space="preserve">
+    <value>circular_arc</value>
+  </data>
+  <data name="ClosedSegments" xml:space="preserve">
+    <value>ClosedProfiles</value>
+  </data>
+  <data name="Connections" xml:space="preserve">
+    <value>Connections</value>
+  </data>
+  <data name="CuttingFeed" xml:space="preserve">
+    <value>FeedRate.Cutting.Value</value>
+  </data>
+  <data name="DefaultLink" xml:space="preserve">
+    <value>DefaultLink[0].Type</value>
+  </data>
+  <data name="DefaultLinkSecond" xml:space="preserve">
+    <value>DefaultLink[1].Type</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="EndPointApproachAlong" xml:space="preserve">
+    <value>EndPoint.MoveDirection</value>
+  </data>
+  <data name="EndPointApproachDistance" xml:space="preserve">
+    <value>EndPoint.Distance</value>
+  </data>
+  <data name="EndPointMethod" xml:space="preserve">
+    <value>EndPoint.Type</value>
+  </data>
+  <data name="EndPointPositionX" xml:space="preserve">
+    <value>EndPoint.Position.X</value>
+  </data>
+  <data name="EndPointPositionY" xml:space="preserve">
+    <value>EndPoint.Position.Y</value>
+  </data>
+  <data name="EndPointPositionZ" xml:space="preserve">
+    <value>EndPoint.Position.Z</value>
+  </data>
+  <data name="Extend" xml:space="preserve">
+    <value>Extend</value>
+  </data>
+  <data name="ExtendedMove" xml:space="preserve">
+    <value>extended</value>
+  </data>
+  <data name="FeedPerTooth" xml:space="preserve">
+    <value>FeedRate.FeedPerTooth.Value</value>
+  </data>
+  <data name="FiniteRamp" xml:space="preserve">
+    <value>LimitLength.Active</value>
+  </data>
+  <data name="FiniteRampLength" xml:space="preserve">
+    <value>LimitLength.Value</value>
+  </data>
+  <data name="FirstLeadIn" xml:space="preserve">
+    <value>FirstLeadIn</value>
+  </data>
+  <data name="FirstPoint" xml:space="preserve">
+    <value>first_incr</value>
+  </data>
+  <data name="FirstPointSafe" xml:space="preserve">
+    <value>first_safe</value>
+  </data>
+  <data name="Follow" xml:space="preserve">
+    <value>Follow</value>
+  </data>
+  <data name="GetParameterValue" xml:space="preserve">
+    <value>PRINT PAR TERSE "ENTITY('{0}', '{1}').{2}"</value>
+  </data>
+  <data name="GougeCheck" xml:space="preserve">
+    <value>GougeCheck</value>
+  </data>
+  <data name="HorizontalArc" xml:space="preserve">
+    <value>horizontal_arc</value>
+  </data>
+  <data name="HorizontalArcLeft" xml:space="preserve">
+    <value>horizontal_arc_left</value>
+  </data>
+  <data name="HorizontalArcRight" xml:space="preserve">
+    <value>horizontal_arc_right</value>
+  </data>
+  <data name="Incremental" xml:space="preserve">
+    <value>incremental</value>
+  </data>
+  <data name="IncrementalRamp" xml:space="preserve">
+    <value>incr</value>
+  </data>
+  <data name="IsCalculated" xml:space="preserve">
+    <value>computed</value>
+  </data>
+  <data name="LastLeadOut" xml:space="preserve">
+    <value>LastLeadOut</value>
+  </data>
+  <data name="LastPoint" xml:space="preserve">
+    <value>last_incr</value>
+  </data>
+  <data name="LastPointSafe" xml:space="preserve">
+    <value>last_safe</value>
+  </data>
+  <data name="LeadIn" xml:space="preserve">
+    <value>LeadIn[0]</value>
+  </data>
+  <data name="LeadInExtension" xml:space="preserve">
+    <value>LeadInExtension</value>
+  </data>
+  <data name="LeadInFactor" xml:space="preserve">
+    <value>FeedRate.LeadInFactor</value>
+  </data>
+  <data name="LeadInSecond" xml:space="preserve">
+    <value>LeadIn[1]</value>
+  </data>
+  <data name="LeadOut" xml:space="preserve">
+    <value>LeadOut[0]</value>
+  </data>
+  <data name="LeadOutExtension" xml:space="preserve">
+    <value>LeadOutExtension</value>
+  </data>
+  <data name="LeadOutFactor" xml:space="preserve">
+    <value>FeedRate.LeadOutFactor</value>
+  </data>
+  <data name="LeadOutSecond" xml:space="preserve">
+    <value>LeadOut[1]</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>line</value>
+  </data>
+  <data name="LongLink" xml:space="preserve">
+    <value>LongLink[0].Type</value>
+  </data>
+  <data name="LongLinkSecond" xml:space="preserve">
+    <value>LongLink[1].Type</value>
+  </data>
+  <data name="MaxMoveExtension" xml:space="preserve">
+    <value>MaxMoveExtension</value>
+  </data>
+  <data name="MaxZigAngle" xml:space="preserve">
+    <value>MaxZigAngle</value>
+  </data>
+  <data name="MoveDirection" xml:space="preserve">
+    <value>MoveDirection</value>
+  </data>
+  <data name="MoveType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="ExtensionLeadMoveTypes" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>none</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>normal</value>
+  </data>
+  <data name="OnSurface" xml:space="preserve">
+    <value>on_surface</value>
+  </data>
+  <data name="OverlapDistance" xml:space="preserve">
+    <value>OverlapDistance</value>
+  </data>
+  <data name="PlungingFeed" xml:space="preserve">
+    <value>FeedRate.Plunging.Value</value>
+  </data>
+  <data name="PocketCentre" xml:space="preserve">
+    <value>pocket_centre</value>
+  </data>
+  <data name="Radial" xml:space="preserve">
+    <value>radial</value>
+  </data>
+  <data name="Radius" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="Ramp" xml:space="preserve">
+    <value>Ramp</value>
+  </data>
+  <data name="RampHeight" xml:space="preserve">
+    <value>Height.Type</value>
+  </data>
+  <data name="RampHeightValue" xml:space="preserve">
+    <value>Height.Value</value>
+  </data>
+  <data name="RetractAndApproachMoves" xml:space="preserve">
+    <value>MoveDirection</value>
+  </data>
+  <data name="RetractDistance" xml:space="preserve">
+    <value>RetractDistance</value>
+  </data>
+  <data name="Safe" xml:space="preserve">
+    <value>safe</value>
+  </data>
+  <data name="Segment" xml:space="preserve">
+    <value>segment</value>
+  </data>
+  <data name="SegmentIncremental" xml:space="preserve">
+    <value>segment_incr</value>
+  </data>
+  <data name="SetParameterNumaricValue" xml:space="preserve">
+    <value>EDIT PAR "ENTITY('{0}', '{1}').{2}" {3}</value>
+  </data>
+  <data name="SetParameterStringValue" xml:space="preserve">
+    <value>EDIT PAR "ENTITY('{0}', '{1}').{2}" '{3}'</value>
+  </data>
+  <data name="LinkTypes" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="ShortLinkSecond" xml:space="preserve">
+    <value>ShortLink[1].Type</value>
+  </data>
+  <data name="ShortLinkThersholdToLong" xml:space="preserve">
+    <value>ThresholdDistance</value>
+  </data>
+  <data name="Skim" xml:space="preserve">
+    <value>Skim</value>
+  </data>
+  <data name="SkimFeed" xml:space="preserve">
+    <value>FeedRate.Rapid</value>
+  </data>
+  <data name="SpindleSpeed" xml:space="preserve">
+    <value>SpindleSpeed.Value</value>
+  </data>
+  <data name="StartPointApproachAlong" xml:space="preserve">
+    <value>StartPoint.MoveDirection</value>
+  </data>
+  <data name="StartPointApproachDistance" xml:space="preserve">
+    <value>StartPoint.Distance</value>
+  </data>
+  <data name="StartPointMethod" xml:space="preserve">
+    <value>StartPoint.Type</value>
+  </data>
+  <data name="StartPointPositionX" xml:space="preserve">
+    <value>StartPoint.Position.X</value>
+  </data>
+  <data name="StartPointPositionY" xml:space="preserve">
+    <value>StartPoint.Position.Y</value>
+  </data>
+  <data name="StartPointPositionZ" xml:space="preserve">
+    <value>StartPoint.Position.Z</value>
+  </data>
+  <data name="Stepdown" xml:space="preserve">
+    <value>Stepdown</value>
+  </data>
+  <data name="Straight" xml:space="preserve">
+    <value>straight</value>
+  </data>
+  <data name="SurfaceNormalArc" xml:space="preserve">
+    <value>surface_normal_arc</value>
+  </data>
+  <data name="SurfaceSpeed" xml:space="preserve">
+    <value>FeedRate.CuttingSpeed.Value</value>
+  </data>
+  <data name="Tangent" xml:space="preserve">
+    <value>tangent</value>
+  </data>
+  <data name="ToolAxis" xml:space="preserve">
+    <value>tool_axis</value>
+  </data>
+  <data name="ToolDescription" xml:space="preserve">
+    <value>tool.description</value>
+  </data>
+  <data name="ToolDiameter" xml:space="preserve">
+    <value>tool.diameter</value>
+  </data>
+  <data name="ToolFlutes" xml:space="preserve">
+    <value>tool.flutes</value>
+  </data>
+  <data name="ToolIndentifier" xml:space="preserve">
+    <value>tool.identifier</value>
+  </data>
+  <data name="ToolLength" xml:space="preserve">
+    <value>tool.length</value>
+  </data>
+  <data name="ToolName" xml:space="preserve">
+    <value>tool.name</value>
+  </data>
+  <data name="ToolNumber" xml:space="preserve">
+    <value>tool.number</value>
+  </data>
+  <data name="ToolPath" xml:space="preserve">
+    <value>toolpath</value>
+  </data>
+  <data name="ToolTipRadius" xml:space="preserve">
+    <value>tool.tip_radius</value>
+  </data>
+  <data name="ToolType" xml:space="preserve">
+    <value>tool.type</value>
+  </data>
+  <data name="VerticalArc" xml:space="preserve">
+    <value>vertical_arc</value>
+  </data>
+  <data name="ZagAngle" xml:space="preserve">
+    <value>ZagAngle.Active</value>
+  </data>
+  <data name="ZagAngleMaximum" xml:space="preserve">
+    <value>ZagAngle.Value</value>
+  </data>
+  <data name="Link1st" xml:space="preserve">
+    <value>Link[0].Type</value>
+  </data>
+  <data name="Link2nd" xml:space="preserve">
+    <value>Link[1].Type</value>
+  </data>
+  <data name="Link3rd" xml:space="preserve">
+    <value>Link[2].Type</value>
+  </data>
+  <data name="Link4th" xml:space="preserve">
+    <value>Link[3].Type</value>
+  </data>
+  <data name="Link5th" xml:space="preserve">
+    <value>Link[4].Type</value>
+  </data>
+  <data name="PM2016" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="PM2017" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="ShortLinkType" xml:space="preserve">
+    <value>ShortLink[0].Type</value>
+  </data>
+</root>

@@ -1,0 +1,7 @@
+*.dgk filter=lfs diff=lfs merge=lfs -text
+*.dmt filter=lfs diff=lfs merge=lfs -text
+*.stl filter=lfs diff=lfs merge=lfs -text
+*.psmodel filter=lfs diff=lfs merge=lfs -text
+*.trx filter=lfs diff=lfs merge=lfs -text
+*.mat filter=lfs diff=lfs merge=lfs -text
+*.matrix filter=lfs diff=lfs merge=lfs -text

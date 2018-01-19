@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61D05A59-6E9E-43F3-A7AF-17C7B70C7DAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Autodesk.ProductInterface.PowerSHAPETest</RootNamespace>
+    <AssemblyName>Autodesk.ProductInterface.PowerSHAPE.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>delcam.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\Delcam.ProductInterface.PowerSHAPE.Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Delcam.ProductInterface.PowerSHAPE.Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.5.0\lib\net40\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutomationTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\AnnotationCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\ArcsCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\GenericCurvesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\GenericCurvesCollectionTests\CompCurvesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\GenericCurvesCollectionTests\CurvesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\LinesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\MeshesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\ElectrodesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\PointsCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\SolidsCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\SurfacesCollectionTest.cs" />
+    <Compile Include="Collection Tests\DatabaseEntitiesCollectionTests\EntitiesCollectionTests\WorkplanesCollectionTest.cs" />
+    <Compile Include="Collection Tests\LevelsCollectionTest.cs" />
+    <Compile Include="Collection Tests\ModelsCollectionTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\AnnotationTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\ArcTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\LevelTests.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\MeshTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\ElectrodeTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\PointTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Solid Tests\Primitive Tests\SphereTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\SolidTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\BlockTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\ConeTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\CylinderTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\ExtrusionTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\PlaneTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\RevolutionTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\SphereTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\SpringTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\TorusTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\PrimitiveTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\SurfaceTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\Generic Curve Tests\CompCurveTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\Generic Curve Tests\CurveTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\GenericCurveTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\LineTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\pCurveTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\SpineTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\Surface Curve Tests\LateralTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\Surface Curve Tests\LongitudinalTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Wireframe Tests\SurfaceCurveTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\WireframeTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\WorkplaneTest.cs" />
+    <Compile Include="DatabaseEntity Tests\EntityTest.cs" />
+    <Compile Include="DatabaseEntity Tests\ModelTest.cs" />
+    <Compile Include="HelperClassesTests\PSEntityLimiterTests.cs" />
+    <Compile Include="HelperClassesTests\PSEntityMoverHelperTest.cs" />
+    <Compile Include="PSMacroTest.cs" />
+    <Compile Include="DatabaseEntityTest.cs" />
+    <Compile Include="Files\Files.cs" />
+    <Compile Include="HelperClassesTests\PointPickerCancelTestHarness.cs" />
+    <Compile Include="HelperClassesTests\PSEntityMorpherHelperTests.cs" />
+    <Compile Include="HelperClassesTests\PSEntityScalerHelperTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DatabaseEntity Tests\ModelTestFiles\InchFile.psmodel" />
+    <None Include="DatabaseEntity Tests\ModelTestFiles\MMFile.psmodel" />
+    <None Include="delcam.snk" />
+    <None Include="Files\123.psmodel" />
+    <None Include="Files\AddIntersectSubtractTests.psmodel" />
+    <None Include="Files\Annotation.igs" />
+    <None Include="Files\Arc.dgk" />
+    <None Include="Files\ArcLimiters.dgk" />
+    <None Include="Files\ArcToOffset.dgk" />
+    <None Include="Files\CompCurve.dgk" />
+    <None Include="Files\CompCurveLimiters.dgk" />
+    <None Include="Files\CompCurveMultipleItems.dgk" />
+    <None Include="Files\CompCurvesToWrap.dgk" />
+    <None Include="Files\CompCurveToFree.dgk" />
+    <None Include="Files\CompCurveToOffset.dgk" />
+    <None Include="Files\CompCurveToProject.dgk" />
+    <None Include="Files\CreateSolidsFromSurfaces.psmodel" />
+    <None Include="Files\CreateThreePoints.mac" />
+    <None Include="Files\Curve.dgk" />
+    <None Include="Files\CurveBSpline.dgk" />
+    <None Include="Files\CurveG2.dgk" />
+    <None Include="Files\CurveLimiters.dgk" />
+    <None Include="Files\CurvesToWrap.dgk" />
+    <None Include="Files\CurveToFree.dgk" />
+    <None Include="Files\CurveToOffset.dgk" />
+    <None Include="Files\CurveToProject.dgk" />
+    <None Include="Files\Electrodes.psmodel" />
+    <None Include="Files\ExampleSurface.dgk" />
+    <None Include="Files\FilletSurfaces.dgk" />
+    <None Include="Files\FootMesh1.dmt" />
+    <None Include="Files\FootMeshObliqueCurve.dgk" />
+    <None Include="Files\KeepBoth.dgk" />
+    <None Include="Files\LevelTests.psmodel" />
+    <None Include="Files\Line.dgk" />
+    <None Include="Files\ManyElectrodes.psmodel" />
+    <None Include="Files\Mesh1.dmt" />
+    <None Include="Files\Mesh2.dmt" />
+    <None Include="Files\Mesh3.dmt" />
+    <None Include="Files\MinimumDistanceTests.psmodel" />
+    <None Include="Files\MultipleSurfacesForAppending.dgk" />
+    <None Include="Files\MultipleSurfacesForIntersection.dgk" />
+    <None Include="Files\NotArcFitted.pic" />
+    <None Include="Files\Point.dgk" />
+    <None Include="Files\pumpkin.psmodel" />
+    <None Include="Files\SingleElectrode.psmodel" />
+    <None Include="Files\SingleMesh.dmt" />
+    <None Include="Files\Solid.dgk" />
+    <None Include="Files\Solid.x_b" />
+    <None Include="Files\SolidDisconnected.dgk" />
+    <None Include="Files\SolidOpen.dgk" />
+    <None Include="Files\SolidToRemove.dgk" />
+    <None Include="Files\SolidToWrapOnto.dgk" />
+    <None Include="Files\Stitch.dgk" />
+    <None Include="Files\Stitch.psmodel" />
+    <None Include="Files\Surface.dgk" />
+    <None Include="Files\Surface.dmt" />
+    <None Include="Files\SurfaceBadlyTrimmed.dgk" />
+    <None Include="Files\SurfaceBlock.dgk" />
+    <None Include="Files\SurfaceCone.dgk" />
+    <None Include="Files\SurfaceCreationTests.psmodel" />
+    <None Include="Files\SurfaceCylinder.dgk" />
+    <None Include="Files\SurfaceDriveCurve.dgk" />
+    <None Include="Files\SurfaceExtrusion.dgk" />
+    <None Include="Files\SurfaceFillIn.dgk" />
+    <None Include="Files\SurfaceFillInMultiple.dgk" />
+    <None Include="Files\SurfaceFromNetwork.dgk" />
+    <None Include="Files\SurfaceFromSeparate.dgk" />
+    <None Include="Files\SurfaceFromTriangles.psmodel" />
+    <None Include="Files\SurfaceLatsOpenClosed.dgk" />
+    <None Include="Files\SurfaceLimiters.dgk" />
+    <None Include="Files\SurfaceLonsOpenClosed.dgk" />
+    <None Include="Files\SurfacePlane.dgk" />
+    <None Include="Files\SurfacePlaneOfBestFit.dgk" />
+    <None Include="Files\SurfaceRevolution.dgk" />
+    <None Include="Files\SurfaceSphere.dgk" />
+    <None Include="Files\SurfaceSpine.dgk" />
+    <None Include="Files\SurfaceSpring.dgk" />
+    <None Include="Files\SurfaceTorus.dgk" />
+    <None Include="Files\SurfaceToWrapOnto.dgk" />
+    <None Include="Files\SurfaceTrim.dgk" />
+    <None Include="Files\SurfaceTwoRails.dgk" />
+    <None Include="Files\SurfaceWithBulge.dgk" />
+    <None Include="Files\ThreeArcs.dgk" />
+    <None Include="Files\ThreeCompCurves.dgk" />
+    <None Include="Files\ThreeCurves.dgk" />
+    <None Include="Files\ThreeElectrodes.psmodel" />
+    <None Include="Files\ThreeLines.dgk" />
+    <None Include="Files\ThreeMeshes.dmt" />
+    <None Include="Files\ThreeMeshes.igs" />
+    <None Include="Files\ThreeMeshesCombined.dmt" />
+    <None Include="Files\ThreePoints.dgk" />
+    <None Include="Files\ThreeSolids.dgk" />
+    <None Include="Files\ThreeSurfaces.dgk" />
+    <None Include="Files\ThreeWorkplanes.dgk" />
+    <None Include="Files\TrimmedSurface.dgk" />
+    <None Include="Files\TwoAnnotations.igs" />
+    <None Include="Files\TwoSurfaceMorph.dgk" />
+    <None Include="Files\TwoSurfacesForIntersection.dgk" />
+    <None Include="Files\ViewsCube.dgk" />
+    <None Include="Files\WireframesForDriveSurface.dgk" />
+    <None Include="Files\Workplane.dgk" />
+    <None Include="Files\Workplane1.dgk" />
+    <None Include="Files\Workplane2.dgk" />
+    <None Include="packages.config" />
+    <None Include="Test References\Delcam.AutomationInterface.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delcam.Geometry\Delcam.Geometry.csproj">
+      <Project>{a0d60ff2-dcb9-462f-adcd-28e2a126ecc9}</Project>
+      <Name>Delcam.Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.ProductInterface.PowerShape\Delcam.ProductInterface.PowerShape.csproj">
+      <Project>{f15770f3-1e63-4c18-bc4d-f75702436a75}</Project>
+      <Name>Delcam.ProductInterface.PowerShape</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.ProductInterface\Delcam.ProductInterface.csproj">
+      <Project>{dd0b1c05-2e13-4671-b24c-d0a071e2a521}</Project>
+      <Name>Delcam.ProductInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delcam.Utilities\Delcam.Utilities.csproj">
+      <Project>{1e2ec09f-d066-4ed3-86f1-8c22e01de694}</Project>
+      <Name>Delcam.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

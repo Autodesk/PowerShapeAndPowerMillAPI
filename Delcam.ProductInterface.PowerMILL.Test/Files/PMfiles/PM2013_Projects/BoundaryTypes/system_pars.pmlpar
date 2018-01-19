@@ -1,0 +1,61 @@
+{
+	"type" : "powermill",
+	"time" : "1420740172",
+	"version" : "1"
+}
+{
+	"Export" : {
+		"TriangleTolerance" : "0.01"
+	},
+	"Units" : "metric",
+	"CurveEditor" : {
+		"Tolerances" : {
+			"Polygonisation" : "0.005",
+			"ArcFit" : "0.01",
+			"SplineFit" : "0.01"
+		}
+	},
+	"Import" : {
+		"DeferLoading" : "0",
+		"CreateSplitSets" : "0",
+		"SplitSolids" : "1",
+		"Tolerance" : "0.001"
+	},
+	"TPCalculation" : {
+		"Activate" : "1"
+	},
+	"Tolerances" : {
+		"Polygonisation" : "0.005",
+		"Closure" : "0.1"
+	},
+	"Tool" : {
+		"FeedSpeed" : {
+			"PlungeFactor" : "0.1",
+			"AutoLoad" : {
+				"FeedRate" : "0",
+				"DepthOfCut" : "0"
+			},
+			"LeadOutFactor" : "100.0",
+			"LeadInFactor" : "100.0"
+		}
+	},
+	"Boundaries" : {
+		"Private" : {
+			"Display" : "0",
+			"Availability" : "1",
+			"AutoDelete" : "1"
+		}
+	},
+	"Plugins" : {
+		"HideSingleTab" : "1"
+	},
+	"FeatureReader" : {
+		"IgnoreXmlNames" : "0"
+	},
+	"Transform" : {
+		"ActiveWorkplaneDefaultOrigin" : "0"
+	},
+	"ToolpathTransform" : {
+		"AlwaysCreateWorkplane" : "0"
+	}
+}

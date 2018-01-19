@@ -1,0 +1,20 @@
+type list
+version 0
+MachineTool\
+NCProgram\
+Toolpath\
+Toolpath\1
+Tool\
+Tool\4
+Boundary\
+Pattern\
+Featureset\
+Workplane\
+Level\
+Level\Planes
+Model\
+Model\Planes
+StockModel\
+Group\
+Macro\
+MachineTool\
