@@ -262,3 +262,4 @@ ModelManifest.xml
 .fake/
 /DocumentationGenerator/Help/Working
 /Delcam.ProductInterface.PowerMILL.Test/Delcam.ProductInterface.PowerMILL.Test.csproj.DotSettings
+/Delcam.ProductInterface.PowerMILL.Test/Files/PMfiles/PM2013_Projects/SimpleProject1/plugin_data/RobotInterface/RobotInterface.PriProj

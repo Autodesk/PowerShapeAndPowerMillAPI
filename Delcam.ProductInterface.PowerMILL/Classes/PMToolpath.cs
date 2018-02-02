@@ -725,6 +725,96 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             get { return double.Parse(GetParameter(Resources.EndPointPositionZ)); }
         }
+
+        /// <summary>
+        /// The leads and links rapid time
+        /// </summary>
+        public TimeSpan LeadsAndLinksRapidTime
+        {
+            get
+            {
+                var rapid = double.Parse(GetParameter("Statistics.LeadsandLinks.Times.Rapid"));
+                return TimeSpan.FromMinutes(rapid);
+            }
+        }
+
+        /// <summary>
+        /// The leads and links plunge time
+        /// </summary>
+        public TimeSpan LeadsAndLinksPlungeTime
+        {
+            get
+            {
+                var plunge = double.Parse(GetParameter("Statistics.LeadsandLinks.Times.Plunge"));
+                return TimeSpan.FromMinutes(plunge);
+            }
+        }
+
+        /// <summary>
+        /// The leads and links ramp time
+        /// </summary>
+        public TimeSpan LeadsAndLinksRampTime
+        {
+            get
+            {
+                var ramp = double.Parse(GetParameter("Statistics.LeadsandLinks.Times.Ramp"));
+                return TimeSpan.FromMinutes(ramp);
+            }
+        }
+
+        /// <summary>
+        /// The leads and links others time
+        /// </summary>
+        public TimeSpan LeadsAndLinksOthersTime
+        {
+            get
+            {
+                var others = double.Parse(GetParameter("Statistics.LeadsandLinks.Times.Others"));
+                return TimeSpan.FromMinutes(others);
+            }
+        }
+
+        /// <summary>
+        /// The linear cutting move time
+        /// </summary>
+        public TimeSpan LinearCuttingTime
+        {
+            get
+            {
+                var linear = double.Parse(GetParameter("Statistics.CuttingMoves.Times.Linear"));
+                return TimeSpan.FromMinutes(linear);
+            }
+        }
+
+        /// <summary>
+        /// The arc cutting move time
+        /// </summary>
+        public TimeSpan ArcCuttingTime
+        {
+            get
+            {
+                var arcs = double.Parse(GetParameter("Statistics.CuttingMoves.Times.Arcs"));
+                return TimeSpan.FromMinutes(arcs);
+            }
+        }
+
+        /// <summary>
+        /// The total cutting time for the toolpath including leads and links
+        /// </summary>
+        public TimeSpan TotalCuttingTime
+        {
+            get
+            {
+                var rapid = double.Parse(GetParameter("Statistics.LeadsandLinks.Times.Rapid"));
+                var plunge = double.Parse(GetParameter("Statistics.LeadsandLinks.Times.Plunge"));
+                var ramp = double.Parse(GetParameter("Statistics.LeadsandLinks.Times.Ramp"));
+                var others = double.Parse(GetParameter("Statistics.LeadsandLinks.Times.Others"));
+                var linear = double.Parse(GetParameter("Statistics.CuttingMoves.Times.Linear"));
+                var arcs = double.Parse(GetParameter("Statistics.CuttingMoves.Times.Arcs"));
+                var total = rapid + plunge + ramp + others + linear + arcs;
+                return TimeSpan.FromMinutes(total);
+            }
+        }
     
     #endregion
 

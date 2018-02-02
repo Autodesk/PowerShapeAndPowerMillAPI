@@ -548,5 +548,49 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             _powerMill.LoadProject(TestFiles.SimplePmProject1);
             Assert.That(_powerMill.ActiveProject.Toolpaths[0].NumberOfLinks, Is.EqualTo(100));
         }
+
+        [Test]
+        public void LeadAndLinkRapidTimeTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            Assert.That(_powerMill.ActiveProject.Toolpaths[0].LeadsAndLinksRapidTime, Is.EqualTo(TimeSpan.Parse("00:09:23.7610000")));
+        }
+        [Test]
+        public void TotalCuttingPlungeTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            Assert.That(_powerMill.ActiveProject.Toolpaths[0].LeadsAndLinksPlungeTime, Is.EqualTo(TimeSpan.Parse("00:07:04.2000000")));
+        }
+        [Test]
+        public void LeadsAndLinksRampTimeTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            Assert.That(_powerMill.ActiveProject.Toolpaths[0].LeadsAndLinksRampTime, Is.EqualTo(TimeSpan.Parse("00:00:00")));
+        }
+        [Test]
+        public void LeadsAndLinksOthersTimeTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            Assert.That(_powerMill.ActiveProject.Toolpaths[0].LeadsAndLinksOthersTime, Is.EqualTo(TimeSpan.Parse("00:00:00")));
+        }
+        [Test]
+        public void LinearCuttingTimeTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            Assert.That(_powerMill.ActiveProject.Toolpaths[0].LinearCuttingTime, Is.EqualTo(TimeSpan.Parse("00:23:27.9290000")));
+        }
+        [Test]
+        public void ArcCuttingTimeTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            Assert.That(_powerMill.ActiveProject.Toolpaths[0].ArcCuttingTime, Is.EqualTo(TimeSpan.Parse("00:00:00")));
+        }
+
+        [Test]
+        public void TotalCuttingTimeTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            Assert.That(_powerMill.ActiveProject.Toolpaths[0].TotalCuttingTime, Is.EqualTo(TimeSpan.Parse("00:39:55.8900000")));
+        }
     }
 }
