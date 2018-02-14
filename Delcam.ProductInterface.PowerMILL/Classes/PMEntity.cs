@@ -309,7 +309,18 @@ namespace Autodesk.ProductInterface.PowerMILL
         public virtual PMEntity Duplicate()
         {
             PMEntity copiedItem = null;
-            PowerMill.DoCommand("Copy " + Identifier + " '" + _name + "'");
+
+            // Use Clipboard copy for a model to avoid empty model
+            if (Identifier == "MODEL")
+            {
+                PowerMill.DoCommand("EDIT MODEL '" + _name + "' CLIPBOARD COPY");
+                PowerMill.DoCommand("CREATE MODEL CLIPBOARD");
+            }
+            else
+            {
+                PowerMill.DoCommand("Copy " + Identifier + " '" + _name + "'");
+            }
+
             List<PMEntity> createdItems = PowerMill.ActiveProject.CreatedItems();
             if (createdItems.Count == 1)
             {
