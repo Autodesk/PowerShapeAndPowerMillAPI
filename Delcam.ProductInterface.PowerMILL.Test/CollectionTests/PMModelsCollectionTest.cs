@@ -131,6 +131,13 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
             _powerMill.ActiveProject.Models.Remove(model);
         }
 
+        [Test]
+        public void DuplicateModelTest()
+        {
+            var model = _powerMill.ActiveProject.Models.CreateModel(TestFiles.SingleMesh);
+            var duplicatedModel = model.Duplicate();
+            Assert.IsNotNull(duplicatedModel.BoundingBox);
+        }
         #endregion
     }
 }
