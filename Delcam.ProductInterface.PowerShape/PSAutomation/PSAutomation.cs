@@ -1857,11 +1857,20 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
         /// <summary>
         /// Sets whether the Curve apply smoothing to end points is enabled.
+        /// Create a dummy curve and delete it to refresh Powershape button state.
         /// </summary>
         public bool IsCurveApplySmoothness
         {
             set
             {
+                var dummyCurve = ActiveModel.Curves.CreateCurveThroughPoints(CurveTypes.Bezier,
+                                                                             new[]
+                                                                             {
+                                                                                 new Geometry.Point(0, 0, 0),
+                                                                                 new Geometry.Point(1, 1, 1),
+                                                                                 new Geometry.Point(2, 2, 2)
+                                                                             });
+
                 if (value)
                 {
                     DoCommand("SMOOTH ON");
@@ -1870,6 +1879,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 {
                     DoCommand("SMOOTH OFF");
                 }
+
+                dummyCurve.Delete();
             }
         }
 

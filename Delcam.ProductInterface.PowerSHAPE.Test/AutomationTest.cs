@@ -13,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Autodesk.FileSystem;
+using Autodesk.Geometry;
 using Autodesk.ProductInterface.PowerSHAPE;
 using Autodesk.ProductInterface.PowerSHAPETest.HelperClassesTests;
 using NUnit.Framework;
@@ -482,6 +483,26 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             _powerSHAPE.ArcFitPicFiles = false;
             var curve = (PSCompCurve) _powerSHAPE.ActiveModel.Import(new File(TestFiles.PIC_FILE_FOR_ARCFIT))[0];
             Assert.That(curve.ToSpline().Count, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void CurveApplySmoothnessTest()
+        {
+            _powerSHAPE.IsCurveApplySmoothness = false;
+            var curveWithoutSmoothness = _powerSHAPE.ActiveModel.Lines.CreateLine(new Point(0, 0, 0), new Point(50, 0, 0));
+            var compCurveWithoutSmoothness = _powerSHAPE.ActiveModel.CompCurves.CreateCompCurveFromWireframe(new PSWireframe[] {curveWithoutSmoothness});
+            compCurveWithoutSmoothness.RepointCurveBetweenPoints(0,1,5);
+            compCurveWithoutSmoothness.EditPositionOfPointRelative(2,new Vector(0,10,0));
+            var entryMagnitudeWithoutSmoothness = compCurveWithoutSmoothness.GetEntryMagnitudeOfPoint(2);
+
+            _powerSHAPE.IsCurveApplySmoothness = true;
+            var curveWithSmoothness = _powerSHAPE.ActiveModel.Lines.CreateLine(new Point(0, 0, 0), new Point(50, 0, 0));
+            var compCurveWithSmoothness = _powerSHAPE.ActiveModel.CompCurves.CreateCompCurveFromWireframe(new PSWireframe[] { curveWithSmoothness });
+            compCurveWithSmoothness.RepointCurveBetweenPoints(0, 1, 5);
+            compCurveWithSmoothness.EditPositionOfPointRelative(2, new Vector(0, 10, 0));
+            var entryMagnitudeWithSmoothness = compCurveWithSmoothness.GetEntryMagnitudeOfPoint(2);
+
+            Assert.That(entryMagnitudeWithSmoothness, Is.Not.EqualTo(entryMagnitudeWithoutSmoothness));
         }
 
         #endregion
