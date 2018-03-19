@@ -149,8 +149,8 @@ namespace Autodesk.Geometry.GeometricEntities
         /// <returns>The normal vector at the specified point. </returns>
         public Vector GetNormal(int lateralIndex, int longitudinalIndex)
         {
-            var lateralVector = _laterals[lateralIndex][longitudinalIndex].DirectionAfter;
-            var longitudinalVector = _longitudinals[longitudinalIndex][lateralIndex].DirectionAfter;
+            var lateralVector = _laterals[lateralIndex][longitudinalIndex].DirectionAfter != new Vector(0,0,0) ? _laterals[lateralIndex][longitudinalIndex].DirectionAfter : _laterals[lateralIndex][longitudinalIndex].DirectionBefore;
+            var longitudinalVector = _longitudinals[longitudinalIndex][lateralIndex].DirectionAfter != new Vector(0,0,0) ? _longitudinals[longitudinalIndex][lateralIndex].DirectionAfter : _longitudinals[longitudinalIndex][lateralIndex].DirectionBefore;
             var normal = Vector.CrossProduct(longitudinalVector, lateralVector);
             normal.Normalize();
 
