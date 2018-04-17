@@ -239,7 +239,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                     if (maximumVersion == null)
                     {
                         var _with1 = version;
-                        if (_powerSHAPE.Version != string.Format("{0:#}{1:0}{2:00}", _with1.Major, _with1.Minor, _with1.Build))
+                        if (_powerSHAPE.Version.ToString() != string.Format("{0:#}{1:0}{2:00}", _with1.Major, _with1.Minor, _with1.Build))
                         {
                             throw new Exception("Incorrect version found");
                         }
@@ -378,30 +378,27 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
         private void TweakVersionNumbersTo2018(ref Version tweakedVersion, ref Version tweakedMaximumVersion)
         {
-            if (tweakedVersion != null && tweakedVersion.Major >= 18 && tweakedVersion.Major < 2018)
+            if (IsItAVersionEqualOrAbove2018(tweakedVersion))
             {
-                tweakedVersion = new Version(2000 + tweakedVersion.Major, 0, 0);
-            }
-            if (tweakedMaximumVersion != null && tweakedMaximumVersion.Major >= 18 && tweakedMaximumVersion.Major < 2018)
-            {
-                tweakedMaximumVersion = new Version(2000 + tweakedMaximumVersion.Major, 0, 0);
+                // For PS 2018 we can only have one version installed, so any 2018 is ok
+                tweakedVersion = new Version(2018, 0, 0);
+                tweakedMaximumVersion = new Version(2018, 99, 99);
             }
         }
 
         private void TweakVersionNumbersFrom2018(ref Version tweakedVersion, ref Version tweakedMaximumVersion)
         {
-            if (tweakedVersion != null && tweakedVersion.Major >= 2018)
+            if (IsItAVersionEqualOrAbove2018(tweakedVersion))
             {
-                tweakedVersion = new Version(tweakedVersion.Major - 2000,
-                                             tweakedVersion.Minor == 0 ? 1 : tweakedVersion.Minor,
-                                             tweakedVersion.Build);
+                // For PS 2018 we can only have one version installed, so any 2018 is ok
+                tweakedVersion = new Version(18, 0, 0);
+                tweakedMaximumVersion = new Version(18, 99, 99);
             }
-            if (tweakedMaximumVersion != null && tweakedMaximumVersion.Major >= 2018)
-            {
-                tweakedMaximumVersion = new Version(tweakedMaximumVersion.Major - 2000,
-                                                    tweakedMaximumVersion.Minor == 0 ? 1 : tweakedMaximumVersion.Minor,
-                                                    tweakedMaximumVersion.Build);
-            }
+        }
+
+        private bool IsItAVersionEqualOrAbove2018(Version version)
+        {
+            return version != null && (version.Major >= 18 || version.Major >= 2018);
         }
 
         /// <summary>
