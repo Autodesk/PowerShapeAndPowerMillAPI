@@ -394,7 +394,7 @@ namespace Autodesk.ProductInterface
                             {
                                 // We are being picky about a version number so check that it is the correct version
                                 var _with2 = version;
-                                if (application.Version !=
+                                if (application.Version.ToString() !=
                                     string.Format("{0:#}{1:0}{2:00}", _with2.Major, _with2.Minor, _with2.Build))
                                 {
                                     process.Kill();

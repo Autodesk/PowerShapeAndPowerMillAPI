@@ -37,7 +37,7 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
 
         public AutomationTest()
         {
-            // Initialise PowerSHAPE
+            //Initialise PowerSHAPE
             if (_powerSHAPE == null)
             {
                 _powerSHAPE = new PSAutomation(InstanceReuse.UseExistingInstance, Modes.PShapeMode);
@@ -393,7 +393,125 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         }
 
         [Test]
-        [Ignore("")]
+        public void UseExistingInstance_WhenUsing18NotationWithoutSpecifyingMaximumVersion()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.UseExistingInstance, new Version("18.1.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(18));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+        [Test]
+        public void UseExistingInstance_WhenUsing2018NotationWithoutSpecifyingMaximumVersion()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.UseExistingInstance, new Version("2018.0.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(2018));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+        [Test]
+        public void UseExistingInstance_WhenUsing2018NotationWithoutSpecifyingMaximumVersion_And_Build()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.UseExistingInstance, new Version("2018.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(2018));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+        [Test]
+        public void CreateSingleInstance_WhenUsing2018NotationWithoutSpecifyingMaximumVersion_And_Build()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.CreateSingleInstance, new Version("2018.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(18));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+        [Test]
+        public void CreateSingleInstance_WhenUsing2018NotationWithoutSpecifyingMaximumVersion()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.CreateSingleInstance, new Version("2018.0.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(18));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+        [Test]
+        public void CreateSingleInstance_WhenUsing18NotationWithoutSpecifyingMaximumVersion()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.CreateSingleInstance, new Version("18.1.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(18));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+
+        [Test]
+        public void CreateNewInstance_WhenUsing18NotationWithoutSpecifyingMaximumVersion()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.CreateNewInstance, new Version("18.1.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(18));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+
+        [Test]
+        public void CreateNewInstance_WhenUsing2018NotationWithoutSpecifyingMaximumVersion_And_Build()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.CreateNewInstance, new Version("2018.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(18));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+        [Test]
+        public void CreateNewInstance_WhenUsing2018NotationWithoutSpecifyingMaximumVersion()
+        {
+            var versionUnderTest = _powerSHAPE.Version;
+            var twenty18 = new PSAutomation(InstanceReuse.CreateNewInstance, new Version("2018.0.0"));
+            Assert.That(twenty18.Version.Major, Is.EqualTo(18));
+            twenty18.Quit();
+
+            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            testVersion.Quit();
+        }
+
+        [Test]
         public void MultipleVersionsTest_WhenUsing2018Notation()
         {
             var versionUnderTest = _powerSHAPE.Version;
@@ -410,7 +528,6 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         }
 
         [Test]
-        [Ignore("")]
         public void MultipleVersionsTest_WhenUsing18Notation()
         {
             var versionUnderTest = _powerSHAPE.Version;
