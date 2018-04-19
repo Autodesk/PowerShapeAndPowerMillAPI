@@ -272,7 +272,6 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         /// A test for CreateNewInstance
         /// </summary>
         [Test]
-        [Ignore("")]
         public void CreateNewInstanceTest2()
         {
             var versionUnderTest = _powerSHAPE.Version;
@@ -311,7 +310,6 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         /// A test for CreateSingleInstance
         /// </summary>
         [Test]
-        [Ignore("")]
         public void CreateSingleInstanceTest()
         {
             // What version are we currently testing?
@@ -400,9 +398,12 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             Assert.That(twenty18.Version.Major, Is.EqualTo(18));
             twenty18.Quit();
 
-            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
-            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
-            testVersion.Quit();
+            //// Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            //var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            //testVersion.Quit();
+            // Start the version under test again so that things carry on as before and avoid using the previous code
+            // because it was causing the next test failure
+            _powerSHAPE = new PSAutomation(InstanceReuse.CreateSingleInstance, versionUnderTest);
         }
 
         [Test]
@@ -413,9 +414,14 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             Assert.That(twenty18.Version.Major, Is.EqualTo(2018));
             twenty18.Quit();
 
-            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
-            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
-            testVersion.Quit();
+            //// Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            //var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            //testVersion.Quit();
+
+            // Start the version under test again so that things carry on as before and avoid using the previous code
+            // because it was causing the next test failure
+            _powerSHAPE = new PSAutomation(InstanceReuse.CreateSingleInstance, versionUnderTest);
+
         }
 
         [Test]
@@ -426,9 +432,13 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             Assert.That(twenty18.Version.Major, Is.EqualTo(2018));
             twenty18.Quit();
 
-            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
-            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
-            testVersion.Quit();
+            //// Ensure that the version under test is properly registered as the current version so other tests carry on ok...
+            //var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            //testVersion.Quit();
+
+            // Start the version under test again so that things carry on as before and avoid using the previous code
+            // because it was causing the next test failure
+            _powerSHAPE = new PSAutomation(InstanceReuse.CreateSingleInstance, versionUnderTest);
         }
 
         [Test]
@@ -440,8 +450,12 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             twenty18.Quit();
 
             // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
-            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
-            testVersion.Quit();
+            //var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            //testVersion.Quit();
+
+            // Start the version under test again so that things carry on as before and avoid using the previous code
+            // because it was causing the next test failure
+            _powerSHAPE = new PSAutomation(InstanceReuse.CreateSingleInstance, versionUnderTest);
         }
 
         [Test]
@@ -453,21 +467,26 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             twenty18.Quit();
 
             // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
-            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
-            testVersion.Quit();
+            //var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
+            //testVersion.Quit();
+
+            // Start the version under test again so that things carry on as before and avoid using the previous code
+            // because it was causing the next test failure
+            _powerSHAPE = new PSAutomation(InstanceReuse.CreateSingleInstance, versionUnderTest);
         }
 
         [Test]
         public void CreateSingleInstance_WhenUsing18NotationWithoutSpecifyingMaximumVersion()
         {
             var versionUnderTest = _powerSHAPE.Version;
+
+            // Create new instance
             var twenty18 = new PSAutomation(InstanceReuse.CreateSingleInstance, new Version("18.1.0"));
             Assert.That(twenty18.Version.Major, Is.EqualTo(18));
             twenty18.Quit();
 
-            // Ensure that the version under test is properly registered as the current version so other tests carry on ok...
-            var testVersion = new PSAutomation(InstanceReuse.CreateNewInstance, versionUnderTest);
-            testVersion.Quit();
+            // Start the version under test again so that things carry on as before
+            _powerSHAPE = new PSAutomation(InstanceReuse.CreateSingleInstance, versionUnderTest);
         }
 
 
