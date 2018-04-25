@@ -42,6 +42,21 @@ namespace Autodesk.ProductInterface.PowerMILLTest
 
         #endregion
 
+        [Test]
+        public void Forum()
+        {
+            //List<PMAutomation> PMAutoLists = new List<PMAutomation>();
+            //    List<object> lisCom = PMAutomation.GetListOfPmComObjects();
+            //    foreach (var item in lisCom)
+            //    {
+            //        PMAutoLists.Add(new PMAutomation(item));
+            //    }
+
+            //    var firstAuto = (PMAutomation)PMAutoLists.First<PMAutomation>();
+            var firstAuto = new PMAutomation(InstanceReuse.UseExistingInstance);
+                firstAuto.IsVisible = false;
+    }
+
         [Ignore("Fail on Build Server")]
         [Test]
         public void Quit()
@@ -147,6 +162,17 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             var processesIds = Process.GetProcesses().Select(p => p.Id);
             Assert.That(processesIds, Has.None.EqualTo(previousProcessId));
             Assert.That(processesIds, Contains.Item(singleInstance.ProcessId));
+        }
+
+        [Ignore("Fail on Build Server")]
+        [Test]
+        public void ProcessIdTest()
+        {
+            var singleInstance = new PMAutomation(InstanceReuse.CreateNewInstance);
+            var newProcessId = singleInstance.ProcessId;
+            singleInstance.Quit();
+
+            Assert.That(newProcessId, Is.Not.EqualTo(_powerMill.ProcessId));
         }
 
         [Ignore("Fail on Build Server")]
