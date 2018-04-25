@@ -151,6 +151,17 @@ namespace Autodesk.ProductInterface.PowerMILLTest
 
         [Ignore("Fail on Build Server")]
         [Test]
+        public void ProcessIdTest()
+        {
+            var singleInstance = new PMAutomation(InstanceReuse.CreateNewInstance);
+            var newProcessId = singleInstance.ProcessId;
+            singleInstance.Quit();
+
+            Assert.That(newProcessId, Is.Not.EqualTo(_powerMill.ProcessId));
+        }
+
+        [Ignore("Fail on Build Server")]
+        [Test]
         public void MultipleVersionsTest_WhenUsing2018Notation()
         {
             var versionUnderTest = _powerMill.Version;

@@ -168,7 +168,7 @@ namespace Autodesk.ProductInterface
         /// <summary>
         /// Process id of the application instance.
         /// </summary>
-        public int ProcessId
+        public virtual int ProcessId
         {
             get
             {

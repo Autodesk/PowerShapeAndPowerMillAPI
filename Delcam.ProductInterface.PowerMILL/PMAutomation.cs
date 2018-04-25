@@ -390,6 +390,11 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         /// <summary>
+        /// Process id of the application instance.
+        /// </summary>
+        public override int ProcessId => _powerMILL.Debug.ProcessId;
+
+        /// <summary>
         /// Gets and sets the collection of SubstitutionTokens that will be used by executing macros.
         /// </summary>
         public PMSubstitutionTokensCollection SubstitutionTokens
