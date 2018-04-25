@@ -42,21 +42,6 @@ namespace Autodesk.ProductInterface.PowerMILLTest
 
         #endregion
 
-        [Test]
-        public void Forum()
-        {
-            //List<PMAutomation> PMAutoLists = new List<PMAutomation>();
-            //    List<object> lisCom = PMAutomation.GetListOfPmComObjects();
-            //    foreach (var item in lisCom)
-            //    {
-            //        PMAutoLists.Add(new PMAutomation(item));
-            //    }
-
-            //    var firstAuto = (PMAutomation)PMAutoLists.First<PMAutomation>();
-            var firstAuto = new PMAutomation(InstanceReuse.UseExistingInstance);
-                firstAuto.IsVisible = false;
-    }
-
         [Ignore("Fail on Build Server")]
         [Test]
         public void Quit()
