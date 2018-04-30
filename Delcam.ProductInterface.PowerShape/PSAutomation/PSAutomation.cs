@@ -1556,6 +1556,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         }
 
         /// <summary>
+        /// Process id of the application instance.
+        /// </summary>
+        public override int ProcessId => int.Parse(DoCommandEx("app.pid").ToString());
+
+        /// <summary>
         /// The class Id to use based on the Application Mode selected through the constructor.
         /// </summary>
         /// <returns></returns>
