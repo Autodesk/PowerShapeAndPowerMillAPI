@@ -590,6 +590,17 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             testVersion.Quit();
         }
 
+        [Ignore("Fail on Build Server")]
+        [Test]
+        public void ProcessIdTest()
+        {
+            var singleInstance = new PSAutomation(InstanceReuse.CreateNewInstance);
+            var newProcessId = singleInstance.ProcessId;
+            singleInstance.Quit();
+
+            Assert.That(newProcessId, Is.Not.EqualTo(_powerSHAPE.ProcessId));
+        }
+
         /// <summary>
         /// Test for DrawingTolerance
         /// </summary>

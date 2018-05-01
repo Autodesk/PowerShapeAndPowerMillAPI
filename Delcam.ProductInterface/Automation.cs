@@ -168,23 +168,7 @@ namespace Autodesk.ProductInterface
         /// <summary>
         /// Process id of the application instance.
         /// </summary>
-        public virtual int ProcessId
-        {
-            get
-            {
-                if (_processId == 0)
-                {
-                    // Need to determine process id
-                    foreach (Process process in Process.GetProcessesByName(ExecutableName))
-                    {
-                        _processId = process.Id;
-                        break; // TODO: might not be correct. Was : Exit For
-                    }
-                }
-
-                return _processId;
-            }
-        }
+        public abstract int ProcessId { get; }
 
         /// <summary>
         /// Handle of the main window of this application instance.
