@@ -841,7 +841,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             _powerSHAPE.DoCommand("EDIT LIMIT POINT");
             _powerSHAPE.DoCommand("PROFILING " + straightCurved);
-            _powerSHAPE.DoCommand("EDGE " + edge);
+            _powerSHAPE.DoCommand("EDGE " + (int)edge);
             _powerSHAPE.DoCommand("DISTANCE " + length);
             _powerSHAPE.DoCommand("EDIT LIMIT POINT OFF");
         }
