@@ -770,11 +770,10 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             var surface = (PSSurface) ImportAndGetEntity(TestFiles.SINGLE_SURFACE);
 
             // Carry out operation
-            surface.Extend(ExtensionEdges.ONE, 2F, ExtensionType.Linear);
-            Assert.IsFalse(surface.Longitudinals[0].Length == 52, "Incorrect edge extended");
-            Assert.IsTrue(surface.Laterals[0].Length == 52, "Surface not extended");
-            Assert.IsTrue(surface.Longitudinals[0].StartPoint.X - surface.Longitudinals[1].StartPoint.X == 2,
-                          "Incorrect edge extended");
+            surface.Extend(ExtensionEdges.THREE, 2F, ExtensionType.Linear);
+            Assert.That(surface.Longitudinals[0].Length, Is.Not.EqualTo((MM)52), "Incorrect edge extended");
+            Assert.That(surface.Laterals[0].Length, Is.EqualTo((MM)52), "Surface not extended");
+            Assert.That(surface.BoundingBox.MinX, Is.EqualTo((MM)(-91)), "Incorrect edge extended");
         }
 
         /// <summary>
