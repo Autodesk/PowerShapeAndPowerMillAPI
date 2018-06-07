@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Autodesk.Geometry;
 
 namespace Autodesk.ProductInterface.PowerSHAPE
@@ -584,7 +585,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 file.Delete();
                 AddToSelection(true);
-                _powerSHAPE.DoCommand("FILE EXPORT '" + file.Path + "'");
+                _powerSHAPE.ActiveModel.Export(file, ExportItemsOptions.Selected, ExportWorkplanes.Active);
             }
             else
             {
@@ -602,7 +603,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 file.Delete();
                 AddToSelection(true);
-                _powerSHAPE.DoCommand("FILE EXPORT '" + file.Path + "'");
+                _powerSHAPE.ActiveModel.Export(file, ExportItemsOptions.Selected, ExportWorkplanes.Active);
             }
             else
             {
