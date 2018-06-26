@@ -17,6 +17,8 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -239,7 +241,9 @@
     <None Include="Files\Workplane.dgk" />
     <None Include="Files\Workplane1.dgk" />
     <None Include="Files\Workplane2.dgk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Test References\Delcam.AutomationInterface.accessor" />
   </ItemGroup>
   <ItemGroup>

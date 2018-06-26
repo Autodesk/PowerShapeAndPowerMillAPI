@@ -584,7 +584,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 file.Delete();
                 AddToSelection(true);
-                _powerSHAPE.DoCommand("FILE EXPORT '" + file.Path + "'");
+                _powerSHAPE.ActiveModel.Export(file, ExportItemsOptions.Selected, ExportWorkplanes.Active);
             }
             else
             {
@@ -602,7 +602,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 file.Delete();
                 AddToSelection(true);
-                _powerSHAPE.DoCommand("FILE EXPORT '" + file.Path + "'");
+                _powerSHAPE.ActiveModel.Export(file, ExportItemsOptions.Selected, ExportWorkplanes.Active);
             }
             else
             {

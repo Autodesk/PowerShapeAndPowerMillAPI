@@ -8,6 +8,7 @@
 // **********************************************************************
 
 using System;
+using System.Linq;
 using Autodesk.FileSystem;
 using Autodesk.Geometry;
 using Autodesk.ProductInterface.PowerSHAPE;
@@ -247,6 +248,54 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             Assert.Inconclusive();
 
             //Assert.AreEqual(0.0, entity1.DistanceTo(entity2));
+        }
+
+        /// <summary>
+        /// When writing mesh to a DMT check that mesh is kept the same: the same bounding box,
+        /// the same number of triangles
+        /// </summary>
+        [Test]
+        public void WhenWriteToDMTFile_CheckMeshDidNotChange()
+        {
+            // Import mesh
+            _powerSHAPE.Reset();
+            var importedMesh =_powerSHAPE.ActiveModel.Meshes.CreateMeshFromFile(new File(TestFiles.SINGLE_MESH));
+            var numberOfTriangles = importedMesh.NumberOfTriangles;
+            var boundingBox = importedMesh.BoundingBox;
+
+            // Export mesh 
+            var output = File.CreateTemporaryFile("dmt");
+            importedMesh.WriteToDMTFile(output);
+
+            // Check mesh didn't change
+            var exportedMesh = _powerSHAPE.ActiveModel.Meshes.CreateMeshFromFile(output);
+            output.Delete();
+            Assert.AreEqual(numberOfTriangles, exportedMesh.NumberOfTriangles);
+            Assert.AreEqual(boundingBox, exportedMesh.BoundingBox);
+        }
+
+        /// <summary>
+        /// When writing mesh to a STL check that mesh is kept the same: the same bounding box,
+        /// the same number of triangles
+        /// </summary>
+        [Test]
+        public void WhenWriteToSTLFile_CheckMeshDidNotChange()
+        {
+            // Import mesh
+            _powerSHAPE.Reset();
+            var importedMesh = _powerSHAPE.ActiveModel.Meshes.CreateMeshFromFile(new File(TestFiles.SINGLE_MESH));
+            var numberOfTriangles = importedMesh.NumberOfTriangles;
+            var boundingBox = importedMesh.BoundingBox;
+
+            // Export mesh 
+            var output = File.CreateTemporaryFile("stl");
+            importedMesh.WriteToSTLFile(output);
+
+            // Check mesh didn't change
+            var exportedMesh = _powerSHAPE.ActiveModel.Meshes.CreateMeshFromFile(output);
+            output.Delete();
+            Assert.AreEqual(numberOfTriangles, exportedMesh.NumberOfTriangles);
+            Assert.AreEqual(boundingBox, exportedMesh.BoundingBox);
         }
 
         #endregion
