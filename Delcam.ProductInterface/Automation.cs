@@ -529,7 +529,7 @@ namespace Autodesk.ProductInterface
                         // Open the latest version number.  Year integer numbers are later than version numbers
                         applicationKey = companyKey.OpenSubKey(application);
                         var latestMajor = 0;
-                        for (int i = 0; i < applicationKey.SubKeyCount - 1; i++)
+                        for (int i = 0; i < applicationKey.SubKeyCount; i++)
                         {
                             string applicationKeyName = applicationKey.GetSubKeyNames()[i];
                             Version keyVersion = null;
@@ -609,7 +609,7 @@ namespace Autodesk.ProductInterface
                             // Open the latest version number.  Year integer numbers are later than version numbers
                             applicationKey = companyKey.OpenSubKey(application);
                             var latestMajor = 0;
-                            for (int i = 0; i < applicationKey.SubKeyCount - 1; i++)
+                            for (int i = 0; i < applicationKey.SubKeyCount; i++)
                             {
                                 string applicationKeyName = applicationKey.GetSubKeyNames()[i];
                                 Version keyVersion = null;
