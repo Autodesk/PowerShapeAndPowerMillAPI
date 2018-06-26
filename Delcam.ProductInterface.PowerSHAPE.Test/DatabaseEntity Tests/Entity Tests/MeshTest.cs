@@ -267,8 +267,9 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             var output = File.CreateTemporaryFile("dmt");
             importedMesh.WriteToDMTFile(output);
 
-            // Test the distance
+            // Check mesh didn't change
             var exportedMesh = _powerSHAPE.ActiveModel.Meshes.CreateMeshFromFile(output);
+            output.Delete();
             Assert.AreEqual(numberOfTriangles, exportedMesh.NumberOfTriangles);
             Assert.AreEqual(boundingBox, exportedMesh.BoundingBox);
         }
@@ -290,8 +291,9 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             var output = File.CreateTemporaryFile("stl");
             importedMesh.WriteToSTLFile(output);
 
-            // Test the distance
+            // Check mesh didn't change
             var exportedMesh = _powerSHAPE.ActiveModel.Meshes.CreateMeshFromFile(output);
+            output.Delete();
             Assert.AreEqual(numberOfTriangles, exportedMesh.NumberOfTriangles);
             Assert.AreEqual(boundingBox, exportedMesh.BoundingBox);
         }

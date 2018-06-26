@@ -9,7 +9,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Autodesk.Geometry;
 
 namespace Autodesk.ProductInterface.PowerSHAPE
