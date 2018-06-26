@@ -264,26 +264,25 @@ namespace Autodesk.ProductInterface
 
             // Creates a new instance of the Application and connects to it
             ProcessStartInfo processStart = new ProcessStartInfo();
-            var _with1 = processStart;
-            _with1.FileName = executable;
+            processStart.FileName = executable;
             if (runRegServer)
             {
-                _with1.Verb = "runas";
-                _with1.Arguments = "-regserver";
+                processStart.Verb = "runas";
+                processStart.Arguments = "-regserver";
             }
             else
             {
-                _with1.Arguments = arguments;
+                processStart.Arguments = arguments;
             }
             if (showWindow)
             {
-                _with1.WindowStyle = ProcessWindowStyle.Normal;
+                processStart.WindowStyle = ProcessWindowStyle.Normal;
             }
             else
             {
-                _with1.WindowStyle = ProcessWindowStyle.Hidden;
+                processStart.WindowStyle = ProcessWindowStyle.Hidden;
             }
-            _with1.CreateNoWindow = true;
+            processStart.CreateNoWindow = true;
 
             var process = Process.Start(processStart);
 
@@ -462,16 +461,17 @@ namespace Autodesk.ProductInterface
         {
             try
             {
-                RegistryKey delcamKey = null;
+                RegistryKey companyKey = null;
                 RegistryKey applicationKey = null;
+                RegistryKey versionKey = null;
 
                 // Get the Delcam Key
-                delcamKey = Registry.LocalMachine.OpenSubKey("Software\\" + companyName);
+                companyKey = Registry.LocalMachine.OpenSubKey("Software\\" + companyName);
 
                 // This key should contain the 64 bit versions on a 64 bit machine and the 32 bit versions on a
                 // 32 bit machine
                 // Firstly does it exist?
-                if (delcamKey != null)
+                if (companyKey != null)
                 {
                     // Get the Applications Key
                     if (version != null)
@@ -490,17 +490,17 @@ namespace Autodesk.ProductInterface
                             }
 
                             // Open the specific key - handle the case where some keys have extra data after the version number
-                            foreach (string keyName in delcamKey.OpenSubKey(application).GetSubKeyNames())
+                            foreach (string keyName in companyKey.OpenSubKey(application).GetSubKeyNames())
                             {
                                 if (keyName.StartsWith(expectedVersionNumber))
                                 {
-                                    applicationKey = delcamKey.OpenSubKey(application).OpenSubKey(keyName);
+                                    versionKey = companyKey.OpenSubKey(application).OpenSubKey(keyName);
                                 }
                             }
                         }
                         else
                         {
-                            foreach (string keyName in delcamKey.OpenSubKey(application).GetSubKeyNames())
+                            foreach (string keyName in companyKey.OpenSubKey(application).GetSubKeyNames())
                             {
                                 // PowerShape and PowerMill 2017 had an empty key for 2017 but no path key
                                 if (keyName == "2017")
@@ -518,7 +518,7 @@ namespace Autodesk.ProductInterface
                                 {
                                     if ((keyVersion >= version) & (keyVersion <= maximumVersion))
                                     {
-                                        applicationKey = delcamKey.OpenSubKey(application).OpenSubKey(keyName);
+                                        versionKey = companyKey.OpenSubKey(application).OpenSubKey(keyName);
                                     }
                                 }
                             }
@@ -526,38 +526,53 @@ namespace Autodesk.ProductInterface
                     }
                     else
                     {
-                        // Open the last key (the latest version) that is a version number
-                        applicationKey = delcamKey.OpenSubKey(application);
-                        for (int i = applicationKey.SubKeyCount - 1; i >= 0; i += -1)
+                        // Open the latest version number.  Year integer numbers are later than version numbers
+                        applicationKey = companyKey.OpenSubKey(application);
+                        var latestMajor = 0;
+                        for (int i = 0; i < applicationKey.SubKeyCount; i++)
                         {
                             string applicationKeyName = applicationKey.GetSubKeyNames()[i];
                             Version keyVersion = null;
                             if (Version.TryParse(applicationKeyName, out keyVersion))
                             {
-                                applicationKey = applicationKey.OpenSubKey(applicationKeyName);
-                                break; // TODO: might not be correct. Was : Exit For
+                                if (keyVersion.Major > latestMajor)
+                                {
+                                    versionKey = applicationKey.OpenSubKey(applicationKeyName);
+                                    latestMajor = keyVersion.Major;
+                                }
+                            }
+                            // If the key is a year then test it as an integer.
+                            int intVersion = 0;
+                            if (int.TryParse(applicationKeyName, out intVersion))
+                            {
+                                // Ignore 2017 as this didn't contain the application path
+                                if (intVersion != 2017 && intVersion > latestMajor)
+                                {
+                                    versionKey = applicationKey.OpenSubKey(applicationKeyName);
+                                    latestMajor = intVersion;
+                                }
                             }
                         }
                     }
                 }
 
-                if (applicationKey == null)
+                if (versionKey == null)
                 {
                     // Try the alternate version
                     if (Environment.Is64BitProcess)
                     {
                         // Get the 32 bit key
-                        delcamKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
+                        companyKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                .OpenSubKey("Software\\" + companyName);
                     }
                     else
                     {
                         // Get the 64 bit key
-                        delcamKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
+                        companyKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                .OpenSubKey("Software\\" + companyName);
                     }
 
-                    if (delcamKey != null)
+                    if (companyKey != null)
                     {
                         // Get the Applications Key
                         if (version != null)
@@ -565,26 +580,25 @@ namespace Autodesk.ProductInterface
                             if (maximumVersion == null)
                             {
                                 // Open the specific key - handle the case where some keys have extra data after the version number
-                                var _with4 = version;
-                                foreach (string keyName in delcamKey.OpenSubKey(application).GetSubKeyNames())
+                                foreach (string keyName in companyKey.OpenSubKey(application).GetSubKeyNames())
                                 {
                                     if (keyName.StartsWith(
-                                        string.Format("{0:#}.{1:0}.{2:00}", _with4.Major, _with4.Minor, _with4.Build)))
+                                        string.Format("{0:#}.{1:0}.{2:00}", version.Major, version.Minor, version.Build)))
                                     {
-                                        applicationKey = delcamKey.OpenSubKey(application).OpenSubKey(keyName);
+                                        versionKey = companyKey.OpenSubKey(application).OpenSubKey(keyName);
                                     }
                                 }
                             }
                             else
                             {
-                                foreach (string keyName in delcamKey.OpenSubKey(application).GetSubKeyNames())
+                                foreach (string keyName in companyKey.OpenSubKey(application).GetSubKeyNames())
                                 {
                                     Version keyVersion = null;
                                     if (Version.TryParse(keyName, out keyVersion))
                                     {
                                         if ((keyVersion >= version) & (keyVersion <= maximumVersion))
                                         {
-                                            applicationKey = delcamKey.OpenSubKey(application).OpenSubKey(keyName);
+                                            versionKey = companyKey.OpenSubKey(application).OpenSubKey(keyName);
                                         }
                                     }
                                 }
@@ -592,16 +606,31 @@ namespace Autodesk.ProductInterface
                         }
                         else
                         {
-                            // Open the last key (the latest version) that is a version number
-                            applicationKey = delcamKey.OpenSubKey(application);
-                            for (int i = applicationKey.SubKeyCount - 1; i >= 0; i += -1)
+                            // Open the latest version number.  Year integer numbers are later than version numbers
+                            applicationKey = companyKey.OpenSubKey(application);
+                            var latestMajor = 0;
+                            for (int i = 0; i < applicationKey.SubKeyCount; i++)
                             {
                                 string applicationKeyName = applicationKey.GetSubKeyNames()[i];
                                 Version keyVersion = null;
                                 if (Version.TryParse(applicationKeyName, out keyVersion))
                                 {
-                                    applicationKey = applicationKey.OpenSubKey(applicationKeyName);
-                                    break; // TODO: might not be correct. Was : Exit For
+                                    if (keyVersion.Major > latestMajor)
+                                    {
+                                        versionKey = applicationKey.OpenSubKey(applicationKeyName);
+                                        latestMajor = keyVersion.Major;
+                                    }
+                                }
+                                // If the key is a year then test it as an integer.
+                                int intVersion = 0;
+                                if (int.TryParse(applicationKeyName, out intVersion))
+                                {
+                                    // Ignore 2017 as this didn't contain the application path
+                                    if (intVersion != 2017 && intVersion > latestMajor)
+                                    {
+                                        versionKey = applicationKey.OpenSubKey(applicationKeyName);
+                                        latestMajor = intVersion;
+                                    }
                                 }
                             }
                         }
@@ -609,7 +638,7 @@ namespace Autodesk.ProductInterface
                 }
 
                 // Now return the executable's path
-                return applicationKey.GetValue("ExecutablePath").ToString();
+                return versionKey.GetValue("ExecutablePath").ToString();
             }
             catch (Exception ex)
             {
