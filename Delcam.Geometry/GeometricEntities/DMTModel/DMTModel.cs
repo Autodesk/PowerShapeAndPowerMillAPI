@@ -992,10 +992,12 @@ namespace Autodesk.Geometry
         /// <param name="pointsToProject">List of points to project.</param>
         /// <param name="projectionVectors">List of projection vectors.</param>
         /// <returns>The list of projection points.</returns>
-        public Dictionary<int, Point> ProjectPointsParallel(List<Point> pointsToProject, List<Vector> projectionVectors)
+        public List<Point> ProjectPointsParallel(List<Point> pointsToProject, List<Vector> projectionVectors)
         {
-            var projectedPoints = new Dictionary<int, Point>();
-            var lockProjectedPoints = new object();
+
+            var unorderProjectedPoints = new Dictionary<int, Point>();
+            var orderedProjectedPoints = new List<Point>();
+            var lockUnorderProjectedPoints = new object();
             Parallel.For(0, pointsToProject.Count, i =>
             {
                 // We don't use to work with more than one triangle block
@@ -1041,15 +1043,20 @@ namespace Autodesk.Geometry
                     }
                 }
 
-                lock (lockProjectedPoints)
+                lock (lockUnorderProjectedPoints)
                 {
-                    projectedPoints.Add(i, nearestPoint);
+                    unorderProjectedPoints.Add(i, nearestPoint);
                 }
 
 
             });
 
-            return projectedPoints;
+            for (int i = 0; i < pointsToProject.Count; i++)
+            {
+                orderedProjectedPoints.Add(unorderProjectedPoints[i]);
+            }
+
+            return orderedProjectedPoints;
         }
 
         /// <summary>
