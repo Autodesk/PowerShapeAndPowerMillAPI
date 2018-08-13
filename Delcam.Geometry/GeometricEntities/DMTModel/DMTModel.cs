@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Autodesk.Geometry
 {
@@ -924,6 +925,131 @@ namespace Autodesk.Geometry
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Project n point onto the model along the n projectionVector.
+        /// </summary>
+        /// <param name="pointsToProject">List of points to project.</param>
+        /// <param name="projectionVectors">List of projection vectors.</param>
+        /// <returns>The list of projection points.</returns>
+        public List<Point> ProjectPoints(List<Point> pointsToProject, List<Vector> projectionVectors)
+        {
+            var projectedPoints = new List<Point>();
+            for (int i = 0; i < pointsToProject.Count; i++)
+            {
+                // We don't use to work with more than one triangle block
+                double nearestDistance = Double.MaxValue;
+                Point nearestPoint = null;
+                DMTTriangleBlock triangleBlock;
+                try
+                {
+                    triangleBlock = _blocks.Single();
+                }
+                catch (Exception)
+                {
+                    throw new ArgumentException("ProjectPoints is expecting one triangle block in the DMTModel.");
+                }
+ 
+                for (int j = 0; j < TotalNoOfTriangles; j++)
+                {
+                    // Get triangle vertices
+                    var triangleVertex1 = triangleBlock.GetVertex1(j);
+                    var triangleVertex2 = triangleBlock.GetVertex2(j);
+                    var triangleVertex3 = triangleBlock.GetVertex3(j);
+
+                    var triangleNormal = Autodesk.Geometry.DMTTriangle.GetNormal(triangleVertex1,
+                        triangleVertex2,
+                        triangleVertex3);
+
+                    // Project point into the plane defined by the triangle
+                    var projectedPoint = pointsToProject[i].ProjectToPlane(projectionVectors[i], triangleVertex1, triangleNormal);
+
+                    // Check projected point is inside the triangle
+                    if (projectedPoint != null &&
+                        projectedPoint.IsInsideTriangle(triangleVertex1, triangleVertex2, triangleVertex3))
+                    {
+                        // Get the closest projection because it may be more than one
+                        double distance = pointsToProject[i].DistanceToPoint(projectedPoint);
+                        if (distance < nearestDistance)
+                        {
+                            // It is the nearest so far
+                            nearestDistance = distance;
+                            nearestPoint = projectedPoint;
+                        }
+                    }
+                }
+
+                projectedPoints.Add(nearestPoint); 
+            }
+
+            return projectedPoints;
+        }
+
+        /// <summary>
+        /// Project n point onto the model along the n projectionVector.
+        /// </summary>
+        /// <param name="pointsToProject">List of points to project.</param>
+        /// <param name="projectionVectors">List of projection vectors.</param>
+        /// <returns>The list of projection points.</returns>
+        public Dictionary<int, Point> ProjectPointsParallel(List<Point> pointsToProject, List<Vector> projectionVectors)
+        {
+            var projectedPoints = new Dictionary<int, Point>();
+            var lockProjectedPoints = new object();
+            Parallel.For(0, pointsToProject.Count, i =>
+            {
+                // We don't use to work with more than one triangle block
+                double nearestDistance = Double.MaxValue;
+                Point nearestPoint = null;
+                DMTTriangleBlock triangleBlock;
+                try
+                {
+                    triangleBlock = _blocks.Single();
+                }
+                catch (Exception)
+                {
+                    throw new ArgumentException("ProjectPoints is expecting one triangle block in the DMTModel.");
+                }
+
+                for (int j = 0; j < TotalNoOfTriangles; j++)
+                {
+                    // Get triangle vertices
+                    var triangleVertex1 = triangleBlock.GetVertex1(j);
+                    var triangleVertex2 = triangleBlock.GetVertex2(j);
+                    var triangleVertex3 = triangleBlock.GetVertex3(j);
+
+                    var triangleNormal = Autodesk.Geometry.DMTTriangle.GetNormal(triangleVertex1,
+                        triangleVertex2,
+                        triangleVertex3);
+
+                    // Project point into the plane defined by the triangle
+                    var projectedPoint = pointsToProject[i]
+                        .ProjectToPlane(projectionVectors[i], triangleVertex1, triangleNormal);
+
+                    // Check projected point is inside the triangle
+                    if (projectedPoint != null &&
+                        projectedPoint.IsInsideTriangle(triangleVertex1, triangleVertex2, triangleVertex3))
+                    {
+                        // Get the closest projection because it may be more than one
+                        double distance = pointsToProject[i].DistanceToPoint(projectedPoint);
+                        if (distance < nearestDistance)
+                        {
+                            // It is the nearest so far
+                            nearestDistance = distance;
+                            nearestPoint = projectedPoint;
+                        }
+                    }
+                }
+
+                lock (lockProjectedPoints)
+                {
+                    projectedPoints.Add(i, nearestPoint);
+                }
+
+
+            });
+
+            return projectedPoints;
         }
 
         /// <summary>

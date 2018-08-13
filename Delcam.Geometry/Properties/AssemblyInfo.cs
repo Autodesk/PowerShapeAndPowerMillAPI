@@ -41,8 +41,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.3.0.0")]
-[assembly: AssemblyFileVersion("0.3.0.0")]
+[assembly: AssemblyVersion("1.1.15.0")]
+[assembly: AssemblyFileVersion("1.1.15.0")]
 
 [assembly: InternalsVisibleTo("Autodesk.Toolkits.DMTToolkit,PublicKey=" +
                               "00240000048000009400000006020000002400005253413100040000010001003799e75d818026" +

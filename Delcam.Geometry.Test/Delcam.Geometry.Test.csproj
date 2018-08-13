@@ -87,6 +87,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Angles\Degree.Test.cs" />
@@ -122,6 +123,8 @@
     <Compile Include="Lengths\MM.Test.cs" />
     <Compile Include="GeometricEntities\Line.Test.cs" />
     <None Include="packages.config" />
+    <None Include="TestFiles\Block_1m_50mmX.dmt" />
+    <None Include="TestFiles\CurvedSurface.dgk" />
     <None Include="TestFiles\DMTTestFiles\BaseLeftFootTopSurface.dmt" />
     <None Include="TestFiles\DMTTestFiles\GetTrianglesByMeshMain.dmt" />
     <None Include="TestFiles\DMTTestFiles\MeshForBoundaryCount.dmt" />
@@ -135,6 +138,13 @@
     <None Include="TestFiles\MSRTestFiles\TwoStarts.msr" />
     <None Include="TestFiles\PicForOpenPolylineTest.pic" />
     <None Include="TestFiles\PicForPolylineTest.pic" />
+    <None Include="TestFiles\Plane_1m_0mmX.dgk" />
+    <None Include="TestFiles\Plane_1m_0mmZ.dgk" />
+    <None Include="TestFiles\Plane_1m_0mmZ.dmt" />
+    <None Include="TestFiles\Plane_1m_150mmZ.dmt" />
+    <None Include="TestFiles\Plane_1m_50mmX.dmt" />
+    <None Include="TestFiles\Plane_1m_50mmX_32768Triangles.dmt" />
+    <None Include="TestFiles\Plane_1m_50mmZ.dmt" />
     <None Include="TestFiles\SplineTestFiles\FreedByPowershape.pic" />
     <None Include="TestFiles\SplineTestFiles\RawPoints.pic" />
     <None Include="TestFiles\STLTestFiles\BoundariesTestSquare.stl" />
@@ -177,6 +187,7 @@
     <Content Include="TestFiles\MSRTestFiles\No Data.msr" />
     <Content Include="TestFiles\MSRTestFiles\Odd Characters.msr" />
     <Content Include="TestFiles\PicFromCompCurve.pic" />
+    <Content Include="TestFiles\Plane_1m_0mmX_PointsToProject.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Delcam.Geometry\Delcam.Geometry.csproj">
