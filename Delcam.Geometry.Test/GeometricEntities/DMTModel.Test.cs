@@ -92,15 +92,24 @@ namespace Autodesk.Geometry.Test.GeometricEntities
             projectionVectors.Add(new Vector(1, 0, 0));
 
             var projectedPoints = model.ProjectPoints(pointsToProject, projectionVectors);
-            Assert.AreEqual(new Point(50, -500, -500), projectedPoints[0]);
-            Assert.AreEqual(new Point(50, -500, 0), projectedPoints[1]);
-            Assert.AreEqual(new Point(50, -500, 500), projectedPoints[2]);
-            Assert.AreEqual(new Point(50, 0, -500), projectedPoints[3]);
-            Assert.AreEqual(new Point(50, 0, 0), projectedPoints[4]);
-            Assert.AreEqual(new Point(50, 0, 500), projectedPoints[5]);
-            Assert.AreEqual(new Point(50, 500, -500), projectedPoints[6]);
-            Assert.AreEqual(new Point(50, 500, 0), projectedPoints[7]);
-            Assert.AreEqual(new Point(50, 500, 500), projectedPoints[8]);
+
+            // Check expected projected points
+            Assert.AreEqual(new Point(50, -500, -500), projectedPoints[0].Item1);
+            Assert.AreEqual(new Point(50, -500, 0), projectedPoints[1].Item1);
+            Assert.AreEqual(new Point(50, -500, 500), projectedPoints[2].Item1);
+            Assert.AreEqual(new Point(50, 0, -500), projectedPoints[3].Item1);
+            Assert.AreEqual(new Point(50, 0, 0), projectedPoints[4].Item1);
+            Assert.AreEqual(new Point(50, 0, 500), projectedPoints[5].Item1);
+            Assert.AreEqual(new Point(50, 500, -500), projectedPoints[6].Item1);
+            Assert.AreEqual(new Point(50, 500, 0), projectedPoints[7].Item1);
+            Assert.AreEqual(new Point(50, 500, 500), projectedPoints[8].Item1);
+
+            // Check expected projection direction
+            foreach (var projectedPoint in projectedPoints)
+            {
+                // Measured above nominal along the projection axis
+                Assert.IsTrue(projectedPoint.Item2 > 0);
+            }
         }
 
         [Test]
@@ -150,31 +159,37 @@ namespace Autodesk.Geometry.Test.GeometricEntities
 
             var projectedPoints = model.ProjectPoints(pointsToProject, projectionVectors);
 
-            Assert.AreEqual(new Point(-456.318173, 415.756336, 0), projectedPoints[0]);
-            Assert.AreEqual(new Point(-81.6446586716978, 408.421105, 0), projectedPoints[1]);
-            Assert.AreEqual(new Point(348.38657232155, 396.455541, 0), projectedPoints[2]);
-            Assert.AreEqual(new Point(477.832501, 344.086974, 0), projectedPoints[3]);
-            Assert.AreEqual(new Point(-456.318173, 349.08967, 0), projectedPoints[4]);
-            Assert.AreEqual(new Point(-81.6446586716978, 341.754438, 0), projectedPoints[5]);
-            Assert.AreEqual(new Point(348.38657232155, 329.788874, 0), projectedPoints[6]);
-            Assert.AreEqual(new Point(477.832501, 277.420307, 0), projectedPoints[7]);
-            Assert.AreEqual(new Point(-456.318173, 282.423003, 0), projectedPoints[8]);
-            Assert.AreEqual(new Point(-81.6446586716978, 275.087772, 0), projectedPoints[9]);
-            Assert.AreEqual(new Point(348.38657232155, 263.122207, 0), projectedPoints[10]);
-            Assert.AreEqual(new Point(477.832501, 210.75364, 0), projectedPoints[11]);
-            Assert.AreEqual(new Point(-456.318173, 215.756336, 0), projectedPoints[12]);
-            Assert.AreEqual(new Point(-81.6446586716978, 208.421105, 0), projectedPoints[13]);
-            Assert.AreEqual(new Point(348.38657232155, 196.455541, 0), projectedPoints[14]);
-            Assert.AreEqual(new Point(477.832501, 144.086974, 0), projectedPoints[15]);
+            Assert.AreEqual(new Point(-456.318173, 415.756336, 0), projectedPoints[0].Item1);
+            Assert.AreEqual(new Point(-81.6446586716978, 408.421105, 0), projectedPoints[1].Item1);
+            Assert.AreEqual(new Point(348.38657232155, 396.455541, 0), projectedPoints[2].Item1);
+            Assert.AreEqual(new Point(477.832501, 344.086974, 0), projectedPoints[3].Item1);
+            Assert.AreEqual(new Point(-456.318173, 349.08967, 0), projectedPoints[4].Item1);
+            Assert.AreEqual(new Point(-81.6446586716978, 341.754438, 0), projectedPoints[5].Item1);
+            Assert.AreEqual(new Point(348.38657232155, 329.788874, 0), projectedPoints[6].Item1);
+            Assert.AreEqual(new Point(477.832501, 277.420307, 0), projectedPoints[7].Item1);
+            Assert.AreEqual(new Point(-456.318173, 282.423003, 0), projectedPoints[8].Item1);
+            Assert.AreEqual(new Point(-81.6446586716978, 275.087772, 0), projectedPoints[9].Item1);
+            Assert.AreEqual(new Point(348.38657232155, 263.122207, 0), projectedPoints[10].Item1);
+            Assert.AreEqual(new Point(477.832501, 210.75364, 0), projectedPoints[11].Item1);
+            Assert.AreEqual(new Point(-456.318173, 215.756336, 0), projectedPoints[12].Item1);
+            Assert.AreEqual(new Point(-81.6446586716978, 208.421105, 0), projectedPoints[13].Item1);
+            Assert.AreEqual(new Point(348.38657232155, 196.455541, 0), projectedPoints[14].Item1);
+            Assert.AreEqual(new Point(477.832501, 144.086974, 0), projectedPoints[15].Item1);
 
 
             var parallelProjectedPoints = model.ProjectPointsParallel(pointsToProject, projectionVectors);
             //Ensure that parallel processing gives the same result
             for (int i = 0; i < pointsToProject.Count; i++)
             {
-                Assert.AreEqual(parallelProjectedPoints[i].X, projectedPoints[i].X);
-                Assert.AreEqual(parallelProjectedPoints[i].Y, projectedPoints[i].Y);
-                Assert.AreEqual(parallelProjectedPoints[i].Z, projectedPoints[i].Z);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.X, projectedPoints[i].Item1.X);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.Y, projectedPoints[i].Item1.Y);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.Z, projectedPoints[i].Item1.Z);
+            }
+
+            //Assert direction, because measured is below nominal it should be negative
+            for (int i = 0; i < pointsToProject.Count; i++)
+            {
+                Assert.IsTrue(parallelProjectedPoints[i].Item2 < 0 );
             }
         }
 
@@ -225,31 +240,31 @@ namespace Autodesk.Geometry.Test.GeometricEntities
 
             var projectedPoints = model.ProjectPoints(pointsToProject, projectionVectors);
 
-            Assert.AreEqual(new Point(-456.318173, 415.756336, 150), projectedPoints[0]);
-            Assert.AreEqual(new Point(-27.8071066642861, 408.421105, 150), projectedPoints[1]);
-            Assert.AreEqual(new Point(263.222580021518, 396.455541, 150), projectedPoints[2]);
-            Assert.AreEqual(new Point(477.832501, 344.086974, 150), projectedPoints[3]);
-            Assert.AreEqual(new Point(-456.318173, 349.08967, 150), projectedPoints[4]);
-            Assert.AreEqual(new Point(-27.8071066642861, 341.754438, 150), projectedPoints[5]);
-            Assert.AreEqual(new Point(263.222580021518, 329.788874, 150), projectedPoints[6]);
-            Assert.AreEqual(new Point(477.832501, 277.420307, 150), projectedPoints[7]);
-            Assert.AreEqual(new Point(-456.318173, 282.423003 ,150), projectedPoints[8]);
-            Assert.AreEqual(new Point(-27.8071066642861, 275.087772, 150), projectedPoints[9]);
-            Assert.AreEqual(new Point(263.222580021518, 263.122207, 150), projectedPoints[10]);
-            Assert.AreEqual(new Point(477.832501, 210.75364, 150), projectedPoints[11]);
-            Assert.AreEqual(new Point(-456.318173, 215.756336, 150), projectedPoints[12]);
-            Assert.AreEqual(new Point(-27.8071066642861, 208.421105, 150), projectedPoints[13]);
-            Assert.AreEqual(new Point(263.222580021518, 196.455541, 150), projectedPoints[14]);
-            Assert.AreEqual(new Point(477.832501, 144.086974, 150), projectedPoints[15]);
+            Assert.AreEqual(new Point(-456.318173, 415.756336, 150), projectedPoints[0].Item1);
+            Assert.AreEqual(new Point(-27.8071066642861, 408.421105, 150), projectedPoints[1].Item1);
+            Assert.AreEqual(new Point(263.222580021518, 396.455541, 150), projectedPoints[2].Item1);
+            Assert.AreEqual(new Point(477.832501, 344.086974, 150), projectedPoints[3].Item1);
+            Assert.AreEqual(new Point(-456.318173, 349.08967, 150), projectedPoints[4].Item1);
+            Assert.AreEqual(new Point(-27.8071066642861, 341.754438, 150), projectedPoints[5].Item1);
+            Assert.AreEqual(new Point(263.222580021518, 329.788874, 150), projectedPoints[6].Item1);
+            Assert.AreEqual(new Point(477.832501, 277.420307, 150), projectedPoints[7].Item1);
+            Assert.AreEqual(new Point(-456.318173, 282.423003 ,150), projectedPoints[8].Item1);
+            Assert.AreEqual(new Point(-27.8071066642861, 275.087772, 150), projectedPoints[9].Item1);
+            Assert.AreEqual(new Point(263.222580021518, 263.122207, 150), projectedPoints[10].Item1);
+            Assert.AreEqual(new Point(477.832501, 210.75364, 150), projectedPoints[11].Item1);
+            Assert.AreEqual(new Point(-456.318173, 215.756336, 150), projectedPoints[12].Item1);
+            Assert.AreEqual(new Point(-27.8071066642861, 208.421105, 150), projectedPoints[13].Item1);
+            Assert.AreEqual(new Point(263.222580021518, 196.455541, 150), projectedPoints[14].Item1);
+            Assert.AreEqual(new Point(477.832501, 144.086974, 150), projectedPoints[15].Item1);
 
 
             var parallelProjectedPoints = model.ProjectPointsParallel(pointsToProject, projectionVectors);
             //Ensure that parallel processing gives the same result
             for (int i = 0; i < pointsToProject.Count; i++)
             {
-                Assert.AreEqual(parallelProjectedPoints[i].X, projectedPoints[i].X);
-                Assert.AreEqual(parallelProjectedPoints[i].Y, projectedPoints[i].Y);
-                Assert.AreEqual(parallelProjectedPoints[i].Z, projectedPoints[i].Z);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.X, projectedPoints[i].Item1.X);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.Y, projectedPoints[i].Item1.Y);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.Z, projectedPoints[i].Item1.Z);
             }
         }
 
@@ -263,19 +278,19 @@ namespace Autodesk.Geometry.Test.GeometricEntities
             pointsToProject.Add(new Point(-456.318173, 415.756336, 10));
             pointsToProject.Add(new Point(-56.69534, 408.421105, 69.512778));
             pointsToProject.Add(new Point(300.14362, 396.455541, 84.970686));
-            pointsToProject.Add(new Point(477.832501, 344.086974, 10));
+            pointsToProject.Add(new Point(477.832501, 344.086974, 10)); 
             pointsToProject.Add(new Point(-456.318173, 349.08967, 10));
-            pointsToProject.Add(new Point(-56.69534, 341.754438, 69.512778));
-            pointsToProject.Add(new Point(300.14362, 329.788874, 84.970686));
-            pointsToProject.Add(new Point(477.832501, 277.420307, 10));
-            pointsToProject.Add(new Point(-456.318173, 282.423003, 10));
-            pointsToProject.Add(new Point(-56.69534, 275.087772, 69.512778));
-            pointsToProject.Add(new Point(300.14362, 263.122207, 84.970686));
-            pointsToProject.Add(new Point(477.832501, 210.75364, 10));
+            pointsToProject.Add(new Point(-56.69534, 341.754438, 69.512778)); 
+            pointsToProject.Add(new Point(300.14362, 329.788874, 84.970686)); 
+            pointsToProject.Add(new Point(477.832501, 277.420307, 10)); 
+            pointsToProject.Add(new Point(-456.318173, 282.423003, 10)); 
+            pointsToProject.Add(new Point(-56.69534, 275.087772, 69.512778)); 
+            pointsToProject.Add(new Point(300.14362, 263.122207, 84.970686)); 
+            pointsToProject.Add(new Point(477.832501, 210.75364, 10)); 
             pointsToProject.Add(new Point(-456.318173, 215.756336, 10));
-            pointsToProject.Add(new Point(-56.69534, 208.421105, 69.512778));
-            pointsToProject.Add(new Point(300.14362, 196.455541, 84.970686));
-            pointsToProject.Add(new Point(477.832501, 144.086974, 10));
+            pointsToProject.Add(new Point(-56.69534, 208.421105, 69.512778)); 
+            pointsToProject.Add(new Point(300.14362, 196.455541, 84.970686)); 
+            pointsToProject.Add(new Point(477.832501, 144.086974, 10)); 
 
 
             var projectionVectors = new List<Vector>();
@@ -300,32 +315,51 @@ namespace Autodesk.Geometry.Test.GeometricEntities
 
             var projectedPoints = model.ProjectPoints(pointsToProject, projectionVectors);
 
-            Assert.AreEqual(new Point(-456.318173, 415.756336, 50), projectedPoints[0]);
-            Assert.AreEqual(new Point(-63.6988080025605, 408.421105, 50), projectedPoints[1]);
-            Assert.AreEqual(new Point(319.998574888206, 396.455541, 50), projectedPoints[2]);
-            Assert.AreEqual(new Point(477.832501, 344.086974, 50), projectedPoints[3]);
-            Assert.AreEqual(new Point(-456.318173, 349.08967, 50), projectedPoints[4]);
-            Assert.AreEqual(new Point(-63.6988080025605, 341.754438, 50), projectedPoints[5]);
-            Assert.AreEqual(new Point(319.998574888206, 329.788874, 50), projectedPoints[6]);
-            Assert.AreEqual(new Point(477.832501, 277.420307, 50), projectedPoints[7]);
-            Assert.AreEqual(new Point(-456.318173, 282.423003, 50), projectedPoints[8]);
-            Assert.AreEqual(new Point(-63.6988080025605, 275.087772, 50), projectedPoints[9]);
-            Assert.AreEqual(new Point(319.998574888206, 263.122207, 50), projectedPoints[10]);
-            Assert.AreEqual(new Point(477.832501, 210.75364, 50), projectedPoints[11]);
-            Assert.AreEqual(new Point(-456.318173, 215.756336, 50), projectedPoints[12]);
-            Assert.AreEqual(new Point(-63.6988080025605, 208.421105, 50), projectedPoints[13]);
-            Assert.AreEqual(new Point(319.998574888206, 196.455541, 50), projectedPoints[14]);
-            Assert.AreEqual(new Point(477.832501, 144.086974, 50), projectedPoints[15]);
+            Assert.AreEqual(new Point(-456.318173, 415.756336, 50), projectedPoints[0].Item1);
+            Assert.AreEqual(new Point(-63.6988080025605, 408.421105, 50), projectedPoints[1].Item1);
+            Assert.AreEqual(new Point(319.998574888206, 396.455541, 50), projectedPoints[2].Item1);
+            Assert.AreEqual(new Point(477.832501, 344.086974, 50), projectedPoints[3].Item1);
+            Assert.AreEqual(new Point(-456.318173, 349.08967, 50), projectedPoints[4].Item1);
+            Assert.AreEqual(new Point(-63.6988080025605, 341.754438, 50), projectedPoints[5].Item1);
+            Assert.AreEqual(new Point(319.998574888206, 329.788874, 50), projectedPoints[6].Item1);
+            Assert.AreEqual(new Point(477.832501, 277.420307, 50), projectedPoints[7].Item1);
+            Assert.AreEqual(new Point(-456.318173, 282.423003, 50), projectedPoints[8].Item1);
+            Assert.AreEqual(new Point(-63.6988080025605, 275.087772, 50), projectedPoints[9].Item1);
+            Assert.AreEqual(new Point(319.998574888206, 263.122207, 50), projectedPoints[10].Item1);
+            Assert.AreEqual(new Point(477.832501, 210.75364, 50), projectedPoints[11].Item1);
+            Assert.AreEqual(new Point(-456.318173, 215.756336, 50), projectedPoints[12].Item1);
+            Assert.AreEqual(new Point(-63.6988080025605, 208.421105, 50), projectedPoints[13].Item1);
+            Assert.AreEqual(new Point(319.998574888206, 196.455541, 50), projectedPoints[14].Item1);
+            Assert.AreEqual(new Point(477.832501, 144.086974, 50), projectedPoints[15].Item1);
 
 
             var parallelProjectedPoints = model.ProjectPointsParallel(pointsToProject, projectionVectors);
+
             //Ensure that parallel processing gives the same result
             for (int i = 0; i < pointsToProject.Count; i++)
             {
-                Assert.AreEqual(parallelProjectedPoints[i].X, projectedPoints[i].X);
-                Assert.AreEqual(parallelProjectedPoints[i].Y, projectedPoints[i].Y);
-                Assert.AreEqual(parallelProjectedPoints[i].Z, projectedPoints[i].Z);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.X, projectedPoints[i].Item1.X);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.Y, projectedPoints[i].Item1.Y);
+                Assert.AreEqual(parallelProjectedPoints[i].Item1.Z, projectedPoints[i].Item1.Z);
             }
+
+            //Ensure that direction of the projection
+            Assert.AreEqual(1, parallelProjectedPoints[0].Item2);
+            Assert.AreEqual(-1, parallelProjectedPoints[1].Item2);
+            Assert.AreEqual(-1, parallelProjectedPoints[2].Item2);
+            Assert.AreEqual(1, parallelProjectedPoints[3].Item2);
+            Assert.AreEqual(1, parallelProjectedPoints[4].Item2);
+            Assert.AreEqual(-1, parallelProjectedPoints[5].Item2);
+            Assert.AreEqual(-1, parallelProjectedPoints[6].Item2);
+            Assert.AreEqual(1, parallelProjectedPoints[7].Item2);
+            Assert.AreEqual(1, parallelProjectedPoints[8].Item2);
+            Assert.AreEqual(-1, parallelProjectedPoints[9].Item2);
+            Assert.AreEqual(-1, parallelProjectedPoints[10].Item2);
+            Assert.AreEqual(1, parallelProjectedPoints[11].Item2);
+            Assert.AreEqual(1, parallelProjectedPoints[12].Item2);
+            Assert.AreEqual(-1, parallelProjectedPoints[13].Item2);
+            Assert.AreEqual(-1, parallelProjectedPoints[14].Item2);
+            Assert.AreEqual(1, parallelProjectedPoints[15].Item2);
         }
 
 
@@ -363,9 +397,9 @@ namespace Autodesk.Geometry.Test.GeometricEntities
 
             for (int i=0; i< pointsToProject.Count; i++)
             {
-                Assert.AreEqual(pointsToProject[i].X + 50, indicesAndProjectedPoints[i].X);
-                Assert.AreEqual(pointsToProject[i].Y, indicesAndProjectedPoints[i].Y);
-                Assert.AreEqual(pointsToProject[i].Z, indicesAndProjectedPoints[i].Z);
+                Assert.AreEqual(pointsToProject[i].X + 50, indicesAndProjectedPoints[i].Item1.X);
+                Assert.AreEqual(pointsToProject[i].Y, indicesAndProjectedPoints[i].Item1.Y);
+                Assert.AreEqual(pointsToProject[i].Z, indicesAndProjectedPoints[i].Item1.Z);
             }
 
             Assert.AreEqual(pointsToProject.Count, indicesAndProjectedPoints.Count);
@@ -399,16 +433,49 @@ namespace Autodesk.Geometry.Test.GeometricEntities
             projectionVectors.Add(new Vector(1, 0, 0));
 
             var projectedPoints = model.ProjectPoints(pointsToProject, projectionVectors);
-            Assert.AreEqual(new Point(50, -500, -500), projectedPoints[0]);
-            Assert.AreEqual(new Point(50, -500, 0), projectedPoints[1]);
-            Assert.AreEqual(new Point(50, -500, 500), projectedPoints[2]);
-            Assert.AreEqual(new Point(50, 0, -500), projectedPoints[3]);
-            Assert.AreEqual(new Point(50, 0, 0), projectedPoints[4]);
-            Assert.AreEqual(new Point(50, 0, 500), projectedPoints[5]);
-            Assert.AreEqual(new Point(50, 500, -500), projectedPoints[6]);
-            Assert.AreEqual(new Point(50, 500, 0), projectedPoints[7]);
-            Assert.AreEqual(new Point(50, 500, 500), projectedPoints[8]);
+            Assert.AreEqual(new Point(50, -500, -500), projectedPoints[0].Item1);
+            Assert.AreEqual(new Point(50, -500, 0), projectedPoints[1].Item1);
+            Assert.AreEqual(new Point(50, -500, 500), projectedPoints[2].Item1);
+            Assert.AreEqual(new Point(50, 0, -500), projectedPoints[3].Item1);
+            Assert.AreEqual(new Point(50, 0, 0), projectedPoints[4].Item1);
+            Assert.AreEqual(new Point(50, 0, 500), projectedPoints[5].Item1);
+            Assert.AreEqual(new Point(50, 500, -500), projectedPoints[6].Item1);
+            Assert.AreEqual(new Point(50, 500, 0), projectedPoints[7].Item1);
+            Assert.AreEqual(new Point(50, 500, 500), projectedPoints[8].Item1);
             Assert.AreEqual(9, projectedPoints.Count);
+        }
+
+        [Test]
+        public void WhenProjectPointsAlongProjectionVectors_GivenDataThatWillCreateNullProjections_ThenCheckNoExceptionIsRaised()
+        {
+            DMTModel model = DMTModelReader.ReadFile(new File(@"E:\PowerShapeAndPowerMillAPI\Delcam.Geometry.Test\TestFiles\MeasuredPlane_1_2Triangles.dmt"));
+            var pointsToProject = new List<Point>();
+            pointsToProject.Add(new Point(40.094118, -40.094118, 0));
+            pointsToProject.Add(new Point(38.964706, -38.964706, 0));
+            pointsToProject.Add(new Point(37.835294, -37.835294, 0));
+
+
+            var projectionVectors = new List<Vector>();
+            projectionVectors.Add(new Vector(0, 0, 1));
+            projectionVectors.Add(new Vector(0, 0, 1));
+            projectionVectors.Add(new Vector(0, 0, 1));
+
+
+            var projectedPoints = model.ProjectPoints(pointsToProject, projectionVectors);
+            Assert.AreEqual(null, projectedPoints[0].Item1);
+            Assert.AreEqual(null, projectedPoints[1].Item1);
+            Assert.AreEqual(null, projectedPoints[2].Item1);
+            Assert.AreEqual(0, projectedPoints[0].Item2);
+            Assert.AreEqual(0, projectedPoints[1].Item2);
+            Assert.AreEqual(0, projectedPoints[2].Item2);
+
+            projectedPoints = model.ProjectPointsParallel(pointsToProject, projectionVectors);
+            Assert.AreEqual(null, projectedPoints[0].Item1);
+            Assert.AreEqual(null, projectedPoints[1].Item1);
+            Assert.AreEqual(null, projectedPoints[2].Item1);
+            Assert.AreEqual(0, projectedPoints[0].Item2);
+            Assert.AreEqual(0, projectedPoints[1].Item2);
+            Assert.AreEqual(0, projectedPoints[2].Item2);
         }
 
         [Test]

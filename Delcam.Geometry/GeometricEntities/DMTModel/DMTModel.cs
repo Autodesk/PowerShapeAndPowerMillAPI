@@ -932,14 +932,16 @@ namespace Autodesk.Geometry
         /// </summary>
         /// <param name="pointsToProject">List of points to project.</param>
         /// <param name="projectionVectors">List of projection vectors.</param>
-        /// <returns>The list of projection points.</returns>
-        public List<Point> ProjectPoints(List<Point> pointsToProject, List<Vector> projectionVectors)
+        /// <returns>The list of projected points and the direction of the projection.
+        /// 1 if projection was along projection vector direction, -1 if it was opposite to the projection vector direction.</returns>
+        public List<Tuple<Point, double>> ProjectPoints(List<Point> pointsToProject, List<Vector> projectionVectors)
         {
-            var projectedPoints = new List<Point>();
+            var projectedPoints = new List<Tuple<Point,double>>();
             for (int i = 0; i < pointsToProject.Count; i++)
             {
                 // We don't use to work with more than one triangle block
                 double nearestDistance = Double.MaxValue;
+                double nearestSignedDistance = Double.MaxValue;
                 Point nearestPoint = null;
                 DMTTriangleBlock triangleBlock;
                 try
@@ -962,7 +964,7 @@ namespace Autodesk.Geometry
                         triangleVertex2,
                         triangleVertex3);
 
-                    // Project point into the plane defined by the triangle
+                    // Project point into the plane defined by the triangle in both directions
                     var projectedPoint = pointsToProject[i].ProjectToPlane(projectionVectors[i], triangleVertex1, triangleNormal);
 
                     // Check projected point is inside the triangle
@@ -980,7 +982,12 @@ namespace Autodesk.Geometry
                     }
                 }
 
-                projectedPoints.Add(nearestPoint); 
+                double sign = 0;
+                if (nearestPoint != null)
+                {
+                    sign = Vector.DotProduct(projectionVectors[i], new Vector(pointsToProject[i], nearestPoint)) < 0 ? -1:1;
+                }
+                projectedPoints.Add(new Tuple<Point, double>(nearestPoint, sign));
             }
 
             return projectedPoints;
@@ -991,12 +998,13 @@ namespace Autodesk.Geometry
         /// </summary>
         /// <param name="pointsToProject">List of points to project.</param>
         /// <param name="projectionVectors">List of projection vectors.</param>
-        /// <returns>The list of projection points.</returns>
-        public List<Point> ProjectPointsParallel(List<Point> pointsToProject, List<Vector> projectionVectors)
+        /// <returns>The list of projected points and the direction of the projection.
+        /// 1 if projection was along projection vector direction, -1 if it was opposite to the projection vector direction.</returns>
+        public List<Tuple<Point,double>> ProjectPointsParallel(List<Point> pointsToProject, List<Vector> projectionVectors)
         {
 
-            var unorderProjectedPoints = new Dictionary<int, Point>();
-            var orderedProjectedPoints = new List<Point>();
+            var unorderProjectedPoints = new Dictionary<int, Tuple<Point, double>>();
+            var orderedProjectedPoints = new List<Tuple<Point,double>>();
             var lockUnorderProjectedPoints = new object();
             Parallel.For(0, pointsToProject.Count, i =>
             {
@@ -1024,28 +1032,38 @@ namespace Autodesk.Geometry
                         triangleVertex2,
                         triangleVertex3);
 
-                    // Project point into the plane defined by the triangle
-                    var projectedPoint = pointsToProject[i]
-                        .ProjectToPlane(projectionVectors[i], triangleVertex1, triangleNormal);
+                    // Project point into the plane defined by the triangle in both directions
+                        var projectingVector = projectionVectors[i].Clone();
+                        var projectedPoint = pointsToProject[i].ProjectToPlane(projectingVector, triangleVertex1, triangleNormal);
 
-                    // Check projected point is inside the triangle
-                    if (projectedPoint != null &&
-                        projectedPoint.IsInsideTriangle(triangleVertex1, triangleVertex2, triangleVertex3))
-                    {
-                        // Get the closest projection because it may be more than one
-                        double distance = pointsToProject[i].DistanceToPoint(projectedPoint);
-                        if (distance < nearestDistance)
+                        // Check projected point is inside the triangle
+                        if (projectedPoint != null &&
+                            projectedPoint.IsInsideTriangle(triangleVertex1, triangleVertex2, triangleVertex3))
                         {
-                            // It is the nearest so far
-                            nearestDistance = distance;
-                            nearestPoint = projectedPoint;
+                            // Get the closest projection because it may be more than one
+                            double distance = pointsToProject[i].DistanceToPoint(projectedPoint);
+                            if (distance < nearestDistance)
+                            {
+                                // It is the nearest so far
+                                nearestDistance = distance;
+                                nearestPoint = projectedPoint;
+                            }
                         }
-                    }
                 }
 
                 lock (lockUnorderProjectedPoints)
                 {
-                    unorderProjectedPoints.Add(i, nearestPoint);
+                    if (nearestPoint != null)
+                    {
+                        double sign = Vector.DotProduct(projectionVectors[i], new Vector(pointsToProject[i], nearestPoint)) < 0 ? -1 : 1;
+                        unorderProjectedPoints.Add(i, new Tuple<Point, double>(nearestPoint, sign));
+                    }
+                    else
+                    {
+                        unorderProjectedPoints.Add(i, new Tuple<Point, double>(nearestPoint, 0));
+
+                    }
+
                 }
 
 

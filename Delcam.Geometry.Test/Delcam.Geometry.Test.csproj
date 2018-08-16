@@ -133,6 +133,7 @@
     <None Include="TestFiles\DMTTestFiles\Point Projection.dmt" />
     <None Include="TestFiles\DMTTestFiles\smallModel.dmt" />
     <None Include="TestFiles\DMTTestFiles\TwoBlocks.dmt" />
+    <None Include="TestFiles\MeasuredPlane_1_2Triangles.dmt" />
     <None Include="TestFiles\MSRTestFiles\Culture Agnostic.msr" />
     <None Include="TestFiles\MSRTestFiles\TwoEnds.msr" />
     <None Include="TestFiles\MSRTestFiles\TwoStarts.msr" />
@@ -145,6 +146,7 @@
     <None Include="TestFiles\Plane_1m_50mmX.dmt" />
     <None Include="TestFiles\Plane_1m_50mmX_32768Triangles.dmt" />
     <None Include="TestFiles\Plane_1m_50mmZ.dmt" />
+    <None Include="TestFiles\Plane_96mm_0mmZ.dgk" />
     <None Include="TestFiles\SplineTestFiles\FreedByPowershape.pic" />
     <None Include="TestFiles\SplineTestFiles\RawPoints.pic" />
     <None Include="TestFiles\STLTestFiles\BoundariesTestSquare.stl" />
