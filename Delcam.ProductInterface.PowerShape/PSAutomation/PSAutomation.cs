@@ -601,7 +601,14 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 if (value)
                 {
                     // Show GUI
-                    DoCommand("GUI MENUS ON", "GUI TOOLBARS ON", "GUI STATUSINFO ON", "GUI STATUSBAR ON");
+                    if (Version.Major >= 18)
+                    {
+                        DoCommand("GUI MENUS ON", "GUI TOOLBARS ON", "GUI STATUSINFO ON", "GUI STATUSBAR ON", "EDIT RIBBON MINIMISE_RIBBON FALSE");
+                    }
+                    else
+                    {
+                        DoCommand("GUI MENUS ON", "GUI TOOLBARS ON", "GUI STATUSINFO ON", "GUI STATUSBAR ON");
+                    }
 
                     DialogsOn();
                     FormUpdateOn();
@@ -622,8 +629,15 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 else
                 {
                     // Hide GUI
-                    DoCommand("GUI MENUS OFF", "GUI TOOLBARS OFF", "GUI STATUSINFO OFF", "GUI STATUSBAR OFF");
-
+                    if (Version.Major >= 18)
+                    {
+                        DoCommand("GUI MENUS OFF", "GUI TOOLBARS OFF", "GUI STATUSINFO OFF", "GUI STATUSBAR OFF", "EDIT RIBBON MINIMISE_RIBBON TRUE");
+                    }
+                    else
+                    {
+                        DoCommand("GUI MENUS OFF", "GUI TOOLBARS OFF", "GUI STATUSINFO OFF", "GUI STATUSBAR OFF");
+                    }
+                        
                     DialogsOff();
                     FormUpdateOff();
 
