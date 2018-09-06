@@ -82,6 +82,7 @@ namespace Autodesk.Geometry.Test.GeometricEntities
             newline = Polyline.ReadFromDUCTPictureFile(tempFile).Single();
             // Assert that the polyline read from the file is closed
             Assert.IsTrue(newline.IsClosed);
+            tempFile.Delete();
         }
 
         [Test]
