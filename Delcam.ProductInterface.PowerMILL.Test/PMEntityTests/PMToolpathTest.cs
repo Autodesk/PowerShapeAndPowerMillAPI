@@ -592,5 +592,13 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             _powerMill.LoadProject(TestFiles.SimplePmProject1);
             Assert.That(_powerMill.ActiveProject.Toolpaths[0].TotalCuttingTime, Is.EqualTo(TimeSpan.Parse("00:39:55.8900000")));
         }
+
+        [Test]
+        public void BlockBoundingBoxTest()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var boundingBoxToFind = new BoundingBox(-20, 20, -20, 20, -10, 10);
+            Assert.That(_powerMill.ActiveProject.Toolpaths[0].BlockBoundingBox, Is.EqualTo(boundingBoxToFind));
+        }
     }
 }

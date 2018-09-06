@@ -297,6 +297,34 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         /// <summary>
+        /// Gets the Block BoundingBox from PowerMill.
+        /// </summary>
+        public BoundingBox BlockBoundingBox
+        {
+            get
+            {
+                BoundingBox boundingBox = null;
+
+                var tpBlockXmin = GetParameter("toolpath.block.limits.xmin");
+                var tpBlockXmax = GetParameter("toolpath.block.limits.xmax");
+                var tpBlockYmin = GetParameter("toolpath.block.limits.ymin");
+                var tpBlockYmax = GetParameter("toolpath.block.limits.ymax");
+                var tpBlockZmin = GetParameter("toolpath.block.limits.zmin");
+                var tpBlockZmax = GetParameter("toolpath.block.limits.zmax");
+
+                if (!tpBlockXmin.Contains("#ERROR") && !tpBlockXmax.Contains("#ERROR") &&
+                    !tpBlockYmin.Contains("#ERROR") && !tpBlockYmax.Contains("#ERROR") &&
+                    !tpBlockZmin.Contains("#ERROR") && !tpBlockZmax.Contains("#ERROR"))
+                {
+                    boundingBox = new BoundingBox(Convert.ToDouble(tpBlockXmin), Convert.ToDouble(tpBlockXmax),
+                                                  Convert.ToDouble(tpBlockYmin), Convert.ToDouble(tpBlockYmax),
+                                                  Convert.ToDouble(tpBlockZmin), Convert.ToDouble(tpBlockZmax));
+                }
+                return boundingBox;
+            }
+        }
+
+        /// <summary>
         /// Gets the safety of the tool during Cutting Moves.
         /// </summary>
         public ToolpathSafety ToolCuttingMovesSafety
