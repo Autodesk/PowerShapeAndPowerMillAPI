@@ -463,12 +463,26 @@ namespace Autodesk.ProductInterface.PowerMILL
                 if (value)
                 {
                     //Show GUI
-                    DoCommand("GUI ON", "SPLITTER TABBROWSER WIDTH 240", "EXPLORER RAISE", "STATUS RAISE");
+                    if (Version.Major >= 2018)
+                    {
+                        DoCommand("GUI ON", "SPLITTER TABBROWSER WIDTH 240", "EXPLORER RAISE", "STATUS RAISE", "FORM RIBBON MAXIMISE");
+                    }
+                    else
+                    {
+                        DoCommand("GUI ON", "SPLITTER TABBROWSER WIDTH 240", "EXPLORER RAISE", "STATUS RAISE");
+                    }
                 }
                 else
                 {
                     //Hide GUI
-                    DoCommand("GUI OFF", "SPLITTER TABBROWSER WIDTH 1", "EXPLORER LOWER", "STATUS LOWER");
+                    if (Version.Major >= 2018)
+                    {
+                        DoCommand("GUI OFF", "SPLITTER TABBROWSER WIDTH 1", "EXPLORER LOWER", "STATUS LOWER", "FORM RIBBON MINIMISE");
+                    }
+                    else
+                    {
+                        DoCommand("GUI OFF", "SPLITTER TABBROWSER WIDTH 1", "EXPLORER LOWER", "STATUS LOWER");
+                    }
                 }
                 _isGUIVisible = value;
             }

@@ -226,8 +226,10 @@ Friend Class DelcamProductHost
             'Size should be different depending on whether GUI is shown or hidden
             If (_product.IsLooseEmbedded) Then
                 SetWindowPos(_applicationHandle, HWND_TOP, 0, 0, Me.ActualWidth, Me.ActualHeight, SWP_NOACTIVATE)
+            ElseIf (_application.Version.Major.ToString.Length = 4 AndAlso _application.Version.Major >= 2018) OrElse (_application.Version.Major.ToString.Length = 2 AndAlso _application.Version.Major >= 18) Then
+                SetWindowPos(_applicationHandle, HWND_TOP, -10, -60, Me.ActualWidth + 20, Me.ActualHeight + 70, SWP_NOACTIVATE)
             Else
-                SetWindowPos(_applicationHandle, HWND_TOP, - 10, - 30, Me.ActualWidth + 20, Me.ActualHeight + 40, SWP_NOACTIVATE)
+                SetWindowPos(_applicationHandle, HWND_TOP, -10, -30, Me.ActualWidth + 20, Me.ActualHeight + 40, SWP_NOACTIVATE)
             End If
         End If
     End Sub
