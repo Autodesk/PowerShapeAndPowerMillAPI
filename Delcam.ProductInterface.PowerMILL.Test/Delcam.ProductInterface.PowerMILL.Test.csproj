@@ -71,9 +71,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionTests\PMBoundariesCollectionTest.cs" />
+    <Compile Include="CollectionTests\PMFeatureGroupsCollectionTest.cs" />
     <Compile Include="CollectionTests\PMModelsCollectionTest.cs" />
     <Compile Include="CollectionTests\PMPatternsCollectionTest.cs" />
     <Compile Include="CollectionTests\PMLevelOrSetsCollectionTest.cs" />
+    <Compile Include="CollectionTests\PMSetupsCollectionTest.cs" />
     <Compile Include="CollectionTests\PMToolsCollectionTest.cs" />
     <Compile Include="CollectionTests\PMToolpathsCollectionTest.cs" />
     <None Include="Files\Macros\CreateThreeWorkplane.mac" />
@@ -107,6 +109,17 @@
     <None Include="Files\Macros\TestMacroStepEventFires.mac" />
     <None Include="Files\OptionFiles\Roeders_RXD5_RCS_DPP48.pmopt" />
     <None Include="Files\PMfiles\DataFiles\silhouette.dgk" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\active_entity.pmldat" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\desktop.ini" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\FeatureGroupsProject.pmlprj" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\plugin_data\RobotInterface\RobotInterface.PriProj" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\project_list.pmllst" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\x1f61a7b05bab446e000020ca00000000.pmlent" />
+    <None Include="Files\PMfiles\FeatureGroupsProject\x1f61a7d05bab465b0000248600000000.pmlent" />
     <None Include="Files\PMfiles\Models\f-f Bridge 1 CementGap 1.dgk" />
     <None Include="Files\PMfiles\Models\SingleMesh.dmt" />
     <None Include="Files\PMfiles\PM2013_Projects\BasicToolPath\active_entity.pmldat" />
@@ -412,11 +425,23 @@
     <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0f00035052f23a8d000021f900000000.pmlent" />
     <None Include="Files\PMfiles\PM2013_Projects\ToolProperties\x0f0f51c053732969000010e100000000.pmlent" />
     <None Include="Files\PMfiles\PTFFiles\ImportPTFTest.ptf" />
+    <None Include="Files\PMfiles\SetupsProject\active_entity.pmldat" />
+    <None Include="Files\PMfiles\SetupsProject\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\SetupsProject\desktop.ini" />
+    <None Include="Files\PMfiles\SetupsProject\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\SetupsProject\plugin_data\RobotInterface\RobotInterface.PriProj" />
+    <None Include="Files\PMfiles\SetupsProject\project_list.pmllst" />
+    <None Include="Files\PMfiles\SetupsProject\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\SetupsProject\SetupsProject.pmlprj" />
+    <None Include="Files\PMfiles\SetupsProject\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\SetupsProject\x131933005bab4ec100001e2c00000000.pmlent" />
+    <None Include="Files\PMfiles\SetupsProject\x131933c05bab4ec300001e4b00000000.pmlent" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Files\PMfiles\DataFiles\Curves.pic" />
     <Content Include="Files\PMfiles\DataFiles\SimpleProject_bravo_WP.txt" />
+    <Content Include="Files\PMfiles\FeatureGroupsProject\pmill.ico" />
     <Content Include="Files\PMfiles\PM2013_Projects\BasicToolPath\pmill.ico" />
     <Content Include="Files\PMfiles\PM2013_Projects\BoundaryTypes\pmill.ico" />
     <Content Include="Files\PMfiles\PM2013_Projects\ExistingDentMillMasterProject\pmill.ico" />
@@ -428,6 +453,7 @@
     <Content Include="Files\PMfiles\PM2013_Projects\ToolpathStrategies\pmill.ico" />
     <Content Include="Files\PMfiles\PM2013_Projects\ToolProperties2018\pmill.ico" />
     <Content Include="Files\PMfiles\PM2013_Projects\ToolProperties\pmill.ico" />
+    <Content Include="Files\PMfiles\SetupsProject\pmill.ico" />
     <Content Include="PMEntityTests\PMToolPathTestGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PMToolPathTestGenerator.cs</LastGenOutput>

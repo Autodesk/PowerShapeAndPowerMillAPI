@@ -42,6 +42,11 @@ namespace Autodesk.ProductInterface.PowerMILL
         protected PMBoundariesCollection _boundaries;
 
         /// <summary>
+        /// The list of FeatureGroups in the Project.
+        /// </summary>
+        protected PMFeatureGroupsCollection _featureGroups;
+
+        /// <summary>
         /// The list of FeatureSets in the Project.
         /// </summary>
         protected PMFeatureSetsCollection _featureSets;
@@ -65,6 +70,11 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// The list of Patterns in the Project.
         /// </summary>
         protected PMPatternsCollection _patterns;
+
+        /// <summary>
+        /// The list of Setups in the Project.
+        /// </summary>
+        protected PMSetupsCollection _setups;
 
         /// <summary>
         /// The list of Stock Models in the Project.
@@ -178,6 +188,14 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         /// <summary>
+        /// Gets the collection of FeatureGroups currently in PowerMILL.
+        /// </summary>
+        public PMFeatureGroupsCollection FeatureGroups
+        {
+            get { return _featureGroups; }
+        }
+
+        /// <summary>
         /// Gets the collection of FeatureSets currently in PowerMILL.
         /// </summary>
         public PMFeatureSetsCollection FeatureSets
@@ -234,6 +252,14 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         /// <summary>
+        /// Gets the collection of Setups currently in PowerMILL.
+        /// </summary>
+        public PMSetupsCollection Setups
+        {
+            get { return _setups; }
+        }
+
+        /// <summary>
         /// Gets the collection of Stock Models currently in PowerMILL.
         /// </summary>
         public PMStockModelsCollection StockModels
@@ -277,12 +303,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             // Setup the collections based on what is currently in PowerMILL
             _NCPrograms = new PMNCProgramsCollection(_powerMILL);
             _boundaries = new PMBoundariesCollection(_powerMILL);
+            _featureGroups = new PMFeatureGroupsCollection(_powerMILL);
             _featureSets = new PMFeatureSetsCollection(_powerMILL);
             _groups = new PMGroupsCollection(_powerMILL);
             _levelsOrSets = new PMLevelOrSetsCollection(_powerMILL);
             _machineTools = new PMMachineToolsCollection(_powerMILL);
             _models = new PMModelsCollection(_powerMILL);
             _patterns = new PMPatternsCollection(_powerMILL);
+            _setups = new PMSetupsCollection(_powerMILL);
             _stockModels = new PMStockModelsCollection(_powerMILL);
             _toolpaths = new PMToolpathsCollection(_powerMILL);
             _tools = new PMToolsCollection(_powerMILL);
