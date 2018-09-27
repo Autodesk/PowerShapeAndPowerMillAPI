@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RobotInterfaceProject>
+  <RobotInterfaceProject>
+    <SimulationMap>
+      <Toolpaths />
+      <FixtureOffsets />
+    </SimulationMap>
+    <LastUsed>
+      <Robot Name="" />
+      <Collision State="True" />
+      <Cell OriginID="" Configuration="" />
+      <Display ToolWorkplane="True" />
+      <PRIPost2 Origin="" />
+    </LastUsed>
+  </RobotInterfaceProject>
+  <PowerMill YearVersion="2018" Version="2019.000" Codebase="2019006" Project="SetupsProject" />
+  <RobotInterface Version="2019" Codebase="11.0.15" />
+  <Computer Name="BIRPC0JY8TW" Date="26/09/2018 09:18:20 UTC" />
+</RobotInterfaceProject>

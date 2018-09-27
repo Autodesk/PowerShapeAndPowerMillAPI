@@ -91,6 +91,10 @@
     <Compile Include="Classes\Boundary\PMBoundarySilhouette.cs" />
     <Compile Include="Classes\Boundary\PMBoundaryStockModelRest.cs" />
     <Compile Include="Classes\Boundary\PMBoundaryUserDefined.cs" />
+    <Compile Include="Classes\PMFeatureGroup.cs" />
+    <Compile Include="Classes\PMFeatureGroupsCollection.cs" />
+    <Compile Include="Classes\PMSetup.cs" />
+    <Compile Include="Classes\PMSetupsCollection.cs" />
     <Compile Include="Classes\PowerMillException.cs" />
     <Compile Include="Classes\InvalidPowerMillParameterException.cs" />
     <Compile Include="Classes\InvalidPowerMillVersionException.cs" />
