@@ -291,6 +291,38 @@ namespace Autodesk.ProductInterface.PowerMILL
             get { return _workplanes; }
         }
 
+        /// <summary>
+        /// Returns the currently active Workplane or Nothing if World is active.
+        /// </summary>
+        /// <returns>The Active Workplane or Nothing if World is the Active Workplane.</returns>
+        public PMWorkplane ActiveWorkplane
+        {
+            get
+            {
+                string activeName = _powerMILL.DoCommandEx("PRINT PAR terse \"entity('" + PMWorkplane.WORKPLANE_IDENTIFIER + "','').Name\"").ToString();
+                return Workplanes.FirstOrDefault(x => x.Name == activeName);
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    // Set world workplane active
+                    _powerMILL.DoCommand("ACTIVATE WORKPLANE \" \"");
+                }
+                else if (value.Exists)
+                {
+                    // Activate the selected workplane
+                    _powerMILL.DoCommand("ACTIVATE WORKPLANE \"" + value.Name + "\"");
+                }
+                else
+                {
+                    throw new Exception("Unable to activate workplane");
+                }
+            }
+        }
+
+
         #endregion
 
         #region Operations
