@@ -574,6 +574,8 @@ namespace Autodesk.Geometry
         {
             try
             {
+                // If the polyline is closed the last point needs to be duplicated so add 1 to the count in that case.
+                var trueCount = Count + (IsClosed ? 1 : 0);
                 // Delete the file if it already exists
                 file.Delete();
 
@@ -597,7 +599,7 @@ namespace Autodesk.Geometry
 
                 // Write integer data
                 string integerLine = "";
-                if (Count > 1000000)
+                if (trueCount > 1000000)
                 {
                     integerLine += " " + GetField(4, 3) + GetField(3, 3) + GetField(-1, 11) + GetField(1, 11) +
                                    GetField(Count, 11) + GetField(-2, 6) + GetField(2, 6) + GetField(0, 6) + GetField(0, 6) +
@@ -620,14 +622,14 @@ namespace Autodesk.Geometry
                 // Write instruction codes
                 int instructionCode = GetInstructionCode(1, 0, 0, 0, 0, 0);
                 string instructionCodeString = "";
-                if (Count > 1000000)
+                if (trueCount > 1000000)
                 {
-                    instructionCodeString = " " + GetField(instructionCode, 11) + " " + GetField(Count, 11) + Constants.vbNewLine;
+                    instructionCodeString = " " + GetField(instructionCode, 11) + " " + GetField(trueCount, 11) + Constants.vbNewLine;
                     pictureData.Append(instructionCodeString);
                 }
                 else
                 {
-                    instructionCodeString = " " + GetField(instructionCode, 11) + " " + GetField(Count, 6) + Constants.vbNewLine;
+                    instructionCodeString = " " + GetField(instructionCode, 11) + " " + GetField(trueCount, 6) + Constants.vbNewLine;
                     pictureData.Append(instructionCodeString);
                 }
 

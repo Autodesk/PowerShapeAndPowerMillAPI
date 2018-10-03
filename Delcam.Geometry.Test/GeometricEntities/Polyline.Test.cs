@@ -58,6 +58,34 @@ namespace Autodesk.Geometry.Test.GeometricEntities
         }
 
         [Test]
+        public void WriteClosedPolylineTest()
+        {
+            FileSystem.File tempFile = FileSystem.File.CreateTemporaryFile("pic");
+            List<Point> points = new List<Point>();
+            points.Add(new Point(0, 0, 0));
+            points.Add(new Point(10, 5, 2));
+            points.Add(new Point(20, 9, 5));
+
+            Polyline line = new Polyline(points);
+
+            line.WriteToDUCTPictureFile(tempFile);
+
+            Polyline newline = Polyline.ReadFromDUCTPictureFile(tempFile).Single();
+            // Assert that the polyline read from the file is open
+            Assert.IsFalse(newline.IsClosed);
+
+            // Close the polyline and write again
+            line.IsClosed = true;
+
+            line.WriteToDUCTPictureFile(tempFile);
+
+            newline = Polyline.ReadFromDUCTPictureFile(tempFile).Single();
+            // Assert that the polyline read from the file is closed
+            Assert.IsTrue(newline.IsClosed);
+            tempFile.Delete();
+        }
+
+        [Test]
         public void
             WhenDensifyPolylineWithOneSegment_GivenLengthIsExactMultipleOfMaxInput_ThenEachNewSegmentsShouldBeInThatLength()
         {
