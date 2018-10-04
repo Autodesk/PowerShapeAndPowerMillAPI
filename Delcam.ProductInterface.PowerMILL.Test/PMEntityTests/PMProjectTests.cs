@@ -107,6 +107,24 @@ namespace Autodesk.ProductInterface.PowerMILLTest
 
         #endregion
 
+        [Test]
+        public void ActiveWorkplaneTest()
+        {
+            _powerMILL.LoadProject(TestFiles.SimplePmProject1);
+            _powerMILL.ActiveProject.ActiveWorkplane = _powerMILL.ActiveProject.Workplanes[0];
+            Assert.That(_powerMILL.ActiveProject.Workplanes[0].IsActive, Is.True);
+        }
+
+        [Test]
+        public void ActiveWorldWorkplaneTest()
+        {
+            _powerMILL.LoadProject(TestFiles.SimplePmProject1);
+            _powerMILL.ActiveProject.ActiveWorkplane = _powerMILL.ActiveProject.Workplanes[0];
+            Assert.That(_powerMILL.ActiveProject.Workplanes[0].IsActive, Is.True);
+            _powerMILL.ActiveProject.ActiveWorkplane = null;
+            Assert.That(_powerMILL.ActiveProject.Workplanes.All(x => x.IsActive == false), Is.True);
+        }
+
         #endregion
     }
 }
