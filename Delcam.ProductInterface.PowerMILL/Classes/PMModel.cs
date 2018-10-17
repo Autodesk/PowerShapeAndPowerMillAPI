@@ -131,11 +131,16 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// Exports the model to the specified file.
         /// </summary>
         /// <param name="file">The file to which the model will be exported.</param>
-        public void WriteToDMTFile(FileSystem.File file)
+        public void ExportModel(FileSystem.File file,
+                                bool exportInActiveWorkplane = true)
         {
             // Delete the file if it already exists
             file.Delete();
-            PowerMill.DoCommand("DEACTIVATE WORKPLANE", "EXPORT MODEL '" + Name + "' '" + file.Path + "'");
+            if (exportInActiveWorkplane == false)
+            {
+                PowerMill.DoCommand("DEACTIVATE WORKPLANE");
+            }
+            PowerMill.DoCommand("EXPORT MODEL '" + Name + "' '" + file.Path + "'");
         }
 
         /// <summary>
@@ -147,7 +152,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 // Export the model to a temporary file
                 FileSystem.File tempFile = FileSystem.File.CreateTemporaryFile("dmt");
-                WriteToDMTFile(tempFile);
+                ExportModel(tempFile, false);
 
                 // Read the file in as a DMT Object
                 DMTModel objDMTModel = DMTModelReader.ReadFile(tempFile);

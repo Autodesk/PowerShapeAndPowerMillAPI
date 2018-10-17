@@ -114,7 +114,7 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             Assert.False(dmtFile.Exists, "File should not exist");
 
             // #2
-            _defaultModel.WriteToDMTFile(dmtFile);
+            _defaultModel.ExportModel(dmtFile, false);
             Assert.True(dmtFile.Exists, "File should exist");
 
             // #3
