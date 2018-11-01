@@ -235,11 +235,6 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="file">The file to import.</param>
         public void Reimport(FileSystem.File file)
         {
-            var arrayToCheck = new[] {"dmt", "dgk", "ddx", "ddz", "psmodel", "doc", "det", "pic"};
-            if (!arrayToCheck.Contains(file.Extension))
-            {
-                throw new Exception("File extension must be dgk, ddx, ddz, psmodel, doc, det or pic");
-            }
             PowerMill.DoCommand(string.Format("EDIT MODEL '{0}' REIMPORT '{1}'", Name, file.Path));
         }
 

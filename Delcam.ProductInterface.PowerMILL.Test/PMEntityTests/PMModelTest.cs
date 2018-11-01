@@ -201,13 +201,6 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         [Test]
-        public void Reimporting_ShouldExceptCertainFileType()
-        {
-            Assert.Throws<Exception>(() => _defaultModel.Reimport(TestFiles.MacroCreateNcProgram),
-                                     "Reimport() should only accept files of a certain filetype, ie not .mac.");
-        }
-
-        [Test]
         public void Reimporting_ShouldReimportModel()
         {
             _defaultModel.Reimport(TestFiles.TestModelSurfaceFile1);
