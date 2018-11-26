@@ -218,14 +218,18 @@ namespace Autodesk.ProductInterface
             // Find all the processes with the passed in name and kill them
             foreach (Process process in Process.GetProcessesByName(name))
             {
-                try
+                var startTime = DateTime.UtcNow;
+                while (process.HasExited == false && DateTime.UtcNow - startTime < TimeSpan.FromSeconds(10))
                 {
-                    process.Kill();
+                    try
+                    {
+                        process.Kill();
+                    }
+                    catch
+                    {
+                    }
+                    Thread.Sleep(100);
                 }
-                catch
-                {
-                }
-                process.WaitForExit(10000);
                 if (process.HasExited == false)
                 {
                     throw new Exception("Failed to close all instances of " + name);
