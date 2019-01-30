@@ -145,7 +145,7 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             // Create surface fill in
             _powerSHAPE.ActiveModel.Surfaces.CreateFillInSurface(fillInCurve);
             Assert.AreEqual(_powerSHAPE.ActiveModel.Surfaces.Count, 1, "Failed to add surface to collection");
-            Assert.AreEqual(_powerSHAPE.ActiveModel.CreatedItems.Count, 1, "Failed to create surface in PowerSHAPE");
+            Assert.AreEqual(_powerSHAPE.ActiveModel.SelectedItems.Count, 1, "Failed to create surface in PowerSHAPE");
         }
 
         /// <summary>

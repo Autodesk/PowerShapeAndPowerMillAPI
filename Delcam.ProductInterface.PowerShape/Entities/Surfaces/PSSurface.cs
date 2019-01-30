@@ -613,7 +613,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// .
         /// <param name="advancedSurfaceOptions">SurfaceAdvancedOptions object for advanced options.</param>
         /// <returns>New surface created by the operation</returns>
-        internal static object CreateSmartSurface(
+        internal static PSSurface CreateSmartSurface(
             PSAutomation powerSHAPE,
             AutomaticSurfacingMethods automaticSurfacingMethod,
             AutomaticSurfaceTypes automaticSurfaceType,
@@ -673,15 +673,20 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             PSSurface newSurface = null;
 
-            if (automaticSurfacingMethod == AutomaticSurfacingMethods.Fill)
+            if (advancedSurfaceOptions == null)
             {
-                //an issue in powershape which requires cancel to be sent.Otherwise surface is not put into createlist.
-                powerSHAPE.DoCommand("CREATE SURFACE FILLIN", "ACCEPT", "CANCEL");
+                powerSHAPE.DoCommand("CREATE SURFACE AutoSurf", "METHOD " + surfacingMethod, surfaceType, "ACCEPT");
 
-                //creates surface prior to showing advanced options so need to get at this point.
                 try
                 {
-                    newSurface = (PSSurface) powerSHAPE.ActiveModel.CreatedItems[0];
+                    if (automaticSurfacingMethod == AutomaticSurfacingMethods.Fill)
+                    {
+                        newSurface = (PSSurface)powerSHAPE.ActiveModel.SelectedItems[0];
+                    }
+                    else
+                    {
+                        newSurface = (PSSurface)powerSHAPE.ActiveModel.CreatedItems[0];
+                    }
                 }
                 catch
                 {
@@ -690,119 +695,80 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             }
             else
             {
-                if (advancedSurfaceOptions == null)
+                powerSHAPE.DoCommand("CREATE SURFACE AutoSurf", "METHOD " + surfacingMethod, surfaceType);
+                powerSHAPE.DoCommand("Advanced");
+
+                if (advancedSurfaceOptions.InteriorInterpolation.HasValue)
                 {
-                    powerSHAPE.DoCommand("CREATE SURFACE AutoSurf", "METHOD " + surfacingMethod, surfaceType, "ACCEPT");
-
-                    try
+                    if (advancedSurfaceOptions.InteriorInterpolation == AdvancedInteriorInterpolationMethods.Linear)
                     {
-                        newSurface = (PSSurface) powerSHAPE.ActiveModel.CreatedItems[0];
-
-                        //                        Return newSurface
+                        powerSHAPE.DoCommand("INTERPOLATION LINEAR");
                     }
-                    catch
+                    else
                     {
-                        throw new ApplicationException("Failed to create Surface");
+                        powerSHAPE.DoCommand("INTERPOLATION TANGENTIAL");
                     }
                 }
-                else
+
+                if (advancedSurfaceOptions.EdgeMatchingOption.HasValue)
                 {
-                    powerSHAPE.DoCommand("CREATE SURFACE AutoSurf", "METHOD " + surfacingMethod, surfaceType);
-                    powerSHAPE.DoCommand("Advanced");
-
-                    if (advancedSurfaceOptions.InteriorInterpolation.HasValue)
+                    string cmd = "";
+                    switch (advancedSurfaceOptions.EdgeMatchingOption)
                     {
-                        if (advancedSurfaceOptions.InteriorInterpolation == AdvancedInteriorInterpolationMethods.Linear)
-                        {
-                            powerSHAPE.DoCommand("INTERPOLATION LINEAR");
-                        }
-                        else
-                        {
-                            powerSHAPE.DoCommand("INTERPOLATION TANGENTIAL");
-                        }
+                        case AutomaticSurfaceOptions.None:
+                            cmd = "Mode None";
+                            break;
+                        case AutomaticSurfaceOptions.ArcLength:
+                            cmd = "Mode Arc";
+                            break;
+                        case AutomaticSurfaceOptions.Repoint:
+                            cmd = "Mode Repoint";
+                            break;
+                        case AutomaticSurfaceOptions.TangentDirection:
+                            cmd = "Mode Tangent";
+                            break;
+                        case AutomaticSurfaceOptions.WidthOfCurve:
+                            cmd = "Mode Width";
+                            break;
+                        default:
+                            cmd = "";
+                            break;
                     }
 
-                    if (advancedSurfaceOptions.EdgeMatchingOption.HasValue)
+                    if (!string.IsNullOrEmpty(cmd))
                     {
-                        string cmd = "";
-                        switch (advancedSurfaceOptions.EdgeMatchingOption)
-                        {
-                            case AutomaticSurfaceOptions.None:
-                                cmd = "Mode None";
-                                break;
-                            case AutomaticSurfaceOptions.ArcLength:
-                                cmd = "Mode Arc";
-                                break;
-                            case AutomaticSurfaceOptions.Repoint:
-                                cmd = "Mode Repoint";
-                                break;
-                            case AutomaticSurfaceOptions.TangentDirection:
-                                cmd = "Mode Tangent";
-                                break;
-                            case AutomaticSurfaceOptions.WidthOfCurve:
-                                cmd = "Mode Width";
-                                break;
-                            default:
-                                cmd = "";
-                                break;
-                        }
-
-                        if (!string.IsNullOrEmpty(cmd))
-                        {
-                            powerSHAPE.DoCommand(cmd);
-                        }
+                        powerSHAPE.DoCommand(cmd);
                     }
-
-                    if (advancedSurfaceOptions.CornerTolerance.HasValue)
-                    {
-                        powerSHAPE.DoCommand(string.Format("Angtol {0}", advancedSurfaceOptions.CornerTolerance));
-                    }
-
-                    powerSHAPE.DoCommand("Apply");
-
-                    //creates surface prior to showing advanced options so need to get at this point.
-                    try
-                    {
-                        newSurface = (PSSurface) powerSHAPE.ActiveModel.CreatedItems[0];
-                    }
-                    catch
-                    {
-                        throw new ApplicationException("Failed to create Surface");
-                    }
-
-                    powerSHAPE.DoCommand("Accept");
-                    powerSHAPE.DoCommand("ACCEPT");
                 }
+
+                if (advancedSurfaceOptions.CornerTolerance.HasValue)
+                {
+                    powerSHAPE.DoCommand(string.Format("Angtol {0}", advancedSurfaceOptions.CornerTolerance));
+                }
+
+                powerSHAPE.DoCommand("Apply");
+
+                //creates surface prior to showing advanced options so need to get at this point.
+                try
+                {
+                    if (automaticSurfacingMethod == AutomaticSurfacingMethods.Fill)
+                    {
+                        newSurface = (PSSurface) powerSHAPE.ActiveModel.SelectedItems[0];
+                    }
+                    else
+                    {
+                        newSurface = (PSSurface)powerSHAPE.ActiveModel.CreatedItems[0];
+                    }
+                }
+                catch
+                {
+                    throw new ApplicationException("Failed to create Surface");
+                }
+
+                powerSHAPE.DoCommand("Accept");
+                powerSHAPE.DoCommand("ACCEPT");
             }
 
-            return newSurface;
-        }
-
-        /// <summary>
-        /// Creates a fillin surface from a composite curve or curve.
-        /// </summary>
-        /// <param name="powerSHAPE">The PowerSHAPE Automation object.</param>
-        /// <param name="genericCurve">
-        /// The composite curve or curve from which to create.
-        /// the fillin surface.
-        /// </param>
-        /// <returns>New surface created by the operation.</returns>
-        internal static PSSurface CreateFillInSurface(PSAutomation powerSHAPE, PSGenericCurve genericCurve)
-        {
-            // Ensure curve is closed
-            if (genericCurve.IsClosed == false)
-            {
-                throw new Exception("Cannot create surface from open curve");
-            }
-
-            // Create the surface
-            genericCurve.AddToSelection(true);
-
-            //issue in powershape which requires cancel to be sent.Otherwise surface is not put into createlist.
-            powerSHAPE.DoCommand("CREATE SURFACE FILLIN", "ACCEPT", "CANCEL");
-
-            // Get the created Surface
-            PSSurface newSurface = (PSSurface) powerSHAPE.ActiveModel.CreatedItems[0];
             return newSurface;
         }
 

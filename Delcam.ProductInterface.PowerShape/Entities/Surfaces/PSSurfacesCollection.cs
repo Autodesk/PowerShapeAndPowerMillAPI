@@ -75,7 +75,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// <returns>The new surface.</returns>
         public PSSurface CreateFillInSurface(PSGenericCurve genericCurve)
         {
-            var newSurface = PSSurface.CreateFillInSurface(_powerSHAPE, genericCurve);
+            genericCurve.AddToSelection(true);
+            var newSurface = PSSurface.CreateSmartSurface(_powerSHAPE, AutomaticSurfacingMethods.Fill, AutomaticSurfaceTypes.PowerSurface);
             Add(newSurface);
             return newSurface;
         }
