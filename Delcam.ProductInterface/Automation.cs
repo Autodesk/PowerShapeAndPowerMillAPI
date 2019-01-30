@@ -215,11 +215,11 @@ namespace Autodesk.ProductInterface
         {
             Console.WriteLine("Closing all instances...");
 
-            // Find all the processes with the passed in name and kill them
-            foreach (Process process in Process.GetProcessesByName(name))
+            var processesRunning = true;
+            var startTime = DateTime.UtcNow;
+            while (processesRunning && DateTime.UtcNow - startTime < TimeSpan.FromSeconds(10))
             {
-                var startTime = DateTime.UtcNow;
-                while (process.HasExited == false && DateTime.UtcNow - startTime < TimeSpan.FromSeconds(10))
+                foreach (Process process in Process.GetProcessesByName(name))
                 {
                     try
                     {
@@ -228,13 +228,11 @@ namespace Autodesk.ProductInterface
                     catch
                     {
                     }
-                    Thread.Sleep(100);
                 }
-                if (process.HasExited == false)
-                {
-                    throw new Exception("Failed to close all instances of " + name);
-                }
+
+                processesRunning = Process.GetProcessesByName(name).Length > 0;
             }
+
             Console.WriteLine("Done");
         }
 
