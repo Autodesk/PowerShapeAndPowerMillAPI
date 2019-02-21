@@ -233,6 +233,11 @@ namespace Autodesk.ProductInterface
                 processesRunning = Process.GetProcessesByName(name).Length > 0;
             }
 
+            if (Process.GetProcessesByName(name).Length > 0)
+            {
+                throw new Exception("Failed to close all running instances of " + name);
+            }
+
             Console.WriteLine("Done");
         }
 
