@@ -43,7 +43,7 @@ namespace Autodesk.ProductInterface.PowerMILL
 
         /// <summary>
         /// Gets and sets the tip radius of a Tipped Disc tool.
-        /// </summary>
+        /// </summary>        
         public MM TipRadius
         {
             get
@@ -53,6 +53,34 @@ namespace Autodesk.ProductInterface.PowerMILL
                         PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').tipradius\""));
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" TIPRADIUS \"" + value + "\"", "TOOL ACCEPT"); }
+        }
+
+        /// <summary>
+        /// Gets and sets the lower tip radius of a Tipped Disc tool.
+        /// </summary>
+        public MM LowerTipRadius
+        {
+            get
+            {
+                return
+                    Convert.ToDouble(
+                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').tipradius\""));
+            }
+            set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" TIPRADIUS \"" + value + "\"", "TOOL ACCEPT"); }
+        }
+
+        /// <summary>
+        /// Gets and sets the upper tip radius of a Tipped Disc tool.
+        /// </summary>
+        public MM UpperTipRadius
+        {
+            get
+            {
+                return
+                    Convert.ToDouble(
+                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').uppertipradius\""));
+            }
+            set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" UPPER TIPRADIUS \"" + value + "\"", "TOOL ACCEPT"); }
         }
 
         #endregion
