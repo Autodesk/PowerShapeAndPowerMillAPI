@@ -174,6 +174,22 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         [Test]
+        public void RotateTest()
+        {
+            // #1
+            // Rotate by 90° in X-Axis
+            _defaultModel.Rotate(Axis.X, 90);
+
+            // #2
+            // Rotate by 90° in Y-Axis
+            _defaultModel.Rotate(Axis.Y, 90);
+
+            // #3
+            // Rotate by 90° in Z-Axis
+            _defaultModel.Rotate(Axis.Z, 90);
+        }
+
+        [Test]
         public void PathTest()
         {
             // #1
