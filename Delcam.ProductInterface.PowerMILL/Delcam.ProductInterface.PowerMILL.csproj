@@ -101,7 +101,6 @@
     <Compile Include="Classes\PMLeadExtension.cs" />
     <Compile Include="Classes\Tool\PMToolGroovingTurning.cs" />
     <Compile Include="Classes\Tool\PMToolProfilingTurning.cs" />
-    <Compile Include="Enums\Axis.cs" />
     <Compile Include="Enums\DefaultLinkTypes.cs" />
     <Compile Include="Enums\MoveDirection.cs" />
     <Compile Include="Classes\PMConnections.cs" />

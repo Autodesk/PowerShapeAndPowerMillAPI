@@ -178,15 +178,15 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         {
             // #1
             // Rotate by 90° in X-Axis
-            _defaultModel.Rotate(Axis.X, 90);
+            _defaultModel.Rotate(Axes.X, 90);
 
             // #2
             // Rotate by 90° in Y-Axis
-            _defaultModel.Rotate(Axis.Y, 90);
+            _defaultModel.Rotate(Axes.Y, 90);
 
             // #3
             // Rotate by 90° in Z-Axis
-            _defaultModel.Rotate(Axis.Z, 90);
+            _defaultModel.Rotate(Axes.Z, 90);
         }
 
         [Test]
