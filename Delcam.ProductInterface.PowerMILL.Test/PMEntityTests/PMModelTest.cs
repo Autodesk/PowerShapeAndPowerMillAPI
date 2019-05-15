@@ -174,6 +174,41 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         [Test]
+        public void RotateTest()
+        {
+            _powerMill.Execute("DEACTIVATE WORKPLANE");
+            // #1
+            // Rotate by 180° in X-Axis
+            var bxBefore = _defaultModel.BoundingBox;
+            _defaultModel.Rotate(Axes.X, 180);
+            var bxAfter = _defaultModel.BoundingBox;
+            Assert.AreEqual(bxBefore.MinY * -1, bxAfter.MaxY);
+            Assert.AreEqual(bxBefore.MaxY * -1, bxAfter.MinY);
+            Assert.AreEqual(bxBefore.MinZ * -1, bxAfter.MaxZ);
+            Assert.AreEqual(bxBefore.MaxZ * -1, bxAfter.MinZ);
+
+            // #2
+            // Rotate by 180° in Y-Axis
+            bxBefore = _defaultModel.BoundingBox;
+            _defaultModel.Rotate(Axes.Y, 180);
+            bxAfter = _defaultModel.BoundingBox;
+            Assert.AreEqual(bxBefore.MinX * -1, bxAfter.MaxX);
+            Assert.AreEqual(bxBefore.MaxX * -1, bxAfter.MinX);
+            Assert.AreEqual(bxBefore.MinZ * -1, bxAfter.MaxZ);
+            Assert.AreEqual(bxBefore.MaxZ * -1, bxAfter.MinZ);
+
+            // #3
+            // Rotate by 180° in Z-Axis
+            bxBefore = _defaultModel.BoundingBox;
+            _defaultModel.Rotate(Axes.Z, 180);
+            bxAfter = _defaultModel.BoundingBox;
+            Assert.AreEqual(bxBefore.MinX * -1, bxAfter.MaxX);
+            Assert.AreEqual(bxBefore.MaxX * -1, bxAfter.MinX);
+            Assert.AreEqual(bxBefore.MinY * -1, bxAfter.MaxY);
+            Assert.AreEqual(bxBefore.MaxY * -1, bxAfter.MinY);
+        }
+
+        [Test]
         public void PathTest()
         {
             // #1

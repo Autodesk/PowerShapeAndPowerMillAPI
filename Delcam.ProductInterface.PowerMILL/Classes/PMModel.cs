@@ -200,6 +200,27 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         /// <summary>
+        /// Rotate the model by the specified axis and angle.
+        /// </summary>
+        /// <param name="rotateAxis">The rotation axis</param>
+        /// <param name="rotateAngle">The rotation angle</param>
+        public void Rotate(Axes rotateAxis, double rotateAngle)
+        {
+            switch (rotateAxis)
+            {
+                case Axes.X:
+                    PowerMill.DoCommand("TRANSFORM ANGLE \"" + rotateAngle + "\" TRANSFORM TYPE ROTATEX TRANSFORM MODEL \"" + Name + "\"");
+                    break;
+                case Axes.Y:
+                    PowerMill.DoCommand("TRANSFORM ANGLE \"" + rotateAngle + "\" TRANSFORM TYPE ROTATEY TRANSFORM MODEL \"" + Name + "\"");
+                    break;
+                case Axes.Z:
+                    PowerMill.DoCommand("TRANSFORM ANGLE \"" + rotateAngle + "\" TRANSFORM TYPE ROTATEZ TRANSFORM MODEL \"" + Name + "\"");
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Selects the model, optionally removing everything else from the selection first.
         /// </summary>
         /// <param name="clearSelectionFirst">If true unselects everything else before selecting this model.</param>
