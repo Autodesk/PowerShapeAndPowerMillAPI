@@ -125,6 +125,30 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             Assert.That(_powerMILL.ActiveProject.Workplanes.All(x => x.IsActive == false), Is.True);
         }
 
+        [Test]
+        public void CreateBlockFromBoundary()
+        {   
+            _powerMILL.Execute(string.Format("CREATE BOUNDARY \"{0}\"", "TestBoundary"));            
+            _powerMILL.Execute(string.Format("EDIT BOUNDARY \"{0}\" INSERT FILE \"{1}\"", "TestBoundary", TestFiles.CurvesFiles));
+            _powerMILL.ActiveProject.Refresh();
+            PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;
+            _powerMILL.ActiveProject.CreateBlock(boundary, 0, 100);
+            Assert.AreEqual("100,0", _powerMILL.ExecuteEx("PRINT $BLOCK.LIMITS.ZMax"));
+        }
+
+        [Test]
+        public void CreateBlockFromBoundaryZMinMax()
+        {
+            _powerMILL.LoadProject(TestFiles.SimplePmProject1);
+            _powerMILL.Execute(string.Format("CREATE BOUNDARY \"{0}\"", "TestBoundary"));
+            _powerMILL.Execute(string.Format("EDIT BOUNDARY \"{0}\" INSERT FILE \"{1}\"", "TestBoundary", TestFiles.CurvesFiles));
+            _powerMILL.ActiveProject.Refresh();
+            PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;            
+            _powerMILL.ActiveProject.CreateBlock(boundary);
+            Assert.AreEqual("53,353777", _powerMILL.ExecuteEx("PRINT $BLOCK.LIMITS.ZMax"));
+            Assert.AreEqual("-30,004846", _powerMILL.ExecuteEx("PRINT $BLOCK.LIMITS.ZMin"));            
+        }
+
         #endregion
     }
 }

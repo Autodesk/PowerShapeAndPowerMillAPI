@@ -424,6 +424,36 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         /// <summary>
+        /// This operation creates a Block in PowerMILL from an boundary. The heights are calculated automatically 
+        /// </summary>
+        /// <param name="boundary">The boundary from which to create the block.</param>        
+        public void CreateBlock(PMBoundary boundary)
+        {
+            _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
+            _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
+            _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
+            _powerMILL.DoCommand("EDIT BLOCK RESET");            
+            _powerMILL.DoCommand("BLOCK ACCEPT");
+        }
+
+        /// <summary>
+        /// This operation creates a Block in PowerMILL from an boundary with Z-Min and Z-Max values.
+        /// </summary>
+        /// <param name="boundary">The boundary from which to create the block.</param>
+        /// <param name="ZMin">Set the minimum Z value of the Block</param>
+        /// <param name="ZMax">Set the maximum Z value of the Block</param>
+        public void CreateBlock(PMBoundary boundary, double ZMin, double ZMax)
+        {
+            _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
+            _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
+            _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
+            _powerMILL.DoCommand("EDIT BLOCK RESET");
+            _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMIN \"{0}\"", ZMin));
+            _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMAX \"{0}\"", ZMax));            
+            _powerMILL.DoCommand("BLOCK ACCEPT");
+        }
+
+        /// <summary>
         /// This operation deletes the Block from PowerMill.
         /// </summary>
         public void DeleteBlock()
