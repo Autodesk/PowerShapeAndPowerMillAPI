@@ -126,27 +126,25 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         }
 
         [Test]
-        public void CreateBlockFromBoundary()
-        {   
-            _powerMILL.Execute(string.Format("CREATE BOUNDARY \"{0}\"", "TestBoundary"));            
-            _powerMILL.Execute(string.Format("EDIT BOUNDARY \"{0}\" INSERT FILE \"{1}\"", "TestBoundary", TestFiles.CurvesFiles));
+        public void CreateBlockFromBoundaryWithLimitsTest()
+        {               
+            _powerMILL.ActiveProject.Boundaries.CreateBoundary(TestFiles.CurvesFiles);
             _powerMILL.ActiveProject.Refresh();
             PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;
-            _powerMILL.ActiveProject.CreateBlock(boundary, 0, 100);
-            Assert.AreEqual("100,0", _powerMILL.ExecuteEx("PRINT $BLOCK.LIMITS.ZMax"));
+            Autodesk.Geometry.BoundingBox boundingBox = _powerMILL.ActiveProject.CreateBlockFromBoundaryWithLimits(boundary, 0, 100);            
+            Assert.That(boundingBox.MaxZ.Value, Is.EqualTo(100));
         }
 
         [Test]
-        public void CreateBlockFromBoundaryZMinMax()
-        {
-            _powerMILL.LoadProject(TestFiles.SimplePmProject1);
-            _powerMILL.Execute(string.Format("CREATE BOUNDARY \"{0}\"", "TestBoundary"));
-            _powerMILL.Execute(string.Format("EDIT BOUNDARY \"{0}\" INSERT FILE \"{1}\"", "TestBoundary", TestFiles.CurvesFiles));
+        public void CreateBlockFromBoundaryTest()
+        {            
+            _powerMILL.LoadProject(TestFiles.SimplePmProject1);            
+            _powerMILL.ActiveProject.Boundaries.CreateBoundary(TestFiles.CurvesFiles);
             _powerMILL.ActiveProject.Refresh();
-            PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;            
-            _powerMILL.ActiveProject.CreateBlock(boundary);
-            Assert.AreEqual("53,353777", _powerMILL.ExecuteEx("PRINT $BLOCK.LIMITS.ZMax"));
-            Assert.AreEqual("-30,004846", _powerMILL.ExecuteEx("PRINT $BLOCK.LIMITS.ZMin"));            
+            PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;
+            Autodesk.Geometry.BoundingBox boundingBox = _powerMILL.ActiveProject.CreateBlockFromBoundary(boundary);
+            Assert.That(Math.Round(boundingBox.MaxZ.Value, 5), Is.EqualTo(53.35378));
+            Assert.That(Math.Round(boundingBox.MinZ.Value, 5), Is.EqualTo(-30.00485));
         }
 
         #endregion

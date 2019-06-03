@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.FileSystem;
+using Autodesk.Geometry;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
@@ -427,13 +428,15 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// This operation creates a Block in PowerMILL from an boundary. The heights are calculated automatically 
         /// </summary>
         /// <param name="boundary">The boundary from which to create the block.</param>        
-        public void CreateBlock(PMBoundary boundary)
-        {
+        public BoundingBox CreateBlockFromBoundary(PMBoundary boundary)
+        {            
             _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
             _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
             _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
             _powerMILL.DoCommand("EDIT BLOCK RESET");            
             _powerMILL.DoCommand("BLOCK ACCEPT");
+            BoundingBox boundingBox = GetBlockLimits();            
+            return boundingBox;
         }
 
         /// <summary>
@@ -442,7 +445,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="boundary">The boundary from which to create the block.</param>
         /// <param name="ZMin">Set the minimum Z value of the Block</param>
         /// <param name="ZMax">Set the maximum Z value of the Block</param>
-        public void CreateBlock(PMBoundary boundary, double ZMin, double ZMax)
+        public BoundingBox CreateBlockFromBoundaryWithLimits(PMBoundary boundary, double ZMin, double ZMax)
         {
             _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
             _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
@@ -451,6 +454,27 @@ namespace Autodesk.ProductInterface.PowerMILL
             _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMIN \"{0}\"", ZMin));
             _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMAX \"{0}\"", ZMax));            
             _powerMILL.DoCommand("BLOCK ACCEPT");
+            BoundingBox boundingBox = GetBlockLimits();
+            return boundingBox;
+        }
+
+        /// <summary>
+        /// Returns the block limits
+        /// </summary>
+        public BoundingBox GetBlockLimits()
+        {
+            string tpBlockXmin = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.XMin").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
+            string tpBlockXmax = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.XMax").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
+            string tpBlockYmin = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.YMin").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
+            string tpBlockYmax = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.YMax").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
+            string tpBlockZmin = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.ZMin").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
+            string tpBlockZmax = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.ZMax").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
+            
+            BoundingBox boundingBox = new BoundingBox(Convert.ToDouble(tpBlockXmin), Convert.ToDouble(tpBlockXmax),
+                                                      Convert.ToDouble(tpBlockYmin), Convert.ToDouble(tpBlockYmax),
+                                                      Convert.ToDouble(tpBlockZmin), Convert.ToDouble(tpBlockZmax));
+                        
+            return boundingBox;
         }
 
         /// <summary>
