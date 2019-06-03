@@ -125,6 +125,28 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             Assert.That(_powerMILL.ActiveProject.Workplanes.All(x => x.IsActive == false), Is.True);
         }
 
+        [Test]
+        public void CreateBlockFromBoundaryWithLimitsTest()
+        {               
+            _powerMILL.ActiveProject.Boundaries.CreateBoundary(TestFiles.CurvesFiles);
+            _powerMILL.ActiveProject.Refresh();
+            PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;
+            var boundingBox = _powerMILL.ActiveProject.CreateBlockFromBoundaryWithLimits(boundary, 0, 100);            
+            Assert.That(boundingBox.MaxZ.Value, Is.EqualTo(100));
+        }
+
+        [Test]
+        public void CreateBlockFromBoundaryTest()
+        {            
+            _powerMILL.LoadProject(TestFiles.SimplePmProject1);            
+            _powerMILL.ActiveProject.Boundaries.CreateBoundary(TestFiles.CurvesFiles);
+            _powerMILL.ActiveProject.Refresh();
+            PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;
+            var boundingBox = _powerMILL.ActiveProject.CreateBlockFromBoundary(boundary);            
+            Assert.That(boundingBox.MaxZ, Is.EqualTo((Autodesk.Geometry.MM)53.353777));
+            Assert.That(boundingBox.MinZ, Is.EqualTo((Autodesk.Geometry.MM)(-30.004846)));
+        }
+
         #endregion
     }
 }
