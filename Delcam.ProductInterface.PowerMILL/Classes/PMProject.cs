@@ -433,7 +433,8 @@ namespace Autodesk.ProductInterface.PowerMILL
             _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
             _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
             _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
-            _powerMILL.DoCommand("EDIT BLOCK RESET");            
+            _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");
+            _powerMILL.DoCommand("EDIT BLOCK RESET");
             _powerMILL.DoCommand("BLOCK ACCEPT");
             BoundingBox boundingBox = GetBlockLimits();            
             return boundingBox;
@@ -450,6 +451,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
             _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
             _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
+            _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");
             _powerMILL.DoCommand("EDIT BLOCK RESET");
             _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMIN \"{0}\"", ZMin));
             _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMAX \"{0}\"", ZMax));            
@@ -462,14 +464,14 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// Returns the block limits
         /// </summary>
         public BoundingBox GetBlockLimits()
-        {
-            string tpBlockXmin = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.XMin").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
-            string tpBlockXmax = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.XMax").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
-            string tpBlockYmin = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.YMin").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
-            string tpBlockYmax = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.YMax").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
-            string tpBlockZmin = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.ZMin").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
-            string tpBlockZmax = _powerMILL.DoCommandEx("PRINT PAR $Block.Limits.ZMax").ToString().Replace("(REAL)", "").Replace("[L]", "").Trim();
-            
+        {            
+            var tpBlockXmin = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.XMin");
+            var tpBlockXmax = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.XMax");
+            var tpBlockYmin = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.YMin");
+            var tpBlockYmax = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.YMax");
+            var tpBlockZmin = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.ZMin");
+            var tpBlockZmax = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.ZMax");
+
             BoundingBox boundingBox = new BoundingBox(Convert.ToDouble(tpBlockXmin), Convert.ToDouble(tpBlockXmax),
                                                       Convert.ToDouble(tpBlockYmin), Convert.ToDouble(tpBlockYmax),
                                                       Convert.ToDouble(tpBlockZmin), Convert.ToDouble(tpBlockZmax));
