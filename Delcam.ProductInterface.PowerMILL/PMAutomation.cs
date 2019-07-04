@@ -630,6 +630,13 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
         }
 
+        /// <summary>
+        /// Undraw all Entities.
+        /// </summary>        
+        public void UndrawAll()
+        {            
+            DoCommand("UNDRAW ALL");            
+        }
         #endregion
 
         #region Execute Operations
