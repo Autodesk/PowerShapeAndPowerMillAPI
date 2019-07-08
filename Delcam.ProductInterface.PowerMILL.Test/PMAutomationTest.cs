@@ -247,5 +247,15 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             //Quit
             automation2.Quit();
         }
+
+        [Test]
+        public void UndrawAllTest()
+        {            
+            MyTestInitialize();
+            var testPattern = _powerMill.ActiveProject.Patterns.CreatePattern(Files.TestFiles.CurvesFiles);
+            testPattern.IsVisible = true;            
+            _powerMill.UndrawAll();
+            Assert.IsTrue(true);
+        }
     }
 }
