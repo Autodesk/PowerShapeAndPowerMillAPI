@@ -184,6 +184,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             return newBoundary;
         }
 
+        /// <summary>
+        /// Undraw all boundarys
+        /// </summary>        
+        public void UndrawAll()
+        {
+            _powerMILL.DoCommand("UNDRAW BOUNDARY ALL");
+        }
+
         #endregion
     }
 }

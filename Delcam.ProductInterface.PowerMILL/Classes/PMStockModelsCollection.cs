@@ -55,6 +55,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             return names;
         }
 
+        /// <summary>
+        /// Undraw all Stock Models.
+        /// </summary>        
+        public void UndrawAll()
+        {
+            _powerMILL.DoCommand("UNDRAW STOCKMODEL ALL");
+        }
+
         #endregion
     }
 }

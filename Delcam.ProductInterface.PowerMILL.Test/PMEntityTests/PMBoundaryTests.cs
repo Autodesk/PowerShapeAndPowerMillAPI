@@ -208,6 +208,15 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             Assert.AreEqual(18, result[0].Count);
         }
 
+        [Test]
+        public void UndrawAllBoundariesTest()
+        {
+            _powerMILL.LoadProject(TestFiles.BoundaryTypes);
+            _powerMILL.Execute("DRAW BOUNDARY ALL");
+            _powerMILL.ActiveProject.Boundaries.UndrawAll();
+            Assert.IsTrue(true);
+        }
+
         #endregion
     }
 }

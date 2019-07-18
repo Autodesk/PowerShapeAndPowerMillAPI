@@ -1100,6 +1100,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
         }
 
+        /// <summary>
+        /// Undraw all toolpaths.
+        /// </summary>        
+        public void UndrawAll()
+        {
+            _powerMILL.DoCommand("UNDRAW TOOLPATH ALL");
+        }
+
         #endregion
     }
 }

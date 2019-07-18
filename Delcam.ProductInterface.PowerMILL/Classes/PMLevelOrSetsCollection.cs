@@ -108,6 +108,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             return item;
         }
 
+        /// <summary>
+        /// Undraw all levels and sets.
+        /// </summary>        
+        public void UndrawAll()
+        {
+            _powerMILL.DoCommand("UNDRAW LEVEL ALL");
+        }
+
         #endregion
     }
 }

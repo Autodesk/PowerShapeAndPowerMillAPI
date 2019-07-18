@@ -146,6 +146,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             return newPattern;
         }
 
+        /// <summary>
+        /// Undraw all patterns.
+        /// </summary>        
+        public void UndrawAll()
+        {
+            _powerMILL.DoCommand("UNDRAW PATTERN ALL");
+        }
+
         #endregion
     }
 }

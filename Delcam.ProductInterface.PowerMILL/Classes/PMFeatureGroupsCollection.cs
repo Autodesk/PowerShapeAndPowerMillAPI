@@ -76,6 +76,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             return names;
         }
 
+        /// <summary>
+        /// Undraw all FeatureGroups.
+        /// </summary>        
+        public void UndrawAll()
+        {
+            _powerMILL.DoCommand("UNDRAW FEATUREGROUP ALL");
+        }
+
         #endregion
     }
 }

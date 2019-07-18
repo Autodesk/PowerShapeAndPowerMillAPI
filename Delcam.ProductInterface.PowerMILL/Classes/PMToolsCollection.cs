@@ -210,6 +210,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             return (PMToolTipRadiused) newTool;
         }
 
+        /// <summary>
+        /// Undraw all tools.
+        /// </summary>        
+        public void UndrawAll()
+        {
+            _powerMILL.DoCommand("UNDRAW TOOL ALL");
+        }
+
         #endregion
     }
 }
