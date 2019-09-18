@@ -174,6 +174,28 @@ namespace Autodesk.ProductInterface.PowerMILL
             return "1";
         }
 
+        /// <summary>
+        /// Draws all entities
+        /// </summary>
+        public void DrawAll()
+        {
+            System.Reflection.FieldInfo[] fi = typeof(T).GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            string Identifier = fi[0].GetValue(null).ToString();
+            if (Identifier != "MODEL")
+                _powerMILL.DoCommand("DRAW " + Identifier + " ALL");
+        }
+
+        /// <summary>
+        /// Undraws all entities
+        /// </summary>
+        public void UndrawAll()
+        {            
+            System.Reflection.FieldInfo[] fi = typeof(T).GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            string Identifier = fi[0].GetValue(null).ToString();
+            if(Identifier != "MODEL")
+                _powerMILL.DoCommand("UNDRAW " + Identifier + " ALL"); 
+        }
+
         #endregion
 
         #region Properties

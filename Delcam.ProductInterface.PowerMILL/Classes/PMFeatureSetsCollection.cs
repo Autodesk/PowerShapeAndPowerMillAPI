@@ -55,15 +55,6 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
             return names;
         }
-
-        /// <summary>
-        /// Undraw all FeatureSets.
-        /// </summary>        
-        public void UndrawAll()
-        {
-            _powerMILL.DoCommand("UNDRAW FEATURESET ALL");
-        }
-
         #endregion
     }
 }

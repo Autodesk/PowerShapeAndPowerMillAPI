@@ -209,15 +209,6 @@ namespace Autodesk.ProductInterface.PowerMILL
             _powerMILL.ActiveProject.AddEntityToCollection(newTool);
             return (PMToolTipRadiused) newTool;
         }
-
-        /// <summary>
-        /// Undraw all tools.
-        /// </summary>        
-        public void UndrawAll()
-        {
-            _powerMILL.DoCommand("UNDRAW TOOL ALL");
-        }
-
         #endregion
     }
 }

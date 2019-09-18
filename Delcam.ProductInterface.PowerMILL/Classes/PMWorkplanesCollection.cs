@@ -104,15 +104,6 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
             return newWorkplane;
         }
-
-        /// <summary>
-        /// Undraw all workplanes.
-        /// </summary>        
-        public void UndrawAll()
-        {
-            _powerMILL.DoCommand("UNDRAW WORKPLANE ALL");
-        }
-
         #endregion
     }
 }
