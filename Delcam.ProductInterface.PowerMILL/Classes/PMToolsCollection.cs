@@ -209,7 +209,6 @@ namespace Autodesk.ProductInterface.PowerMILL
             _powerMILL.ActiveProject.AddEntityToCollection(newTool);
             return (PMToolTipRadiused) newTool;
         }
-
         #endregion
     }
 }

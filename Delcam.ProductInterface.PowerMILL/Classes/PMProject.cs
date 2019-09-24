@@ -556,6 +556,16 @@ namespace Autodesk.ProductInterface.PowerMILL
                     }
                 }
             }
+            if (type == null || ReferenceEquals(type, typeof(PMFeatureGroup)))
+            {                 
+                foreach (string name in _featureGroups.ReadFeatureGroups())
+                {
+                    if (_featureGroups[name] == null)
+                    {
+                        createdItemsList.Add(new PMFeatureGroup(_powerMILL, name));
+                    }
+                }
+            }
             if (type == null || ReferenceEquals(type, typeof(PMWorkplane)))
             {
                 foreach (string name in _workplanes.ReadWorkplanes())

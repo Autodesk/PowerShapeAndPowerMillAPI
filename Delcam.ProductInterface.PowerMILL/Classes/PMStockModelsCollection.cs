@@ -55,6 +55,32 @@ namespace Autodesk.ProductInterface.PowerMILL
             return names;
         }
 
+        /// <summary>
+        /// Creates a new Stockmodel with the specified name.
+        /// </summary>
+        /// <param name="name">The name of the Stockmodel.</param>
+        /// <returns></returns>
+        public PMStockModel CreateStockmodel(string name)
+        {
+            // Check to make sure a stockmodel by this name does not already exists
+            if (this[name] != null)
+            {
+                return null;
+            }
+            
+            // Create the stockmodel
+            _powerMILL.DoCommand("CREATE STOCKMODEL ;");
+
+            // Get the new stockmodel
+            var newStockmodel = (PMStockModel)_powerMILL.ActiveProject.CreatedItems(typeof(PMStockModel))[0];
+            if (!string.IsNullOrEmpty(name))
+            {
+                newStockmodel.Name = name;
+            }
+            Add(newStockmodel);
+            return newStockmodel;
+        }
+
         #endregion
     }
 }
