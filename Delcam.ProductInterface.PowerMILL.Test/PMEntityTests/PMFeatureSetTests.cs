@@ -53,11 +53,11 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         #region Test operations
 
         [Test]
-        public void UndrawAllFeatureSetsTest()
+        public void DrawAndUndrawAllFeatureSetsTest()
         {
-            _powerMill.Execute("CREATE FEATURESET ;");
-            _powerMill.Execute("CREATE FEATURESET ;");
-            _powerMill.Execute("DRAW FEATURESET ALL");
+            _powerMill.ActiveProject.FeatureSets.CreateFeatureset("Test Featureset 1");
+            _powerMill.ActiveProject.FeatureSets.CreateFeatureset("Test Featureset 2");
+            _powerMill.ActiveProject.FeatureSets.DrawAll();
             _powerMill.ActiveProject.FeatureSets.UndrawAll();
             Assert.IsTrue(true);
         }

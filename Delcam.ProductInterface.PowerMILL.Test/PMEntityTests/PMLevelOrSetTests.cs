@@ -53,11 +53,13 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         #region Test operations
 
         [Test]
-        public void UndrawAllLevelsOrSetsTest()
+        public void DrawAndUndrawAllLevelsOrSetsTest()
         {
-            _powerMill.Execute("CREATE LEVEL ;");
-            _powerMill.Execute("CREATE LEVEL ; MODELCOMPSET");
-            _powerMill.Execute("DRAW LEVEL ALL");
+            _powerMill.ActiveProject.LevelsAndSets.CreateLevel("Test level 1");
+            _powerMill.ActiveProject.LevelsAndSets.CreateLevel("Test level 2");
+            _powerMill.ActiveProject.LevelsAndSets.CreateSet("Test set 1");
+            _powerMill.ActiveProject.LevelsAndSets.CreateSet("Test set 2");
+            _powerMill.ActiveProject.LevelsAndSets.DrawAll();
             _powerMill.ActiveProject.LevelsAndSets.UndrawAll();
             Assert.IsTrue(true);
         }

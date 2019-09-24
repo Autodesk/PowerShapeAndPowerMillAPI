@@ -209,10 +209,10 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         [Test]
-        public void UndrawAllBoundariesTest()
+        public void DrawAndUndrawAllBoundariesTest()
         {
             _powerMILL.LoadProject(TestFiles.BoundaryTypes);
-            _powerMILL.Execute("DRAW BOUNDARY ALL");
+            _powerMILL.ActiveProject.Boundaries.DrawAll();
             _powerMILL.ActiveProject.Boundaries.UndrawAll();
             Assert.IsTrue(true);
         }

@@ -53,11 +53,11 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         #region Test operations
 
         [Test]
-        public void UndrawAllStockmodelsTest()
+        public void DrawAndUndrawAllStockmodelsTest()
         {
-            _powerMill.Execute("CREATE STOCKMODEL ;");
-            _powerMill.Execute("CREATE STOCKMODEL ;");
-            _powerMill.Execute("DRAW STOCKMODEL ALL");
+            _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 2");
+            _powerMill.ActiveProject.StockModels.DrawAll();
             _powerMill.ActiveProject.StockModels.UndrawAll();
             Assert.IsTrue(true);
         }

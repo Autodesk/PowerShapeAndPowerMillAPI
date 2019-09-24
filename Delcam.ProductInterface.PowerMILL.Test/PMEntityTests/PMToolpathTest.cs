@@ -600,10 +600,10 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         }
 
         [Test]
-        public void UndrawAllToolpathsTest()
+        public void DrawAndUndrawAllToolpathsTest()
         {
             _powerMill.LoadProject(TestFiles.BasicToolpath);
-            _powerMill.Execute("DRAW TOOLPATH ALL");
+            _powerMill.ActiveProject.Toolpaths.DrawAll();
             _powerMill.ActiveProject.Toolpaths.UndrawAll();
             Assert.IsTrue(true);            
         }

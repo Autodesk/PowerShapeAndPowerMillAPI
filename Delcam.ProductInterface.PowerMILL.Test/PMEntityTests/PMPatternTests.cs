@@ -102,11 +102,11 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         [Test]
-        public void UndrawAllPatternsTest()
+        public void DrawAndUndrawAllPatternsTest()
         {
             _powerMILL.ActiveProject.Patterns.CreatePattern(TestFiles.CurvesFiles);
-            _powerMILL.ActiveProject.Patterns.CreatePattern(TestFiles.CurvesFiles);            
-            _powerMILL.Execute("DRAW PATTERN ALL");
+            _powerMILL.ActiveProject.Patterns.CreatePattern(TestFiles.CurvesFiles);
+            _powerMILL.ActiveProject.Patterns.DrawAll();
             _powerMILL.ActiveProject.Patterns.UndrawAll();
             Assert.IsTrue(true);
         }

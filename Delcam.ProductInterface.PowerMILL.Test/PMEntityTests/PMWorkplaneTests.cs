@@ -53,11 +53,11 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         #region Test operations
 
         [Test]
-        public void UndrawAllWorkplaneTest()
+        public void DrawAndUndrawAllWorkplaneTest()
         {
-            _powerMill.Execute("CREATE WORKPLANE ;");
-            _powerMill.Execute("CREATE WORKPLANE ;");
-            _powerMill.Execute("DRAW WORKPLANE ALL");
+            _powerMill.ActiveProject.Workplanes.CreateWorkplane(new Geometry.Workplane());
+            _powerMill.ActiveProject.Workplanes.CreateWorkplane(new Geometry.Workplane());
+            _powerMill.ActiveProject.Workplanes.DrawAll();
             _powerMill.ActiveProject.Workplanes.UndrawAll();
             Assert.IsTrue(true);
         }

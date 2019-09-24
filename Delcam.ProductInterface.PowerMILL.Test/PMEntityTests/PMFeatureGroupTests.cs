@@ -53,11 +53,11 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         #region Test operations
 
         [Test]
-        public void UndrawAllFeatureGroupsTest()
-        {
-            _powerMill.Execute("CREATE FEATUREGROUP ;");
-            _powerMill.Execute("CREATE FEATUREGROUP ;");            
-            _powerMill.Execute("DRAW FEATUREGROUP ALL");
+        public void DrawAndUndrawAllFeatureGroupsTest()
+        {      
+            _powerMill.ActiveProject.FeatureGroups.CreateFeaturegroup("Test FeatureGroup 1");
+            _powerMill.ActiveProject.FeatureGroups.CreateFeaturegroup("Test FeatureGroup 2");
+            _powerMill.ActiveProject.FeatureGroups.DrawAll();
             _powerMill.ActiveProject.FeatureGroups.UndrawAll();
             Assert.IsTrue(true);
         }
