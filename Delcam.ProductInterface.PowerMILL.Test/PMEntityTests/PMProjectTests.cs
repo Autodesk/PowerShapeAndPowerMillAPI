@@ -147,6 +147,24 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             Assert.That(boundingBox.MinZ, Is.EqualTo((Autodesk.Geometry.MM)(-30.004846)));
         }
 
+        [Test]
+        public void ExportBlockTest()
+        {            
+            _powerMILL.ActiveProject.Boundaries.CreateBoundary(TestFiles.CurvesFiles);
+            _powerMILL.ActiveProject.Refresh();
+            PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;
+            var boundingBox = _powerMILL.ActiveProject.CreateBlockFromBoundaryWithLimits(boundary, 0, 100);
+            FileSystem.File file = new FileSystem.File(TestFiles.DIRECTORY + "\\ExportBlock.dmt");
+            _powerMILL.ActiveProject.ExportBlock(file);
+            Assert.That(file.Exists);
+            file.Delete();
+            file = new FileSystem.File(TestFiles.DIRECTORY + "\\ExportBlock.stl");
+            _powerMILL.ActiveProject.ExportBlock(file);
+            Assert.That(file.Exists);
+            file.Delete();
+        }
+
+
         #endregion
     }
 }

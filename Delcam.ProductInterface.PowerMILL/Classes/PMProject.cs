@@ -429,13 +429,16 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         /// <param name="boundary">The boundary from which to create the block.</param>        
         public BoundingBox CreateBlockFromBoundary(PMBoundary boundary)
-        {            
-            _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
-            _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
-            _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
-            _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");
-            _powerMILL.DoCommand("EDIT BLOCK RESET");
-            _powerMILL.DoCommand("BLOCK ACCEPT");
+        {
+            if (boundary != null)
+            {
+                _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
+                _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
+                _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
+                _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");
+                _powerMILL.DoCommand("EDIT BLOCK RESET");
+                _powerMILL.DoCommand("BLOCK ACCEPT");
+            }
             BoundingBox boundingBox = GetBlockLimits();            
             return boundingBox;
         }
@@ -447,17 +450,31 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="ZMin">Set the minimum Z value of the Block</param>
         /// <param name="ZMax">Set the maximum Z value of the Block</param>
         public BoundingBox CreateBlockFromBoundaryWithLimits(PMBoundary boundary, double ZMin, double ZMax)
-        {
-            _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
-            _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
-            _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
-            _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");
-            _powerMILL.DoCommand("EDIT BLOCK RESET");
-            _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMIN \"{0}\"", ZMin));
-            _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMAX \"{0}\"", ZMax));            
-            _powerMILL.DoCommand("BLOCK ACCEPT");
+        {            
+            if (boundary != null)
+            {
+                _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
+                _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
+                _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
+                _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");                
+                _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMIN \"{0}\"", ZMin));
+                _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMAX \"{0}\"", ZMax));
+                _powerMILL.DoCommand("BLOCK ACCEPT");                
+            }
             BoundingBox boundingBox = GetBlockLimits();
             return boundingBox;
+        }
+
+        /// <summary>
+        /// This operation exports the Block as DMT file 
+        /// </summary>
+        /// <param name="file">The file where to save the block (.dmt and .stl only)</param>        
+        public void ExportBlock(Autodesk.FileSystem.File file)
+        {                      
+            if (file.Extension.ToLower() == "dmt" || file.Extension.ToLower() == "stl")
+            {
+                _powerMILL.DoCommand("EXPORT BLOCK ; '" + file + "' YES");
+            }            
         }
 
         /// <summary>
