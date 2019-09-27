@@ -153,12 +153,12 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             _powerMILL.ActiveProject.Boundaries.CreateBoundary(TestFiles.CurvesFiles);
             _powerMILL.ActiveProject.Refresh();
             PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;
-            var boundingBox = _powerMILL.ActiveProject.CreateBlockFromBoundaryWithLimits(boundary, 0, 100);
-            FileSystem.File file = new FileSystem.File(TestFiles.DIRECTORY + "\\ExportBlock.dmt");
+            var boundingBox = _powerMILL.ActiveProject.CreateBlockFromBoundaryWithLimits(boundary, 0, 100);            
+            FileSystem.File file = FileSystem.File.CreateTemporaryFile("dmt", false);
             _powerMILL.ActiveProject.ExportBlock(file);
             Assert.That(file.Exists);
-            file.Delete();
-            file = new FileSystem.File(TestFiles.DIRECTORY + "\\ExportBlock.stl");
+            file.Delete();            
+            file = FileSystem.File.CreateTemporaryFile("stl", false);
             _powerMILL.ActiveProject.ExportBlock(file);
             Assert.That(file.Exists);
             file.Delete();

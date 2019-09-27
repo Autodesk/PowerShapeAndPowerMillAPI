@@ -430,7 +430,10 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="boundary">The boundary from which to create the block.</param>        
         public BoundingBox CreateBlockFromBoundary(PMBoundary boundary)
         {
-            if (boundary != null)
+            if (boundary == null)
+                throw new ArgumentNullException("boundary", "Boundary not found");
+
+            if (boundary.Exists)
             {
                 _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
                 _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
@@ -450,8 +453,11 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="ZMin">Set the minimum Z value of the Block</param>
         /// <param name="ZMax">Set the maximum Z value of the Block</param>
         public BoundingBox CreateBlockFromBoundaryWithLimits(PMBoundary boundary, double ZMin, double ZMax)
-        {            
-            if (boundary != null)
+        {
+            if (boundary == null)
+                throw new ArgumentNullException("boundary", "Boundary not found");
+
+            if (boundary.Exists)
             {
                 _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
                 _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
@@ -474,7 +480,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             if (file.Extension.ToLower() == "dmt" || file.Extension.ToLower() == "stl")
             {
                 _powerMILL.DoCommand("EXPORT BLOCK ; '" + file + "' YES");
-            }            
+            }
+            else
+            {
+                throw new Exception("Only .dmt and .stl supported");
+            }
         }
 
         /// <summary>
