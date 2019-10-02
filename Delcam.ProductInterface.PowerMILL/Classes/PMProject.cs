@@ -430,18 +430,15 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="boundary">The boundary from which to create the block.</param>        
         public BoundingBox CreateBlockFromBoundary(PMBoundary boundary)
         {
-            if (boundary == null)
+            if (boundary == null || !boundary.Exists)
                 throw new ArgumentNullException("boundary", "Boundary not found");
-
-            if (boundary.Exists)
-            {
-                _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
-                _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
-                _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
-                _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");
-                _powerMILL.DoCommand("EDIT BLOCK RESET");
-                _powerMILL.DoCommand("BLOCK ACCEPT");
-            }
+                       
+            _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
+            _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
+            _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
+            _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");
+            _powerMILL.DoCommand("EDIT BLOCK RESET");
+            _powerMILL.DoCommand("BLOCK ACCEPT");            
             BoundingBox boundingBox = GetBlockLimits();            
             return boundingBox;
         }
@@ -454,19 +451,16 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="ZMax">Set the maximum Z value of the Block</param>
         public BoundingBox CreateBlockFromBoundaryWithLimits(PMBoundary boundary, double ZMin, double ZMax)
         {
-            if (boundary == null)
+            if (boundary == null || !boundary.Exists)
                 throw new ArgumentNullException("boundary", "Boundary not found");
-
-            if (boundary.Exists)
-            {
-                _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
-                _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
-                _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
-                _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");                
-                _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMIN \"{0}\"", ZMin));
-                _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMAX \"{0}\"", ZMax));
-                _powerMILL.DoCommand("BLOCK ACCEPT");                
-            }
+                       
+            _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
+            _powerMILL.DoCommand(string.Format("ACTIVATE BOUNDARY \"{0}\"", boundary.Name));
+            _powerMILL.DoCommand("EDIT BLOCKTYPE BOUNDARY");
+            _powerMILL.DoCommand("EDIT BLOCK RESETLIMIT 0");                
+            _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMIN \"{0}\"", ZMin));
+            _powerMILL.DoCommand(string.Format("EDIT BLOCK ZMAX \"{0}\"", ZMax));
+            _powerMILL.DoCommand("BLOCK ACCEPT");           
             BoundingBox boundingBox = GetBlockLimits();
             return boundingBox;
         }
