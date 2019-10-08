@@ -135,6 +135,24 @@ namespace Autodesk.ProductInterface.PowerMILL
             PowerMill.DoCommand(string.Format("EDIT BOUNDARY \"{0}\" SMASH {1}", Name, smashTolerance));
         }
 
+        /// <summary>
+        /// Inserts the specified Boundary into this Boundary.
+        /// </summary>
+        /// <param name="boundary">The boundary to insert into this Boundary.</param>
+        public void InsertBoundary(PMBoundary boundary)
+        {
+            PowerMill.DoCommand("EDIT BOUNDARY '" + Name + "' INSERT BOUNDARY '" + boundary.Name + "'");
+        }
+
+        /// <summary>
+        /// Inserts the specified Boundary into this Boundary.
+        /// </summary>
+        /// <param name="boundaryName">The name of the boundary to insert into this Boundary.</param>
+        public void InsertBoundaryByName(string boundaryName)
+        {
+            PowerMill.DoCommand("EDIT BOUNDARY '" + Name + "' INSERT BOUNDARY '" + PowerMill.ActiveProject.Boundaries.GetByName(boundaryName).Name + "'");
+        }
+
         #endregion
     }
 }

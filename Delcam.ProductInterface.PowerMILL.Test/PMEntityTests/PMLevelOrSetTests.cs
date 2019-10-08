@@ -10,6 +10,7 @@
 using System;
 using System.Linq;
 using Autodesk.ProductInterface.PowerMILL;
+using Autodesk.ProductInterface.PowerMILLTest.Files;
 using NUnit.Framework;
 
 namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
@@ -61,6 +62,30 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             _powerMill.ActiveProject.LevelsAndSets.CreateSet("Test set 2");
             _powerMill.ActiveProject.LevelsAndSets.DrawAll();
             _powerMill.ActiveProject.LevelsAndSets.UndrawAll();
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public void SelectAllTest()
+        {
+            _powerMill.ActiveProject.Models.CreateModel(TestFiles.SingleMesh);
+            _powerMill.ActiveProject.LevelsAndSets.GetByName("Triangle Model").SelectAll();
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public void SelectWireframeTest()
+        {
+            _powerMill.ActiveProject.Models.CreateModel(TestFiles.SingleMesh);
+            _powerMill.ActiveProject.LevelsAndSets.GetByName("Triangle Model").SelectWireframe();
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public void SelectSurfacesTest()
+        {
+            _powerMill.ActiveProject.Models.CreateModel(TestFiles.SingleMesh);
+            _powerMill.ActiveProject.LevelsAndSets.GetByName("Triangle Model").SelectSurfaces();
             Assert.IsTrue(true);
         }
 
