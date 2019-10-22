@@ -7,6 +7,7 @@
 // *  in either electronic or hard copy form.                           *
 // **********************************************************************
 
+using System;
 using System.Collections.Generic;
 using Autodesk.FileSystem;
 using Autodesk.Geometry;
@@ -133,6 +134,32 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void Smash(double smashTolerance)
         {
             PowerMill.DoCommand(string.Format("EDIT BOUNDARY \"{0}\" SMASH {1}", Name, smashTolerance));
+        }
+
+        /// <summary>
+        /// Inserts the specified Boundary into this Boundary.
+        /// </summary>
+        /// <param name="boundary">The boundary to insert into this Boundary.</param>
+        public void InsertBoundary(PMBoundary boundary)
+        {
+            if (boundary == null || !boundary.Exists)
+                throw new ArgumentNullException("boundary", "Boundary not found");
+
+            PowerMill.DoCommand("EDIT BOUNDARY '" + Name + "' INSERT BOUNDARY '" + boundary.Name + "'");
+        }
+
+        /// <summary>
+        /// Inserts the specified Boundary into this Boundary.
+        /// </summary>
+        /// <param name="boundaryName">The name of the boundary to insert into this Boundary.</param>
+        public void InsertBoundaryByName(string boundaryName)
+        {
+            PMBoundary boundary = PowerMill.ActiveProject.Boundaries.GetByName(boundaryName);
+
+            if (boundary == null || !boundary.Exists)
+                throw new ArgumentNullException("boundary", "Boundary not found");
+
+            PowerMill.DoCommand("EDIT BOUNDARY '" + Name + "' INSERT BOUNDARY '" + boundary.Name + "'");
         }
 
         #endregion
