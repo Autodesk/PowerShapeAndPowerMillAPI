@@ -104,7 +104,6 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
             return newWorkplane;
         }
-
         #endregion
     }
 }

@@ -188,9 +188,7 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             var toolpath = _powerMill.ActiveProject.Toolpaths[0];
             Assert.IsTrue(toolpath.TotalCutLength == 160);
         }
-
-        #endregion
-
+        
         [Test]
         public void ToolPathStrategiesTests()
         {
@@ -600,5 +598,16 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             var boundingBoxToFind = new BoundingBox(-20, 20, -20, 20, -10, 10);
             Assert.That(_powerMill.ActiveProject.Toolpaths[0].BlockBoundingBox, Is.EqualTo(boundingBoxToFind));
         }
+
+        [Test]
+        public void DrawAndUndrawAllToolpathsTest()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            _powerMill.ActiveProject.Toolpaths.DrawAll();
+            _powerMill.ActiveProject.Toolpaths.UndrawAll();
+            Assert.IsTrue(true);            
+        }
+
+        #endregion
     }
 }

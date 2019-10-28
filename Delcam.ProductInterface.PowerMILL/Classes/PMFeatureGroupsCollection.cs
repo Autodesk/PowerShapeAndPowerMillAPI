@@ -76,6 +76,32 @@ namespace Autodesk.ProductInterface.PowerMILL
             return names;
         }
 
+        /// <summary>
+        /// Creates a new featuregroup with the specified name.
+        /// </summary>
+        /// <param name="name">The name of the featuregroup.</param>
+        /// <returns></returns>
+        public PMFeatureGroup CreateFeaturegroup(string name)
+        {
+            // Check to make sure a featuregroup by this name does not already exists
+            if (this[name] != null)
+            {
+                return null;
+            }
+
+            // Create the featuregroup
+            _powerMILL.DoCommand("CREATE FEATUREGROUP ;");
+
+            // Get the new featuregroup
+            var newFeaturegroup = (PMFeatureGroup)_powerMILL.ActiveProject.CreatedItems(typeof(PMFeatureGroup))[0];
+            if (!string.IsNullOrEmpty(name))
+            {
+                newFeaturegroup.Name = name;
+            }
+            Add(newFeaturegroup);
+            return newFeaturegroup;
+        }
+
         #endregion
     }
 }

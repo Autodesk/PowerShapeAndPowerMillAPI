@@ -85,17 +85,22 @@
     <Compile Include="HelperClasses\MacroEventCatcher.cs" />
     <Compile Include="HelperClasses\WorkPlaneCreator.cs" />
     <Compile Include="PMEntityTests\PMBoundaryTests.cs" />
+    <Compile Include="PMEntityTests\PMFeatureGroupTests.cs" />
+    <Compile Include="PMEntityTests\PMFeatureSetTests.cs" />
+    <Compile Include="PMEntityTests\PMLevelOrSetTests.cs" />
     <Compile Include="PMEntityTests\PMMacroTest.cs" />
     <Compile Include="PMEntityTests\PMModelTest.cs" />
     <Compile Include="PMEntityTests\PMNCProgramTest.cs" />
     <Compile Include="PMEntityTests\PMPatternTests.cs" />
     <Compile Include="PMEntityTests\PMProjectTests.cs" />
+    <Compile Include="PMEntityTests\PMStockmodelTests.cs" />
     <Compile Include="PMEntityTests\PMToolPathTestGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PMToolPathTestGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="PMEntityTests\PMToolTest.cs" />
+    <Compile Include="PMEntityTests\PMWorkplaneTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PMEntityTests\PMEntityTestBase.cs" />
     <Compile Include="PMEntityTests\PMToolpathTest.cs" />

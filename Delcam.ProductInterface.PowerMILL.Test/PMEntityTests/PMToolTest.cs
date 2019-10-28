@@ -525,5 +525,19 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         #endregion
+
+        #region Test operations
+
+        [Test]
+        public void DrawAndUndrawAllToolsTest()
+        {
+            _powerMill.LoadProject(TestFiles.ToolProperties);
+            _powerMill.ActiveProject.Tools.DrawAll();
+            _powerMill.ActiveProject.Tools.UndrawAll();
+            Assert.IsTrue(true);
+        }
+
+        #endregion
+
     }
 }

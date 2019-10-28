@@ -273,6 +273,13 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             Assert.IsTrue(_defaultModel.Exists);
         }
 
+        [Test]
+        public void DrawAndUndrawAllModels()
+        {
+            _powerMill.ActiveProject.Models.DrawAll();            
+            _powerMill.ActiveProject.Models.UndrawAll();
+            Assert.IsTrue(true);
+        }
         #endregion
     }
 }

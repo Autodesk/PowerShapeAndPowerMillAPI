@@ -101,6 +101,16 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             Assert.AreEqual(230, outSplines.First().Count);
         }
 
+        [Test]
+        public void DrawAndUndrawAllPatternsTest()
+        {
+            _powerMILL.ActiveProject.Patterns.CreatePattern(TestFiles.CurvesFiles);
+            _powerMILL.ActiveProject.Patterns.CreatePattern(TestFiles.CurvesFiles);
+            _powerMILL.ActiveProject.Patterns.DrawAll();
+            _powerMILL.ActiveProject.Patterns.UndrawAll();
+            Assert.IsTrue(true);
+        }
+
         #endregion
     }
 }

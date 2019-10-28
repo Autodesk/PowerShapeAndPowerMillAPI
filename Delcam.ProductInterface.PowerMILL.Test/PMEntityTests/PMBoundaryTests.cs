@@ -208,6 +208,33 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             Assert.AreEqual(18, result[0].Count);
         }
 
+        [Test]
+        public void DrawAndUndrawAllBoundariesTest()
+        {
+            _powerMILL.LoadProject(TestFiles.BoundaryTypes);
+            _powerMILL.ActiveProject.Boundaries.DrawAll();
+            _powerMILL.ActiveProject.Boundaries.UndrawAll();
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public void InsertBoundaryTest()
+        {
+            PMBoundary bToInsert = _powerMILL.ActiveProject.Boundaries.CreateBoundary(TestFiles.CurvesFiles);
+            PMBoundary bEmpty = _powerMILL.ActiveProject.Boundaries.CreateEmptyBoundary();
+            bEmpty.InsertBoundary(bToInsert);
+            Assert.IsTrue(bEmpty.BoundingBox != null);
+        }
+
+        [Test]
+        public void InsertBoundaryByNameTest()
+        {
+            PMBoundary bToInsert = _powerMILL.ActiveProject.Boundaries.CreateBoundary(TestFiles.CurvesFiles);
+            PMBoundary bEmpty = _powerMILL.ActiveProject.Boundaries.CreateEmptyBoundary();
+            bEmpty.InsertBoundaryByName(bToInsert.Name);
+            Assert.IsTrue(bEmpty.BoundingBox != null);
+        }
+
         #endregion
     }
 }

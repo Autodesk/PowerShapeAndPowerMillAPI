@@ -213,6 +213,16 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         //    Assert.IsTrue(tempFile.Exists, String.Format("Expected the NC program 'cutting_1' to be written to {0}.", tempFile.FilePath));
         //}
 
+        [Test]
+        public void DrawAndUndrawAllNCPrograms()
+        {
+            _powerMILL.ActiveProject.NCPrograms.CreateNCProgram("Test NCProgram 1");
+            _powerMILL.ActiveProject.NCPrograms.CreateNCProgram("Test NCProgram 2");
+            _powerMILL.ActiveProject.NCPrograms.DrawAll();
+            _powerMILL.ActiveProject.NCPrograms.UndrawAll();
+            Assert.IsTrue(true);
+        }
+
         #endregion
     }
 }

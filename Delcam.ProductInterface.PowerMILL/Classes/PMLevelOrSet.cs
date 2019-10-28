@@ -88,6 +88,33 @@ namespace Autodesk.ProductInterface.PowerMILL
             PowerMill.ActiveProject.LevelsAndSets.Remove(this);
         }
 
+        /// <summary>
+        /// Select all from Level or Set
+        /// </summary>
+        /// <remarks></remarks>
+        public void SelectAll()
+        {
+            PowerMill.DoCommand("EDIT LEVEL '" + Name + "' SELECT ALL");
+        }
+
+        /// <summary>
+        /// Select wireframe from Level or Set
+        /// </summary>
+        /// <remarks></remarks>
+        public void SelectWireframe()
+        {
+            PowerMill.DoCommand("EDIT LEVEL '" + Name + "' SELECT WIREFRAME");
+        }
+
+        /// <summary>
+        /// Select surfaces from Level or Set
+        /// </summary>
+        /// <remarks></remarks>
+        public void SelectSurfaces()
+        {
+            PowerMill.DoCommand("EDIT LEVEL '" + Name + "' SELECT SURFACE");
+        }
+
         #endregion
     }
 }

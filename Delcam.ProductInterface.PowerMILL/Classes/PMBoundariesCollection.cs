@@ -183,7 +183,6 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
             return newBoundary;
         }
-
         #endregion
     }
 }

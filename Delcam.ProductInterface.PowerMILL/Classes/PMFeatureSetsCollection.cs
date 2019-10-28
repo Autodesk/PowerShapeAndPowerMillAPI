@@ -56,6 +56,32 @@ namespace Autodesk.ProductInterface.PowerMILL
             return names;
         }
 
+        /// <summary>
+        /// Creates a new featureset with the specified name.
+        /// </summary>
+        /// <param name="name">The name of the featureset.</param>
+        /// <returns></returns>
+        public PMFeatureSet CreateFeatureset(string name)
+        {
+            // Check to make sure a featureset by this name does not already exists
+            if (this[name] != null)
+            {
+                return null;
+            }
+
+            // Create the featureset
+            _powerMILL.DoCommand("CREATE FEATURESET ;");
+
+            // Get the new featuregroup
+            var newFeatureset = (PMFeatureSet)_powerMILL.ActiveProject.CreatedItems(typeof(PMFeatureSet))[0];
+            if (!string.IsNullOrEmpty(name))
+            {
+                newFeatureset.Name = name;
+            }
+            Add(newFeatureset);
+            return newFeatureset;
+        }
+
         #endregion
     }
 }

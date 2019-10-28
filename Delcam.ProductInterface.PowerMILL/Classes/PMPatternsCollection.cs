@@ -145,7 +145,6 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
             return newPattern;
         }
-
         #endregion
     }
 }
