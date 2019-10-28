@@ -301,7 +301,15 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public override void Quit()
         {
-            int nPMillInstancesBeforeQuit = Process.GetProcessesByName("pmill").Length;
+            Process process;
+            try
+            {
+                process = Process.GetProcessById(ProcessId);
+            }
+            catch (Exception)
+            {
+                process = null;
+            }
 
             //Turn shading off to speed it up
             DoCommand("VIEW MODEL ; SHADE OFF");
@@ -309,7 +317,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             //Make sure the explorer will not disappear in future
             DoCommand("SPLITTER TABBROWSER WIDTH 240");
             _powerMILL.Quit();
-            while (Process.GetProcessesByName("pmill").Length == nPMillInstancesBeforeQuit)
+            while (process != null && process.HasExited == false)
                 System.Threading.Thread.Sleep(1000);
         }
 
