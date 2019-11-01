@@ -380,9 +380,27 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         {
             if (IsItAVersionEqualOrAbove2018(tweakedVersion))
             {
-                // For PS 2018 we can only have one version installed, so any 2018 is ok
-                tweakedVersion = new Version(2018, 0, 0);
-                tweakedMaximumVersion = new Version(2018, 99, 99);
+                if (tweakedVersion.Major > 2018)
+                {
+                    tweakedVersion = new Version(tweakedVersion.Major, 0, 0);
+                }
+                else
+                {
+                    tweakedVersion = new Version(tweakedVersion.Major + 2000, 0, 0);
+                }
+
+                if (tweakedMaximumVersion == null)
+                {
+                    tweakedMaximumVersion = new Version(tweakedVersion.Major, 99, 99);
+                }
+                else if (tweakedMaximumVersion.Major > 2018)
+                {
+                    tweakedMaximumVersion = new Version(tweakedMaximumVersion.Major, 99, 99);
+                }
+                else
+                {
+                    tweakedMaximumVersion = new Version(tweakedMaximumVersion.Major + 2000, 99, 99);
+                }
             }
         }
 
@@ -390,9 +408,27 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         {
             if (IsItAVersionEqualOrAbove2018(tweakedVersion))
             {
-                // For PS 2018 we can only have one version installed, so any 2018 is ok
-                tweakedVersion = new Version(18, 0, 0);
-                tweakedMaximumVersion = new Version(18, 99, 99);
+                if (tweakedVersion.Major > 2018)
+                {
+                    tweakedVersion = new Version(tweakedVersion.Major - 2000, 0, 0);
+                }
+                else
+                {
+                    tweakedVersion = new Version(tweakedVersion.Major, 0, 0);
+                }
+
+                if (tweakedMaximumVersion == null)
+                {
+                    tweakedMaximumVersion = new Version(tweakedVersion.Major, 99, 99);
+                }
+                else if (tweakedMaximumVersion.Major > 2018)
+                {
+                    tweakedMaximumVersion = new Version(tweakedMaximumVersion.Major - 2000, 99, 99);
+                }
+                else
+                {
+                    tweakedMaximumVersion = new Version(tweakedMaximumVersion.Major, 99, 99);
+                }
             }
         }
 

@@ -290,6 +290,7 @@ namespace Autodesk.ProductInterface
                 processStart.WindowStyle = ProcessWindowStyle.Hidden;
             }
             processStart.CreateNoWindow = true;
+            processStart.UseShellExecute = true;
 
             var process = Process.Start(processStart);
 
