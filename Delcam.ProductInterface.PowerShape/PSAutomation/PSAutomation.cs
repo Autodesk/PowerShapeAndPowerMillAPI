@@ -380,7 +380,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         {
             if (IsItAVersionEqualOrAbove2018(tweakedVersion))
             {
-                if (tweakedVersion.Major > 2018)
+                if (tweakedVersion.Major >= 2018)
                 {
                     tweakedVersion = new Version(tweakedVersion.Major, 0, 0);
                 }
@@ -393,7 +393,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 {
                     tweakedMaximumVersion = new Version(tweakedVersion.Major, 99, 99);
                 }
-                else if (tweakedMaximumVersion.Major > 2018)
+                else if (tweakedMaximumVersion.Major >= 2018)
                 {
                     tweakedMaximumVersion = new Version(tweakedMaximumVersion.Major, 99, 99);
                 }
@@ -408,7 +408,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         {
             if (IsItAVersionEqualOrAbove2018(tweakedVersion))
             {
-                if (tweakedVersion.Major > 2018)
+                if (tweakedVersion.Major >= 2018)
                 {
                     tweakedVersion = new Version(tweakedVersion.Major - 2000, 0, 0);
                 }
@@ -421,7 +421,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 {
                     tweakedMaximumVersion = new Version(tweakedVersion.Major, 99, 99);
                 }
-                else if (tweakedMaximumVersion.Major > 2018)
+                else if (tweakedMaximumVersion.Major >= 2018)
                 {
                     tweakedMaximumVersion = new Version(tweakedMaximumVersion.Major - 2000, 99, 99);
                 }
