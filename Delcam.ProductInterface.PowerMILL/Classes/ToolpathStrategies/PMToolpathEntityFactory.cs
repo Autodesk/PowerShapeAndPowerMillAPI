@@ -39,9 +39,9 @@ namespace Autodesk.ProductInterface.PowerMILL
                 case "pattern":
                     return new PMToolpathPatternFinishing(powerMILL, name);
                 case "com_pattern":
-                    throw new Exception("Committed pattern toolpaths not supported");
+                    return new PMToolpathCommittedPattern(powerMILL, name);
                 case "com_boundary":
-                    throw new Exception("Committed boundary toolpaths not supported");
+                    return new PMToolpathCommittedBoundary(powerMILL, name);
                 case "constantz":
                     return new PMToolpathConstantZFinishing(powerMILL, name);
                 case "offset_3d":
@@ -127,7 +127,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 case "corner_clear":
                     return new PMToolpathCornerClearance(powerMILL, name);
                 case "edge_break":
-                    throw new Exception("Edge break toolpaths not supported");
+                    return new PMToolpathEdgeBreak(powerMILL, name);
                 case "flowline":
                     return new PMToolpathFlowlineFinishing(powerMILL, name);
                 case "parametric_spiral":
@@ -139,9 +139,9 @@ namespace Autodesk.ProductInterface.PowerMILL
                 case "blade":
                     return new PMToolpathBladeMachining(powerMILL, name);
                 case "feature_face":
-                    throw new Exception("Feature face machining toolpaths not supported");
+                    return new PMToolpathFeatureFaceMachining(powerMILL, name);
                 case "feature_chamfer":
-                    throw new Exception("Feature chamfer machining toolpaths not supported");
+                    return new PMToolpathFeatureChamferMachining(powerMILL, name);
                 default:
                     return new PMToolpath(powerMILL, name);
             }

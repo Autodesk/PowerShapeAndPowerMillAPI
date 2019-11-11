@@ -99,6 +99,11 @@
     <Compile Include="Classes\InvalidPowerMillParameterException.cs" />
     <Compile Include="Classes\InvalidPowerMillVersionException.cs" />
     <Compile Include="Classes\PMLeadExtension.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathFeatureFaceMachining.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathCommittedPattern.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathCommittedBoundary.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathEdgeBreak.cs" />
+    <Compile Include="Classes\ToolpathStrategies\PMToolpathFeatureChamferMachining.cs" />
     <Compile Include="Classes\Tool\PMToolGroovingTurning.cs" />
     <Compile Include="Classes\Tool\PMToolProfilingTurning.cs" />
     <Compile Include="Enums\DefaultLinkTypes.cs" />
