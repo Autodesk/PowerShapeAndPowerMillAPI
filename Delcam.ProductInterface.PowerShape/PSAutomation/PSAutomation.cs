@@ -82,42 +82,42 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// <summary>
         /// The arguments used to hide powershape when it is starting.
         /// </summary>
-        private const string ARGUMENTS = "-embedding -automation -norecovery -nogui";
+        private const string ARGUMENTS = "-embedding -automation -norecovery";
 
         /// <summary>
         /// The arguments used to hide powershape-e when it is starting.
         /// </summary>
-        private const string PS_E_ARGUMENTS = "-embedding -automation -norecovery -nogui -e";
+        private const string PS_E_ARGUMENTS = "-embedding -automation -norecovery -e";
 
         /// <summary>
         /// The Class Id for the PowerSHAPE Surfacer COM server.
         /// </summary>
-        private const string PS_SURFACER_ARGUMENTS = "-embedding -automation -norecovery -nogui";
+        private const string PS_SURFACER_ARGUMENTS = "-embedding -automation -norecovery";
 
         /// <summary>
         /// The Class Id for the PowerSHAPE Viewer COM server.
         /// </summary>
-        private const string PS_VIEWER_ARGUMENTS = "-embedding -automation -norecovery -nogui";
+        private const string PS_VIEWER_ARGUMENTS = "-embedding -automation -norecovery";
 
         /// <summary>
         /// The Class Id for the PowerSHAPE Estimator COM server.
         /// </summary>
-        private const string PS_ESTIMATOR_ARGUMENTS = "-embedding -automation -norecovery -nogui";
+        private const string PS_ESTIMATOR_ARGUMENTS = "-embedding -automation -norecovery";
 
         /// <summary>
         /// The Class Id for the PowerMill Modeller COM server.
         /// </summary>
-        private const string PMILL_MODELLING_ARGUMENTS = "-embedding -automation -mill -norecovery -nogui";
+        private const string PMILL_MODELLING_ARGUMENTS = "-embedding -automation -mill -norecovery";
 
         /// <summary>
         /// The Class Id for the PowerMill Sketcher COM server.
         /// </summary>
-        private const string PMILL_SKETCHER_ARGUMENTS = "-embedding -automation -norecovery -nogui";
+        private const string PMILL_SKETCHER_ARGUMENTS = "-embedding -automation -norecovery";
 
         /// <summary>
         /// The Class Id for the PowerMill Electrode COM server.
         /// </summary>
-        private const string PMILL_ELECTRODE_ARGUMENTS = "-embedding -automation -norecovery -nogui";
+        private const string PMILL_ELECTRODE_ARGUMENTS = "-embedding -automation -norecovery";
 
         /// <summary>
         /// The list of Models that is currently in PowerSHAPE.
@@ -355,6 +355,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             TweakVersionNumbersTo2018(ref tweakedVersion, ref tweakedMaximumVersion);
             StartExecutable(APP_NAME, tweakedVersion, tweakedMaximumVersion, ClassId, false, CommandArguments);
             _powerSHAPE = Marshal.GetActiveObject(ClassId);
+            IsGUIVisible = false;
             Console.WriteLine("Created Single Instance");
             try
             {
