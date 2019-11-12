@@ -356,6 +356,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             StartExecutable(APP_NAME, tweakedVersion, tweakedMaximumVersion, ClassId, false, CommandArguments);
             _powerSHAPE = Marshal.GetActiveObject(ClassId);
             IsGUIVisible = false;
+            FormUpdateOff();
+            DialogsOff();
             Console.WriteLine("Created Single Instance");
             try
             {
