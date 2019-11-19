@@ -1472,7 +1472,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 }
 
                 _powerSHAPE.DoCommand("FILE SAVEASPATH " + fileEnsureExtension.Path);
-                _name = fileEnsureExtension.NameWithoutExtension;
+                _name = _powerSHAPE.ActiveWindow.AttachedProcessName;
             }
 
             _id = _powerSHAPE.ReadIntValue("MODEL['" + Name + "'].ID");
