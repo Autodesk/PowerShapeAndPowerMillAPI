@@ -444,7 +444,7 @@
                                               Grid.Column="3"
                                               Margin="2,0,0,0"/>
                             
-                            <Image Source="/Autodesk.WPFControls;component/Desktop/Images/AACLogo.png"
+                            <Image Source="/Autodesk.WPFControls;component/Desktop/Images/ADSKLogo.png"
                                    Grid.Column="4"
                                    Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=AutodeskLogoVisibility}" />
 

@@ -169,9 +169,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Desktop\Images\AACLogo.png" />
+    <Resource Include="Desktop\Images\ADSKLogo.png" />
     <Resource Include="Desktop\Images\about.png" />
-    <Resource Include="Desktop\Images\delcam_logo.gif" />
     <Resource Include="Desktop\Images\exit.png" />
     <Resource Include="Desktop\Images\help.png" />
     <Resource Include="Desktop\Images\home.png" />
