@@ -7,6 +7,8 @@
 // *  in either electronic or hard copy form.                           *
 // **********************************************************************
 
+using System.Linq;
+
 namespace Autodesk.ProductInterface.PowerSHAPE
 {
     /// <summary>
@@ -43,6 +45,17 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         #endregion
 
         #region " Operations "
+
+        public override void AddToSelection(bool emptySelectionFirst = false)
+        {
+            if (emptySelectionFirst)
+            {
+                _powerSHAPE.ActiveModel.ClearSelectedItems();
+            }
+
+            _parentSurface.SelectSurfaceCurves(SurfaceCurveTypes.Longitudinal, 
+                                               _parentSurface.Longitudinals.Select(x => int.Parse(x.Name)).ToArray<int>());
+        }
 
         #endregion
     }
