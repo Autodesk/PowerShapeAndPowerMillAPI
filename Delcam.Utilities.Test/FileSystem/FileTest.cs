@@ -539,6 +539,8 @@ namespace Autodesk.Utilities.Test.FileSystem
 
             //check pathname is correct
             Assert.AreEqual(newFile, target.Path, "Filename has not been updated internally");
+            // And parent directory too
+            Assert.That(target.ParentDirectory.Path, Is.EqualTo(newDir + "\\"));
 
             System.IO.File.Delete(newFile);
         }

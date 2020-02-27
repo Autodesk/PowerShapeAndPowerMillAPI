@@ -35,14 +35,7 @@ namespace Autodesk.FileSystem
                 throw new ArgumentNullException();
             }
 
-            string directoryPath = System.IO.Path.GetDirectoryName(filePath);
-            if (string.IsNullOrWhiteSpace(directoryPath))
-            {
-                throw new ArgumentException(string.Format("Directory not found for filename '{0}'.", filePath), filePath);
-            }
-
-            ParentDirectory = new Directory(directoryPath);
-            Path = filePath;
+            SetPath(filePath);
         }
 
         /// <summary>
@@ -125,6 +118,18 @@ namespace Autodesk.FileSystem
 
         #region Operations
 
+        private void SetPath(string filePath)
+        {
+            string directoryPath = System.IO.Path.GetDirectoryName(filePath);
+            if (string.IsNullOrWhiteSpace(directoryPath))
+            {
+                throw new ArgumentException(string.Format("Directory not found for filename '{0}'.", filePath), filePath);
+            }
+
+            ParentDirectory = new Directory(directoryPath);
+            Path = filePath;
+        }
+
         /// <summary>
         /// Create the file if it does not already exist.
         /// </summary>
@@ -168,7 +173,7 @@ namespace Autodesk.FileSystem
 
             System.IO.File.Move(Path, newFile.Path);
 
-            Path = newFile.Path;
+            SetPath(newFile.Path);
         }
 
         /// <summary>
@@ -198,7 +203,7 @@ namespace Autodesk.FileSystem
             renamedFile.Delete();
 
             System.IO.File.Move(Path, renamedFile.Path);
-            Path = renamedFile.Path;
+            SetPath(renamedFile.Path);
         }
 
         /// <summary>
