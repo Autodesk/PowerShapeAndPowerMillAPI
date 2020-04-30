@@ -127,6 +127,11 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             nc = _powerMILL.ActiveProject.NCPrograms["Milling_2"];
             toolpaths = nc.Toolpaths;
             Assert.AreEqual(7, toolpaths.Count, "Expected NC program 'Milling_2' to have 7 toolpaths.");
+
+            // #3
+            nc = _powerMILL.ActiveProject.NCPrograms["milling_3"];
+            toolpaths = nc.Toolpaths;
+            Assert.AreEqual(2, toolpaths.Count, "Expected NC program 'milling_3' to have 2 toolpaths.");
         }
 
         [Test]

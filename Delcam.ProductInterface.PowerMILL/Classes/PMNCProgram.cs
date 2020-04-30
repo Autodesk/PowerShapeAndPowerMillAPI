@@ -165,7 +165,13 @@ namespace Autodesk.ProductInterface.PowerMILL
                 toolpathsList = toolpathsList.Replace(((char) 13).ToString(), string.Empty);
                 string[] splitList = toolpathsList.Split((char) 10);
                 List<PMToolpath> returnToolpaths = new List<PMToolpath>();
-                for (int i = 4; i <= splitList.Length - 1; i++)
+                // If no option file is specified then the toolpath entries start a row earlier
+                var startIndex = 4;
+                if (!splitList[3].Trim().StartsWith("Option"))
+                {
+                    startIndex = 3;
+                }
+                for (int i = startIndex; i <= splitList.Length - 1; i++)
                 {
                     if (!string.IsNullOrEmpty(splitList[i].Trim()))
                     {
