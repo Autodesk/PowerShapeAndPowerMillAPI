@@ -299,6 +299,21 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             Assert.AreEqual(z + vec.K, surfaceCurve.Points[0].Z);
         }
 
+        [Test]
+        public void FreeTangentsAndMagnitudesTest()
+        {
+            // Get first surface curve
+            PSSurfaceCurve surfaceCurve = _surfaceCurves[1];
+
+            // Check that the tangency is flat
+            Assert.That(surfaceCurve.GetEntryElevationAngleOfPoint(1), Is.EqualTo(0.0));
+
+            surfaceCurve.FreeMagnitudesAndDirections();
+
+            // Check that it has been flattened
+            Assert.That(surfaceCurve.GetEntryElevationAngleOfPoint(1), Is.Not.EqualTo(0.0));
+        }
+
         #endregion
 
         #endregion

@@ -462,78 +462,66 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// Gets the magnitude of the entry tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which entry tangency magnitude is required. Index starts from zero.</param>
-        /// <returns>Entry tangent magnitude vector.</returns>
-        public Vector GetEntryMagnitudeOfPoint(int pointNumber)
+        /// <returns>Entry tangent magnitude.</returns>
+        public double GetEntryMagnitudeOfPoint(int pointNumber)
         {
-            double[] entryMagnitude =
-                _powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].ENTRY_MAGNITUDE") as double
-                    [];
-            return new Vector(entryMagnitude[0], entryMagnitude[1], entryMagnitude[2]);
+            double entryMagnitude = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].ENTRY_MAGNITUDE");
+            return entryMagnitude;
         }
 
         /// <summary>
         /// Gets the magnitude of the exit tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which exit tangency magnitude is required. Index starts from zero.</param>
-        /// <returns>Exit tangent magnitude vector.</returns>
-        public Vector GetExitMagnitudeOfPoint(int pointNumber)
+        /// <returns>Exit tangent magnitude.</returns>
+        public double GetExitMagnitudeOfPoint(int pointNumber)
         {
-            double[] exitMagnitude =
-                _powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) +
-                                        "].EXIT_MAGNITUDE") as double[];
-            return new Vector(exitMagnitude[0], exitMagnitude[1], exitMagnitude[2]);
+            double exitMagnitude = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].EXIT_MAGNITUDE");
+            return exitMagnitude;
         }
 
         /// <summary>
         /// Gets the azimuth angle of the entry tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which the entry tangency azimuth angle is required. Index starts from zero.</param>
-        /// <returns>Entry azimuth vector.</returns>
-        public Vector GetEntryAzimuthAngleOfPoint(int pointNumber)
+        /// <returns>Entry azimuth.</returns>
+        public double GetEntryAzimuthAngleOfPoint(int pointNumber)
         {
-            double[] entryAzimuth =
-                _powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) +
-                                        "].ENTRY_TANGENT.AZIMUTH") as double[];
-            return new Vector(entryAzimuth[0], entryAzimuth[1], entryAzimuth[2]);
+            double entryAzimuth = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].ENTRY_TANGENT.AZIMUTH");
+            return entryAzimuth;
         }
 
         /// <summary>
         /// Gets the elevation angle of the entry tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which the exit tangency elevation angle is required. Index starts from zero.</param>
-        /// <returns>Entry elevation vector.</returns>
-        public Vector GetEntryElevationAngleOfPoint(int pointNumber)
+        /// <returns>Entry elevation.</returns>
+        public double GetEntryElevationAngleOfPoint(int pointNumber)
         {
-            double[] entryElevation =
-                _powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) +
-                                        "].ENTRY_TANGENT.ELEVATION") as double[];
-            return new Vector(entryElevation[0], entryElevation[1], entryElevation[2]);
+            double entryElevation = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].ENTRY_TANGENT.ELEVATION");
+            return entryElevation;
         }
 
         /// <summary>
         /// Gets the azimuth angle of the exit tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which the exit tangency azimuth angle is required. Index starts from zero.</param>
-        /// <returns>Exit azimuth vector.</returns>
-        public Vector GetExitAzimuthAngleOfPOint(int pointNumber)
+        /// <returns>Exit azimuth.</returns>
+        public double GetExitAzimuthAngleOfPOint(int pointNumber)
         {
-            double[] exitAzimuth =
-                _powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) +
-                                        "].EXIT_TANGENT.AZIMUTH") as double[];
-            return new Vector(exitAzimuth[0], exitAzimuth[1], exitAzimuth[2]);
+            double exitAzimuth = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].EXIT_TANGENT.AZIMUTH");
+            return exitAzimuth;
         }
 
         /// <summary>
         /// Gets the elevation angle of the exit tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which the exit tangency elevation angle is required. Index starts from zero.</param>
-        /// <returns>Exit elevation vector.</returns>
-        public Vector GetExitElevationAngleOfPoint(int pointNumber)
+        /// <returns>Exit elevation.</returns>
+        public double GetExitElevationAngleOfPoint(int pointNumber)
         {
-            double[] exitElevation =
-                _powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) +
-                                        "].EXIT_TANGENT.ELEVATION") as double[];
-            return new Vector(exitElevation[0], exitElevation[1], exitElevation[2]);
+            double exitElevation = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].EXIT_TANGENT.ELEVATION");
+            return exitElevation;
         }
 
         /// <summary>
@@ -564,52 +552,44 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// Gets the flare angle of the entry tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which the entry tangency flare angle is required. Index starts from zero.</param>
-        /// <returns>Entry flare vector</returns>
-        public Vector GetEntryFlareAngleOfPoint(int pointNumber)
+        /// <returns>Entry flare.</returns>
+        public double GetEntryFlareAngleOfPoint(int pointNumber)
         {
-            double[] entryFlare =
-                _powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) +
-                                        "].ENTRY_TANGENT.FLARE") as double[];
-            return new Vector(entryFlare[0], entryFlare[1], entryFlare[2]);
+            double entryFlare = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].ENTRY_TANGENT.FLARE");
+            return entryFlare;
         }
 
         /// <summary>
         /// Gets the twist angle of the entry tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which the exit tangency twist angle is required. Index starts from zero.</param>
-        /// <returns>Entry twist vector.</returns>
-        public Vector GetEntryTwistAngleOfPoint(int pointNumber)
+        /// <returns>Entry twist.</returns>
+        public double GetEntryTwistAngleOfPoint(int pointNumber)
         {
-            double[] entryTwist =
-                _powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) +
-                                        "].ENTRY_TANGENT.TWIST") as double[];
-            return new Vector(entryTwist[0], entryTwist[1], entryTwist[2]);
+            double entryTwist = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].ENTRY_TANGENT.TWIST");
+            return entryTwist;
         }
 
         /// <summary>
         /// Gets the flare angle of the exit tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which the exit tangency flare angle is required. Index starts from zero.</param>
-        /// <returns>Exit flare vector.</returns>
-        public Vector GetExitFlareAngleOfPoint(int pointNumber)
+        /// <returns>Exit flare.</returns>
+        public double GetExitFlareAngleOfPoint(int pointNumber)
         {
-            double[] exitFlare =
-                _powerSHAPE.DoCommandEx(
-                    Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].EXIT_TANGENT.FLARE") as double[];
-            return new Vector(exitFlare[0], exitFlare[1], exitFlare[2]);
+            double exitFlare = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].EXIT_TANGENT.FLARE");
+            return exitFlare;
         }
 
         /// <summary>
         /// Gets the twist angle of the exit tangent of the desired point.
         /// </summary>
         /// <param name="pointNumber">The point at which the exit tangency twist angle is required. Index starts from zero.</param>
-        /// <returns>Exit twist vector.</returns>
-        public Vector GetExitTwistAngleOfPoint(int pointNumber)
+        /// <returns>Exit twist.</returns>
+        public double GetExitTwistAngleOfPoint(int pointNumber)
         {
-            double[] exitTwist =
-                _powerSHAPE.DoCommandEx(
-                    Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].EXIT_TANGENT.TWIST") as double[];
-            return new Vector(exitTwist[0], exitTwist[1], exitTwist[2]);
+            double exitTwist = (double)_powerSHAPE.DoCommandEx(Identifier + "[" + Name + "].POINT[" + (pointNumber + 1) + "].EXIT_TANGENT.TWIST");
+            return exitTwist;
         }
 
         #endregion
@@ -720,6 +700,15 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             //' Close form
             _powerSHAPE.DoCommand("ACCEPT");
+        }
+
+        /// <summary>
+        /// Frees the magnitudes and directions of the entire wireframe.
+        /// </summary>
+        public void FreeMagnitudesAndDirections()
+        {
+            AddToSelection(true);
+            _powerSHAPE.DoCommand("FREEMAGDIRS");
         }
 
         #endregion
