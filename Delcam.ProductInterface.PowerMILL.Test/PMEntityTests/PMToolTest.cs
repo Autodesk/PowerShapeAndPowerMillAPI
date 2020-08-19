@@ -515,13 +515,13 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
 
         [Test]
         public void HolderLengthTest()
-        {
+        {           
             if (_powerMill.Version < new Version("15.0"))
             {
                 Assert.Inconclusive("Test not available for this version of PowerMILL");
             }
-            var tool = _powerMill.ActiveProject.Tools[12];
-            Assert.AreEqual((MM)50.0, tool.HolderLength());
+            var tool = _powerMill.ActiveProject.Tools[12];            
+            Assert.That((MM)50.0, Is.EqualTo(tool.HolderLength));
         }
 
         [Test]
@@ -531,8 +531,8 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             {
                 Assert.Inconclusive("Test not available for this version of PowerMILL");
             }
-            var tool = _powerMill.ActiveProject.Tools[12];
-            Assert.AreEqual((MM)95.0, tool.GaugeLength());
+            var tool = _powerMill.ActiveProject.Tools[12];            
+            Assert.That((MM)95.0, Is.EqualTo(tool.GaugeLength));
         }
 
         [Test]
