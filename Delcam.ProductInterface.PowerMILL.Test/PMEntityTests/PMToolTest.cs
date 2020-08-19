@@ -514,6 +514,28 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         [Test]
+        public void HolderLengthTest()
+        {           
+            if (_powerMill.Version < new Version("15.0"))
+            {
+                Assert.Inconclusive("Test not available for this version of PowerMILL");
+            }
+            var tool = _powerMill.ActiveProject.Tools[12];            
+            Assert.That((MM)50.0, Is.EqualTo(tool.HolderLength));
+        }
+
+        [Test]
+        public void GaugeLengthTest()
+        {
+            if (_powerMill.Version < new Version("15.0"))
+            {
+                Assert.Inconclusive("Test not available for this version of PowerMILL");
+            }
+            var tool = _powerMill.ActiveProject.Tools[12];            
+            Assert.That((MM)95.0, Is.EqualTo(tool.GaugeLength));
+        }
+
+        [Test]
         public void TaperDiameterTest()
         {
             if (_powerMill.Version < new Version("15.0"))

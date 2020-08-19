@@ -391,6 +391,42 @@ namespace Autodesk.ProductInterface.PowerMILL
             return Convert.ToDouble(result);
         }
 
+        /// <summary>
+        /// Gets the length of the complete Holder
+        /// </summary>
+        public MM HolderLength
+        {
+            get
+            {
+                if (PowerMill.Version < new Version("15.0"))
+                {
+                    throw new Exception(
+                        "Holder elementes are not available for this version of PowerMILL.  PowerMILL 15 or greater is required");
+                }
+                MM holderLength = 0;
+                for (int i = 0; i < NumberOfHolderElements; i++)
+                {
+                    holderLength += HolderElementLength(i);
+                }
+                return holderLength;
+            }           
+        }
+
+        /// <summary>
+        /// Gets the gauge length of the tool
+        /// </summary>
+        public MM GaugeLength
+        {
+            get
+            {
+                if (PowerMill.Version < new Version("15.0"))
+                {
+                    throw new Exception(
+                        "Holder elementes are not available for this version of PowerMILL.  PowerMILL 15 or greater is required");
+                }
+                return HolderLength + Overhang;
+            }
+        }
         #endregion
 
         #region Operations
