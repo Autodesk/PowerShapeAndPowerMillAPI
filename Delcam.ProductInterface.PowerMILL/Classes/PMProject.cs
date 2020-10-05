@@ -413,7 +413,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         /// <param name="modelName">The name of the model from which to create the block.</param>
         /// <param name="blockExpansion">Offsets the minimum block size by blockExpansion. If this parameter is 0 the block used to calculat ethe silhouette boundary will have the minimum size to embed the part.</param>
-        public void CreateBlock(string modelName, double blockExpansion)
+        public void CreateBlock(string modelName, MM blockExpansion)
         {
             _powerMILL.DoCommand("EDIT MODEL ALL DESELECT ALL");
             _powerMILL.DoCommand(string.Format("EDIT MODEL \"{0}\" SELECT ALL", modelName));
@@ -449,7 +449,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="boundary">The boundary from which to create the block.</param>
         /// <param name="ZMin">Set the minimum Z value of the Block</param>
         /// <param name="ZMax">Set the maximum Z value of the Block</param>
-        public BoundingBox CreateBlockFromBoundaryWithLimits(PMBoundary boundary, double ZMin, double ZMax)
+        public BoundingBox CreateBlockFromBoundaryWithLimits(PMBoundary boundary, MM ZMin, MM ZMax)
         {
             if (boundary == null || !boundary.Exists)
                 throw new ArgumentNullException("boundary", "Boundary not found");
@@ -463,6 +463,19 @@ namespace Autodesk.ProductInterface.PowerMILL
             _powerMILL.DoCommand("BLOCK ACCEPT");           
             BoundingBox boundingBox = GetBlockLimits();
             return boundingBox;
+        }
+
+        public void CreateCylinderBlock(Point origin, MM outerDiameter, MM innerDiameter, MM length)
+        {
+            _powerMILL.DoCommand(
+                "EDIT BLOCKTYPE CYLINDER",
+                "EDIT BLOCK XCENTRE \"" + origin.X.ToString("0.######") + "\"",
+                "EDIT BLOCK YCENTRE \"" + origin.Y.ToString("0.######") + "\"",
+                "EDIT BLOCK ZMIN \"" + origin.Z.ToString("0.######") + "\"",
+                "EDIT BLOCK ZMAX \"" + (origin.Z + length).ToString("0.######") + "\"",
+                "EDIT BLOCK DIAMETER \"" + outerDiameter + "\"",
+                "EDIT BLOCK INNERDIAMETER \"" + innerDiameter + "\"",
+                "BLOCK ACCEPT");
         }
 
         /// <summary>

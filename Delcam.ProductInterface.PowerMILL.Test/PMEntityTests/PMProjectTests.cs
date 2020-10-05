@@ -9,6 +9,7 @@
 
 using System;
 using System.Linq;
+using Autodesk.Geometry;
 using Autodesk.ProductInterface.PowerMILL;
 using Autodesk.ProductInterface.PowerMILLTest.Files;
 using NUnit.Framework;
@@ -164,6 +165,13 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             file.Delete();
         }
 
+        [Test]
+        public void CreateCylinderBlockTest()
+        {
+            _powerMILL.ActiveProject.CreateCylinderBlock(new Point(-2, -5, -1), 11, 3, 15);
+            var bounds = _powerMILL.ActiveProject.GetBlockLimits();
+            Assert.That(bounds, Is.EqualTo(new BoundingBox(-7.5, 3.5, -10.5, 0.5, -1, 14)));
+        }
 
         #endregion
     }
