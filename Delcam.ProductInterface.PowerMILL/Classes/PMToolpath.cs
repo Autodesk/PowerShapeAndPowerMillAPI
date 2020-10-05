@@ -90,6 +90,12 @@ namespace Autodesk.ProductInterface.PowerMILL
             get { return TOOLPATH_IDENTIFIER; }
         }
 
+        public MM Tolerance
+        {
+            get { return GetParameterDoubleValue(Resources.Tolerance); }
+            set { SetParameter("Tolerance", value); }
+        }
+
         /// <summary>
         /// Gets the total cut length of the Toolpath from PowerMill.
         /// </summary>
@@ -846,18 +852,18 @@ namespace Autodesk.ProductInterface.PowerMILL
     
     #endregion
 
-    #region Operations
+        #region Operations
 
-    /// <summary>
-    /// Set the tool's start position.
-    /// </summary>
-    /// <param name="method">
-    ///     <see cref="StartPointMethod"/>
-    /// </param>
-    /// <param name="x">tool's x position axis </param>
-    /// <param name="y">tool's y position axis</param>
-    /// <param name="z">tool's z position axis</param>
-    public void SetStartPointMethod(StartPointMethod method, double x = 0, double y = 0, double z = 0)
+        /// <summary>
+        /// Set the tool's start position.
+        /// </summary>
+        /// <param name="method">
+        ///     <see cref="StartPointMethod"/>
+        /// </param>
+        /// <param name="x">tool's x position axis </param>
+        /// <param name="y">tool's y position axis</param>
+        /// <param name="z">tool's z position axis</param>
+        public void SetStartPointMethod(StartPointMethod method, double x = 0, double y = 0, double z = 0)
         {
             SetParameter(Resources.StartPointMethod, Resources.ResourceManager.GetString(method.ToString()));
             if (method == StartPointMethod.Absolute)

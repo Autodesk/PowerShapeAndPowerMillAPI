@@ -46,6 +46,17 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         #region Test properties
 
         [Test]
+        public void ToleranceTest()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var toolpath = _powerMill.ActiveProject.Toolpaths.First();
+            Assert.That(toolpath.Tolerance, Is.EqualTo((MM)0.1));
+            toolpath.MakeInvalid();
+            toolpath.Tolerance = 0.2;
+            Assert.That(toolpath.Tolerance, Is.EqualTo((MM)0.2));
+        }
+
+        [Test]
         public void IsActiveTest()
         {
             _powerMill.LoadProject(TestFiles.BasicToolpath);
