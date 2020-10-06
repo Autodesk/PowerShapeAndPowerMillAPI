@@ -66,7 +66,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             // Check to make sure a level by this name does not already exists
             if (this[name] != null)
             {
-                return null;
+                return this[name];
             }
 
             // Create the level
@@ -92,7 +92,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             // Check to make sure a set by this name does not already exists
             if (this[name] != null)
             {
-                return null;
+                return this[name];
             }
 
             // Create the set
