@@ -91,6 +91,38 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         }
 
         [Test]
+        public void ToolNameTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            var toolpath = _powerMill.ActiveProject.Toolpaths["brava"];
+            Assert.That(toolpath.ToolName, Is.EqualTo("12 ball"));
+        }
+
+        [Test]
+        public void ToolTest()
+        {
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            var toolpath = _powerMill.ActiveProject.Toolpaths["brava"];
+            Assert.That(toolpath.Tool, Is.EqualTo(_powerMill.ActiveProject.Tools["12 ball"]));
+        }
+
+        [Test]
+        public void ToolNameWhenNoToolSet()
+        {
+            _powerMill.Reset();
+            var toolpath = _powerMill.ActiveProject.Toolpaths.CreateRasterFinishingToolpath();
+            Assert.That(toolpath.ToolName, Is.EqualTo(string.Empty));
+        }
+
+        [Test]
+        public void ToolWhenNoToolSet()
+        {
+            _powerMill.Reset();
+            var toolpath = _powerMill.ActiveProject.Toolpaths.CreateRasterFinishingToolpath();
+            Assert.That(toolpath.Tool, Is.Null);
+        }
+
+        [Test]
         public void ToolSafetyReportTest()
         {
             _powerMill.LoadProject(TestFiles.SimplePmProject1);

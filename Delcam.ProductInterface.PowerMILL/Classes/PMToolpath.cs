@@ -142,7 +142,38 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public string ToolName
         {
-            get { return GetParameter(Resources.ToolName); }
+            get
+            {
+                var toolName = string.Empty;
+
+                try
+                {
+                    toolName = GetParameter(Resources.ToolName);
+                }
+                catch (InvalidPowerMillParameterException)
+                {
+                }
+
+                return toolName;
+            }
+        }
+
+        /// <summary>
+        /// Gets the tool associated with this toolpath from PowerMill.
+        /// </summary>
+        public PMTool Tool
+        {
+            get
+            {
+                var name = ToolName;
+
+                if (string.IsNullOrWhiteSpace(name) || PowerMill.ActiveProject.Tools[name] == null)
+                {
+                    return null;
+                }
+
+                return PowerMill.ActiveProject.Tools[name];
+            }
         }
 
         /// <summary>
