@@ -224,14 +224,9 @@ Public Class Delcam3DViewer
                 Dim xChange As Integer = (objLastMousePosition.X - newMousePos.X)*(CDbl(myCamera.Width)/CDbl(Me.ActualWidth))
                 Dim yChange As Integer = (objLastMousePosition.Y - newMousePos.Y)*(CDbl(myCamera.Width)/CDbl(Me.ActualWidth))
 
-                If (Keyboard.IsKeyDown(Key.LeftShift) Or Keyboard.IsKeyDown(Key.RightShift)) And _isPanningAllowed Then
-                    myCamera.Position = New Point3D(myCamera.Position.X + xChange,
-                                                    myCamera.Position.Y - yChange,
-                                                    myCamera.Position.Z)
-                ElseIf (_isRotatingAllowed) Then
+                If (Keyboard.IsKeyDown(Key.LeftShift) Or Keyboard.IsKeyDown(Key.RightShift)) And _isRotatingAllowed Then
 
                     'Rotate the view
-
                     Dim currentPosition3D As Vector3D = ProjectToTrackball(Me.ActualWidth, Me.ActualHeight, newMousePos)
 
                     If (currentPosition3D <> ProjectToTrackball(Me.ActualWidth, Me.ActualHeight, objLastMousePosition)) Then
@@ -251,6 +246,12 @@ Public Class Delcam3DViewer
 
                         myCamera.Transform = New RotateTransform3D(New QuaternionRotation3D(q))
                         myLight.Transform = New RotateTransform3D(New QuaternionRotation3D(q))
+
+                    ElseIf (_isPanningAllowed) Then
+
+                        myCamera.Position = New Point3D(myCamera.Position.X + xChange,
+                                                      myCamera.Position.Y - yChange,
+                                                        myCamera.Position.Z)
 
                     End If
 
@@ -613,7 +614,7 @@ Public Class Delcam3DViewer
         Dim objBackVisual As ModelUIElement3D = Nothing
         If (frontOnly = False) Then
             'Add the back visual
-            Dim objBackModel As New GeometryModel3D(objBackMesh, New EmissiveMaterial(New SolidColorBrush(objBackColour)))
+            Dim objBackModel As New GeometryModel3D(objBackMesh, New DiffuseMaterial(New SolidColorBrush(objBackColour)))
             Dim objBackGroup As New Model3DGroup
             objBackGroup.Children.Add(objBackModel)
             objBackVisual = New ModelUIElement3D
@@ -739,7 +740,7 @@ Public Class Delcam3DViewer
         Dim objBackVisual As ModelUIElement3D = Nothing
         If (frontOnly = False) Then
             'Add the back visual
-            Dim objBackModel As New GeometryModel3D(objBackMesh, New EmissiveMaterial(New SolidColorBrush(objBackColour)))
+            Dim objBackModel As New GeometryModel3D(objBackMesh, New DiffuseMaterial(New SolidColorBrush(objBackColour)))
             Dim objBackGroup As New Model3DGroup
             objBackGroup.Children.Add(objBackModel)
             objBackVisual = New ModelUIElement3D
@@ -838,7 +839,7 @@ Public Class Delcam3DViewer
             If (frontOnly = False) Then
                 Dim objBackBrush As New SolidColorBrush(objBackColour)
                 objBackBrush.Freeze()
-                Dim objBackMaterial As New EmissiveMaterial(objBackBrush)
+                Dim objBackMaterial As New DiffuseMaterial(objBackBrush)
                 objFrontMaterial.Freeze()
                 Dim objBackModel As New GeometryModel3D(objBackMesh, objBackMaterial)
                 objBackMeshGroup.Children.Add(objBackModel)
