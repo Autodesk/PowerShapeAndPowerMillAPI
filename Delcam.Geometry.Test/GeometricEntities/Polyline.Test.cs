@@ -86,6 +86,16 @@ namespace Autodesk.Geometry.Test.GeometricEntities
         }
 
         [Test]
+        public void DensifyTest()
+        {
+            var spline = Spline.ReadFromDUCTPictureFile(new FileSystem.File(AppDomain.CurrentDomain.BaseDirectory +
+                                                                            "\\..\\..\\TestFiles\\SplineTestFiles\\FreedByPowershape.pic"))[0];
+            var polyline = new Polyline(spline, 0.1);
+            polyline.Densify(1);
+            Assert.That(polyline.Count, Is.EqualTo(1103));
+        }
+
+        [Test]
         public void
             WhenDensifyPolylineWithOneSegment_GivenLengthIsExactMultipleOfMaxInput_ThenEachNewSegmentsShouldBeInThatLength()
         {

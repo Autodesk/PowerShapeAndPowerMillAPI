@@ -776,11 +776,9 @@ namespace Autodesk.Geometry
         /// <remarks></remarks>
         public void Densify(double maximumSpanLength)
         {
-            int currentMax = Count - 1;
-            var newPoints = new Point[currentMax];
+            var newPoints = new List<Point>();
 
-            newPoints[0] = this[0];
-            var numberOfPoints = 1;
+            newPoints.Add(this[0]);
 
             for (int p = 1; p < Count; p++)
             {
@@ -799,27 +797,17 @@ namespace Autodesk.Geometry
                     v1.Normalize();
                     Point tempEndPoint = this[p - 1];
 
-                    // Make sure we have enough space to store new points
-                    if (numberOfPoints + numberToInsert > currentMax)
-                    {
-                        Array.Resize(ref newPoints, currentMax + numberToInsert + 1); // Include existing last point
-                        currentMax += numberToInsert;
-                    }
-
                     // Add incremental points to the array
                     // Last one should end up the same with this[p]
                     for (int i = 1; i <= numberToInsert; i++)
                     {
                         Vector v2 = v1 * actualSpacing;
                         tempEndPoint = tempEndPoint + v2;
-                        newPoints[numberOfPoints] = tempEndPoint;
-                        numberOfPoints += 1;
+                        newPoints.Add(tempEndPoint);
                     }
                 }
-                newPoints[numberOfPoints] = this[p];
-                numberOfPoints += 1;
+                newPoints.Add(this[p]);
             }
-            Array.Resize(ref newPoints, numberOfPoints);
 
             Clear();
 
