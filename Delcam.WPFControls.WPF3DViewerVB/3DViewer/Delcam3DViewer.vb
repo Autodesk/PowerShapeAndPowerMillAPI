@@ -247,13 +247,13 @@ Public Class Delcam3DViewer
                         myCamera.Transform = New RotateTransform3D(New QuaternionRotation3D(q))
                         myLight.Transform = New RotateTransform3D(New QuaternionRotation3D(q))
 
-                    ElseIf (_isPanningAllowed) Then
-
-                        myCamera.Position = New Point3D(myCamera.Position.X + xChange,
-                                                      myCamera.Position.Y - yChange,
-                                                        myCamera.Position.Z)
-
                     End If
+
+                ElseIf (_isPanningAllowed) Then
+
+                    myCamera.Position = New Point3D(myCamera.Position.X + xChange,
+                                                    myCamera.Position.Y - yChange,
+                                                    myCamera.Position.Z)
 
                 End If
                 objLastMousePosition = newMousePos
