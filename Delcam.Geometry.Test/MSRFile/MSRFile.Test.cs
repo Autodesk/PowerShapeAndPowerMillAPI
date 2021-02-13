@@ -218,6 +218,41 @@ namespace Autodesk.Geometry.Test.MSRFile
         }
 
         [Test]
+        public void MSRFileTwoStartsTogetherTest()
+        {
+            try
+            {
+                Geometry.MSRFile msrFile =
+                    new Geometry.MSRFile(AppDomain.CurrentDomain.BaseDirectory +
+                                         "\\..\\..\\TestFiles\\MSRTestFiles\\TwoStartsOK.msr",
+                                         true);
+                Assert.That(msrFile.Points.Count, Is.EqualTo(6));
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            Assert.Pass("File read ok");
+        }
+
+        [Test]
+        public void MSRFileTwoEndsTogetherTest()
+        {
+            try
+            {
+                Geometry.MSRFile msrFile =
+                    new Geometry.MSRFile(AppDomain.CurrentDomain.BaseDirectory + "\\..\\..\\TestFiles\\MSRTestFiles\\TwoEndsOK.msr",
+                                         true);
+                Assert.That(msrFile.Points.Count, Is.EqualTo(6));
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            Assert.Pass("Failed to throw exception");
+        }
+
+        [Test]
         public void WriteFile()
         {
             Geometry.MSRFile msrFile =

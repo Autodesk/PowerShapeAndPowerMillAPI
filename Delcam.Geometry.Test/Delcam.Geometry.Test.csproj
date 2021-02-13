@@ -131,7 +131,9 @@
     <None Include="TestFiles\DMTTestFiles\smallModel.dmt" />
     <None Include="TestFiles\DMTTestFiles\TwoBlocks.dmt" />
     <None Include="TestFiles\MSRTestFiles\Culture Agnostic.msr" />
+    <None Include="TestFiles\MSRTestFiles\TwoEndsOK.msr" />
     <None Include="TestFiles\MSRTestFiles\TwoEnds.msr" />
+    <None Include="TestFiles\MSRTestFiles\TwoStartsOK.msr" />
     <None Include="TestFiles\MSRTestFiles\TwoStarts.msr" />
     <None Include="TestFiles\PicForOpenPolylineTest.pic" />
     <None Include="TestFiles\PicForPolylineTest.pic" />

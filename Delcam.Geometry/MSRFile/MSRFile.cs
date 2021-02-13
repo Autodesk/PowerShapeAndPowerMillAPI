@@ -312,37 +312,13 @@ namespace Autodesk.Geometry
             List<string> lines = null;
             lines = ReadTextLines();
 
-            Int32 numberOfStarts = default(Int32);
-            Int32 numberOfEnds = default(Int32);
-            foreach (string line in lines)
-            {
-                if (line.ToLowerInvariant().Contains("start"))
-                {
-                    numberOfStarts = numberOfStarts + 1;
-                }
-
-                if (line.ToLowerInvariant().Contains("end"))
-                {
-                    numberOfEnds = numberOfEnds + 1;
-                }
-            }
-
-            if (numberOfStarts > 1)
-            {
-                throw new Exception(string.Format("MSR File '{0}' has more than one START line.", Path));
-            }
-
-            if (numberOfEnds > 1)
-            {
-                throw new Exception(string.Format("MSR File '{0}' has more than one END line.", Path));
-            }
-
             Angles matrix = null;
 
             _points = new List<PointData>();
             _headerLines = new List<string>();
 
             bool isStillInHeader = true;
+            bool endHit = false;
 
             for (int lineIndex = 0; lineIndex <= lines.Count - 1; lineIndex++)
             {
@@ -351,10 +327,25 @@ namespace Autodesk.Geometry
 
                 PointData point = null;
 
-                if (line.StartsWith("G330"))
+                // If the line starts with START then we must not have read any previous starts
+                if (line.StartsWith("START") && _points.Count > 0)
                 {
-                    // G330 line specifies the orientation of the machine for and following points
+                    throw new Exception(string.Format("MSR File '{0}' contains a start line after the first point data.", Path));
+                }
+                // Log if we hit an end line
+                if (line.StartsWith("END"))
+                {
+                    endHit = true;
+                }
+                else if (line.StartsWith("G330"))
+                {
+                    // Check we aren't receiving this after hitting END
+                    if (endHit)
+                    {
+                        throw new Exception(string.Format("MSR File '{0}' contains point data after and END line.", Path));
+                    }
 
+                    // G330 line specifies the orientation of the machine for and following points
                     isStillInHeader = false;
 
                     //Read in the euler angles
@@ -413,8 +404,13 @@ namespace Autodesk.Geometry
                 }
                 else if (line.StartsWith("G800"))
                 {
-                    // G800 line is the nominal point and is followed by the G801 line which is the measured point
+                    // Check we aren't receiving this after hitting END
+                    if (endHit)
+                    {
+                        throw new Exception(string.Format("MSR File '{0}' contains point data after and END line.", Path));
+                    }
 
+                    // G800 line is the nominal point and is followed by the G801 line which is the measured point
                     isStillInHeader = false;
 
                     //Parse the characters in the line
