@@ -72,6 +72,25 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
         }
 
         [Test]
+        public void CreateRestBoundaryTest()
+        {
+            _powerMill.LoadProject(TestFiles.ToolProperties);
+            var tool = _powerMill.ActiveProject.Tools.GetByName("EndMill");
+            var refTool = _powerMill.ActiveProject.Tools.GetByName("TipRadiused");
+            var before = _powerMill.ActiveProject.Boundaries.Count;
+            
+            //Create RestBoundary with normal thickness
+            var rest = _powerMill.ActiveProject.Boundaries.CreateRestBoundary(0.1, 0.2, 0.3, false, 0.4, 0.5, tool, refTool);
+            Assert.IsNotNull(rest, "A rest boundary wasn't not created, please fix it.");
+            Assert.AreEqual(before + 1, _powerMill.ActiveProject.Boundaries.Count);
+
+            //Create RestBoundary with axial thickness
+            rest = _powerMill.ActiveProject.Boundaries.CreateRestBoundary(0.1, 0.2, 0.3, true, 0.4, 0.5, tool, refTool);
+            Assert.IsNotNull(rest, "A rest boundary wasn't not created, please fix it.");
+            Assert.AreEqual(before + 2, _powerMill.ActiveProject.Boundaries.Count);
+        }
+
+        [Test]
         public void CreateEmptyBoundaryTest()
         {
             var boundary = _powerMill.ActiveProject.Boundaries.CreateEmptyBoundary();
