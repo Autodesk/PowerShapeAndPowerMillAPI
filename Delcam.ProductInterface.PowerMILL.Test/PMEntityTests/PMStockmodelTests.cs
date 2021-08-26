@@ -9,7 +9,9 @@
 
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using Autodesk.ProductInterface.PowerMILL;
+using Autodesk.ProductInterface.PowerMILLTest.Files;
 using NUnit.Framework;
 
 namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
@@ -60,6 +62,59 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             _powerMill.ActiveProject.StockModels.DrawAll();
             _powerMill.ActiveProject.StockModels.UndrawAll();
             Assert.IsTrue(true);
+        }
+                
+        [Test]
+        public void ApplyFunctionsTest()
+        {
+            // Create Test environment
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            
+            // Test ApplyBlock function
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyBlock();
+            List<string> stockModelStates = _powerMill.ActiveProject.StockModels.ActiveItem.States;
+            Assert.AreEqual(1, stockModelStates.Count());
+
+            // Test ApplyToolpathFirst function
+            _powerMill.ActiveProject.Toolpaths.GetByName("alpha").IsActive = true;
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyToolpathFirst();
+            stockModelStates = _powerMill.ActiveProject.StockModels.ActiveItem.States;
+            Assert.AreEqual(2, stockModelStates.Count());
+
+            // Test ApplyToolpathLast function
+            _powerMill.ActiveProject.Toolpaths.GetByName("brava").IsActive = true;
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyToolpathLast();
+            stockModelStates = _powerMill.ActiveProject.StockModels.ActiveItem.States;
+            Assert.AreEqual(3, stockModelStates.Count());
+
+            // Test ApplyToolFirst function
+            _powerMill.ActiveProject.Tools.GetByName("12 ball").IsActive = true;
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyToolFirst();
+            stockModelStates = _powerMill.ActiveProject.StockModels.ActiveItem.States;
+            Assert.AreEqual(4, stockModelStates.Count());
+
+            // Test ApplyToolLast function
+            _powerMill.ActiveProject.Tools.GetByName("10+1.6 tiprad").IsActive = true;
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyToolLast();
+            stockModelStates = _powerMill.ActiveProject.StockModels.ActiveItem.States;
+            Assert.AreEqual(5, stockModelStates.Count());
+        }
+
+        [Test]
+        public void GetStockmodelStatesTest()
+        {
+            // Create Test environment
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyBlock();
+            _powerMill.ActiveProject.Toolpaths.GetByName("alpha").IsActive = true;
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyToolpathFirst();
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyToolLast();
+
+            // Test States function
+            List<string> stockModelStates = _powerMill.ActiveProject.StockModels.ActiveItem.States;
+            Assert.AreEqual(3, stockModelStates.Count());                        
         }
 
         #endregion
