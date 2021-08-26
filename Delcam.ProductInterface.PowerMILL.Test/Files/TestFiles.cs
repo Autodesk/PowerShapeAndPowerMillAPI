@@ -36,6 +36,7 @@ namespace Autodesk.ProductInterface.PowerMILLTest.Files
         public static File CreateThreeWorkplaneMacro = new File(FetchTestFile("CreateThreeWorkplane.mac"));
         public static File MacroCreateNcProgram = new File(FetchTestFile("CreateNCProgram.mac"));
         public static File TestMacroStepEventFires = new File(FetchTestFile("TestMacroStepEventFires.mac"));
+        public static File CreateBoundaries = new File(FetchTestFile("CreateBoundaries.mac"));
         public static File OptionFileRoedersRxd5RcsDpp48 = new File(FetchTestFile("Roeders_RXD5_RCS_DPP48.pmopt"));
 
         #region Model Files

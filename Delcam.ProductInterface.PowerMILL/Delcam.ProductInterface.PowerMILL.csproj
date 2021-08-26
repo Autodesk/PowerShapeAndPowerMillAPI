@@ -106,6 +106,7 @@
     <Compile Include="Classes\ToolpathStrategies\PMToolpathFeatureChamferMachining.cs" />
     <Compile Include="Classes\Tool\PMToolGroovingTurning.cs" />
     <Compile Include="Classes\Tool\PMToolProfilingTurning.cs" />
+    <Compile Include="Enums\BoundaryBooleanTypes.cs" />
     <Compile Include="Enums\DefaultLinkTypes.cs" />
     <Compile Include="Enums\MoveDirection.cs" />
     <Compile Include="Classes\PMConnections.cs" />
