@@ -353,7 +353,58 @@ namespace Autodesk.ProductInterface.PowerMILL
 
             return newBoundary;
         }
-        
+
+        /// <summary>
+        /// Creates a Stock Model Rest Boundary in PowerMill.
+        /// </summary>
+        /// <param name="stockModel">The Stock Model for the Boundary.</param>
+        /// <param name="stockModelState">The State of the Stock Model for the Boundary.</param>
+        /// <param name="thickerThan">Detect Material Thicker Than.</param>
+        /// <param name="expandAreaBy">Expand Area by.</param>
+        /// <param name="boundaryTolerance">The boundary tolerance.</param>
+        /// <param name="useAxialThickness">Use axial thickness.</param>
+        /// <param name="thickness">The thickness of the boundary.</param>
+        /// <param name="axialThickness">The axial thickness of the boundary.</param>
+        /// <param name="tool">The tool for the boundary.</param>        
+        /// <returns></returns>
+        public PMBoundaryStockModelRest CreateStockModelRestBoundary(
+            PMStockModel stockModel,
+            string stockModelState,
+            double thickerThan,
+            double expandAreaBy,
+            double boundaryTolerance,
+            bool useAxialThickness,
+            double thickness,
+            double axialThickness,
+            PMTool tool)
+        {
+            PMBoundaryStockModelRest newBoundary = null;
+            
+            int index = stockModel.States.IndexOf(stockModelState);                        
+            _powerMILL.DoCommand("CREATE BOUNDARY ; STOCKMODEL_REST");
+            _powerMILL.DoCommand(string.Format("EDIT BOUNDARY ; STOCKMODEL \"{0}\"", stockModel.Name));
+            _powerMILL.DoCommand(string.Format("EDIT BOUNDARY ; STOCKMODEL \"{0}\" STATE \"{1}\"", stockModel.Name, index));
+            _powerMILL.DoCommand(string.Format("EDIT BOUNDARY ; STOCKMODEL_THICKER \"{0}\"", thickerThan));
+            _powerMILL.DoCommand(string.Format("EDIT BOUNDARY ; EXTEND \"{0}\"", expandAreaBy));
+            _powerMILL.DoCommand(string.Format("EDIT BOUNDARY ; TOLERANCE \"{0}\"", boundaryTolerance));
+            _powerMILL.DoCommand(string.Format("EDIT BOUNDARY ; THICKNESS \"{0}\"", thickness));
+            if (useAxialThickness)
+            {
+                _powerMILL.DoCommand("EDIT BOUNDARY ; THICKNESS AXIAL_RADIAL ON");
+                _powerMILL.DoCommand(string.Format("EDIT BOUNDARY ; THICKNESS AXIAL \"{0}\"", axialThickness));
+            }
+            else
+            {
+                _powerMILL.DoCommand("EDIT BOUNDARY ; THICKNESS AXIAL_RADIAL OFF");
+            }
+            _powerMILL.DoCommand(string.Format("EDIT BOUNDARY ; TOOL NAME \"{0}\"", tool.Name));
+            _powerMILL.DoCommand("EDIT BOUNDARY ; ACCEPT BOUNDARY ACCEPT");
+            newBoundary = (PMBoundaryStockModelRest)_powerMILL.ActiveProject.CreatedItems(typeof(PMBoundary)).Last();
+            Add(newBoundary);
+
+            return newBoundary;
+        }
+
         /// <summary>
         /// Create a Contact Point Boundary from Boundary
         /// </summary>

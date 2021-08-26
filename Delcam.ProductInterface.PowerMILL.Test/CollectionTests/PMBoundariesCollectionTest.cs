@@ -163,6 +163,32 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
         }
 
         [Test]
+        public void CreateStockModelRestBoundaryTest()
+        {
+            // Create Test environment
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyBlock();
+            _powerMill.ActiveProject.Toolpaths.GetByName("alpha").IsActive = true;
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyToolpathFirst();
+            _powerMill.ActiveProject.StockModels.ActiveItem.ApplyToolLast();
+
+            var stockmodel = _powerMill.ActiveProject.StockModels.ActiveItem;
+            var tool = _powerMill.ActiveProject.Tools.GetByName("12 ball");
+            var before = _powerMill.ActiveProject.Boundaries.Count;
+
+            //Create StockModel Rest Boundary with normal thickness
+            var stockRest = _powerMill.ActiveProject.Boundaries.CreateStockModelRestBoundary(stockmodel, "12 ball", 0.1, 0.2, 0.3, false, 0.4, 0.5, tool);
+            Assert.IsNotNull(stockRest, "A StockModel Rest boundary wasn't not created, please fix it.");
+            Assert.AreEqual(before + 1, _powerMill.ActiveProject.Boundaries.Count);
+
+            //Create StockModel Rest Boundary with axial thickness           
+            stockRest = _powerMill.ActiveProject.Boundaries.CreateStockModelRestBoundary(stockmodel, "12 ball", 0.1, 0.2, 0.3, true, 0.4, 0.5, tool);
+            Assert.IsNotNull(stockRest, "A Collision Safe boundary wasn't not created, please fix it.");
+            Assert.AreEqual(before + 2, _powerMill.ActiveProject.Boundaries.Count);
+        }
+
+        [Test]
         public void CreateContactPointBoundaryTest()
         {
             _powerMill.LoadProject(TestFiles.PMwithNcProgram);            
