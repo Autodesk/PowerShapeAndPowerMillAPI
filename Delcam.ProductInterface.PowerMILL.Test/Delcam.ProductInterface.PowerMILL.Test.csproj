@@ -78,6 +78,7 @@
     <Compile Include="CollectionTests\PMSetupsCollectionTest.cs" />
     <Compile Include="CollectionTests\PMToolsCollectionTest.cs" />
     <Compile Include="CollectionTests\PMToolpathsCollectionTest.cs" />
+    <None Include="Files\Macros\CreateBoundaries.mac" />
     <None Include="Files\Macros\CreateThreeWorkplane.mac" />
     <Compile Include="PMAutomationTest.cs" />
     <Compile Include="CollectionTests\PMNCProgramsCollectionTest.cs" />
