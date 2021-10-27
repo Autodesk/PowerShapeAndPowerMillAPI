@@ -248,7 +248,18 @@ namespace Autodesk.ProductInterface.Properties {
                 return ResourceManager.GetString("DefaultLinkSecond", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Detect Overhang.
+        /// </summary>
+        internal static string DetectOverhang
+        {
+            get
+            {
+                return ResourceManager.GetString("DetectOverhang", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Distance.
         /// </summary>
@@ -986,7 +997,18 @@ namespace Autodesk.ProductInterface.Properties {
                 return ResourceManager.GetString("Stepdown", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Stepover.
+        /// </summary>
+        internal static string Stepover
+        {
+            get
+            {
+                return ResourceManager.GetString("Stepover", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to straight.
         /// </summary>
@@ -1022,7 +1044,18 @@ namespace Autodesk.ProductInterface.Properties {
                 return ResourceManager.GetString("Tangent", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Treshold Thickness.
+        /// </summary>
+        internal static string ThresholdThickness
+        {
+            get
+            {
+                return ResourceManager.GetString("ThresholdThickness", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Tolerance.
         /// </summary>
