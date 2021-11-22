@@ -7,7 +7,10 @@
 // *  in either electronic or hard copy form.                           *
 // **********************************************************************
 
+using System;
 using System.Collections.Generic;
+using Autodesk.Geometry;
+using Autodesk.ProductInterface.Properties;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
@@ -120,6 +123,63 @@ namespace Autodesk.ProductInterface.PowerMILL
                     }
                 }
                 return returnStates;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the tolerance of the stockmodel.
+        /// </summary>        
+        /// <returns>The tolerance of the stockmodel.</returns>
+        public MM Tolerance
+        {
+            get { return GetParameterDoubleValue(Resources.Tolerance); }
+            set { SetParameter("Tolerance", value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the Stepover of the stockmodel.
+        /// </summary>        
+        /// <returns>The Stepover of the stockmodel.</returns>
+        public MM Stepover
+        {
+            get { return GetParameterDoubleValue("Stepover"); }
+            set { SetParameter("Stepover", value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the Rest thickness of the stockmodel.
+        /// </summary>        
+        /// <returns>The Rest thickness of the stockmodel.</returns>
+        public MM RestThickness
+        {
+            get { return GetParameterDoubleValue("ThresholdThickness"); }
+            set { SetParameter("ThresholdThickness", value); }
+        }
+
+        /// <summary>
+        /// Gets or sets if Overhang is detected.
+        /// </summary>        
+        /// <returns>Whether Overhang detection is on or off.</returns>
+        public bool DetectOverhang
+        {
+            get { return GetParameterBooleanValue("DetectOverhang"); }
+            set { SetParameter("DetectOverhang", value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the Workplane.
+        /// </summary>
+        /// <returns>The Workplane</returns>
+        public PMWorkplane Workplane
+        {
+            get
+            {
+                string workplane = PowerMill.DoCommandEx(string.Format("PRINT PAR TERSE \"entity('stockmodel', '{0}').Workplane.Name\"", Name)).ToString();                
+                return PowerMill.ActiveProject.Workplanes.GetByName(workplane);
+            }
+            set
+            {
+                SetParameter("Workplane", value.Name);
             }
         }
 

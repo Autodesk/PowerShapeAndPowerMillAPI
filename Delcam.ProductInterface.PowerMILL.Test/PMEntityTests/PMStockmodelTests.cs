@@ -10,6 +10,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Autodesk.Geometry;
 using Autodesk.ProductInterface.PowerMILL;
 using Autodesk.ProductInterface.PowerMILLTest.Files;
 using NUnit.Framework;
@@ -115,6 +116,68 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             // Test States function
             List<string> stockModelStates = _powerMill.ActiveProject.StockModels.ActiveItem.States;
             Assert.AreEqual(3, stockModelStates.Count());                        
+        }
+
+        [Test]
+        public void ToleranceTest()
+        {
+            // Create Test environment            
+            PMStockModel testStockModel = _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            // Set test
+            testStockModel.Tolerance = 0.2;
+            // Get test
+            Assert.That(testStockModel.Tolerance, Is.EqualTo((MM)0.2));
+        }
+
+        [Test]
+        public void StepoverTest()
+        {
+            // Create Test environment            
+            PMStockModel testStockModel = _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            // Set test
+            testStockModel.Stepover = 0.2;
+            // Get test
+            Assert.That(testStockModel.Stepover, Is.EqualTo((MM)0.2));
+        }
+
+        [Test]
+        public void RestThicknessTest()
+        {
+            // Create Test environment            
+            PMStockModel testStockModel = _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            // Set test
+            testStockModel.RestThickness = 0.2;
+            // Get test
+            Assert.That(testStockModel.RestThickness, Is.EqualTo((MM)0.2));
+        }
+
+        [Test]
+        public void DetectOverhangTest()
+        {
+            // Create Test environment            
+            PMStockModel testStockModel = _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            // Set test
+            testStockModel.DetectOverhang = true;
+            // Get test
+            Assert.That(testStockModel.DetectOverhang, Is.EqualTo(true));
+            // Set test
+            testStockModel.DetectOverhang = false;
+            // Get test
+            Assert.That(testStockModel.DetectOverhang, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void WorkplaneTest()
+        {
+            // Create Test environment            
+            _powerMill.LoadProject(TestFiles.SimplePmProject1);
+            PMStockModel testStockModel = _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
+            // Get test
+            Assert.That(testStockModel.Workplane.Name, Is.EqualTo("bravo"));
+            //Set test
+            PMWorkplane newWorkplane = _powerMill.ActiveProject.Workplanes.GetByName("charlie");
+            testStockModel.Workplane = newWorkplane;
+            Assert.That(testStockModel.Workplane.Name, Is.EqualTo("charlie"));
         }
 
         #endregion
