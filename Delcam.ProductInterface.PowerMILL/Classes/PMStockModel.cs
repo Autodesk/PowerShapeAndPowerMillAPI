@@ -140,7 +140,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// Gets or sets the Stepover of the stockmodel.
         /// </summary>        
         /// <returns>The Stepover of the stockmodel.</returns>
-        public MM StepOver
+        public MM Stepover
         {
             get { return GetParameterDoubleValue("Stepover"); }
             set { SetParameter("Stepover", value); }
@@ -174,8 +174,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             get
             {
-                string workplane = PowerMill.DoCommandEx(string.Format("PRINT PAR \"entity('stockmodel', '{0}').Workplane.Name\"", Name)).ToString();
-                workplane = workplane.Replace("(STRING)", "").Trim();
+                string workplane = PowerMill.DoCommandEx(string.Format("PRINT PAR TERSE \"entity('stockmodel', '{0}').Workplane.Name\"", Name)).ToString();                
                 return PowerMill.ActiveProject.Workplanes.GetByName(workplane);
             }
             set
@@ -183,7 +182,6 @@ namespace Autodesk.ProductInterface.PowerMILL
                 SetParameter("Workplane", value.Name);
             }
         }
-
 
         /// <summary>
         /// Deletes the stock model from the active project and from PowerMill.

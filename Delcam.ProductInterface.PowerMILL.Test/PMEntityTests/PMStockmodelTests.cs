@@ -130,14 +130,14 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         [Test]
-        public void StepOverTest()
+        public void StepoverTest()
         {
             // Create Test environment            
             PMStockModel testStockModel = _powerMill.ActiveProject.StockModels.CreateStockmodel("Test stockmodel 1");
             // Set test
-            testStockModel.StepOver = 0.2;
+            testStockModel.Stepover = 0.2;
             // Get test
-            Assert.That(testStockModel.StepOver, Is.EqualTo((MM)0.2));
+            Assert.That(testStockModel.Stepover, Is.EqualTo((MM)0.2));
         }
 
         [Test]
