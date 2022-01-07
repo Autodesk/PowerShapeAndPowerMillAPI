@@ -231,7 +231,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 TweakVersionNumbersFrom2018(ref version, ref maximumVersion);
 
                 // Try to get an existing instance of PowerSHAPE
-                _powerSHAPE = Marshal.GetActiveObject(ClassId);
+                _powerSHAPE = GetCOMObject(ClassId);
                 DoCommand("NOTHING");
 
                 if (version != null)
@@ -354,7 +354,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             Version tweakedMaximumVersion = maximumVersion;
             TweakVersionNumbersTo2018(ref tweakedVersion, ref tweakedMaximumVersion);
             StartExecutable(APP_NAME, tweakedVersion, tweakedMaximumVersion, ClassId, false, CommandArguments);
-            _powerSHAPE = Marshal.GetActiveObject(ClassId);
+            _powerSHAPE = GetCOMObject(ClassId);
             IsGUIVisible = false;
             FormUpdateOff();
             DialogsOff();

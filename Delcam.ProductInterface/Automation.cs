@@ -21,6 +21,27 @@ namespace Autodesk.ProductInterface
     /// </summary>
     public abstract class Automation
     {
+        #region " Import "
+
+        [DllImport("ole32.dll")]
+        static extern int CLSIDFromProgID(
+            [MarshalAs(UnmanagedType.LPWStr)] string lpszProgID, out Guid pclsid);
+
+        [DllImport("oleaut32.dll", PreserveSig = false)]
+        static extern void GetActiveObject(ref Guid rclsid, IntPtr pvReserved,
+                                           [MarshalAs(UnmanagedType.IUnknown)] out object ppunk);
+
+        protected dynamic GetCOMObject(string progId)
+        {
+            Guid classId;
+            CLSIDFromProgID(progId, out classId);
+            object comObject = null;
+            GetActiveObject(ref classId, default, out comObject);
+            return comObject;
+        }
+
+        #endregion
+
         #region " Fields "
 
         /// <summary>
@@ -325,7 +346,7 @@ namespace Autodesk.ProductInterface
                         // May need a better way of doing this as it wont work if another instance is running
                         // I tried WaitForIdleInput on the Process but PowerMILL didnt like this at all
                         Console.WriteLine("Waiting for product to start");
-                        product = Marshal.GetActiveObject(classId);
+                        product = GetCOMObject(classId);
                         started = true;
                         break; // TODO: might not be correct. Was : Exit While
                     }
