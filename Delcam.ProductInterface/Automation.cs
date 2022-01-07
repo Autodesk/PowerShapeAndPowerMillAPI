@@ -36,7 +36,7 @@ namespace Autodesk.ProductInterface
             Guid classId;
             CLSIDFromProgID(progId, out classId);
             object comObject = null;
-            GetActiveObject(ref classId, default, out comObject);
+            GetActiveObject(ref classId, IntPtr.Zero, out comObject);
             return comObject;
         }
 
