@@ -164,18 +164,18 @@ namespace Autodesk.ProductInterface.PowerMILL
                 if (version == null)
                 {
                     //connect to current running version
-                    _powerMILL = Marshal.GetActiveObject(CLASS_ID);
+                    _powerMILL = GetCOMObject(CLASS_ID);
                 }
                 else
                 {
                     //Attempt to connect to an existing instance
                     if (version.Major < 9)
                     {
-                        _powerMILL = Marshal.GetActiveObject(OLD_CLASS_ID);
+                        _powerMILL = GetCOMObject(OLD_CLASS_ID);
                     }
                     else
                     {
-                        _powerMILL = Marshal.GetActiveObject(CLASS_ID);
+                        _powerMILL = GetCOMObject(CLASS_ID);
                     }
                     if (version != null)
                     {
@@ -282,7 +282,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 classId = CLASS_ID;
             }
             StartExecutable(APP_NAME, version, maximumVersion, classId, false, ARGUMENTS);
-            _powerMILL = Marshal.GetActiveObject(classId);
+            _powerMILL = GetCOMObject(classId);
         }
 
         /// <summary>
