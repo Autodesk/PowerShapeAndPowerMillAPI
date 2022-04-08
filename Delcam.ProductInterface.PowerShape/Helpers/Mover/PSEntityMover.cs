@@ -127,14 +127,14 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             // Carry out the process
             if (_powerSHAPE.Version >= new Version("11.2"))
             {
-                _powerSHAPE.DoCommand("X " + moveVector.I.ToString(),
-                                      "Y " + moveVector.J.ToString(),
-                                      "Z " + moveVector.K.ToString());
+                _powerSHAPE.DoCommand("X " + moveVector.I.ToString("0.######"),
+                                      "Y " + moveVector.J.ToString("0.######"),
+                                      "Z " + moveVector.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("APPLY", "DISMISS");
             }
             else
             {
-                _powerSHAPE.DoCommand(moveVector.I.ToString() + " " + moveVector.J.ToString() + " " + moveVector.K.ToString());
+                _powerSHAPE.DoCommand(moveVector.I.ToString("0.######") + " " + moveVector.J.ToString("0.######") + " " + moveVector.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("CANCEL");
             }
 
@@ -178,8 +178,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             _powerSHAPE.DoCommand("ABS " + moveOriginCoordinates);
 
             // Carry out the process
-            _powerSHAPE.DoCommand("ABS " + pointToMoveTo.X.ToString() + " " + pointToMoveTo.Y.ToString() + " " +
-                                  pointToMoveTo.Z.ToString());
+            _powerSHAPE.DoCommand("ABS " + pointToMoveTo.X.ToString("0.######") + " " + pointToMoveTo.Y.ToString("0.######") + " " +
+                                  pointToMoveTo.Z.ToString("0.######"));
 
             if (_powerSHAPE.Version >= new Version("11.2"))
             {

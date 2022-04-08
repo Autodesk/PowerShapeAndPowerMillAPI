@@ -39,7 +39,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the length adjustment
                 _powerSHAPE.DoCommand("MODIFY");
-                _powerSHAPE.DoCommand("LENGTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("LENGTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
@@ -60,7 +60,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the width adjustment
                 _powerSHAPE.DoCommand("MODIFY");
-                _powerSHAPE.DoCommand("WIDTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("WIDTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 

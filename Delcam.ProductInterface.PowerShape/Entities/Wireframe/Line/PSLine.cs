@@ -51,9 +51,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             //Create the line
             _powerSHAPE.DoCommand("CREATE LINE SINGLE");
             var _with1 = startPoint;
-            _powerSHAPE.DoCommand("ABS " + _with1.X.ToString() + " " + _with1.Y.ToString() + " " + _with1.Z.ToString());
+            _powerSHAPE.DoCommand("ABS " + _with1.X.ToString("0.######") + " " + _with1.Y.ToString("0.######") + " " + _with1.Z.ToString("0.######"));
             var _with2 = endPoint;
-            _powerSHAPE.DoCommand("ABS " + _with2.X.ToString() + " " + _with2.Y.ToString() + " " + _with2.Z.ToString());
+            _powerSHAPE.DoCommand("ABS " + _with2.X.ToString("0.######") + " " + _with2.Y.ToString("0.######") + " " + _with2.Z.ToString("0.######"));
             _powerSHAPE.DoCommand("QUIT QUIT");
 
             //Now get its Id
@@ -155,7 +155,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             set
             {
                 AddToSelection(true);
-                _powerSHAPE.DoCommand("MODIFY", "LENGTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("MODIFY", "LENGTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 

@@ -279,7 +279,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             if (scaleOrigin != null)
             {
                 _powerSHAPE.DoCommand("SCALEORIGIN");
-                _powerSHAPE.DoCommand(scaleOrigin.X.ToString() + " " + scaleOrigin.Y.ToString() + " " + scaleOrigin.Z.ToString());
+                _powerSHAPE.DoCommand(scaleOrigin.X.ToString("0.######") + " " + scaleOrigin.Y.ToString("0.######") + " " + scaleOrigin.Z.ToString("0.######"));
             }
 
             // Set the scaling to be non-uniform, so allowing each component to be edited individually
@@ -291,9 +291,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             _powerSHAPE.DoCommand("LOCK Z OFF");
 
             // Enter scaling values
-            _powerSHAPE.DoCommand("X " + offsetX);
-            _powerSHAPE.DoCommand("Y " + offsetY);
-            _powerSHAPE.DoCommand("Z " + offsetZ);
+            _powerSHAPE.DoCommand("X " + offsetX.ToString("0.######"));
+            _powerSHAPE.DoCommand("Y " + offsetY.ToString("0.######"));
+            _powerSHAPE.DoCommand("Z " + offsetZ.ToString("0.######"));
 
             // Complete operation
             if (_powerSHAPE.Version.Major > 11)
@@ -453,13 +453,13 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             if (_powerSHAPE.Version >= new Version("11.2"))
             {
-                _powerSHAPE.DoCommand("X " + direction.I.ToString(),
-                                      "Y " + direction.J.ToString(),
-                                      "Z " + direction.K.ToString());
+                _powerSHAPE.DoCommand("X " + direction.I.ToString("0.######"),
+                                      "Y " + direction.J.ToString("0.######"),
+                                      "Z " + direction.K.ToString("0.######"));
             }
             else
             {
-                _powerSHAPE.DoCommand("" + direction.I.ToString() + " " + direction.J.ToString() + " " + direction.K.ToString());
+                _powerSHAPE.DoCommand("" + direction.I.ToString("0.######") + " " + direction.J.ToString("0.######") + " " + direction.K.ToString("0.######"));
             }
 
             _powerSHAPE.DoCommand("APPLY", "DISMISS", "EDIT SUBEDITS OFF");
@@ -613,9 +613,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             int numberOfPointsBefore = NumberPoints;
 
             _powerSHAPE.DoCommand("ADD_POINT NearestPoint");
-            _powerSHAPE.DoCommand("NearestPoint X " + proximalPoint.X.ToString());
-            _powerSHAPE.DoCommand("NearestPoint Y " + proximalPoint.Y.ToString());
-            _powerSHAPE.DoCommand("NearestPoint Z " + proximalPoint.Z.ToString());
+            _powerSHAPE.DoCommand("NearestPoint X " + proximalPoint.X.ToString("0.######"));
+            _powerSHAPE.DoCommand("NearestPoint Y " + proximalPoint.Y.ToString("0.######"));
+            _powerSHAPE.DoCommand("NearestPoint Z " + proximalPoint.Z.ToString("0.######"));
             _powerSHAPE.DoCommand("APPLY");
             _powerSHAPE.DoCommand("DISMISS");
 
@@ -789,9 +789,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
 
                 //' Set tangent
-                _powerSHAPE.DoCommand("X " + entryTangent.I.ToString(),
-                                      "Y " + entryTangent.J.ToString(),
-                                      "Z " + entryTangent.K.ToString());
+                _powerSHAPE.DoCommand("X " + entryTangent.I.ToString("0.######"),
+                                      "Y " + entryTangent.J.ToString("0.######"),
+                                      "Z " + entryTangent.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("ACCEPT");
             }
 
@@ -805,9 +805,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
 
                 //' Set tangent
-                _powerSHAPE.DoCommand("X " + exitTangent.I.ToString(),
-                                      "Y " + exitTangent.J.ToString(),
-                                      "Z " + exitTangent.K.ToString());
+                _powerSHAPE.DoCommand("X " + exitTangent.I.ToString("0.######"),
+                                      "Y " + exitTangent.J.ToString("0.######"),
+                                      "Z " + exitTangent.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("ACCEPT");
             }
 

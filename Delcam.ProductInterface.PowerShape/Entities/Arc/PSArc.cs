@@ -86,10 +86,10 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             //Create the line
             _powerSHAPE.DoCommand("CREATE ARC SWEPT",
-                                  centre.X.ToString() + " " + centre.Y.ToString() + " " + centre.Z.ToString(),
-                                  "ABS " + startPoint.X.ToString() + " " + startPoint.Y.ToString() + " " +
-                                  startPoint.Z.ToString(),
-                                  "ABS " + endPoint.X.ToString() + " " + endPoint.Y.ToString() + " " + endPoint.Z.ToString(),
+                                  centre.X.ToString("0.######") + " " + centre.Y.ToString("0.######") + " " + centre.Z.ToString("0.######"),
+                                  "ABS " + startPoint.X.ToString("0.######") + " " + startPoint.Y.ToString("0.######") + " " +
+                                  startPoint.Z.ToString("0.######"),
+                                  "ABS " + endPoint.X.ToString("0.######") + " " + endPoint.Y.ToString("0.######") + " " + endPoint.Z.ToString("0.######"),
                                   "QUIT QUIT");
 
             // Get its id
@@ -153,7 +153,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             set
             {
                 AddToSelection(true);
-                _powerSHAPE.DoCommand("MODIFY", "DIMENSION " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("MODIFY", "DIMENSION " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
@@ -198,9 +198,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 AddToSelection(true);
                 _powerSHAPE.DoCommand("MODIFY",
-                                      "CENTRE X " + value.X.ToString(),
-                                      "CENTRE Y " + value.Y.ToString(),
-                                      "CENTRE Z " + value.Z.ToString(),
+                                      "CENTRE X " + value.X.ToString("0.######"),
+                                      "CENTRE Y " + value.Y.ToString("0.######"),
+                                      "CENTRE Z " + value.Z.ToString("0.######"),
                                       "ACCEPT");
             }
         }
@@ -237,9 +237,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 AddToSelection(true);
                 _powerSHAPE.DoCommand("MODIFY",
-                                      "THROUGH X " + value.X.ToString(),
-                                      "THROUGH Y " + value.Y.ToString(),
-                                      "THROUGH Z " + value.Z.ToString(),
+                                      "THROUGH X " + value.X.ToString("0.######"),
+                                      "THROUGH Y " + value.Y.ToString("0.######"),
+                                      "THROUGH Z " + value.Z.ToString("0.######"),
                                       "ACCEPT");
             }
         }
@@ -383,7 +383,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             if (scaleOrigin != null)
             {
                 _powerSHAPE.DoCommand("SCALEORIGIN");
-                _powerSHAPE.DoCommand(scaleOrigin.X.ToString() + " " + scaleOrigin.Y.ToString() + " " + scaleOrigin.Z.ToString());
+                _powerSHAPE.DoCommand(scaleOrigin.X.ToString("0.######") + " " + scaleOrigin.Y.ToString("0.######") + " " + scaleOrigin.Z.ToString("0.######"));
             }
 
             // Set the scaling to be non-uniform, so allowing each component to be edited individually
@@ -398,9 +398,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             _powerSHAPE.DoCommand("LOCK Z OFF");
 
             // Enter scaling values
-            _powerSHAPE.DoCommand("X " + offsetX);
-            _powerSHAPE.DoCommand("Y " + offsetY);
-            _powerSHAPE.DoCommand("Z " + offsetZ);
+            _powerSHAPE.DoCommand("X " + offsetX.ToString("0.######"));
+            _powerSHAPE.DoCommand("Y " + offsetY.ToString("0.######"));
+            _powerSHAPE.DoCommand("Z " + offsetZ.ToString("0.######"));
 
             if (_powerSHAPE.Version.Major > 11)
             {

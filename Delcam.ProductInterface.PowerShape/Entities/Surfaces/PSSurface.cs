@@ -493,9 +493,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             }
 
             double[] psParameters = _powerSHAPE.DoCommandEx(Identifier + "[ID " + _id + "].NEAR(" +
-                                                            referencePoint.X.ToString() +
-                                                            "; " + referencePoint.Y.ToString() + "; " +
-                                                            referencePoint.Z.ToString() + guessParameters + ")") as double[];
+                                                            referencePoint.X.ToString("0.######") +
+                                                            "; " + referencePoint.Y.ToString("0.######") + "; " +
+                                                            referencePoint.Z.ToString("0.######") + guessParameters + ")") as double[];
 
             // Remove the 3rd item in the array output from PowerSHAPE, which will always be 0
             Array.Resize(ref psParameters, 2);
@@ -897,7 +897,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             if (scaleOrigin != null)
             {
                 _powerSHAPE.DoCommand("SCALEORIGIN");
-                _powerSHAPE.DoCommand(scaleOrigin.X.ToString() + " " + scaleOrigin.Y.ToString() + " " + scaleOrigin.Z.ToString());
+                _powerSHAPE.DoCommand(scaleOrigin.X.ToString("0.######") + " " + scaleOrigin.Y.ToString("0.######") + " " + scaleOrigin.Z.ToString("0.######"));
             }
 
             // Set the scaling to be non-uniform, so allowing each component to be edited individually
@@ -912,9 +912,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             _powerSHAPE.DoCommand("LOCK Z OFF");
 
             // Enter scaling values
-            _powerSHAPE.DoCommand("X " + offsetX);
-            _powerSHAPE.DoCommand("Y " + offsetY);
-            _powerSHAPE.DoCommand("Z " + offsetZ);
+            _powerSHAPE.DoCommand("X " + offsetX.ToString("0.######"));
+            _powerSHAPE.DoCommand("Y " + offsetY.ToString("0.######"));
+            _powerSHAPE.DoCommand("Z " + offsetZ.ToString("0.######"));
 
             if (_powerSHAPE.Version.Major > 11)
             {

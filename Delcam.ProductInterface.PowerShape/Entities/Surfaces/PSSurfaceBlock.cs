@@ -35,7 +35,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the height adjustment
                 _powerSHAPE.DoCommand("SURFEDITS");
-                _powerSHAPE.DoCommand("HEIGHT " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("HEIGHT " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
@@ -52,7 +52,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the length adjustment
                 _powerSHAPE.DoCommand("SURFEDITS");
-                _powerSHAPE.DoCommand("LENGTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("LENGTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
@@ -69,7 +69,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the width adjustment
                 _powerSHAPE.DoCommand("SURFEDITS");
-                _powerSHAPE.DoCommand("WIDTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("WIDTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 

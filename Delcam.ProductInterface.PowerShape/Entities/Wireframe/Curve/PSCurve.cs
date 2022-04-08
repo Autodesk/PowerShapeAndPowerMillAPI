@@ -53,7 +53,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             foreach (Geometry.Point point in points)
             {
                 var _with1 = point;
-                _powerSHAPE.DoCommand("ABS " + _with1.X.ToString() + " " + _with1.Y.ToString() + " " + _with1.Z.ToString());
+                _powerSHAPE.DoCommand("ABS " + _with1.X.ToString("0.######") + " " + _with1.Y.ToString("0.######") + " " + _with1.Z.ToString("0.######"));
             }
             _powerSHAPE.DoCommand("QUIT");
 

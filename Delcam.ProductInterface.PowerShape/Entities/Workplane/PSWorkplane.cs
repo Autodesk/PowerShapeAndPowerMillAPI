@@ -71,15 +71,15 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             Geometry.Point yAxisPoint) : base(powerSHAPE)
         {
             _powerSHAPE.DoCommand("CREATE WORKPLANE THREEPOINTS",
-                                  "X " + origin.X.ToString(),
-                                  "Y " + origin.Y.ToString(),
-                                  "Z " + origin.Z.ToString(),
-                                  "X " + xAxisPoint.X.ToString(),
-                                  "Y " + xAxisPoint.Y.ToString(),
-                                  "Z " + xAxisPoint.Z.ToString(),
-                                  "X " + yAxisPoint.X.ToString(),
-                                  "Y " + yAxisPoint.Y.ToString(),
-                                  "Z " + yAxisPoint.Z.ToString());
+                                  "X " + origin.X.ToString("0.######"),
+                                  "Y " + origin.Y.ToString("0.######"),
+                                  "Z " + origin.Z.ToString("0.######"),
+                                  "X " + xAxisPoint.X.ToString("0.######"),
+                                  "Y " + xAxisPoint.Y.ToString("0.######"),
+                                  "Z " + xAxisPoint.Z.ToString("0.######"),
+                                  "X " + yAxisPoint.X.ToString("0.######"),
+                                  "Y " + yAxisPoint.Y.ToString("0.######"),
+                                  "Z " + yAxisPoint.Z.ToString("0.######"));
             _powerSHAPE.DoCommand("ACCEPT");
 
             // Get the new workplane
@@ -243,9 +243,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 AddToSelection(true);
                 _powerSHAPE.DoCommand("MODIFY",
-                                      "X " + value.X.ToString(),
-                                      "Y " + value.Y.ToString(),
-                                      "Z " + value.Z.ToString(),
+                                      "X " + value.X.ToString("0.######"),
+                                      "Y " + value.Y.ToString("0.######"),
+                                      "Z " + value.Z.ToString("0.######"),
                                       "ACCEPT",
                                       "ACCEPT");
             }
@@ -293,9 +293,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Set all values of vector to be 1 to avoid creating a 0 0 0 vector direction at some point in the transformation
                 _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
-                _powerSHAPE.DoCommand("X " + value.I.ToString(),
-                                      "Y " + value.J.ToString(),
-                                      "Z " + value.K.ToString(),
+                _powerSHAPE.DoCommand("X " + value.I.ToString("0.######"),
+                                      "Y " + value.J.ToString("0.######"),
+                                      "Z " + value.K.ToString("0.######"),
                                       "ACCEPT",
                                       "ACCEPT");
             }
@@ -323,9 +323,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Set all values of vector to be 1 to avoid creating a 0 0 0 vector direction at some point in the transformation
                 _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
-                _powerSHAPE.DoCommand("X " + value.I.ToString(),
-                                      "Y " + value.J.ToString(),
-                                      "Z " + value.K.ToString(),
+                _powerSHAPE.DoCommand("X " + value.I.ToString("0.######"),
+                                      "Y " + value.J.ToString("0.######"),
+                                      "Z " + value.K.ToString("0.######"),
                                       "ACCEPT",
                                       "ACCEPT");
             }
@@ -353,9 +353,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Set all values of vector to be 1 to avoid creating a 0 0 0 vector direction at some point in the transformation
                 _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
-                _powerSHAPE.DoCommand("X " + value.I.ToString(),
-                                      "Y " + value.J.ToString(),
-                                      "Z " + value.K.ToString(),
+                _powerSHAPE.DoCommand("X " + value.I.ToString("0.######"),
+                                      "Y " + value.J.ToString("0.######"),
+                                      "Z " + value.K.ToString("0.######"),
                                       "ACCEPT",
                                       "ACCEPT");
             }

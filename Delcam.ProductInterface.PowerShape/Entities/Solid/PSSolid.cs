@@ -736,7 +736,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             // Raise filleting dialog
             _powerSHAPE.DoCommand("CREATE FEATURE FILLET");
-            _powerSHAPE.DoCommand("RADIUS " + radius.ToString());
+            _powerSHAPE.DoCommand("RADIUS " + radius.ToString("0.######"));
 
             // Prompt user to select edges
             Interaction.MsgBox("Pick the edges to be filleted, and then click OK");

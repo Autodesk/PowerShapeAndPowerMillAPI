@@ -376,7 +376,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             // Create a CompCurve around the hole
             _powerSHAPE.DoCommand("CREATE CURVE COMPCURVE");
-            _powerSHAPE.DoCommand(pickedPoint.X.ToString() + " " + pickedPoint.Y.ToString() + " " + pickedPoint.Z.ToString());
+            _powerSHAPE.DoCommand(pickedPoint.X.ToString("0.######") + " " + pickedPoint.Y.ToString("0.######") + " " + pickedPoint.Z.ToString("0.######"));
             _powerSHAPE.DoCommand("FASTFORWARDS");
             _powerSHAPE.DoCommand("SAVE");
 

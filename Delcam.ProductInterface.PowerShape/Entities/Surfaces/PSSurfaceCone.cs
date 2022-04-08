@@ -35,7 +35,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the length adjustment
                 _powerSHAPE.DoCommand("SURFEDITS");
-                _powerSHAPE.DoCommand("LENGTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("LENGTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
@@ -53,7 +53,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Change the top radius
                 _powerSHAPE.DoCommand("SURFEDITS");
-                _powerSHAPE.DoCommand("TOP_RADIUS " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("TOP_RADIUS " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
@@ -71,7 +71,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Change the base radius
                 _powerSHAPE.DoCommand("SURFEDITS");
-                _powerSHAPE.DoCommand("BASE_RADIUS " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("BASE_RADIUS " + value.ToString("0.######"), "ACCEPT");
             }
         }
 

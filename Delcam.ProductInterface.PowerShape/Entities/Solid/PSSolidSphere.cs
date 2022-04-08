@@ -34,7 +34,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 // Add to selection
                 AddToSelection(true);
 
-                _powerSHAPE.DoCommand("MODIFY", "CHANGE_DIMENSION RADIUS", "DIMENSION " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("MODIFY", "CHANGE_DIMENSION RADIUS", "DIMENSION " + value.ToString("0.######"), "ACCEPT");
             }
         }
 

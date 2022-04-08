@@ -106,10 +106,10 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             //Create the line
             _powerSHAPE.DoCommand("CREATE ARC FITTED",
-                                  startPoint.X.ToString() + " " + startPoint.Y.ToString() + " " + startPoint.Z.ToString(),
-                                  "ABS " + endPoint.X.ToString() + " " + endPoint.Y.ToString() + " " + endPoint.Z.ToString(),
-                                  "ABS " + intermediatePoint.X.ToString() + " " + intermediatePoint.Y.ToString() + " " +
-                                  intermediatePoint.Z.ToString(),
+                                  startPoint.X.ToString("0.######") + " " + startPoint.Y.ToString("0.######") + " " + startPoint.Z.ToString("0.######"),
+                                  "ABS " + endPoint.X.ToString("0.######") + " " + endPoint.Y.ToString("0.######") + " " + endPoint.Z.ToString("0.######"),
+                                  "ABS " + intermediatePoint.X.ToString("0.######") + " " + intermediatePoint.Y.ToString("0.######") + " " +
+                                  intermediatePoint.Z.ToString("0.######"),
                                   "OK");
 
             // Get its id

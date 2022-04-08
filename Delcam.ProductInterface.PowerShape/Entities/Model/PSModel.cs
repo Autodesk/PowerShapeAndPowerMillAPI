@@ -1693,7 +1693,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         {
             _powerSHAPE.DoCommand("CREATE WORKPLANE SINGLE",
                                   "TEMP_WORKPLANE ON",
-                                  origin.X.ToString() + " " + origin.Y.ToString() + " " + origin.Z.ToString());
+                                  origin.X.ToString("0.######") + " " + origin.Y.ToString("0.######") + " " + origin.Z.ToString("0.######"));
         }
 
         /// <summary>

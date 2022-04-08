@@ -149,7 +149,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             // Edit length/negative length to be as required. Set NEGLENGTH initially in case the desired LENGTH is 0, as can't have
             // two lengths of 0 within the form
-            _powerSHAPE.DoCommand("MODIFY", "NEGLENGTH " + negLength.ToString(), "LENGTH " + length.ToString(), "ACCEPT");
+            _powerSHAPE.DoCommand("MODIFY", "NEGLENGTH " + negLength.ToString("0.######"), "LENGTH " + length.ToString("0.######"), "ACCEPT");
 
             // Return created solid
             Add(createdSurface);
@@ -178,8 +178,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             // Extrude to make solid
             _powerSHAPE.DoCommand("CREATE SURFACE EXTRUSION",
-                                  "LENGTH " + length.ToString(),
-                                  "NEGLENGTH " + negLength.ToString(),
+                                  "LENGTH " + length.ToString("0.######"),
+                                  "NEGLENGTH " + negLength.ToString("0.######"),
                                   "ACCEPT");
 
             // Get created solid

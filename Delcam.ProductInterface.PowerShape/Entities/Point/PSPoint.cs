@@ -38,7 +38,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         {
             // Create the point
             _powerSHAPE.DoCommand("CREATE POINT SINGLE",
-                                  point.X.ToString() + " " + point.Y.ToString() + " " + point.Z.ToString());
+                                  point.X.ToString("0.######") + " " + point.Y.ToString("0.######") + " " + point.Z.ToString("0.######"));
 
             _name = _powerSHAPE.ActiveModel.SelectedItems[0].Name;
             _id = _powerSHAPE.ReadIntValue(Identifier + "['" + Name + "'].ID");
@@ -110,7 +110,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 AbortIfDoesNotExist();
                 AddToSelection(true);
                 _powerSHAPE.Execute("MODIFY");
-                _powerSHAPE.Execute("XPOS " + value.ToString());
+                _powerSHAPE.Execute("XPOS " + value.ToString("0.######"));
                 _powerSHAPE.Execute("ACCEPT");
             }
         }
@@ -136,7 +136,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 AbortIfDoesNotExist();
                 AddToSelection(true);
                 _powerSHAPE.Execute("MODIFY");
-                _powerSHAPE.Execute("YPOS " + value.ToString());
+                _powerSHAPE.Execute("YPOS " + value.ToString("0.######"));
                 _powerSHAPE.Execute("ACCEPT");
             }
         }
@@ -156,7 +156,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 AbortIfDoesNotExist();
                 AddToSelection(true);
                 _powerSHAPE.Execute("MODIFY");
-                _powerSHAPE.Execute("ZPOS " + value.ToString());
+                _powerSHAPE.Execute("ZPOS " + value.ToString("0.######"));
                 _powerSHAPE.Execute("ACCEPT");
             }
         }

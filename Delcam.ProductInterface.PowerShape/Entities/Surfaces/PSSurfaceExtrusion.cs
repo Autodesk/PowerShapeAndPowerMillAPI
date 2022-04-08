@@ -35,7 +35,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the length adjustment
                 _powerSHAPE.DoCommand("SURFEDITS");
-                _powerSHAPE.DoCommand("LENGTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("LENGTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
@@ -52,7 +52,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the length adjustment
                 _powerSHAPE.DoCommand("SURFEDITS");
-                _powerSHAPE.DoCommand("NEGLENGTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("NEGLENGTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 

@@ -79,7 +79,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             }
 
             // Enter offset distance
-            _powerSHAPE.DoCommand("DISTANCE " + offsetDistance.ToString());
+            _powerSHAPE.DoCommand("DISTANCE " + offsetDistance.ToString("0.######"));
             _powerSHAPE.DoCommand("CANCEL");
 
             // If no copies were made, return an empty list

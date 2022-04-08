@@ -341,9 +341,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             if (_powerSHAPE.Version >= new Version("11.2"))
             {
-                _powerSHAPE.DoCommand("X " + moveVector.I.ToString(),
-                                      "Y " + moveVector.J.ToString(),
-                                      "Z " + moveVector.K.ToString());
+                _powerSHAPE.DoCommand("X " + moveVector.I.ToString("0.######"),
+                                      "Y " + moveVector.J.ToString("0.######"),
+                                      "Z " + moveVector.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("APPLY", "DISMISS");
             }
             else
@@ -616,9 +616,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
 
             //' Set tangent
-            _powerSHAPE.DoCommand("X " + afterTangentVector.I.ToString(),
-                                  "Y " + afterTangentVector.J.ToString(),
-                                  "Z " + afterTangentVector.K.ToString());
+            _powerSHAPE.DoCommand("X " + afterTangentVector.I.ToString("0.######"),
+                                  "Y " + afterTangentVector.J.ToString("0.######"),
+                                  "Z " + afterTangentVector.K.ToString("0.######"));
 
             _powerSHAPE.DoCommand("ACCEPT");
             _powerSHAPE.DoCommand("ACCEPT");
@@ -644,9 +644,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
 
             //' Set tangent
-            _powerSHAPE.DoCommand("X " + beforeTangentVector.I.ToString(),
-                                  "Y " + beforeTangentVector.J.ToString(),
-                                  "Z " + beforeTangentVector.K.ToString());
+            _powerSHAPE.DoCommand("X " + beforeTangentVector.I.ToString("0.######"),
+                                  "Y " + beforeTangentVector.J.ToString("0.######"),
+                                  "Z " + beforeTangentVector.K.ToString("0.######"));
 
             _powerSHAPE.DoCommand("ACCEPT");
             _powerSHAPE.DoCommand("ACCEPT");
@@ -676,9 +676,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
 
                 //' Set tangent
-                _powerSHAPE.DoCommand("X " + entryTangent.I.ToString(),
-                                      "Y " + entryTangent.J.ToString(),
-                                      "Z " + entryTangent.K.ToString());
+                _powerSHAPE.DoCommand("X " + entryTangent.I.ToString("0.######"),
+                                      "Y " + entryTangent.J.ToString("0.######"),
+                                      "Z " + entryTangent.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("ACCEPT");
             }
 
@@ -692,9 +692,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 _powerSHAPE.DoCommand("X 1", "Y 1", "Z 1");
 
                 //' Set tangent
-                _powerSHAPE.DoCommand("X " + exitTangent.I.ToString(),
-                                      "Y " + exitTangent.J.ToString(),
-                                      "Z " + exitTangent.K.ToString());
+                _powerSHAPE.DoCommand("X " + exitTangent.I.ToString("0.######"),
+                                      "Y " + exitTangent.J.ToString("0.######"),
+                                      "Z " + exitTangent.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("ACCEPT");
             }
 
@@ -751,14 +751,14 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             // Do different code if PowerSHAPE version is higher
             if (_powerSHAPE.Version >= new Version("11.2"))
             {
-                _powerSHAPE.DoCommand("X " + moveVector.I.ToString(),
-                                      "Y " + moveVector.J.ToString(),
-                                      "Z " + moveVector.K.ToString());
+                _powerSHAPE.DoCommand("X " + moveVector.I.ToString("0.######"),
+                                      "Y " + moveVector.J.ToString("0.######"),
+                                      "Z " + moveVector.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("APPLY", "DISMISS");
             }
             else
             {
-                _powerSHAPE.DoCommand(moveVector.I.ToString() + " " + moveVector.J.ToString() + " " + moveVector.K.ToString());
+                _powerSHAPE.DoCommand(moveVector.I.ToString("0.######") + " " + moveVector.J.ToString("0.######") + " " + moveVector.K.ToString("0.######"));
                 _powerSHAPE.DoCommand("CANCEL");
             }
 

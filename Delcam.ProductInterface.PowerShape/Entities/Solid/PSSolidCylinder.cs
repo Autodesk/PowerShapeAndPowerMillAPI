@@ -36,7 +36,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Change the radius
                 _powerSHAPE.DoCommand("MODIFY");
-                _powerSHAPE.DoCommand("RADIUS " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("RADIUS " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
@@ -53,7 +53,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
                 // Make the length adjustment
                 _powerSHAPE.DoCommand("MODIFY");
-                _powerSHAPE.DoCommand("LENGTH " + value.ToString(), "ACCEPT");
+                _powerSHAPE.DoCommand("LENGTH " + value.ToString("0.######"), "ACCEPT");
             }
         }
 
