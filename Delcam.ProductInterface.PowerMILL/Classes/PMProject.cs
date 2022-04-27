@@ -644,6 +644,24 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         /// <summary>
+        /// Imports the specified PowerMILL Project.
+        /// </summary>
+        /// <param name="powerMillProject">The PowerMill project to be imported</param>
+        /// <exception cref="Exception">If the project does not exist then an exception is thrown.</exception>
+        public void ImportProject(Directory powerMillProject)
+        {
+            if (powerMillProject.Exists)
+            {
+                _powerMILL.DoCommand("PROJECT IMPORT \"" + powerMillProject.Path + "\"");
+                Refresh();
+            }
+            else
+            {
+                throw new Exception("Project directory does not exist");
+            }
+        }
+
+        /// <summary>
         /// Imports the specified PowerMILL Template File.
         /// </summary>
         /// <param name="templateFile">The template file to be imported</param>

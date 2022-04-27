@@ -49,6 +49,16 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         #region Test operations
 
         [Test]
+        public void ImportProjectTest()
+        {
+            Assert.AreEqual(0, _powerMILL.ActiveProject.Toolpaths.Count);
+            _powerMILL.ActiveProject.ImportProject(TestFiles.SimplePmProject1);
+            Assert.AreEqual(4, _powerMILL.ActiveProject.Toolpaths.Count);
+            _powerMILL.ActiveProject.ImportProject(TestFiles.SimplePmProject1);
+            Assert.AreEqual(8, _powerMILL.ActiveProject.Toolpaths.Count);
+        }
+
+        [Test]
         public void ImportPTFTest()
         {
             Assert.AreEqual(0, _powerMILL.ActiveProject.Toolpaths.Count);
