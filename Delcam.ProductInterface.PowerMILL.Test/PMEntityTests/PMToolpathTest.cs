@@ -46,6 +46,14 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         #region Test properties
 
         [Test]
+        public void StrategyTest()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var toolpath = _powerMill.ActiveProject.Toolpaths.First();
+            Assert.That(toolpath.Strategy, Is.EqualTo("constantz"));
+        }
+
+        [Test]
         public void ToleranceTest()
         {
             _powerMill.LoadProject(TestFiles.BasicToolpath);

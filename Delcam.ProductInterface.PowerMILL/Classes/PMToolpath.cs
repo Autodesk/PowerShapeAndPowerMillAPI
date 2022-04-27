@@ -90,6 +90,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             get { return TOOLPATH_IDENTIFIER; }
         }
 
+        /// <summary>
+        /// Gets the strategy value of the toolpath
+        /// </summary>
+        public string Strategy
+        {
+            get { return GetParameter(Resources.Strategy); }
+        }
+
         public MM Tolerance
         {
             get { return GetParameterDoubleValue(Resources.Tolerance); }

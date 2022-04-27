@@ -483,4 +483,7 @@
   <data name="Tolerance" xml:space="preserve">
     <value>Tolerance</value>
   </data>
+  <data name="Strategy" xml:space="preserve">
+    <value>Strategy</value>
+  </data>
 </root>
