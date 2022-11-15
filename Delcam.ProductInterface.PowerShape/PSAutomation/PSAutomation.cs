@@ -355,9 +355,6 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             TweakVersionNumbersTo2018(ref tweakedVersion, ref tweakedMaximumVersion);
             StartExecutable(APP_NAME, tweakedVersion, tweakedMaximumVersion, ClassId, false, CommandArguments);
             _powerSHAPE = GetCOMObject(ClassId);
-            IsGUIVisible = false;
-            FormUpdateOff();
-            DialogsOff();
             Console.WriteLine("Created Single Instance");
             try
             {
@@ -375,6 +372,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             catch
             {
             }
+            IsGUIVisible = false;
+            FormUpdateOff();
+            DialogsOff();
             IsIntelligentCursorOn = true;
             Console.WriteLine("Done");
         }
