@@ -336,6 +336,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             }
             catch
             {
+                throw new Exception("Failed to interact with new instance of PowerShape.");
             }
             IsIntelligentCursorOn = true;
             Console.WriteLine("Done");
