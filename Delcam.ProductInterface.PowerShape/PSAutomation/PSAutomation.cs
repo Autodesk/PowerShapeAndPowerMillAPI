@@ -2017,7 +2017,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         public void RefreshOn()
         {
             //Workaround to prevent the following issue ACCS-471: REFRESH ON FORCE won't work if curve selected
-            ActiveModel.ClearSelectedItems();
+            ActiveModel?.ClearSelectedItems();
 
             if (Version < new Version("17.1.34"))
             {
@@ -2037,7 +2037,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         public void RefreshOff()
         {
             //Workaround to prevent the following issue ACCS-471: REFRESH ON FORCE won't work if curve selected
-            ActiveModel.ClearSelectedItems();
+            ActiveModel?.ClearSelectedItems();
 
             // Turns graphics updates off
             DoCommand("REFRESH OFF");
