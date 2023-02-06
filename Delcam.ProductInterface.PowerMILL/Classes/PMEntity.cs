@@ -34,6 +34,11 @@ namespace Autodesk.ProductInterface.PowerMILL
         private string _name;
 
         /// <summary>
+        /// The GUID of the Entity.
+        /// </summary>
+        private readonly Guid _id;
+
+        /// <summary>
         /// Powermill true value represented in 1 means true and 0 means false;
         /// </summary>
         private string TrueValue = "1";
@@ -65,6 +70,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             PowerMill = powerMill;
             _name = "";
+            _id = new Guid(GetParameter("ID"));
         }
 
         /// <summary>
@@ -76,6 +82,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             PowerMill = powerMill;
             _name = name;
+            _id = new Guid(GetParameter("ID"));
         }
 
         #endregion
@@ -107,6 +114,14 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
         }
 
+        /// <summary>
+        /// Gets the GUID of the entity.
+        /// </summary>
+        public Guid ID
+        {
+            get { return _id; }
+        }
+        
         /// <summary>
         /// Gets and sets whether the entity is active. It also updates PowerMill.
         /// </summary>
@@ -356,6 +371,15 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// Deletes an entity.
         /// </summary>
         public abstract void Delete();
+
+        #endregion
+
+        #region Overrides
+
+        public override bool Equals(object obj)
+        {
+            return (obj is PMEntity entity) ? _id.Equals(entity._id) : obj.Equals(this);
+        }
 
         #endregion
 
