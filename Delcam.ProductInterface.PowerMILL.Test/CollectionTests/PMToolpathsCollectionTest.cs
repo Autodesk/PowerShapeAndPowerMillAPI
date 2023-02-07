@@ -8,6 +8,7 @@
 // **********************************************************************
 
 using System;
+using System.Linq;
 using Autodesk.ProductInterface.PowerMILL;
 using Autodesk.ProductInterface.PowerMILLTest.Files;
 using NUnit.Framework;
@@ -64,6 +65,17 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
 
             Assert.AreEqual(toolpath.IsActive, false);
             Assert.AreEqual(activeToolpath, null);
+        }
+
+        [Test]
+        public void OrderByExplorerTest()
+        {
+            _powerMILL.LoadProject(TestFiles.ToolpathsOrderProject);
+            var startingOrder = _powerMILL.ActiveProject.Toolpaths.Select(x => x.Name);
+            _powerMILL.ActiveProject.Toolpaths.OrderByExplorer();
+            var resultingOrder = _powerMILL.ActiveProject.Toolpaths.Select(x => x.Name);
+            var expectedOrder = new[] { "10", "4", "3", "2", "8", "5", "6", "7", "9", "1" };
+            Assert.AreEqual(resultingOrder,expectedOrder);
         }
 
         [Test]
