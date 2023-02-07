@@ -1,12 +1,12 @@
 {
 	"type" : "powermill",
-	"time" : "1537953500",
+	"time" : "1675783144",
 	"version" : "1"
 }
 {
 	"Export" : {
 		"TriangleTolerance" : "0.01",
-		"OutputMetricSTL" : "1"
+		"OutputMetricSTL" : "0"
 	},
 	"Units" : "metric",
 	"CLData" : {
@@ -54,9 +54,9 @@
 		"ObliqueCurve" : {
 			"Tolerance" : "0.001",
 			"Origin" : {
-				"Y" : "0.1",
-				"X" : "0.1",
-				"Z" : "0.1"
+				"Y" : "0.0",
+				"X" : "0.0",
+				"Z" : "0.0"
 			},
 			"SurfJoinTolerance" : "0.1"
 		},
@@ -67,6 +67,7 @@
 		}
 	},
 	"Setup" : {
+		"DefaultUsePointDistribution" : "0",
 		"Stock" : {
 			"DrawStatus" : {
 				"Opacity" : "100.0",
@@ -80,19 +81,37 @@
 				"Tolerance" : "0.1"
 			}
 		},
+		"DefaultUseConnections" : "1",
+		"DefaultUseStock" : "1",
 		"HideToolpaths" : "1"
 	},
 	"Import" : {
 		"DeferLoading" : "0",
 		"DefaultExtensionIndex" : "1",
-		"CreateSplitSets" : "0",
+		"IgnoreHierarchy" : "1",
 		"SplitSolids" : "1",
+		"CreateSplitSets" : "0",
+		"IgnoreWorkplanes" : "0",
 		"ReimportModels" : "ask",
 		"Tolerance" : "0.001",
 		"IgnoreNewModels" : "0"
 	},
 	"TPCalculation" : {
 		"Activate" : "1"
+	},
+	"OMV" : {
+		"Reporting" : {
+			"Labels" : "SP",
+			"ProximityCriteria" : "4.0",
+			"Confetti" : {
+				"Diameter" : "8.0"
+			},
+			"DPS" : {
+				"Unitless" : "5",
+				"Angular" : "3",
+				"Linear" : "3"
+			}
+		}
 	},
 	"Mirror" : {
 		"Optimize" : "0",
@@ -198,8 +217,7 @@
 			"FromBlock" : "1",
 			"FromDiameter" : "1"
 		},
-		"AddGapComponents" : "1",
-		"MinPartialHoleArcAngle" : "300.0"
+		"AddGapComponents" : "1"
 	},
 	"Tool" : {
 		"FeedSpeed" : {
@@ -235,6 +253,9 @@
 			"Availability" : "1",
 			"AutoDelete" : "1"
 		}
+	},
+	"HoleTagging" : {
+		"DisplayWarnings" : "1"
 	},
 	"ToolpathTransform" : {
 		"AlwaysCreateWorkplane" : "0"
