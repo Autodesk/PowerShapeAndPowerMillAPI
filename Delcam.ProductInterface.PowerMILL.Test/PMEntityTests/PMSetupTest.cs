@@ -8,6 +8,8 @@
 // **********************************************************************
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Autodesk.ProductInterface.PowerMILL;
 using NUnit.Framework;
@@ -58,7 +60,17 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
 
             Assert.AreEqual(actualToolpathNames,expectedToolpathNames);
         }
-        
+
+        [Test]
+        public void Property_Toolpaths_Empty()
+        {
+            _powerMILL.LoadProject(Files.TestFiles.SetupsProject);
+
+            var toolpaths = _powerMILL.ActiveProject.Setups["3"].Toolpaths;
+
+            Assert.AreEqual(toolpaths.Count, 0);
+        }
+
         #endregion
     }
 }

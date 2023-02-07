@@ -58,6 +58,8 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             get
             {
+                List<PMToolpath> result = new List<PMToolpath>();
+
                 // Get the list of toolpaths that are in the Setup
                 var toolpathsGUIDs = PowerMill.DoCommandEx($"PRINT FOLDER 'Setup\\{Name}'").ToString();
                 // Remove by replacement all CRs
@@ -65,20 +67,29 @@ namespace Autodesk.ProductInterface.PowerMILL
                 // Remove by replacement all prefixes
                 toolpathsGUIDs = toolpathsGUIDs.Replace($"Setup\\{Name}\\\\", string.Empty);
                 // Split the collection by NL
-                var splitToolpathGUIDs = toolpathsGUIDs.Split((char)10);
+                var splitToolpathGUIDs = toolpathsGUIDs.Split(new[]{(char)10},StringSplitOptions.RemoveEmptyEntries);
+                // If no toolpaths were contained within the setup, return the empty list
+                if (splitToolpathGUIDs.Length == 0) return result;
                 // Convert to GUIDs to resolve parsing concerns
-                var targetGUIDS = splitToolpathGUIDs.Select(x => new Guid(x));
+                var targetGUIDs = splitToolpathGUIDs.Select(x => new Guid(x));
 
                 // Use the retrieved GUIDs to select from the session's complete toolpath collection.
                 // Iterating in this manor will order the resultant list by the order in which the 
                 // toolpaths appear in the setup
-                var setupToolpaths = from toolpathGUID in targetGUIDS 
-                                     select PowerMill
-                                         .ActiveProject
-                                         .Toolpaths
-                                         .First(x => x.ID == toolpathGUID);
-
-                return setupToolpaths.ToList();
+                try
+                {
+                    var setupToolpaths = targetGUIDs
+                        .Select(targetGUID => PowerMill.ActiveProject.Toolpaths
+                            .First(toolpath => toolpath.ID == targetGUID));
+                    result = setupToolpaths.ToList();
+                }
+                catch (InvalidOperationException e)
+                {
+                    throw new Exception(
+                        "Unable to correlate the toolpaths contained within the setup to those of the active project." +
+                        "Consider using the Refresh method on the active project prior to access");
+                }
+                return result;
             }
         }
 
