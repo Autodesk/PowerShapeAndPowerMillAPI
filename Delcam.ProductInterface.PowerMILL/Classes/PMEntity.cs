@@ -378,7 +378,7 @@ namespace Autodesk.ProductInterface.PowerMILL
 
         public override bool Equals(object obj)
         {
-            return (obj is PMEntity entity) ? _id.Equals(entity._id) : obj.Equals(this);
+            return (obj is PMEntity) ? _id.Equals(((PMEntity)obj)._id) : obj.Equals(this);
         }
 
         #endregion
