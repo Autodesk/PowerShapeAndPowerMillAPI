@@ -91,6 +91,7 @@
     <Compile Include="PMEntityTests\PMLevelOrSetTests.cs" />
     <Compile Include="PMEntityTests\PMMacroTest.cs" />
     <Compile Include="PMEntityTests\PMModelTest.cs" />
+    <Compile Include="PMEntityTests\PMSetupTest.cs" />
     <Compile Include="PMEntityTests\PMNCProgramTest.cs" />
     <Compile Include="PMEntityTests\PMPatternTests.cs" />
     <Compile Include="PMEntityTests\PMProjectTests.cs" />
@@ -460,18 +461,38 @@
     <None Include="Files\PMfiles\PM2023_Projects\ToolpathsOrderProject\x693b160163e2326e0000c1cc00000000.pmlgeom" />
     <None Include="Files\PMfiles\PM2023_Projects\ToolpathsOrderProject\x697b6eb163e2326b0000abb900000000.pmlent" />
     <None Include="Files\PMfiles\PM2023_Projects\ToolpathsOrderProject\x697b6eb163e2326b0000abb900000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2017_Projects\ToolpathHierarchy\remove.log" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\desktop.ini" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\SetupsProjects.pmlprj" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\x8ec38cd563e159a9000021ce00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\x8ec38cd563e159a9000021ce00000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xaece8f4563e159bc00008eff00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xaece8f4563e159bc00008eff00000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xaee4039563e159af000045af00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xaee4039563e159af000045af00000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xaee419b563e159ac0000330200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xaee419b563e159ac0000330200000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xaf83976563e159b10000587d00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xaf83976563e159b10000587d00000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xafdda6e563e159b400006b8d00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xafdda6e563e159b400006b8d00000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb012ac6563e159be0000a1b600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb012ac6563e159be0000a1b600000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb02b564563e159b900007df300000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb02b564563e159b900007df300000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb038c46563e159c80000dba000000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb0ffb0b563e159c00000b55900000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb0ffb0b563e159c00000b55900000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb139812563e159cb0000dd7200000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb143953563e159c20000c94600000000.pmlent" />
+    <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb143953563e159c20000c94600000000.pmlgeom" />
     <None Include="Files\PMfiles\PTFFiles\ImportPTFTest.ptf" />
-    <None Include="Files\PMfiles\SetupsProject\active_entity.pmldat" />
-    <None Include="Files\PMfiles\SetupsProject\Default_Thickness.pmldat" />
-    <None Include="Files\PMfiles\SetupsProject\desktop.ini" />
-    <None Include="Files\PMfiles\SetupsProject\entity_name_templates.pmldat" />
-    <None Include="Files\PMfiles\SetupsProject\plugin_data\RobotInterface\RobotInterface.PriProj" />
-    <None Include="Files\PMfiles\SetupsProject\project_list.pmllst" />
-    <None Include="Files\PMfiles\SetupsProject\project_vars.pmlpar" />
-    <None Include="Files\PMfiles\SetupsProject\SetupsProject.pmlprj" />
-    <None Include="Files\PMfiles\SetupsProject\system_pars.pmlpar" />
-    <None Include="Files\PMfiles\SetupsProject\x131933005bab4ec100001e2c00000000.pmlent" />
-    <None Include="Files\PMfiles\SetupsProject\x131933c05bab4ec300001e4b00000000.pmlent" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -492,6 +513,8 @@
     <Content Include="Files\PMfiles\PM2023_Projects\ToolpathsOrderProject\plugin_data\{01887A1C-C719-4739-B0A4-DB188D9CD5FF}\VaultData.xml" />
     <Content Include="Files\PMfiles\PM2023_Projects\ToolpathsOrderProject\pmill.ico" />
     <Content Include="Files\PMfiles\SetupsProject\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2023_Projects\SetupsProject\plugin_data\{01887A1C-C719-4739-B0A4-DB188D9CD5FF}\VaultData.xml" />
+    <Content Include="Files\PMfiles\PM2023_Projects\SetupsProject\pmill.ico" />
     <Content Include="PMEntityTests\PMToolPathTestGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PMToolPathTestGenerator.cs</LastGenOutput>
@@ -518,5 +541,6 @@
       <Name>Delcam.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
