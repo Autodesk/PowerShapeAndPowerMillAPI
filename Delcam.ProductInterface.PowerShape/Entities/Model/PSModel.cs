@@ -1368,18 +1368,17 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// <remarks></remarks>
         public void StartSurfaceComparison(PSSurface surfaceToCompare, PSSurface surfaceToCompareTo)
         {
-            // Select them both
+            // Select the first surface 
             surfaceToCompare.AddToSelection(true);
-            surfaceToCompareTo.AddToSelection();
-
-            // Check that the selection contains just a surface and a mesh
-            if (SelectedItems.Count != 2)
-            {
-                throw new Exception("Two surfaces must be selected.");
-            }
 
             // Start comparison
-            _powerSHAPE.DoCommand("COMPARISON AUTOMATIC");
+            _powerSHAPE.DoCommand("TOOLS COMPARISON");
+
+            // Select the second surface
+            surfaceToCompareTo.AddToSelection();
+
+            // Start comparison
+            _powerSHAPE.DoCommand("CALCULATE");
 
             // Set the flag to be true
             _isInSurfaceComparison = true;
