@@ -1361,6 +1361,31 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         }
 
         /// <summary>
+        /// Compares a surface/mesh in PowerSHAPE and displays any selection errors.
+        /// </summary>
+        /// <param name="surfaceToCompare">The surface to compare.</param>
+        /// <param name="surfaceToCompareTo">The second surface to compare.</param>
+        /// <remarks></remarks>
+        public void StartSurfaceComparison(PSSurface surfaceToCompare, PSSurface surfaceToCompareTo)
+        {
+            // Select them both
+            surfaceToCompare.AddToSelection(true);
+            surfaceToCompareTo.AddToSelection();
+
+            // Check that the selection contains just a surface and a mesh
+            if (SelectedItems.Count != 2)
+            {
+                throw new Exception("Two surfaces must be selected.");
+            }
+
+            // Start comparison
+            _powerSHAPE.DoCommand("COMPARISON AUTOMATIC");
+
+            // Set the flag to be true
+            _isInSurfaceComparison = true;
+        }
+
+        /// <summary>
         /// Outputs a text file containing the Surface Comparison errors.
         /// </summary>
         /// <param name="outputFile">The file path were errors will be written.</param>
