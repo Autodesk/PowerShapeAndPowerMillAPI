@@ -1343,21 +1343,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// <remarks></remarks>
         public void StartSurfaceComparison(PSSurface surfaceToCompare, PSMesh meshToCompare)
         {
-            // Select them both
-            surfaceToCompare.AddToSelection(true);
-            meshToCompare.AddToSelection();
-
-            // Check that the selection contains just a surface and a mesh
-            if (SelectedItems.Count != 2)
-            {
-                throw new Exception("One surface and one mesh must be selected.");
-            }
-
-            // Start comparison
-            _powerSHAPE.DoCommand("COMPARISON AUTOMATIC");
-
-            // Set the flag to be true
-            _isInSurfaceComparison = true;
+            StartComparison(surfaceToCompare, meshToCompare);
         }
 
         /// <summary>
@@ -1368,14 +1354,43 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// <remarks></remarks>
         public void StartSurfaceComparison(PSSurface surfaceToCompare, PSSurface surfaceToCompareTo)
         {
-            // Select the first surface 
-            surfaceToCompare.AddToSelection(true);
+            StartComparison(surfaceToCompare, surfaceToCompareTo);
+        }
+
+        /// <summary>
+        /// Compares two meshes in PowerSHAPE and displays any selection errors.
+        /// </summary>
+        /// <param name="meshToCompare">First mesh used in the comparison.</param>
+        /// <param name="meshToCompareTo">Second mesh used in the comparison.</param>
+        /// <remarks></remarks>
+        public void StartSurfaceComparison(PSMesh meshToCompare, PSMesh meshToCompareTo)
+        {
+            StartComparison(meshToCompare, meshToCompareTo);
+        }
+
+        /// <summary>
+        /// Compares two entities in PowerSHAPE and displays any selection errors.
+        /// </summary>
+        /// <param name="entityToCompare">First entity used in the comparison.</param>
+        /// <param name="entityToCompareTo">Second entity used in the comparison.</param>
+        /// <remarks></remarks>
+        private void StartComparison(PSEntity entityToCompare, PSEntity entityToCompareTo)
+        {
+            // Check that they both exist
+            if (!entityToCompare.Exists || !entityToCompareTo.Exists)
+            {
+                throw new Exception("One or more of the items to compare doesn't exist.");
+            }
+
+
+            // Select them both
+            entityToCompareTo.AddToSelection(true);
 
             // Start comparison
             _powerSHAPE.DoCommand("TOOLS COMPARISON");
 
-            // Select the second surface
-            surfaceToCompareTo.AddToSelection();
+            // Select the item to compare
+            entityToCompare.AddToSelection();
 
             // Start comparison
             _powerSHAPE.DoCommand("CALCULATE");
@@ -1383,6 +1398,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             // Set the flag to be true
             _isInSurfaceComparison = true;
         }
+
+
 
         /// <summary>
         /// Outputs a text file containing the Surface Comparison errors.
@@ -1395,32 +1412,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             outputFile.Create();
 
             // Export file
-            _powerSHAPE.DoCommand("EXPORTERRORS Filename FileDialog Write Validate " + outputFile.Path, "OK");
-        }
-
-        /// <summary>
-        /// Compares two meshes in PowerSHAPE and displays any selection errors.
-        /// </summary>
-        /// <param name="meshToCompare">First mesh used in the comparison.</param>
-        /// <param name="meshToCompareTo">Second mesh used in the comparison.</param>
-        /// <remarks></remarks>
-        public void StartSurfaceComparison(PSMesh meshToCompare, PSMesh meshToCompareTo)
-        {
-            // Select them both
-            meshToCompare.AddToSelection(true);
-            meshToCompareTo.AddToSelection();
-
-            // Check that the selection contains two meshes
-            if (SelectedItems.Count != 2)
-            {
-                throw new Exception("Two meshes must be selected.");
-            }
-
-            // Start comparison
-            _powerSHAPE.DoCommand("COMPARISON AUTOMATIC");
-
-            // Set the flag to be true
-            _isInSurfaceComparison = true;
+            _powerSHAPE.DoCommand("EXPORT_ERRORS Filename FileDialog Write Validate " + outputFile.Path, "OK");
         }
 
         /// <summary>

@@ -523,15 +523,65 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         /// A test for StartSurfaceComparison
         /// </summary>
         [Test]
-        [Ignore("")]
-        public void StartSurfaceComparisonTest()
+        public void SurfaceToMeshComparisonTest()
         {
-            //Automation powerSHAPE = null; // TODO: Initialize to an appropriate value
-            //Model target = new Model(powerSHAPE); // TODO: Initialize to an appropriate value
-            //Surface surfaceToCompare = null; // TODO: Initialize to an appropriate value
-            //Mesh meshToCompare = null; // TODO: Initialize to an appropriate value
-            //target.StartSurfaceComparison(surfaceToCompare, meshToCompare);
-            //Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            var model = _powerSHAPE.Reset();
+
+            var surface = (PSSurface)model.Import(new File(TestFiles.SINGLE_SURFACE))[0];
+            var mesh = model.Meshes.CreateMeshFromSurface(surface);
+            mesh.MoveByVector(new Vector(0, 0, 1), 0);
+            var tempFile = File.CreateTemporaryFile("txt");
+
+            model.StartSurfaceComparison(surface, mesh);
+            model.ExportSurfaceComparisonErrorsFile(tempFile);
+            model.EndSurfaceComparison();
+
+            Assert.That(tempFile.Exists);
+            Assert.That(!string.IsNullOrWhiteSpace(tempFile.ReadText()));
+            tempFile.Delete();
+        }
+
+        /// <summary>
+        /// A test for StartSurfaceComparison
+        /// </summary>
+        [Test]
+        public void SurfaceToSurfaceComparisonTest()
+        {
+            var model = _powerSHAPE.Reset();
+
+            var surface = (PSSurface)model.Import(new File(TestFiles.SINGLE_SURFACE))[0];
+            var surface2 = (PSSurface)surface.MoveByVector(new Vector(0, 0, 1), 1)[0];
+            var tempFile = File.CreateTemporaryFile("txt");
+
+            model.StartSurfaceComparison(surface, surface2);
+            model.ExportSurfaceComparisonErrorsFile(tempFile);
+            model.EndSurfaceComparison();
+
+            Assert.That(tempFile.Exists);
+            Assert.That(!string.IsNullOrWhiteSpace(tempFile.ReadText()));
+            tempFile.Delete();
+        }
+
+        /// <summary>
+        /// A test for StartSurfaceComparison
+        /// </summary>
+        [Test]
+        public void MeshToMeshComparisonTest()
+        {
+            var model = _powerSHAPE.Reset();
+
+            var surface = (PSSurface)model.Import(new File(TestFiles.SINGLE_SURFACE))[0];
+            var mesh = model.Meshes.CreateMeshFromSurface(surface);
+            var mesh2 = (PSMesh)mesh.MoveByVector(new Vector(0, 0, 1), 1)[0];
+            var tempFile = File.CreateTemporaryFile("txt");
+
+            model.StartSurfaceComparison(mesh, mesh2);
+            model.ExportSurfaceComparisonErrorsFile(tempFile);
+            model.EndSurfaceComparison();
+
+            Assert.That(tempFile.Exists);
+            Assert.That(!string.IsNullOrWhiteSpace(tempFile.ReadText()));
+            tempFile.Delete();
         }
 
         /// <summary>
