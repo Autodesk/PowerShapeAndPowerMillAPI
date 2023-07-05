@@ -1339,11 +1339,12 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// Compares a surface/mesh in PowerSHAPE and displays any selection errors.
         /// </summary>
         /// <param name="surfaceToCompare">The surface to compare.</param>
-        /// <param name="meshToCompare">The mesh to compare.</param>
+        /// <param name="meshToCompareTo">The mesh to compare.</param>
+        /// <param name="invertSelection">Inverts the item to compare and to compare against.</param>
         /// <remarks></remarks>
-        public void StartSurfaceComparison(PSSurface surfaceToCompare, PSMesh meshToCompare)
+        public void StartSurfaceComparison(PSSurface surfaceToCompare, PSMesh meshToCompareTo, bool invertSelection = false)
         {
-            StartComparison(surfaceToCompare, meshToCompare);
+            StartComparison(surfaceToCompare, meshToCompareTo, invertSelection);
         }
 
         /// <summary>
@@ -1351,10 +1352,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// </summary>
         /// <param name="surfaceToCompare">The surface to compare.</param>
         /// <param name="surfaceToCompareTo">The second surface to compare.</param>
+        /// <param name="invertSelection">Inverts the item to compare and to compare against.</param>
         /// <remarks></remarks>
-        public void StartSurfaceComparison(PSSurface surfaceToCompare, PSSurface surfaceToCompareTo)
+        public void StartSurfaceComparison(PSSurface surfaceToCompare, PSSurface surfaceToCompareTo, bool invertSelection = false)
         {
-            StartComparison(surfaceToCompare, surfaceToCompareTo);
+            StartComparison(surfaceToCompare, surfaceToCompareTo, invertSelection);
         }
 
         /// <summary>
@@ -1362,10 +1364,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// </summary>
         /// <param name="meshToCompare">First mesh used in the comparison.</param>
         /// <param name="meshToCompareTo">Second mesh used in the comparison.</param>
+        /// <param name="invertSelection">Inverts the item to compare and to compare against.</param>
         /// <remarks></remarks>
-        public void StartSurfaceComparison(PSMesh meshToCompare, PSMesh meshToCompareTo)
+        public void StartSurfaceComparison(PSMesh meshToCompare, PSMesh meshToCompareTo, bool invertSelection = false)
         {
-            StartComparison(meshToCompare, meshToCompareTo);
+            StartComparison(meshToCompare, meshToCompareTo, invertSelection);
         }
 
         /// <summary>
@@ -1373,8 +1376,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// </summary>
         /// <param name="entityToCompare">First entity used in the comparison.</param>
         /// <param name="entityToCompareTo">Second entity used in the comparison.</param>
+        /// <param name="invertSelection">Inverts the item to compare and to compare against.</param>
         /// <remarks></remarks>
-        private void StartComparison(PSEntity entityToCompare, PSEntity entityToCompareTo)
+        private void StartComparison(PSEntity entityToCompare, PSEntity entityToCompareTo, bool invertSelection = false)
         {
             // Check that they both exist
             if (!entityToCompare.Exists || !entityToCompareTo.Exists)
@@ -1382,15 +1386,28 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 throw new Exception("One or more of the items to compare doesn't exist.");
             }
 
-
             // Select them both
-            entityToCompareTo.AddToSelection(true);
+            if (!invertSelection)
+            {
+                entityToCompareTo.AddToSelection(true);
+            }
+            else
+            {
+                entityToCompare.AddToSelection(true);
+            }
 
             // Start comparison
             _powerSHAPE.DoCommand("TOOLS COMPARISON");
 
             // Select the item to compare
-            entityToCompare.AddToSelection();
+            if (!invertSelection)
+            {
+                entityToCompare.AddToSelection();
+            }
+            else
+            {
+                entityToCompareTo.AddToSelection();
+            }
 
             // Start comparison
             _powerSHAPE.DoCommand("CALCULATE");
