@@ -119,7 +119,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 AbortIfDoesNotExist();
 
                 List<Point> pCurvePoints = new List<Point>();
-                for (int index = 1; index <= NumberPoints; index++)
+                int numberPoints = NumberPoints;
+                for (int index = 1; index <= numberPoints; index++)
                 {
                     double[] coordinates = null;
                     coordinates = _powerSHAPE.DoCommandEx(Identifier + "['" + Name + "'].POINT[" + index + "]") as double[];
