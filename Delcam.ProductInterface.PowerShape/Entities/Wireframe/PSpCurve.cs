@@ -82,7 +82,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         }
 
         /// <summary>
-        /// Because many properties of the pCurve are not availble through the PowerSHAPE macro code,
+        /// Because many properties of the pCurve are not available through the PowerSHAPE macro code,
         /// a spline curve is used to emulate the pCurve behind the scenes
         /// </summary>
         private Polyline PolyLine
@@ -250,6 +250,15 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         /// <exception cref="NotImplementedException">Cannot currently delete a pCurve through the Automation Interface</exception>
         public override void Delete()
         {
+        }
+
+		/// <summary>
+		/// Returns a PolyLine equivalent to the PSpCurve at the time of initialization. 
+		/// </summary>
+		/// <returns></returns>
+		public Polyline AsCachedPolyLine()
+        {
+	        return PolyLine;
         }
 
         #endregion
