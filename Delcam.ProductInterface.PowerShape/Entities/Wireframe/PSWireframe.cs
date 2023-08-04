@@ -93,7 +93,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 AbortIfDoesNotExist();
 
                 List<Point> wireframePoints = new List<Point>();
-                for (int index = 1; index <= NumberPoints; index++)
+                int cachedNumberPoints = NumberPoints;
+                for (int index = 1; index <= cachedNumberPoints; index++)
                 {
                     double[] coordinates = null;
                     coordinates = _powerSHAPE.DoCommandEx(Identifier + "[ID " + _id + "].POINT[" + index + "]") as double[];
