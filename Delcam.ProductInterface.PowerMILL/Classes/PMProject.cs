@@ -882,8 +882,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             var currentEntities = new List<PMEntity>();
             foreach (string name in entitiesToRefreshFrom)
             {
-                var originalEntity =
-                    entitiesToRefresh.SingleOrDefault(x => x.Name.ToUpperInvariant() == name.ToUpperInvariant());
+                var originalEntity = entitiesToRefresh.SingleOrDefault(x => x.Name == name);
                 if (originalEntity != null)
                 {
                     //Entity is already in the project collections
