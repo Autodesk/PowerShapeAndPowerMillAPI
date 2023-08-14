@@ -350,8 +350,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 // Populate list if it's empty
                 if (_laterals.Count == 0)
                 {
-	                int cachedNumberOfLaterals = NumberOfLaterals;
-	                for (int i = 1; i <= cachedNumberOfLaterals; i++)
+                    int cachedNumberOfLaterals = NumberOfLaterals;
+                    for (int i = 1; i <= cachedNumberOfLaterals; i++)
                     {
                         PSLateral lateral = new PSLateral(_powerSHAPE, i.ToString(), this);
                         _laterals.Add(lateral);
@@ -374,7 +374,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 // Populate list if it's empty
                 if (_longitudinals.Count == 0)
                 {
-	                int cachedNumberOfLongitudinals = NumberOfLongitudinals;
+                    int cachedNumberOfLongitudinals = NumberOfLongitudinals;
                     for (int i = 1; i <= cachedNumberOfLongitudinals; i++)
                     {
                         PSLongitudinal longitudinal = new PSLongitudinal(_powerSHAPE, i.ToString(), this);
@@ -813,9 +813,9 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             _powerSHAPE.DoCommand("DISTANCE " + length);
             _powerSHAPE.DoCommand("EDIT LIMIT POINT OFF");
 
-			// Reinitialise the internal curve collections to invalidate the cache.
+            // Reinitialise the internal curve collections to invalidate the cache.
             // This will result in API evaluation on next invocation of get accessor
-			_laterals = new PSLateralsCollection(_powerSHAPE, this);
+            _laterals = new PSLateralsCollection(_powerSHAPE, this);
             _longitudinals = new PSLongitudinalsCollection(_powerSHAPE, this);
         }
 
