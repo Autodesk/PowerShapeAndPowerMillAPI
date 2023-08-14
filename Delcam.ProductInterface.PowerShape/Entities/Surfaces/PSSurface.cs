@@ -25,7 +25,6 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         private SurfaceTypes? _surfaceType;
         private PSMaterial _material;
         private PSLateralsCollection _laterals;
-
         private PSLongitudinalsCollection _longitudinals;
 
         #endregion
@@ -351,7 +350,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 // Populate list if it's empty
                 if (_laterals.Count == 0)
                 {
-                    for (int i = 1; i <= NumberOfLaterals; i++)
+                    int cachedNumberOfLaterals = NumberOfLaterals;
+                    for (int i = 1; i <= cachedNumberOfLaterals; i++)
                     {
                         PSLateral lateral = new PSLateral(_powerSHAPE, i.ToString(), this);
                         _laterals.Add(lateral);
@@ -374,7 +374,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 // Populate list if it's empty
                 if (_longitudinals.Count == 0)
                 {
-                    for (int i = 1; i <= NumberOfLongitudinals; i++)
+                    int cachedNumberOfLongitudinals = NumberOfLongitudinals;
+                    for (int i = 1; i <= cachedNumberOfLongitudinals; i++)
                     {
                         PSLongitudinal longitudinal = new PSLongitudinal(_powerSHAPE, i.ToString(), this);
                         _longitudinals.Add(longitudinal);
@@ -394,7 +395,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 AbortIfDoesNotExist();
                 List<PSpCurve> allPCurves = new List<PSpCurve>();
-                for (int i = 1; i <= NumberOfPCurves; i++)
+                int cachedNumberOfPCurves = NumberOfPCurves;
+                for (int i = 1; i <= cachedNumberOfPCurves; i++)
                 {
                     string pCurveName = _powerSHAPE.ReadStringValue(Identifier + "[ID " + _id + "].PCURVE[" + i + "]");
                     allPCurves.Add(new PSpCurve(_powerSHAPE, this, pCurveName));
@@ -810,6 +812,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             _powerSHAPE.DoCommand("EDGE " + (int)edge);
             _powerSHAPE.DoCommand("DISTANCE " + length);
             _powerSHAPE.DoCommand("EDIT LIMIT POINT OFF");
+
+            // Reinitialise the internal curve collections to invalidate the cache.
+            // This will result in API evaluation on next invocation of get accessor
+            _laterals = new PSLateralsCollection(_powerSHAPE, this);
+            _longitudinals = new PSLongitudinalsCollection(_powerSHAPE, this);
         }
 
         /// <summary>
