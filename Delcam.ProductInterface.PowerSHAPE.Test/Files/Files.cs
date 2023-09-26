@@ -113,6 +113,7 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         public static readonly string SURFACE_BADLYTRIMMED = FetchTestFile("SurfaceBadlyTrimmed.dgk");
         public static readonly string SURFACE_TRIM = FetchTestFile("SurfaceTrim.dgk");
         public static readonly string TWO_SURFACE_MORPH = FetchTestFile("TwoSurfaceMorph.dgk");
+        public static readonly string TWO_SURFACE_MORPH_SOLIDS = FetchTestFile("TwoSurfaceMorphSolids.dgk");
         public static readonly string WIREFRAMES_FOR_DRIVE_SURFACE = FetchTestFile("WireframesForDriveSurface.dgk");
         public static readonly string VIEWS_CUBE = FetchTestFile("ViewsCube.dgk");
         public static readonly string COMPCURVE_DUCT = FetchTestFile("TwoCompCurves.pic");

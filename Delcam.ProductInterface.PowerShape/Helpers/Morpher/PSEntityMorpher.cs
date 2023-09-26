@@ -133,6 +133,36 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             }
         }
 
+        /// <summary>
+        /// Morphs solid between a control and reference surface. The control and reference surfaces must have the same number
+        /// of laterals and longitudinals
+        /// </summary>
+        /// <param name="solidToMorph">The solid to be morphed</param>
+        /// <param name="referenceSurface">The reference surface</param>
+        /// <param name="controlSurface"></param>
+        /// <param name="normalOffsetting"></param>
+        public static void MorphSolidBetweenTwoSurfaces(
+            PSSolid solidToMorph,
+            PSSurface referenceSurface,
+            PSSurface controlSurface,
+            bool normalOffsetting = false)
+        {
+            _powerSHAPE = referenceSurface.PowerSHAPE;
+            solidToMorph.AddToSelection(true);
+
+            _powerSHAPE.DoCommand("MORPH", "CANCEL SURFACEMORPH", "REFERENCE");
+            referenceSurface.AddToSelection();
+            _powerSHAPE.DoCommand("CONTROL");
+            controlSurface.AddToSelection();
+
+            if (normalOffsetting)
+            {
+                _powerSHAPE.DoCommand("OFFSETNORMAL ON");
+            }
+
+            _powerSHAPE.DoCommand("ACCEPT");
+        }
+
         #endregion
     }
 }

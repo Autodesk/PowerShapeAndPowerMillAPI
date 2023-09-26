@@ -70,6 +70,24 @@ namespace Autodesk.ProductInterface.PowerSHAPETest.HelperClassesTests
         }
 
         [Test]
+        public void TwoSurfaceMorphSolidsTest()
+        {
+            var activeModel = _powerShape.ActiveModel;
+            activeModel.Import(new File(TestFiles.TWO_SURFACE_MORPH_SOLIDS));
+
+            var solidToMorph = activeModel.Solids.GetByName("1");
+
+            var referenceSurface = activeModel.Surfaces.GetByName("3");
+            var controlSurface = activeModel.Surfaces.GetByName("4");
+
+            PSEntityMorpher.MorphSolidBetweenTwoSurfaces(solidToMorph,
+                                                         referenceSurface,
+                                                         controlSurface);
+
+            Assert.AreEqual((MM)14.588907, solidToMorph.BoundingBox.ZSize);
+        }
+
+        [Test]
         public void TwoSurfaceMorphTestKeepOn()
         {
             var activeModel = _powerShape.ActiveModel;

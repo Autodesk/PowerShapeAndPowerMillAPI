@@ -235,6 +235,7 @@
     <None Include="Files\TrimmedSurface.dgk" />
     <None Include="Files\TwoAnnotations.igs" />
     <None Include="Files\TwoSurfaceMorph.dgk" />
+    <None Include="Files\TwoSurfaceMorphSolids.dgk" />
     <None Include="Files\TwoSurfacesForIntersection.dgk" />
     <None Include="Files\ViewsCube.dgk" />
     <None Include="Files\WireframesForDriveSurface.dgk" />
