@@ -160,7 +160,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                 _powerSHAPE.DoCommand("OFFSETNORMAL ON");
             }
 
-            _powerSHAPE.DoCommand("ACCEPT");
+            _powerSHAPE.DoCommand("ACCEPT CANCEL");
         }
 
         #endregion
