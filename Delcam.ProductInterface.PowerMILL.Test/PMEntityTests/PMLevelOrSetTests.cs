@@ -89,6 +89,30 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             Assert.IsTrue(true);
         }
 
+        [Test]
+        public void LevelTypeTest()
+        {
+            var activeProject = _powerMill.LoadProject(TestFiles.LevelsSetOrClampProject);
+            var levelOrSet = activeProject.LevelsAndSets.GetByName("Level");
+            Assert.That(levelOrSet.LevelOrSetType, Is.EqualTo(PMLevelOrSetTypes.Level));
+        }
+
+        [Test]
+        public void SetTypeTest()
+        {
+            var activeProject = _powerMill.LoadProject(TestFiles.LevelsSetOrClampProject);
+            var levelOrSet = activeProject.LevelsAndSets.GetByName("Set");
+            Assert.That(levelOrSet.LevelOrSetType, Is.EqualTo(PMLevelOrSetTypes.Set));
+        }
+
+        [Test]
+        public void ClampTypeTest()
+        {
+            var activeProject = _powerMill.LoadProject(TestFiles.LevelsSetOrClampProject);
+            var levelOrSet = activeProject.LevelsAndSets.GetByName("ClampLevel");
+            Assert.That(levelOrSet.LevelOrSetType, Is.EqualTo(PMLevelOrSetTypes.Clamp));
+        }
+
         #endregion
 
     }

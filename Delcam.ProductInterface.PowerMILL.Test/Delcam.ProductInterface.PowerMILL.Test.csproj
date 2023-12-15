@@ -466,6 +466,19 @@
     <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb139812563e159cb0000dd7200000000.pmlent" />
     <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb143953563e159c20000c94600000000.pmlent" />
     <None Include="Files\PMfiles\PM2023_Projects\SetupsProject\xb143953563e159c20000c94600000000.pmlgeom" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\active_entity.pmldat" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\active_plugins.dat" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\Default_Thickness.pmldat" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\desktop.ini" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\entity_name_templates.pmldat" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\LevelSetOrClamp.pmlprj" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\project_list.pmllst" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\project_vars.pmlpar" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\system_pars.pmlpar" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\x8678a598657c737d0000234b00000000.pmlent" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\x8993d1f8657c73bb0000278700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\x8994bb38657c73bb0000312700000000.pmlent" />
+    <None Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\xe4ed82f8657c7ae10000f8fe00000000.pmlent" />
     <None Include="Files\PMfiles\PTFFiles\ImportPTFTest.ptf" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -486,6 +499,7 @@
     <Content Include="Files\PMfiles\PM2013_Projects\ToolProperties\pmill.ico" />
     <Content Include="Files\PMfiles\PM2023_Projects\SetupsProject\plugin_data\{01887A1C-C719-4739-B0A4-DB188D9CD5FF}\VaultData.xml" />
     <Content Include="Files\PMfiles\PM2023_Projects\SetupsProject\pmill.ico" />
+    <Content Include="Files\PMfiles\PM2024_Projects\LevelSetOrClamp\pmill.ico" />
     <Content Include="PMEntityTests\PMToolPathTestGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PMToolPathTestGenerator.cs</LastGenOutput>

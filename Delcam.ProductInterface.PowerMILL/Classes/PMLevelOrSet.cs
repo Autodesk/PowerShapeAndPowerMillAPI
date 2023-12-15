@@ -11,6 +11,13 @@ using System;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
+    public enum PMLevelOrSetTypes
+    {
+        Level,
+        Set,
+        Clamp
+    }
+
     /// <summary>
     /// Captures a Level or Set object in PowerMILL.
     /// </summary>
@@ -73,6 +80,31 @@ namespace Autodesk.ProductInterface.PowerMILL
         public override Geometry.BoundingBox BoundingBox
         {
             get { throw new Exception("Property not valid for " + GetType()); }
+        }
+
+        /// <summary>
+        /// Gets whether this is a Level, Set or Clamp
+        /// </summary>
+        public PMLevelOrSetTypes LevelOrSetType
+        {
+            get
+            {
+                var type = 
+                    PowerMill.DoCommandEx("PRINT PAR terse \"entity('level', '" + Name + "').type\"").ToString();
+                var isClamp =
+                    PowerMill.DoCommandEx("PRINT PAR terse \"entity('level', '" + Name + "').isclamp\"").ToString();
+                if (isClamp == "1")
+                {
+                    return PMLevelOrSetTypes.Clamp;
+                }
+
+                if (type == "level")
+                {
+                    return PMLevelOrSetTypes.Level;
+                }
+
+                return PMLevelOrSetTypes.Set;
+            }
         }
 
         #endregion
