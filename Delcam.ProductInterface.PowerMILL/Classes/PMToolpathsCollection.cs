@@ -31,6 +31,10 @@ namespace Autodesk.ProductInterface.PowerMILL
 
         #endregion
 
+        #region Properties
+
+        #endregion
+
         #region Operations
 
         /// <summary>
@@ -57,6 +61,34 @@ namespace Autodesk.ProductInterface.PowerMILL
             return names;
         }
 
+        /// <summary>
+        /// Orders the collection as per the appearance of the toolpaths within PowerMILL's explorer.
+        /// This operation is irreversible. 
+        /// </summary>
+        public void OrderByExplorer()
+        {
+            // Get the order of toolpaths as per their appearance in the explorer
+            var toolpathsReadout = _powerMILL.DoCommandEx("PRINT FOLDER 'TOOLPATH'").ToString();
+            // Remove by replacement all CRs
+            toolpathsReadout = toolpathsReadout.Replace(((char)13).ToString(), string.Empty);
+            // Split the collection by NL
+            var toolpathPaths = toolpathsReadout.Split((char)10);
+            // Take only the toolpath name element from each path that is not a folder
+            var toolpathOrder = (from toolpathPath in toolpathPaths
+                let toolpathPathSplit = toolpathPath.Split('\\')
+                where toolpathPathSplit.Last() != string.Empty
+                select toolpathPathSplit.Last()).ToList();
+            // Take a copy of "this" collection, ordered as per the occurrence of the toolpaths'
+            // name in the order list
+            var toolpathsOrdered = this.OrderBy(x => toolpathOrder.IndexOf(x.Name)).ToList();
+
+            // Replace the references within "this" collection to be ordered correctly
+            for (var i = 0; i < this.Count; i++)
+            {
+                this[i] = toolpathsOrdered[i];
+            }
+        }
+        
         /// <summary>
         /// Creates a 3DOffsetFinishing Toolpath
         /// </summary>

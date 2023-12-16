@@ -1,0 +1,32 @@
+type list
+version 0
+Toolpath\
+Toolpath\10
+Toolpath\Folder1\
+Toolpath\Folder1\4
+Toolpath\Folder1\3
+Toolpath\Folder1\2
+Toolpath\8
+Toolpath\Folder2\
+Toolpath\Folder2\5
+Toolpath\Folder2\6
+Toolpath\Folder2\7
+Toolpath\Folder3\
+Toolpath\Folder3\Folder4\
+Toolpath\Folder3\Folder4\9
+Toolpath\1
+Group\
+Pattern\
+Workplane\
+Setup\
+FeatureGroup\
+Boundary\
+Macro\
+Featureset\
+NCProgram\
+Level\
+Tool\
+Process\
+MachineTool\
+StockModel\
+Model\
