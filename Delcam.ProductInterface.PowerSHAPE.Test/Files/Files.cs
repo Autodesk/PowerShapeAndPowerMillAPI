@@ -27,7 +27,7 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
 
         #region Single Objects
 
-        public static readonly string SINGLE_ANNOTATION = FetchTestFile("Annotation.igs");
+        //public static readonly string SINGLE_ANNOTATION = FetchTestFile("Annotation.igs");
         public static readonly string SINGLE_ARC = FetchTestFile("Arc.dgk");
         public static readonly string SINGLE_COMPCURVE = FetchTestFile("CompCurve.dgk");
         public static readonly string SINGLE_CURVE = FetchTestFile("Curve.dgk");

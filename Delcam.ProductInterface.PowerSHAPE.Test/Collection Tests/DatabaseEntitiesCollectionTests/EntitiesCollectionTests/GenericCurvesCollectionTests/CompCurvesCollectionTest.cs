@@ -278,7 +278,7 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         public void CreateCompCurvesFromAnnotationTest()
         {
             // Create annotation
-            _powerSHAPE.ActiveModel.Import(new File(TestFiles.SINGLE_ANNOTATION));
+            _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
 
             var compCurves =
                 _powerSHAPE.ActiveModel.CompCurves.CreateCompCurvesFromAnnotation(_powerSHAPE.ActiveModel.Annotations[0]);

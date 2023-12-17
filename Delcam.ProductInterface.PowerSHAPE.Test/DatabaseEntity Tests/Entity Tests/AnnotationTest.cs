@@ -8,6 +8,8 @@
 // **********************************************************************
 
 using System;
+using System.Reflection;
+using Autodesk.FileSystem;
 using Autodesk.Geometry;
 using Autodesk.ProductInterface.PowerSHAPE;
 using NUnit.Framework;
@@ -43,7 +45,13 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void AnnotationIdTest()
         {
-            IdTest(TestFiles.SINGLE_ANNOTATION);
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var importedEntity = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            // Check that the id is correct
+            Assert.AreEqual(_powerSHAPE.ExecuteEx(IdentifierAccessor(importedEntity) + "[" + importedEntity.Name + "].ID"),
+                            importedEntity.Id,
+                            "Returned incorrect id");
         }
 
         /// <summary>
@@ -52,7 +60,14 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void AnnotationIdentifierTest()
         {
-            IdentifierTest(TestFiles.SINGLE_ANNOTATION, "TEXT");
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var importedEntity = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            // Check that the collection Identifier matches the entity type
+            string actualIdentifier = (string)importedEntity
+                                              .GetType().GetProperty("Identifier", BindingFlags.NonPublic | BindingFlags.Instance)
+                                              .GetValue(importedEntity, null);
+            Assert.AreEqual("TEXT", actualIdentifier);
         }
 
         ///// <summary>
@@ -70,7 +85,15 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void AnnotationExistsTest()
         {
-            ExistsTest(TestFiles.SINGLE_ANNOTATION);
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entity = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            // Check that correct value is returned
+            Assert.IsTrue(entity.Exists, "Incorrectly stated that entity did not exist");
+
+            // Delete entity and check again
+            entity.Delete();
+            Assert.IsFalse(entity.Exists, "Incorrectly stated that entity existed");
         }
 
         #endregion
@@ -80,13 +103,55 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void AddAnnotationToSelectionTest()
         {
-            AddToSelectionTest(TestFiles.SINGLE_SURFACE, TestFiles.SINGLE_ANNOTATION);
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entityToSelect = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            var otherEntityFile = TestFiles.SINGLE_SURFACE;
+
+            // Select everything
+            _powerSHAPE.ActiveModel.SelectAll(true);
+
+            // Add desired entity to selection, cancelling current selection
+            entityToSelect.AddToSelection(true);
+
+            var count = _powerSHAPE.ActiveModel.SelectedItems.Count;
+
+            // Check the selection contains the correct entity
+            if (count == 0)
+            {
+                Assert.Fail("Failed to select anything in PowerSHAPE");
+            }
+            else if (count == 2)
+            {
+                Assert.Fail("Selected everything in PowerSHAPE");
+            }
+
+            // Check the other entity is not selected
+            Assert.IsTrue(_powerSHAPE.ActiveModel.SelectedItems.Contains(entityToSelect), "Select incorrect entity");
+
         }
 
         [Test]
         public void BlankAnnotationTest()
         {
-            BlankTest(TestFiles.THREE_SURFACES, TestFiles.SINGLE_ANNOTATION);
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entityToBlank = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            var otherEntitiesFile = TestFiles.THREE_SURFACES;
+
+            // Import other entities
+            _powerSHAPE.ActiveModel.Import(new File(otherEntitiesFile));
+
+            // Blank entity
+            entityToBlank.Blank();
+
+            // Check that entity has been blanked
+            _powerSHAPE.ActiveModel.SelectAll(false);
+            if (_powerSHAPE.ActiveModel.SelectedItems.Count == 0)
+            {
+                _powerSHAPE.ActiveModel.Workplanes.AddToSelection(true);
+            }
+            Assert.AreEqual(3, _powerSHAPE.ActiveModel.SelectedItems.Count, "Entity was not blanked");
         }
 
         [Test]
@@ -94,7 +159,12 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         {
             try
             {
-                BoundingBoxTest(TestFiles.SINGLE_ANNOTATION, new Point(), new Point());
+                // Creating rather than importing as 2022 and above doesn't support importing
+                var entity = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+                // Check bounding box
+                Assert.AreEqual(new Point(), entity.BoundingBox.MaximumBounds, "Bounding box maximum bounds are incorrect");
+                Assert.AreEqual(new Point(), entity.BoundingBox.MinimumBounds, "Bounding box minimum bounds are incorrect");
                 Assert.Fail("Exception not thrown");
             }
             catch (Exception)
@@ -106,25 +176,62 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void CopyAnnotationTest()
         {
-            DuplicateTest(TestFiles.SINGLE_ANNOTATION);
-        }
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entityToCopy = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            // Copy and paste entity
+            entityToCopy.Duplicate();
+            _powerSHAPE.ActiveModel.SelectAll(false);
+            if (_powerSHAPE.ActiveModel.SelectedItems.Count == 0)
+            {
+                _powerSHAPE.ActiveModel.Workplanes.AddToSelection(false);
+            }
+            Assert.AreEqual(2, _powerSHAPE.ActiveModel.SelectedItems.Count, "Entity was not pasted"); }
 
         [Test]
         public void DeleteAnnotationTest()
         {
-            DeleteTest(TestFiles.SINGLE_ANNOTATION);
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entityToDelete = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            // Delete entity
+            entityToDelete.Delete();
+            _powerSHAPE.ActiveModel.SelectAll(false);
+            Assert.AreEqual(0, _powerSHAPE.ActiveModel.SelectedItems.Count, "Entity not deleted from PowerSHAPE");
+            Assert.AreEqual(0, _powerSHAPECollection.Count, "Entity not removed from collection");
         }
 
         [Test]
         public void AnnotationLevelTest()
         {
-            LevelTest(TestFiles.SINGLE_ANNOTATION, _powerSHAPE.ActiveModel.Levels[0]);
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entity = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            var expectedLevel = _powerSHAPE.ActiveModel.Levels[0];
+            // Check level
+            Assert.AreEqual(expectedLevel, entity.Level, "Returned level is incorrect");
+
+            // Change level
+            var newLevel = _powerSHAPE.ActiveModel.Levels[expectedLevel.Number + 1];
+            entity.Level = newLevel;
+            Assert.AreEqual(newLevel, entity.Level, "Failed to change level");
         }
 
         [Test]
         public void AnnotationLevelNumberTest()
         {
-            LevelNumberTest(TestFiles.SINGLE_ANNOTATION, 0);
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entity = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            uint expectedLevelNumber = 0;
+
+            // Check level
+            Assert.AreEqual(expectedLevelNumber, entity.LevelNumber, "Returned level number is incorrect");
+
+            // Change level number
+            uint newLevelNumber = 1;
+            entity.LevelNumber = newLevelNumber;
+            Assert.AreEqual(newLevelNumber, entity.LevelNumber, "Failed to change level");
         }
 
         //[Test]
@@ -172,7 +279,18 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void AnnotationNameTest()
         {
-            NameTest(TestFiles.SINGLE_ANNOTATION, "ig1_1", "NewName");
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entity = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            var expectedName = "1";
+            var newName = "NewName";
+
+            // Check name
+            Assert.AreEqual(expectedName, entity.Name, "Returned name is incorrect");
+
+            // Change name
+            entity.Name = newName;
+            Assert.AreEqual(newName, entity.Name, "Entity has not been renamed");
 
             // Ensures that PowerShape entity was updated
             Assert.AreEqual("1", _powerSHAPE.ExecuteEx("text[NewName].EXISTS").ToString());
@@ -181,7 +299,36 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void RemoveAnnotationFromSelectionTest()
         {
-            RemoveFromSelectionTest(TestFiles.SINGLE_SURFACE, TestFiles.SINGLE_ANNOTATION);
+            // Creating rather than importing as 2022 and above doesn't support importing
+            var entityToDeselect = _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
+
+            var otherEntityFile = TestFiles.SINGLE_SURFACE;
+
+            // Get other entity
+            var otherEntity = ImportAndGetEntity(otherEntityFile);
+
+            // Select everything
+            _powerSHAPE.ActiveModel.SelectAll(true);
+            if (_powerSHAPE.ActiveModel.SelectedItems.Count == 0)
+            {
+                _powerSHAPE.ActiveModel.Workplanes.AddToSelection(false);
+            }
+
+            // Remove desired entity from selection, cancelling current selection
+            entityToDeselect.RemoveFromSelection();
+
+            // Check the selection doesn't contain the entity
+            if (_powerSHAPE.ActiveModel.SelectedItems.Count == 0) // Everything was deselected
+            {
+                Assert.Fail("Deselected everything in PowerSHAPE");
+            }
+            else if (_powerSHAPE.ActiveModel.SelectedItems.Count == 2) // Nothing was deselected
+            {
+                Assert.Fail("Nothing was deselected in PowerSHAPE");
+            }
+
+            // Check the entity is not selected
+            Assert.IsTrue(_powerSHAPE.ActiveModel.SelectedItems.Contains(otherEntity), "Deselected incorrect entity");
         }
 
         #endregion
