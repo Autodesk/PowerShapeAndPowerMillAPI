@@ -106,12 +106,12 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
                 // Check that no dialogs need to be closed
                 _powerSHAPE.Execute("CANCEL");
 
+                // Close all models
+                _powerSHAPE.Reset();
+
                 // Switch FormUpdate and Dialogs back on
                 _powerSHAPE.FormUpdateOn();
                 _powerSHAPE.DialogsOn();
-
-                // Close all models
-                _powerSHAPE.Models.Clear();
             }
             catch (Exception)
             {
