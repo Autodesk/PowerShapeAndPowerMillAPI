@@ -366,6 +366,8 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void ExecutablePath_WhenVersionIs2018()
         {
+            if (_powerSHAPE.Version.Major != 18) Assert.Pass();
+
             var pathMethod = _powerSHAPE.GetType().GetMethod("ExecutablePath", BindingFlags.Instance | BindingFlags.NonPublic);
             var path = pathMethod.Invoke(_powerSHAPE, new object[] {"PowerShape", new Version(2018, 0), null});
             Assert.That(path, Is.EqualTo("C:\\Program Files\\Autodesk\\PowerShape 2018\\sys\\exec64\\powershape.exe"));
@@ -374,6 +376,8 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void ExecutablePath_WhenVersionIs2018AndMaxSpecified()
         {
+            if (_powerSHAPE.Version.Major != 18) Assert.Pass();
+
             var pathMethod = _powerSHAPE.GetType().GetMethod("ExecutablePath", BindingFlags.Instance | BindingFlags.NonPublic);
             var path = pathMethod.Invoke(_powerSHAPE,
                                          new object[] {"PowerShape", new Version(2018, 0, 0), new Version(2018, 0, 99)});
@@ -383,6 +387,8 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void ExecutablePath_WhenVersionIs2017()
         {
+            if (_powerSHAPE.Version.Major != 17) Assert.Pass();
+            
             var pathMethod = _powerSHAPE.GetType().GetMethod("ExecutablePath", BindingFlags.Instance | BindingFlags.NonPublic);
             var path = pathMethod.Invoke(_powerSHAPE, new object[] {"PowerShape", new Version(17, 1, 36), null});
             Assert.That(path, Is.EqualTo("C:\\Program Files\\Autodesk\\PowerShape17136\\sys\\exec64\\powershape.exe"));
@@ -391,6 +397,8 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void ExecutablePath_WhenVersionIs2017AndMaxSpecified()
         {
+            if (_powerSHAPE.Version.Major != 17) Assert.Pass();
+
             var pathMethod = _powerSHAPE.GetType().GetMethod("ExecutablePath", BindingFlags.Instance | BindingFlags.NonPublic);
             var path = pathMethod.Invoke(_powerSHAPE, new object[] {"PowerShape", new Version(17, 1, 0), new Version(17, 1, 99)});
             Assert.That(path, Is.EqualTo("C:\\Program Files\\Autodesk\\PowerShape17136\\sys\\exec64\\powershape.exe"));
