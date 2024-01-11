@@ -694,7 +694,7 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         public void UserNameTest()
         {
             Assert.That(_powerSHAPE.UserName,
-                        Is.EqualTo(System.DirectoryServices.AccountManagement.UserPrincipal.Current.DisplayName));
+                        Is.EqualTo(Environment.UserName));
         }
 
         #endregion
