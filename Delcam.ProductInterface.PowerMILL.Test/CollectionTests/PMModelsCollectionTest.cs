@@ -134,6 +134,8 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
         [Test]
         public void DuplicateModelTest()
         {
+            // Build server has a weird thing where you need to put dialogs on for the test to work
+            _powerMill.DialogsOn();
             var model = _powerMill.ActiveProject.Models.CreateModel(TestFiles.SingleMesh);
             var duplicatedModel = model.Duplicate();
             Assert.IsNotNull(duplicatedModel.BoundingBox);

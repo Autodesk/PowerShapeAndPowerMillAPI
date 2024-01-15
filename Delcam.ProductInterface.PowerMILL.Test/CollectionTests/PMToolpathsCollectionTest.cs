@@ -70,6 +70,9 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
         [Test]
         public void OrderByExplorerTest()
         {
+            // Test project only opens in 2023 and greater
+            if (_powerMILL.Version.Major < 2023) Assert.Pass();
+
             _powerMILL.LoadProject(TestFiles.ToolpathsOrderProject);
             var startingOrder = _powerMILL.ActiveProject.Toolpaths.Select(x => x.Name);
             Assert.AreEqual(startingOrder, new[] {"1","2","3","4","5","6","7","8","9","10"});
