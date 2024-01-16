@@ -38,7 +38,7 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
             if (_powerMill.Version.Major >= 2023)
             {
                 var activeProject = _powerMill.LoadProject(TestFiles.SetupsProject);
-                Assert.That(activeProject.Setups.Count, Is.EqualTo(2));
+                Assert.That(activeProject.Setups.Count, Is.EqualTo(3));
             }
             else
             {

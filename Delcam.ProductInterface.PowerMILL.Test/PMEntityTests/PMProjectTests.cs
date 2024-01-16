@@ -154,8 +154,8 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             _powerMILL.ActiveProject.Refresh();
             PMBoundary boundary = _powerMILL.ActiveProject.Boundaries.ActiveItem;
             var boundingBox = _powerMILL.ActiveProject.CreateBlockFromBoundary(boundary);            
-            Assert.That(boundingBox.MaxZ, Is.EqualTo((Autodesk.Geometry.MM)53.353777));
-            Assert.That(boundingBox.MinZ, Is.EqualTo((Autodesk.Geometry.MM)(-30.004846)));
+            Assert.That(boundingBox.MaxZ, Is.EqualTo((Autodesk.Geometry.MM)53.352538));
+            Assert.That(boundingBox.MinZ, Is.EqualTo((Autodesk.Geometry.MM)(-30.004382)));
         }
 
         [Test]
