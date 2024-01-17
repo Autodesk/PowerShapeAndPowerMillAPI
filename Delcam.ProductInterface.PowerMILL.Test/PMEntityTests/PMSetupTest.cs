@@ -51,6 +51,9 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         [Test]
         public void Property_Toolpaths()
         {
+            // Test project only opens in 2023 and greater
+            if (_powerMILL.Version.Major < 2023) Assert.Pass();
+
             _powerMILL.LoadProject(Files.TestFiles.SetupsProject);
 
             var toolpaths = _powerMILL.ActiveProject.Setups["1"].Toolpaths;
@@ -64,6 +67,9 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         [Test]
         public void Property_Toolpaths_Empty()
         {
+            // Test project only opens in 2023 and greater
+            if (_powerMILL.Version.Major < 2023) Assert.Pass();
+
             _powerMILL.LoadProject(Files.TestFiles.SetupsProject);
 
             var toolpaths = _powerMILL.ActiveProject.Setups["3"].Toolpaths;

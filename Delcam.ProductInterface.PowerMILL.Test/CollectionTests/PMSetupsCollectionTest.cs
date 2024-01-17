@@ -35,15 +35,15 @@ namespace Autodesk.ProductInterface.PowerMILLTest.CollectionTests
         [Test]
         public void CollectionInitialisationTest()
         {
-            if (_powerMill.Version.Major >= 2019)
+            if (_powerMill.Version.Major >= 2023)
             {
                 var activeProject = _powerMill.LoadProject(TestFiles.SetupsProject);
-                Assert.That(activeProject.Setups.Count, Is.EqualTo(2));
+                Assert.That(activeProject.Setups.Count, Is.EqualTo(3));
             }
             else
             {
-                var activeProject = _powerMill.LoadProject(TestFiles.SimplePmProject1);
-                Assert.That(activeProject.FeatureGroups.Count, Is.EqualTo(0));
+                // Test project only opens in 2023 and greater
+                Assert.Pass();
             }
         }
     }

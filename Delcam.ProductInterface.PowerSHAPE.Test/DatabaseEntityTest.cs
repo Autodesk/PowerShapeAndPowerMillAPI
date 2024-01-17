@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using Autodesk.ProductInterface.PowerSHAPE;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
@@ -106,12 +107,14 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
                 // Check that no dialogs need to be closed
                 _powerSHAPE.Execute("CANCEL");
 
+                // Close all models
+                _powerSHAPE.Models.Clear();
+                // Add a wait to see if we can solve an issue on the build server where PowerShape hangs when closing models
+                Thread.Sleep(2000);
+
                 // Switch FormUpdate and Dialogs back on
                 _powerSHAPE.FormUpdateOn();
                 _powerSHAPE.DialogsOn();
-
-                // Close all models
-                _powerSHAPE.Models.Clear();
             }
             catch (Exception)
             {

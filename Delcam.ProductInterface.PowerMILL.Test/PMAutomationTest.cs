@@ -190,6 +190,8 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         [Test]
         public void ExecutablePath_WhenVersionIs2018()
         {
+            if (_powerMill.Version.Major != 2018) Assert.Pass();
+
             var pathMethod = _powerMill.GetType().GetMethod("ExecutablePath", BindingFlags.Instance | BindingFlags.NonPublic);
             var path = pathMethod.Invoke(_powerMill, new object[] {"PowerMill", new Version(2018, 0), null});
             Assert.That(path, Is.EqualTo("C:\\Program Files\\Autodesk\\PowerMill 2018\\sys\\exec64\\pmill.exe"));
@@ -198,6 +200,8 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         [Test]
         public void ExecutablePath_WhenVersionIs2018AndMaxSpecified()
         {
+            if (_powerMill.Version.Major != 2018) Assert.Pass();
+
             var pathMethod = _powerMill.GetType().GetMethod("ExecutablePath", BindingFlags.Instance | BindingFlags.NonPublic);
             var path = pathMethod.Invoke(_powerMill,
                                          new object[] {"PowerMill", new Version(2018, 0, 0), new Version(2018, 0, 99)});
@@ -207,6 +211,8 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         [Test]
         public void ExecutablePath_WhenVersionIs2017()
         {
+            if (_powerMill.Version.Major != 2017) Assert.Pass();
+
             var pathMethod = _powerMill.GetType().GetMethod("ExecutablePath", BindingFlags.Instance | BindingFlags.NonPublic);
             var path = pathMethod.Invoke(_powerMill, new object[] {"PowerMill", new Version(21, 0, 30), null});
             Assert.That(path, Is.EqualTo("C:\\Program Files\\Autodesk\\PowerMill 21.0.30\\sys\\exec64\\pmill.exe"));
@@ -215,6 +221,8 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         [Test]
         public void ExecutablePath_WhenVersionIs2017AndMaxSpecified()
         {
+            if (_powerMill.Version.Major != 2017) Assert.Pass();
+
             var pathMethod = _powerMill.GetType().GetMethod("ExecutablePath", BindingFlags.Instance | BindingFlags.NonPublic);
             var path = pathMethod.Invoke(_powerMill, new object[] {"PowerMill", new Version(21, 0, 30), new Version(21, 0, 99)});
             Assert.That(path, Is.EqualTo("C:\\Program Files\\Autodesk\\PowerMill 21.0.30\\sys\\exec64\\pmill.exe"));

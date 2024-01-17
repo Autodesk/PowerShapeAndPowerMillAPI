@@ -30,6 +30,7 @@ namespace Autodesk.ProductInterface.PowerMILLTest.Files
         public static Directory FeatureGroupsProject = FetchDirectory("FeatureGroupsProject");
         public static Directory SetupsProject = FetchDirectory("SetupsProject");
         public static Directory LevelsSetOrClampProject = FetchDirectory("LevelSetOrClamp");
+        public static Directory ToolpathsOrderProject = FetchDirectory("ToolpathsOrderProject");
 
         public static File TestMacro1File = new File(FetchTestFile("TestMacro1.mac"));
         public static File TestMacro2File = new File(FetchTestFile("TestMacro2.mac"));

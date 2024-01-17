@@ -278,12 +278,12 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         public void CreateCompCurvesFromAnnotationTest()
         {
             // Create annotation
-            _powerSHAPE.ActiveModel.Import(new File(TestFiles.SINGLE_ANNOTATION));
+            _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test Text", "Arial", 20, new Point());
 
             var compCurves =
                 _powerSHAPE.ActiveModel.CompCurves.CreateCompCurvesFromAnnotation(_powerSHAPE.ActiveModel.Annotations[0]);
 
-            Assert.AreEqual(21, compCurves.Count);
+            Assert.AreEqual(10, compCurves.Count);
         }
 
         /// <summary>
@@ -292,14 +292,15 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void CreateCompCurvesFromAnnotationsTest()
         {
-            // Create annotation
-            _powerSHAPE.ActiveModel.Import(new File(TestFiles.TWO_ANNOTATIONS));
+            // Create annotations
+            _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test1", "Arial", 20, new Point());
+            _powerSHAPE.ActiveModel.Annotations.CreateAnnotation("Test2", "Arial", 20, new Point());
 
             var compCurves =
                 _powerSHAPE.ActiveModel.CompCurves.CreateCompCurvesFromAnnotations(
                     _powerSHAPE.ActiveModel.Annotations.ToList());
 
-            Assert.AreEqual(42, compCurves.Count);
+            Assert.AreEqual(12, compCurves.Count);
         }
 
         #endregion
