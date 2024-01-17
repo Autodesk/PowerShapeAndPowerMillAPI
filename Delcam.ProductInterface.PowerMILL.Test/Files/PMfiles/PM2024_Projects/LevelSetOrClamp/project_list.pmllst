@@ -1,0 +1,22 @@
+type list
+version 0
+Toolpath\
+Group\
+Pattern\
+Workplane\
+Workplane\BKS1
+Setup\
+FeatureGroup\
+Boundary\
+Macro\
+Featureset\
+NCProgram\
+Level\
+Level\ClampLevel
+Level\Level
+Level\Set
+Tool\
+Process\
+MachineTool\
+StockModel\
+Model\
