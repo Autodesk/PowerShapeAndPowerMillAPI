@@ -54,6 +54,14 @@ namespace Autodesk.ProductInterface.PowerMILLTest
         }
 
         [Test]
+        public void TypeTest()
+        {
+            _powerMill.LoadProject(TestFiles.BasicToolpath);
+            var toolpath = _powerMill.ActiveProject.Toolpaths.First();
+            Assert.That(toolpath.ToolpathType, Is.EqualTo("finishing"));
+        }
+
+        [Test]
         public void ToleranceTest()
         {
             _powerMill.LoadProject(TestFiles.BasicToolpath);

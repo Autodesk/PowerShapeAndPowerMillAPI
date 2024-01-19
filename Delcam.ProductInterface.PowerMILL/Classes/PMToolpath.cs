@@ -97,8 +97,8 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             get { return GetParameter(Resources.Strategy); }
         }
-
-        public MM Tolerance
+      
+      public MM Tolerance
         {
             get { return GetParameterDoubleValue(Resources.Tolerance); }
             set { SetParameter("Tolerance", value); }
@@ -200,10 +200,18 @@ namespace Autodesk.ProductInterface.PowerMILL
             get { return GetParameter("tool.type"); }
         }
 
-        /// <summary>
-        /// Gets the diameter of the tool associated with this toolpath.
-        /// </summary>
-        public MM ToolDiameter
+      /// <summary>
+      /// Gets the Toolpath type value of the toolpath
+      /// </summary>
+      public string ToolpathType
+      {
+         get { return GetParameter("toolpath.ToolpathType"); }
+      }
+
+      /// <summary>
+      /// Gets the diameter of the tool associated with this toolpath.
+      /// </summary>
+      public MM ToolDiameter
         {
             get { return GetParameterDoubleValue(Resources.ToolDiameter); }
         }

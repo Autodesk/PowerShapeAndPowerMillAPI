@@ -1,6 +1,6 @@
-15 4 2018000 1212103 64 # Entity Index (DO NOT EDIT!)
+16 4 2022101 2022115 64 # Entity Index (DO NOT EDIT!)
 0 2
-30 Aug 2017 13.00.10
+19 Jan 2024 12.33.35
 x0ee1004052f235c40000130a00000000.pmlent pmlEntTool 'EndMill'
 x0eaef39052f23a2b00000e2500000000.pmlent pmlEntTool 'BallNosed'
 x0ef6cf0052f23a3600000ffe00000000.pmlent pmlEntTool 'TipRadiused'
@@ -16,3 +16,4 @@ x0ede029052f23a96000025a700000000.pmlent pmlEntTool 'Routing'
 x0f0f51c053732969000010e100000000.pmlent pmlEntTool 'ShankTest'
 x43f970e059a6a8ab000030da00000000.pmlent pmlEntTool 'ProfilingTurning'
 x4410ff0059a6a8c1000035dd00000000.pmlent pmlEntTool 'GroovingTurning'
+xa7640a2965aa653600005c2000000000.pmlent pmlEntTool 'Dovetail'

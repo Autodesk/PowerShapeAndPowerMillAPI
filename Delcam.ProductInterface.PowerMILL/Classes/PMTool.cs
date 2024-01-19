@@ -8,6 +8,7 @@
 // **********************************************************************
 
 using System;
+using Autodesk.FileSystem;
 using Autodesk.Geometry;
 
 namespace Autodesk.ProductInterface.PowerMILL
@@ -440,6 +441,30 @@ namespace Autodesk.ProductInterface.PowerMILL
             PowerMill.ActiveProject.Tools.Remove(this);
         }
 
-        #endregion
+    /// <summary>
+    /// Export holder
+    /// </summary>
+    public void ExportHolder(File filePath)
+    {
+      PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" EXPORT_STL HOLDER NO_OFFSET  \"" + filePath.Path + "\"");
     }
+
+    /// <summary>
+    /// Export Shank
+    /// </summary>
+    public void ExportShank(File filePath)
+    {
+      PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" EXPORT_STL SHANK NO_OFFSET  \"" + filePath.Path + "\"");
+    }
+
+    /// <summary>
+    /// Export holder
+    /// </summary>
+    public void ExportTip(File filePath)
+    {
+      PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" EXPORT_STL TIP NO_OFFSET  \"" + filePath.Path + "\"");
+    }
+
+    #endregion
+  }
 }
