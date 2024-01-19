@@ -39,43 +39,30 @@ namespace Autodesk.ProductInterface.PowerMILL
             _list = new List<T>();
         }
 
-        #endregion
+		#endregion
 
-        #region IList Implementation
+		#region IList Implementation
 
-        /// <summary>
-        /// Returns an enumerator of items.
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        public IEnumerator<T> IEnumerable_GetEnumerator()
-        {
-            // Implement IEnumerable method
-            return _list.GetEnumerator();
-        }
+		/// <summary>
+		/// Returns an enumerator of items.
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerator<T> GetEnumerator()
+		{
+			return _list.GetEnumerator();
+		}
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            return IEnumerable_GetEnumerator();
-        }
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
 
-        /// <summary>
-        /// Returns an enumerator of items.
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        public IEnumerator GetEnumerator()
-        {
-            // Implement IEnumerable method
-            return _list.GetEnumerator();
-        }
-
-        /// <summary>
-        /// Adds a new item to the List.
-        /// </summary>
-        /// <param name="item">The item to add.</param>
-        /// <remarks></remarks>
-        public virtual void Add(T item)
+		/// <summary>
+		/// Adds a new item to the List.
+		/// </summary>
+		/// <param name="item">The item to add.</param>
+		/// <remarks></remarks>
+		public virtual void Add(T item)
         {
             _list.Add(item);
         }
@@ -189,5 +176,6 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         #endregion
+
     }
 }
