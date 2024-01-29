@@ -1,11 +1,14 @@
 // **********************************************************************
-// *         © COPYRIGHT 2018 Autodesk, Inc.All Rights Reserved         *
+// *         © COPYRIGHT 2024 Autodesk, Inc.All Rights Reserved         *
 // *                                                                    *
 // *  Use of this software is subject to the terms of the Autodesk      *
 // *  license agreement provided at the time of installation            *
 // *  or download, or which otherwise accompanies this software         *
 // *  in either electronic or hard copy form.                           *
 // **********************************************************************
+
+using System;
+using Autodesk.Geometry;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
@@ -31,6 +34,52 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="name">The new instance name.</param>
         internal PMToolDovetail(PMAutomation powerMILL, string name) : base(powerMILL, name)
         {
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets and sets the upper tip radius of a Dovetail tool.
+        /// </summary>
+        public MM UpperTipRadius
+        {
+            get
+            {
+                return
+                    Convert.ToDouble(
+                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').UpperTipRadius\""));
+            }
+            set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" UPPER TIPRADIUS \"" + value + "\"", "TOOL ACCEPT"); }
+        }
+
+        /// <summary>
+        /// Gets and sets the tip radius of a Dovetail tool.
+        /// </summary>
+        public MM TipRadius
+        {
+            get
+            {
+                return
+                    Convert.ToDouble(
+                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').tipradius\""));
+            }
+            set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" TIPRADIUS \"" + value + "\"", "TOOL ACCEPT"); }
+        }
+
+        /// <summary>
+        /// Gets and sets the taper angle of a Tapered Tipped tool.
+        /// </summary>
+        public Degree TaperAngle
+        {
+            get
+            {
+                return
+                    Convert.ToDouble(
+                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').taperangle\""));
+            }
+            set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" TAPERANGLE \"" + value + "\"", "TOOL ACCEPT"); }
         }
 
         #endregion

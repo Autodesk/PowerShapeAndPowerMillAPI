@@ -19,6 +19,7 @@ Tool\Routing
 Tool\ShankTest
 Tool\ProfilingTurning
 Tool\GroovingTurning
+Tool\Dovetail
 Boundary\
 Pattern\
 Featureset\
@@ -28,6 +29,9 @@ Model\
 StockModel\
 Group\
 Macro\
+Setup\
+FeatureGroup\
+Process\
 Toolpath\
 Group\
 Pattern\

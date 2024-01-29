@@ -8,6 +8,7 @@
 // **********************************************************************
 
 using System;
+using Autodesk.FileSystem;
 using Autodesk.Geometry;
 using Autodesk.ProductInterface.PowerMILL;
 using Autodesk.ProductInterface.PowerMILLTest.Files;
@@ -174,6 +175,20 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             {
                 var tool = _powerMill.ActiveProject.Tools[14];
                 Assert.NotNull(tool as PMToolGroovingTurning);
+            }
+            else
+            {
+                Assert.Pass();
+            }
+        }
+
+        [Test]
+        public void DovetailTest()
+        {
+            if (_powerMill.Version.Major >= 2022)
+            {
+                var tool = _powerMill.ActiveProject.Tools[15];
+                Assert.NotNull(tool as PMToolDovetail);
             }
             else
             {
@@ -393,6 +408,56 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
         }
 
         [Test]
+        public void DovetailTipRadiusTest()
+        {
+            if (_powerMill.Version.Major < 2022) Assert.Pass();
+
+            var tool = (PMToolDovetail)_powerMill.ActiveProject.Tools[15];
+            tool.TipRadius = 1.9;
+            Assert.AreEqual((MM)1.9, tool.TipRadius);
+        }
+
+        [Test]
+        public void DovetailUpperTipRadiusTest()
+        {
+            if (_powerMill.Version.Major < 2022) Assert.Pass();
+
+            var tool = (PMToolDovetail)_powerMill.ActiveProject.Tools[15];
+            tool.UpperTipRadius = 0.9;
+            Assert.AreEqual((MM)0.9, tool.UpperTipRadius);
+        }
+
+        [Test]
+        public void DovetailTaperAngleTest()
+        {
+            if (_powerMill.Version.Major < 2022) Assert.Pass();
+
+            var tool = (PMToolDovetail)_powerMill.ActiveProject.Tools[15];
+            tool.TaperAngle = 9.0;
+            Assert.AreEqual((Degree)9.0, tool.TaperAngle);
+        }
+
+        [Test]
+        public void TaperedSphericalTipRadiusTest()
+        {
+            if (_powerMill.Version.Major < 2022) Assert.Pass();
+
+            var tool = (PMToolTaperedSpherical)_powerMill.ActiveProject.Tools[3];
+            tool.TipRadius = 1.0;
+            Assert.AreEqual((MM)1.0, tool.TipRadius);
+        }
+
+        [Test]
+        public void TaperedSphericalTaperAngleTest()
+        {
+            if (_powerMill.Version.Major < 2022) Assert.Pass();
+
+            var tool = (PMToolTaperedSpherical)_powerMill.ActiveProject.Tools[3];
+            tool.TaperAngle = 10.0;
+            Assert.AreEqual((Degree)10.0, tool.TaperAngle);
+        }
+
+        [Test]
         public void NumberOfShankElementsTest()
         {
             if (_powerMill.Version < new Version("15.0"))
@@ -544,6 +609,48 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
             }
             var tool = (PMToolTaperedTipped) _powerMill.ActiveProject.Tools[4];
             Assert.That(tool.TaperDiameter.Value, Is.EqualTo(4.860317).Within(TOLERANCE));
+        }
+
+        [Test]
+        public void HolderExportTest()
+        {
+            if (_powerMill.Version < new Version("15.0"))
+            {
+                Assert.Inconclusive("Test not available for this version of PowerMILL");
+            }
+            var tool = _powerMill.ActiveProject.Tools[12];
+            var tempFile = File.CreateTemporaryFile("stl");
+            tool.ExportHolder(tempFile);
+            Assert.IsTrue(tempFile.Exists);
+            tempFile.Delete();
+        }
+
+        [Test]
+        public void ShankExportTest()
+        {
+            if (_powerMill.Version < new Version("15.0"))
+            {
+                Assert.Inconclusive("Test not available for this version of PowerMILL");
+            }
+            var tool = _powerMill.ActiveProject.Tools[12];
+            var tempFile = File.CreateTemporaryFile("stl");
+            tool.ExportShank(tempFile);
+            Assert.IsTrue(tempFile.Exists);
+            tempFile.Delete();
+        }
+
+        [Test]
+        public void TipExportTest()
+        {
+            if (_powerMill.Version < new Version("15.0"))
+            {
+                Assert.Inconclusive("Test not available for this version of PowerMILL");
+            }
+            var tool = _powerMill.ActiveProject.Tools[12];
+            var tempFile = File.CreateTemporaryFile("stl");
+            tool.ExportTip(tempFile);
+            Assert.IsTrue(tempFile.Exists);
+            tempFile.Delete();
         }
 
         #endregion

@@ -265,5 +265,15 @@ namespace Autodesk.ProductInterface.PowerMILLTest
             _powerMill.UndrawAll();
             Assert.IsTrue(true);
         }
+
+        [Test]
+        public void STLExportUnitTest()
+        {
+            _powerMill.SetOutputMetricSTL(false);
+            Assert.IsFalse(_powerMill.GetOutputMetricSTL());
+
+            _powerMill.SetOutputMetricSTL(true);
+            Assert.IsTrue(_powerMill.GetOutputMetricSTL());
+        }
     }
 }

@@ -871,11 +871,36 @@ namespace Autodesk.ProductInterface.PowerMILL
 
         #region Macro Operations
 
-        /// <summary>
-        /// Runs the Macro at the given location.
-        /// </summary>
-        /// <param name="macroFile">The file path to the macro.</param>
-        public void RunMacro(FileSystem.File macroFile)
+    /// <summary>
+    /// Get's whether the current output format for STLs is Metric.
+    /// </summary>
+    public bool GetOutputMetricSTL()
+    {
+        return DoCommandEx("print $powermill.export.OutputMetricSTL").ToString() == "0";
+    }
+
+    /// <summary>
+    /// Sets whether or not the output format for STLs should be metric.
+    /// </summary>
+    public void SetOutputMetricSTL(bool isMetric)
+    {
+      if (isMetric)
+      {
+        DoCommand("$powermill.export.OutputMetricSTL = 0");
+      }
+      else
+      {
+        DoCommand("$powermill.export.OutputMetricSTL = 1");
+      }
+    }
+
+    #region Macro Operations
+
+    /// <summary>
+    /// Runs the Macro at the given location.
+    /// </summary>
+    /// <param name="macroFile">The file path to the macro.</param>
+    public void RunMacro(FileSystem.File macroFile)
         {
             PMMacro macro = null;
             macro = LoadMacro(macroFile);
@@ -948,4 +973,5 @@ namespace Autodesk.ProductInterface.PowerMILL
 
         #endregion
     }
+  #endregion
 }
