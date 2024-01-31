@@ -47,27 +47,14 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// Returns an enumerator of items.
         /// </summary>
         /// <returns></returns>
-        /// <remarks></remarks>
-        public IEnumerator<T> IEnumerable_GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            // Implement IEnumerable method
             return _list.GetEnumerator();
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            return IEnumerable_GetEnumerator();
-        }
-
-        /// <summary>
-        /// Returns an enumerator of items.
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        public IEnumerator GetEnumerator()
-        {
-            // Implement IEnumerable method
-            return _list.GetEnumerator();
+            return GetEnumerator();
         }
 
         /// <summary>
@@ -189,5 +176,6 @@ namespace Autodesk.ProductInterface.PowerMILL
         }
 
         #endregion
+
     }
 }
