@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Autodesk.Geometry;
 
 namespace Autodesk.ProductInterface.PowerSHAPE
@@ -49,6 +50,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         public T CreateCurveFromBreakPoint(T initialCurve, int breakPoint)
         {
             int numberOfPoints = initialCurve.NumberPoints;
+            int maximumIndex = numberOfPoints - 1;
 
             //call to Powershape
 
@@ -57,11 +59,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 throw new ApplicationException("Break point must be a positive integer");
             }
-            if (breakPoint > numberOfPoints - 1)
+            if (breakPoint > maximumIndex)
             {
                 throw new ApplicationException("Break point is greater than the number of curve points");
             }
-            if ((breakPoint == 0) | (breakPoint == numberOfPoints - 1))
+            if (breakPoint == 0 || breakPoint == maximumIndex)
             {
                 throw new ApplicationException("Break point cannot be the end of a curve");
             }
@@ -70,26 +72,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             T initialCopy = (T) initialCurve.Duplicate();
 
             // Remove the relevant points from the initial curve
-            int[] pointsToDelete = null;
-            pointsToDelete = new int[1];
-            pointsToDelete[0] = breakPoint + 1;
-
-            //initialCurve.Points.Count
-            for (int i = breakPoint + 1; i <= numberOfPoints - 1; i++)
-            {
-                Array.Resize(ref pointsToDelete, pointsToDelete.GetUpperBound(0) + 2);
-                pointsToDelete[pointsToDelete.GetUpperBound(0)] = i;
-            }
+            int[] pointsToDelete = Enumerable.Range(breakPoint + 1, maximumIndex - breakPoint).ToArray();
             initialCurve.DeleteCurvePoints(pointsToDelete);
 
             // Remove the relevant points from the copied curve
-            pointsToDelete = new int[1];
-            pointsToDelete[0] = 0;
-            for (int i = 1; i <= breakPoint; i++)
-            {
-                Array.Resize(ref pointsToDelete, pointsToDelete.GetUpperBound(0) + 2);
-                pointsToDelete[pointsToDelete.GetUpperBound(0)] = i;
-            }
+            pointsToDelete = Enumerable.Range(0, breakPoint).ToArray();
             initialCopy.DeleteCurvePoints(pointsToDelete);
 
             // Add the copied curve to this collection
