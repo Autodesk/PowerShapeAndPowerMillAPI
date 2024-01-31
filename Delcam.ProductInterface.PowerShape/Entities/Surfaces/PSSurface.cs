@@ -1315,9 +1315,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 case SurfaceCurveTypes.Lateral:
                     numberOfCurves = Laterals.Count;
+                    if (IsClosedLaterals) numberOfCurves++;
                     break;
                 case SurfaceCurveTypes.Longitudinal:
                     numberOfCurves = Longitudinals.Count;
+                    if (IsClosedLongitudinals) numberOfCurves++;
                     break;
             }
 
@@ -1330,8 +1332,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 throw new ApplicationException("Curve creation point is greater than the number of curve points");
 
-                //creationPoint is an integer
             }
+            //creationPoint is an integer
             if (creationPoint % 1 == 0)
             {
                 throw new ApplicationException("Curve creation point cannot be on an existing curve");
