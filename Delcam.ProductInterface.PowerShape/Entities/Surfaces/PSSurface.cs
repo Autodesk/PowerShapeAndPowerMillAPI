@@ -1315,11 +1315,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 case SurfaceCurveTypes.Lateral:
                     numberOfCurves = Laterals.Count;
-                    if (IsClosedLaterals) numberOfCurves++;
+                    if (IsClosedLongitudinals) numberOfCurves++;
                     break;
                 case SurfaceCurveTypes.Longitudinal:
                     numberOfCurves = Longitudinals.Count;
-                    if (IsClosedLongitudinals) numberOfCurves++;
+                    if (IsClosedLaterals) numberOfCurves++;
                     break;
             }
 
