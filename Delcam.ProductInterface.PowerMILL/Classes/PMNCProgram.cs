@@ -67,7 +67,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
             set
             {
-                string cmd = string.Format("EDIT NCPROGRAM '{0}' FILENAME FILESAVE '{1}'", Name, value);
+                string cmd = string.Format("EDIT NCPROGRAM '{0}' FILENAME FILESAVE \"{1}\"", Name, value);
                 PowerMill.DoCommand(cmd);
             }
         }
