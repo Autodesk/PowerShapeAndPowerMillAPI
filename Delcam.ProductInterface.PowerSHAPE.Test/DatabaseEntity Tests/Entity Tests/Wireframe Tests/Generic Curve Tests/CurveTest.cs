@@ -541,7 +541,7 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         [Test]
         public void RepointTolerancedCurveTest()
         {
-	        RepointTolerancedTest(TestFiles.SINGLE_CURVE);
+            RepointTolerancedTest(TestFiles.SINGLE_CURVE);
         }
 
 		/// <summary>

@@ -402,20 +402,20 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         /// </summary>
         public void RepointTolerancedTest(string genericCurveFile)
         {
-	        // Get curve
-	        var genericCurve = (PSGenericCurve)ImportAndGetEntity(genericCurveFile);
+            // Get curve
+            var genericCurve = (PSGenericCurve)ImportAndGetEntity(genericCurveFile);
 
-	        // Repoint curve
-	        genericCurve.RepointCurveBetweenPoints(0, 4, 0.1f, CornerBehaviours.KeepAllDiscontinuities);
+            // Repoint curve
+            genericCurve.RepointCurveBetweenPoints(0, 4, 0.1f, CornerBehaviours.KeepAllDiscontinuities);
 
-	        // Check resultant number of points
-	        Assert.AreEqual(13, genericCurve.NumberPoints, "Curve was not repointed");
+            // Check resultant number of points
+            Assert.AreEqual(13, genericCurve.NumberPoints, "Curve was not repointed");
         }
 
-		/// <summary>
-		/// Test for Reverse
-		/// </summary>
-		public void ReverseTest(string genericCurveFile)
+        /// <summary>
+        /// Test for Reverse
+        /// </summary>
+        public void ReverseTest(string genericCurveFile)
         {
             // Get curve
             var genericCurve = (PSGenericCurve) ImportAndGetEntity(genericCurveFile);
