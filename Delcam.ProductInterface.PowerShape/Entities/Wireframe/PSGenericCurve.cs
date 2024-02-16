@@ -216,6 +216,14 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             {
                 throw new Exception("Number of points must be 2 or more");
             }
+            if (startPoint > endPoint)
+            {
+	            throw new Exception("Start Point must proceed End Point");
+            }
+            if (startPoint == endPoint & !IsClosed)
+            {
+	            throw new Exception("Start Point and End Point must differ if curve is not closed");
+            }
 
             string corners = "";
             switch (cornerBehaviour)
@@ -231,7 +239,8 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                     break;
             }
             _powerSHAPE.DoCommand("REPOINT_CURVE",
-                                  "START " + startPoint,
+								  "TOLERANCED OFF",
+				                  "START " + startPoint,
                                   "END " + endPoint,
                                   "NUMBER " + numberOfPoints,
                                   "CORNERS " + corners,
