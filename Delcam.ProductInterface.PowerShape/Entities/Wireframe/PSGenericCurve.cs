@@ -247,14 +247,75 @@ namespace Autodesk.ProductInterface.PowerSHAPE
                                   "ACCEPT");
         }
 
-        /// <summary>
-        /// Extends one end of the curve.
-        /// </summary>
-        /// <param name="curveEnd">The curve end to be extended.</param>
-        /// <param name="length">The length to extend by.</param>
-        /// <param name="straightCurved">The extension type.</param>
-        /// <remarks></remarks>
-        public void Extend(ExtensionEnd curveEnd, float length, ExtensionType straightCurved)
+		/// <summary>
+		/// Repoints the curve between the specified points to the specified tolerance.
+		/// </summary>
+		/// <param name="startPoint">The index of the start point. Index for the points is zero based.</param>
+		/// <param name="endPoint">The index of the end point. Index for the points is zero based.</param>
+		/// <param name="tolerance">The maximum distance that the repointed curve may vary from the original curve.</param>
+		/// <param name="cornerBehaviour">You can select points which you don't want to remove. These points are marked as corners.</param>
+		public void RepointCurveBetweenPoints(
+			int startPoint,
+			int endPoint,
+			float tolerance,
+			CornerBehaviours cornerBehaviour = CornerBehaviours.SelectCorners)
+		{
+			AddToSelection(true);
+
+			startPoint = startPoint + 1;
+			endPoint = endPoint + 1;
+
+			if (startPoint < 1 || startPoint > NumberPoints)
+			{
+				throw new Exception("Start Point is not defined");
+			}
+			if (endPoint < 1 || endPoint > NumberPoints)
+			{
+				throw new Exception("End Point is not defined");
+			}
+			if (tolerance < 1e-5)
+			{
+				throw new Exception("Tolerance must be greater or equal to 1e-5");
+			}
+			if (startPoint > endPoint)
+			{
+				throw new Exception("Start Point must proceed End Point");
+			}
+			if (startPoint == endPoint & !IsClosed)
+			{
+				throw new Exception("Start Point and End Point must differ if curve is not closed");
+			}
+
+			string corners = "";
+			switch (cornerBehaviour)
+			{
+				case CornerBehaviours.RemoveAllCorners:
+					corners = "NONE";
+					break;
+				case CornerBehaviours.KeepAllDiscontinuities:
+					corners = "ALL";
+					break;
+				case CornerBehaviours.SelectCorners:
+					corners = "SELECT";
+					break;
+			}
+			_powerSHAPE.DoCommand("REPOINT_CURVE",
+								  "TOLERANCED ON",
+								  "START " + startPoint,
+								  "END " + endPoint,
+								  "Tol " + tolerance,
+								  "CORNERS " + corners,
+								  "ACCEPT");
+		}
+
+		/// <summary>
+		/// Extends one end of the curve.
+		/// </summary>
+		/// <param name="curveEnd">The curve end to be extended.</param>
+		/// <param name="length">The length to extend by.</param>
+		/// <param name="straightCurved">The extension type.</param>
+		/// <remarks></remarks>
+		public void Extend(ExtensionEnd curveEnd, float length, ExtensionType straightCurved)
         {
             AddToSelection(true);
 
