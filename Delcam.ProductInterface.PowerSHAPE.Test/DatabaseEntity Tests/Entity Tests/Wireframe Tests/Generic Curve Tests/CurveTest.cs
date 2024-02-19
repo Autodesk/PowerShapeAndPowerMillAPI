@@ -544,10 +544,10 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
             RepointTolerancedTest(TestFiles.SINGLE_CURVE);
         }
 
-		/// <summary>
-		/// A test for Reverse
-		/// </summary>
-		[Test]
+        /// <summary>
+        /// A test for Reverse
+        /// </summary>
+        [Test]
         public void ReverseCurveTest()
         {
             ReverseTest(TestFiles.SINGLE_CURVE);

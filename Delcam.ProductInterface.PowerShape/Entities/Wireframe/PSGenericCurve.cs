@@ -218,7 +218,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             }
             if (startPoint > endPoint)
             {
-                throw new Exception("Start Point must proceed End Point");
+                throw new Exception("Start Point must precede End Point");
             }
             if (startPoint == endPoint & !IsClosed)
             {
@@ -279,7 +279,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
             }
             if (startPoint > endPoint)
             {
-                throw new Exception("Start Point must proceed End Point");
+                throw new Exception("Start Point must precede End Point");
             }
             if (startPoint == endPoint & !IsClosed)
             {
