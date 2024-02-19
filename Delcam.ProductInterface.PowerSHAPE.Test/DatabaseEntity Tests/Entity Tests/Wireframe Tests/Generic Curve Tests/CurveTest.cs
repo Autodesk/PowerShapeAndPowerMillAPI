@@ -536,6 +536,15 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         }
 
         /// <summary>
+        /// A test for toleranced Repoint
+        /// </summary>
+        [Test]
+        public void RepointTolerancedCurveTest()
+        {
+            RepointTolerancedTest(TestFiles.SINGLE_CURVE);
+        }
+
+        /// <summary>
         /// A test for Reverse
         /// </summary>
         [Test]
