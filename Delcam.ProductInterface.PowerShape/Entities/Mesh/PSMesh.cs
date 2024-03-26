@@ -1,5 +1,5 @@
 // **********************************************************************
-// *         Â© COPYRIGHT 2018 Autodesk, Inc.All Rights Reserved         *
+// *         © COPYRIGHT 2018 Autodesk, Inc.All Rights Reserved         *
 // *                                                                    *
 // *  Use of this software is subject to the terms of the Autodesk      *
 // *  license agreement provided at the time of installation            *
@@ -147,7 +147,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         {
             get { return _powerSHAPE.ReadDoubleValue(Identifier + "['" + Name + "'].AREA"); }
         }
-        
+
         /// <summary>
         /// Gets the volume of the Mesh
         /// </summary>
@@ -155,7 +155,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         {
             get { return _powerSHAPE.ReadDoubleValue(Identifier + "['" + Name + "'].VOLUME"); }
         }
-        
+
         /// <summary>
         /// Gets the number of triangles in the mesh
         /// </summary>

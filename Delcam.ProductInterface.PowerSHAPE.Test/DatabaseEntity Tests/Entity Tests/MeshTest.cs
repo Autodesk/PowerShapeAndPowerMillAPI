@@ -311,6 +311,20 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
         }
 
         [Test]
+        public void AreaTest()
+        {
+            var importedMeshes = _powerSHAPE.ActiveModel.Import(new File(TestFiles.SINGLE_MESH));
+            Assert.AreEqual(48600, ((PSMesh) importedMeshes[0]).Area);
+        }
+
+        [Test]
+        public void VolumeTest()
+        {
+            var importedMeshes = _powerSHAPE.ActiveModel.Import(new File(TestFiles.SINGLE_MESH));
+            Assert.AreEqual(72.899997999999997, ((PSMesh) importedMeshes[0]).Volume);
+        }
+
+        [Test]
         public void NumberOfTrianglesTest()
         {
             var importedMeshes = _powerSHAPE.ActiveModel.Import(new File(TestFiles.SINGLE_MESH));
