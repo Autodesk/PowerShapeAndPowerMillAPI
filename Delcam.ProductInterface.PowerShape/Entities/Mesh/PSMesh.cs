@@ -149,6 +149,14 @@ namespace Autodesk.ProductInterface.PowerSHAPE
         }
 
         /// <summary>
+        /// Gets the volume of the Mesh
+        /// </summary>
+        public double Volume
+        {
+            get { return _powerSHAPE.ReadDoubleValue(Identifier + "['" + Name + "'].VOLUME"); }
+        }
+
+        /// <summary>
         /// Gets the number of triangles in the mesh
         /// </summary>
         /// <returns></returns>
