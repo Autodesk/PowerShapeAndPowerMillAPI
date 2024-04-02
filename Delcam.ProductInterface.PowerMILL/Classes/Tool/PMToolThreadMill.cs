@@ -49,7 +49,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return
-                    Convert.ToDouble(PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').pitch\""));
+                    Convert.ToDouble(PowerMill.GetPowerMillEntityParameter("tool", Name, "pitch").Trim());
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" PITCH \"" + value + "\"", "TOOL ACCEPT"); }
         }

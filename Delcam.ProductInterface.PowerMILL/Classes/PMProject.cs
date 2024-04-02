@@ -156,7 +156,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                     throw new Exception("This property is not suported in versions earlier than 14");
                 }
                 Directory folder = null;
-                string pmpathTemp = (string) _powerMILL.DoCommandEx("print $project_pathname(false)");
+                string pmpathTemp = _powerMILL.GetPowerMillParameter("project_pathname(false)").Trim();
                 if (!string.IsNullOrWhiteSpace(pmpathTemp))
                 {
                     pmpathTemp = pmpathTemp.Replace(((char) 13).ToString(), string.Empty);
@@ -300,7 +300,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             get
             {
-                string activeName = _powerMILL.DoCommandEx("PRINT PAR terse \"entity('" + PMWorkplane.WORKPLANE_IDENTIFIER + "','').Name\"").ToString();
+                string activeName = _powerMILL.GetPowerMillEntityParameter(PMWorkplane.WORKPLANE_IDENTIFIER , "", "Name");
                 return Workplanes.FirstOrDefault(x => x.Name == activeName);
             }
 
@@ -499,12 +499,12 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public BoundingBox GetBlockLimits()
         {            
-            var tpBlockXmin = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.XMin");
-            var tpBlockXmax = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.XMax");
-            var tpBlockYmin = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.YMin");
-            var tpBlockYmax = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.YMax");
-            var tpBlockZmin = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.ZMin");
-            var tpBlockZmax = _powerMILL.DoCommandEx("PRINT PAR TERSE $Block.Limits.ZMax");
+            var tpBlockXmin = _powerMILL.GetPowerMillParameter("Block.Limits.XMin");
+            var tpBlockXmax = _powerMILL.GetPowerMillParameter("Block.Limits.XMax");
+            var tpBlockYmin = _powerMILL.GetPowerMillParameter("Block.Limits.YMin");
+            var tpBlockYmax = _powerMILL.GetPowerMillParameter("Block.Limits.YMax");
+            var tpBlockZmin = _powerMILL.GetPowerMillParameter("Block.Limits.ZMin");
+            var tpBlockZmax = _powerMILL.GetPowerMillParameter("Block.Limits.ZMax");
 
             BoundingBox boundingBox = new BoundingBox(Convert.ToDouble(tpBlockXmin), Convert.ToDouble(tpBlockXmax),
                                                       Convert.ToDouble(tpBlockYmin), Convert.ToDouble(tpBlockYmax),

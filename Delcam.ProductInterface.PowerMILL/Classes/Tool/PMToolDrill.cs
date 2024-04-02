@@ -49,7 +49,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     Convert.ToDouble(
-                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').drillangle\""));
+                            PowerMill.GetPowerMillEntityParameter("tool", Name, "drillangle").Trim());
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" TAPERANGLE \"" + value + "\"", "TOOL ACCEPT"); }
         }

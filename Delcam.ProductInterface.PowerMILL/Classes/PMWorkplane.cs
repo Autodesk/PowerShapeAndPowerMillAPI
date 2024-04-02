@@ -59,17 +59,12 @@ namespace Autodesk.ProductInterface.PowerMILL
                 return
                     new Geometry.Point(
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').origin.x\"")
-                                     .ToString()
-                                     .Trim()),
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "origin.x").Trim()),
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').origin.y\"")
-                                     .ToString()
-                                     .Trim()),
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "origin.y").Trim()),
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').origin.z\"")
-                                     .ToString()
-                                     .Trim()));
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "origin.y").Trim())
+                        );
             }
         }
 
@@ -83,17 +78,12 @@ namespace Autodesk.ProductInterface.PowerMILL
                 return
                     new Geometry.Vector(
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Xaxis.x\"")
-                                     .ToString()
-                                     .Trim()),
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Xaxis.x").Trim()),
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Xaxis.y\"")
-                                     .ToString()
-                                     .Trim()),
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Xaxis.y").Trim()),
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Xaxis.z\"")
-                                     .ToString()
-                                     .Trim()));
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Xaxis.z").Trim())
+                        );
             }
         }
 
@@ -107,17 +97,12 @@ namespace Autodesk.ProductInterface.PowerMILL
                 return
                     new Geometry.Vector(
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Yaxis.x\"")
-                                     .ToString()
-                                     .Trim()),
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Yaxis.x").Trim()),
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Yaxis.y\"")
-                                     .ToString()
-                                     .Trim()),
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Yaxis.y").Trim()),
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Yaxis.z\"")
-                                     .ToString()
-                                     .Trim()));
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Yaxis.z").Trim())
+                        );
             }
         }
 
@@ -131,17 +116,12 @@ namespace Autodesk.ProductInterface.PowerMILL
                 return
                     new Geometry.Vector(
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Zaxis.x\"")
-                                     .ToString()
-                                     .Trim()),
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Zaxis.x").Trim()),
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Zaxis.y\"")
-                                     .ToString()
-                                     .Trim()),
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Zaxis.y").Trim()),
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('workplane', '" + Name + "').Zaxis.z\"")
-                                     .ToString()
-                                     .Trim()));
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "Zaxis.z").Trim())
+                        );
             }
         }
 

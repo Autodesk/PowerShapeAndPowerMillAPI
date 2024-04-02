@@ -50,7 +50,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     Convert.ToDouble(
-                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').tipradius\""));
+                        PowerMill.GetPowerMillEntityParameter("tool", Name, "tipradius").Trim());
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" TIPRADIUS " + value, "TOOL ACCEPT"); }
         }

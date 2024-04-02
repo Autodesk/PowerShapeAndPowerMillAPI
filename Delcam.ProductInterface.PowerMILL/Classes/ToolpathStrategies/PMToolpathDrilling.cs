@@ -45,9 +45,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 var drillType =
-                    PowerMill.DoCommandEx("PRINT PAR terse \"entity('toolpath', '" + Name + "').drill.type\"")
-                             .ToString()
-                             .Trim();
+                        PowerMill.GetPowerMillEntityParameter("toolpath", Name, "drill.type").Trim();
                 switch (drillType)
                 {
                     case "single_peck":

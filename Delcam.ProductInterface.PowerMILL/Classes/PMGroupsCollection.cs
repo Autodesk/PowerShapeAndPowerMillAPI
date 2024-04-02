@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
@@ -49,24 +50,11 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <returns>The list of the names of all the Groups in PowerMILL</returns>
         internal List<string> ReadGroups()
         {
-            string[] items = null;
             List<string> names = new List<string>();
-            items = _powerMILL.DoCommandEx("PRINT ENTITY GROUP")
-                              .ToString()
-                              .Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 1; i <= items.Length - 1; i++)
+            var groupsXml = _powerMILL.GetPowerMillParameterXML("extract(folder('GROUP'),'name')").GetElementsByTagName("string");
+            foreach (XmlNode groupNode in groupsXml)
             {
-                string name = "";
-                var _with1 = items[i];
-                int index = _with1.IndexOf("'") + 1;
-                if (index > 0)
-                {
-                    name = _with1.Substring(index, _with1.LastIndexOf("'") - index);
-                }
-                if (!string.IsNullOrEmpty(name))
-                {
-                    names.Add(name);
-                }
+                names.Add(groupNode.InnerText);
             }
             return names;
         }

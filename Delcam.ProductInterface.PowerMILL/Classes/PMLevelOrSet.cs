@@ -90,9 +90,9 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 var type = 
-                    PowerMill.DoCommandEx("PRINT PAR terse \"entity('level', '" + Name + "').type\"").ToString();
+                    PowerMill.GetPowerMillEntityParameter("level", Name,"type");
                 var isClamp =
-                    PowerMill.DoCommandEx("PRINT PAR terse \"entity('level', '" + Name + "').isclamp\"").ToString();
+                    PowerMill.GetPowerMillEntityParameter("level", Name, "isclamp");
                 if (isClamp == "1")
                 {
                     return PMLevelOrSetTypes.Clamp;
