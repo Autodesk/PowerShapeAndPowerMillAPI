@@ -761,16 +761,16 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// Runs the given command in PowerMILL.  It is a friend version equivalent to ExecuteEx
         /// but does not give the obsolete warning.
         /// </summary>
-        public string GetPowerMillEntityParameter(string pType, string pName, string pParameter)
+        public string GetPowerMillEntityParameter(string pEntityType, string pEntityName, string pParameter)
         {
-            var getParameterString = $"entity('{pType}','{pName}').{pParameter}";
+            var getParameterString = $"entity('{pEntityType}','{pEntityName}').{pParameter}";
             var result = GetPowerMillParameter(getParameterString);
             return result;
         }
 
-        public T GetPowerMillEntityParameter<T>(string pType, string pName, string pParameter) where T: IConvertible
+        public T GetPowerMillEntityParameter<T>(string pEntityType, string pEntityName, string pParameter) where T: IConvertible
         {
-            var getParameterString = $"entity('{pType}','{pName}').{pParameter}";
+            var getParameterString = $"entity('{pEntityType}','{pEntityName}').{pParameter}";
             var result = GetPowerMillParameter<T>(getParameterString);
             return result;
         }
