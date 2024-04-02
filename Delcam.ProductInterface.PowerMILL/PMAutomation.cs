@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Xml;
@@ -767,6 +768,13 @@ namespace Autodesk.ProductInterface.PowerMILL
             return result;
         }
 
+        public T GetPowerMillEntityParameter<T>(string pType, string pName, string pParameter) where T: IConvertible
+        {
+            var getParameterString = $"entity('{pType}','{pName}').{pParameter}";
+            var result = GetPowerMillParameter<T>(getParameterString);
+            return result;
+        }
+
         public string GetPowerMillParameter(string getParameterString)
         {
             var xmlResponse = GetPowerMillParameterXML(getParameterString);
@@ -774,6 +782,19 @@ namespace Autodesk.ProductInterface.PowerMILL
             var rootNode = xmlResponse.DocumentElement;
             var result = rootNode.InnerText;
             return result;
+        }
+
+        public T GetPowerMillParameter<T>(string getParameterString) where T: IConvertible
+        {
+            var parameterString = GetPowerMillParameter(getParameterString);
+
+            if (typeof(T) == typeof(bool))
+            {
+                parameterString = parameterString == "1" ? "true" : "false";
+            }
+
+            var converter = TypeDescriptor.GetConverter(typeof(T));
+            return (T)converter.ConvertFromString(parameterString);
         }
 
         public XmlDocument GetPowerMillParameterXML(string getParameterString)
