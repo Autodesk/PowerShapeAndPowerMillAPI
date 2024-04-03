@@ -130,7 +130,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 string activeName =
-                    PowerMill.DoCommandEx("PRINT PAR terse \"entity('" + Identifier + "','').Name\"").ToString();
+                    PowerMill.GetPowerMillEntityParameter(Identifier, "", "Name");
                 return activeName == Name;
             }
             set
@@ -209,7 +209,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return
-                    PowerMill.DoCommandEx("PRINT PAR TERSE \"entity('" + Identifier + "', '" + Name + "').Name\"")
+                    PowerMill.GetPowerMillEntityParameter(Identifier ,  Name ,"Name")
                              .ToString()
                              .Trim() == Name;
             }
@@ -226,7 +226,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <returns>String raw output of the application</returns>
         internal string GetParameter(string paramter)
         {
-            var result = PowerMill.DoCommandEx(string.Format(Resources.GetParameterValue, Identifier, Name, paramter)).ToString();
+            var result = PowerMill.GetPowerMillEntityParameter( Identifier, Name, paramter);
             ValidateOutput(result, paramter);
             return result;
         }

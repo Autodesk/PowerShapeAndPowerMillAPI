@@ -9,6 +9,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Xml;
 using Autodesk.Geometry;
 using Autodesk.ProductInterface.Properties;
 
@@ -61,7 +63,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         /// <remarks></remarks>
         public void ApplyBlock()
-        {            
+        {
             PowerMill.DoCommand(string.Format("EDIT STOCKMODEL \"{0}\" BLOCK ;", Name));
         }
 
@@ -70,7 +72,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         /// <remarks></remarks>
         public void ApplyToolpathFirst()
-        {            
+        {
             PowerMill.DoCommand(string.Format("EDIT STOCKMODEL \"{0}\" INSERT_INPUT TOOLPATH ; FIRST", Name));
         }
 
@@ -88,7 +90,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         /// <remarks></remarks>
         public void ApplyToolFirst()
-        {            
+        {
             PowerMill.DoCommand(string.Format("EDIT STOCKMODEL \"{0}\" INSERT_INPUT TOOL ; FIRST", Name));
         }
 
@@ -109,18 +111,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 // Get the list of states of the StockModel                
-                string stateList = PowerMill.DoCommandEx(string.Format("PRINT PAR \"entity('stockmodel', '{0}').States\"", Name)).ToString();
-                stateList = stateList.Replace(((char)13).ToString(), string.Empty);
-                string[] splitList = stateList.Split((char)10);
-                List<string> returnStates = new List<string>();
-               
-                var startIndex = 0;
-                for (int i = startIndex; i <= splitList.Length - 1; i++)
+                var returnStates = new List<string>();
+                var stateListXml = PowerMill.GetPowerMillParameterXML("extract(entity('stockmodel', '" + Name + "').States,'name')").GetElementsByTagName("Name");
+                foreach (XmlNode state in stateListXml)
                 {
-                    if (splitList[i].Trim().Contains("Name:"))
-                    {
-                        returnStates.Add(splitList[i].Replace("Name: (STRING)", "").Trim());
-                    }
+                    returnStates.Add(state.InnerText.Trim());
                 }
                 return returnStates;
             }
@@ -174,7 +169,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             get
             {
-                string workplane = PowerMill.DoCommandEx(string.Format("PRINT PAR TERSE \"entity('stockmodel', '{0}').Workplane.Name\"", Name)).ToString();                
+                var workplane = PowerMill.GetPowerMillEntityParameter("stockmodel", Name, "Workplane.Name");
                 return PowerMill.ActiveProject.Workplanes.GetByName(workplane);
             }
             set

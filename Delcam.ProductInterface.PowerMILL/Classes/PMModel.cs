@@ -92,16 +92,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             get
             {
-                string output = PowerMill.DoCommandEx("PRINT ENTITY PARAMETERS MODEL '" + Name + "'").ToString();
-                foreach (
-                    string value in output.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    if (value.Trim().StartsWith("PATH"))
-                    {
-                        return value.Trim().Substring(9);
-                    }
-                }
-                return "";
+                return PowerMill.GetPowerMillEntityParameter("model", Name, "path");
             }
         }
 

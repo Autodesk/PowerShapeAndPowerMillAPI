@@ -159,9 +159,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 {
                     if (GetByName(basePrefix) != null)
                     {
-                        return _powerMILL
-                            .DoCommandEx("PRINT PAR TERSE \"new_entity_name('" + this[0].Identifier + "','" + basePrefix + "')\"")
-                            .ToString();
+                        return _powerMILL.GetPowerMillParameter("new_entity_name('" + this[0].Identifier + "','" + basePrefix + "')");
                     }
                     return basePrefix;
                 }
@@ -169,7 +167,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
             if (Count > 0)
             {
-                return _powerMILL.DoCommandEx("PRINT PAR TERSE \"new_entity_name('" + this[0].Identifier + "')\"").ToString();
+                return _powerMILL.GetPowerMillParameter("new_entity_name('" + this[0].Identifier + "')");
             }
             return "1";
         }
@@ -234,8 +232,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                     return null;
                 }
                 string activeName =
-                    _powerMILL.DoCommandEx("PRINT PAR terse \"entity('" + this[0].Identifier + "','').Name\"")
-                              .ToString();
+                    _powerMILL.GetPowerMillEntityParameter(this[0].Identifier, "", "Name");
                 if (string.IsNullOrEmpty(activeName))
                 {
                     return null;

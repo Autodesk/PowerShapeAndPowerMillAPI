@@ -117,12 +117,10 @@ namespace Autodesk.ProductInterface.PowerMILL
                     //uses different method of retrieving toolpath stats.
                     var arcLength =
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('toolpath','" + Name +
-                                                  "').Statistics.CuttingMoves.Lengths.arcs\""));
+                            PowerMill.GetPowerMillEntityParameter("toolpath",Name,"Statistics.CuttingMoves.Lengths.arcs"));
                     var linearLength =
                         Convert.ToDouble(
-                            PowerMill.DoCommandEx("PRINT PAR terse \"entity('toolpath','" + Name +
-                                                  "').Statistics.CuttingMoves.Lengths.Linear\""));
+                            PowerMill.GetPowerMillEntityParameter("toolpath", Name, "Statistics.CuttingMoves.Lengths.Linear"));
                     return arcLength + linearLength;
 
                     // PowerMill 2011 and under 
@@ -457,8 +455,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return int.Parse(
-                    PowerMill.DoCommandEx("print par terse ${toolpath_component_count('toolpath', '" + Name + "', 'segments')}")
-                             .ToString());
+                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', '" + Name + "', 'segments')"));
             }
         }
 
@@ -472,8 +469,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     (int) double.Parse(
-                        PowerMill.DoCommandEx("print par terse ${segment_point_count(entity('toolpath', '" + Name + "'), " +
-                                              segmentNumber + ")}").ToString());
+                        PowerMill.GetPowerMillParameter("segment_point_count(entity('toolpath', '" + Name + "'), " + segmentNumber + ")"));
             }
             throw new IndexOutOfRangeException(
                 $"{segmentNumber} is greater than the {numberOfSegments} segments in this toolpath.");
@@ -486,8 +482,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     double.Parse(
-                        PowerMill.DoCommandEx("print par terse ${segment_get_length(entity('toolpath', '" + Name + "'), " +
-                                              segmentNumber + ")}").ToString());
+                        PowerMill.GetPowerMillParameter("segment_get_length(entity('toolpath', '" + Name + "'), " + segmentNumber + ")"));
             }
             throw new IndexOutOfRangeException(
                 $"{segmentNumber} is greater than the {numberOfSegments} segments in this toolpath.");
@@ -504,15 +499,12 @@ namespace Autodesk.ProductInterface.PowerMILL
             var numberOfPoints = NumberOfPointsInSegment(segmentNumber);
             if (pointNumber < numberOfPoints)
             {
-                var x = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").Position.X}").ToString());
-                var y = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").Position.Y}").ToString());
-                var z = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").Position.Z}").ToString());
+                var x = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").Position.X"));
+                var y = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").Position.Y"));
+                var z = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").Position.Z"));
                 return new Point(x, y, z);
             }
             throw new IndexOutOfRangeException(
@@ -530,15 +522,12 @@ namespace Autodesk.ProductInterface.PowerMILL
             var numberOfPoints = NumberOfPointsInSegment(segmentNumber);
             if (pointNumber < numberOfPoints)
             {
-                var i = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").ToolAxis[0]}").ToString());
-                var j = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").ToolAxis[1]}").ToString());
-                var k = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").ToolAxis[2]}").ToString());
+                var i = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").ToolAxis[0]"));
+                var j = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").ToolAxis[1]"));
+                var k = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").ToolAxis[2]"));
                 return new Vector(i, j, k);
             }
             throw new IndexOutOfRangeException(
@@ -556,18 +545,12 @@ namespace Autodesk.ProductInterface.PowerMILL
             var numberOfPoints = NumberOfPointsInSegment(segmentNumber);
             if (pointNumber < numberOfPoints)
             {
-                var i = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").OrientationVector[0]}")
-                                              .ToString());
-                var j = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").OrientationVector[1]}")
-                                              .ToString());
-                var k = double.Parse(PowerMill.DoCommandEx("print par terse ${segment_get_point(entity('toolpath', '" + Name +
-                                                           "'), " +
-                                                           segmentNumber + ", " + pointNumber + ").OrientationVector[2]}")
-                                              .ToString());
+                var i = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").OrientationVector[0]"));
+                var j = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").OrientationVector[1]"));
+                var k = double.Parse(
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").OrientationVector[2]"));
                 return new Vector(i, j, k);
             }
             throw new IndexOutOfRangeException(
@@ -582,8 +565,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return int.Parse(
-                    PowerMill.DoCommandEx("print par terse ${toolpath_component_count('toolpath', '" + Name + "', 'leads')}")
-                             .ToString());
+                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', '" + Name + "', 'leads')"));
             }
         }
 
@@ -595,8 +577,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return int.Parse(
-                    PowerMill.DoCommandEx("print par terse ${toolpath_component_count('toolpath', '" + Name + "', 'links')}")
-                             .ToString());
+                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', '" + Name + "', 'links')"));
             }
         }
 

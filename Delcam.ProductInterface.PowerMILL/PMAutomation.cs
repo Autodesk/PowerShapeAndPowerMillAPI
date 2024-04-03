@@ -9,8 +9,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Xml;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
@@ -556,7 +558,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 //Read the current units from PowerMILL
-                string strUnits = (string) DoCommandEx("PRINT PAR TERSE 'Units'");
+                string strUnits = GetPowerMillParameter("Units").Trim();
                 if (strUnits.ToLower() == "imperial")
                 {
                     return LengthUnits.Inches;
@@ -753,6 +755,62 @@ namespace Autodesk.ProductInterface.PowerMILL
 
         #endregion
 
+        #region Parameter Operations
+
+        /// <summary>
+        /// Runs the given command in PowerMILL.  It is a friend version equivalent to ExecuteEx
+        /// but does not give the obsolete warning.
+        /// </summary>
+        public string GetPowerMillEntityParameter(string pEntityType, string pEntityName, string pParameter)
+        {
+            var getParameterString = $"entity('{pEntityType}','{pEntityName}').{pParameter}";
+            var result = GetPowerMillParameter(getParameterString);
+            return result;
+        }
+
+        public T GetPowerMillEntityParameter<T>(string pEntityType, string pEntityName, string pParameter) where T: IConvertible
+        {
+            var getParameterString = $"entity('{pEntityType}','{pEntityName}').{pParameter}";
+            var result = GetPowerMillParameter<T>(getParameterString);
+            return result;
+        }
+
+        public string GetPowerMillParameter(string getParameterString)
+        {
+            var xmlResponse = GetPowerMillParameterXML(getParameterString);
+            if (xmlResponse == null) { return String.Empty; }
+            var rootNode = xmlResponse.DocumentElement;
+            var result = rootNode.InnerText;
+            return result;
+        }
+
+        public T GetPowerMillParameter<T>(string getParameterString) where T: IConvertible
+        {
+            var parameterString = GetPowerMillParameter(getParameterString);
+
+            if (typeof(T) == typeof(bool))
+            {
+                parameterString = parameterString == "1" ? "true" : "false";
+            }
+
+            var converter = TypeDescriptor.GetConverter(typeof(T));
+            return (T)converter.ConvertFromString(parameterString);
+        }
+
+        public XmlDocument GetPowerMillParameterXML(string getParameterString)
+        {
+            var xmlResponse = new XmlDocument();
+            var response = _powerMILL.GetParameterXML(getParameterString);
+            if (string.IsNullOrWhiteSpace(response))
+            {
+                return null;
+            }
+            xmlResponse.LoadXml(response);
+            return xmlResponse;
+        }
+
+        #endregion
+
         #region Dispose Code
 
         /// <summary>
@@ -837,7 +895,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <returns> returns true if the collision status = ON / returns false if the collision status = OFF</returns>
         public bool CheckCollisionStatus()
         {
-            var result = DoCommandEx(@"PRINT PAR terse 'simulationstate.issues.collisions.checkcollisions'").ToString();
+            var result = GetPowerMillParameter("simulationstate.issues.collisions.checkcollisions").Trim();
             if (!string.IsNullOrEmpty(result))
             {
                 return result == "1";
@@ -876,7 +934,7 @@ namespace Autodesk.ProductInterface.PowerMILL
     /// </summary>
     public bool GetOutputMetricSTL()
     {
-        return DoCommandEx("print $powermill.export.OutputMetricSTL").ToString() == "0";
+        return GetPowerMillParameter("powermill.export.OutputMetricSTL").Trim() == "0";
     }
 
     /// <summary>

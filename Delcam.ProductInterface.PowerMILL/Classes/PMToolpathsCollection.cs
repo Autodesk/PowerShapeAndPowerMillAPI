@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
@@ -68,16 +69,13 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void OrderByExplorer()
         {
             // Get the order of toolpaths as per their appearance in the explorer
-            var toolpathsReadout = _powerMILL.DoCommandEx("PRINT FOLDER 'TOOLPATH'").ToString();
-            // Remove by replacement all CRs
-            toolpathsReadout = toolpathsReadout.Replace(((char)13).ToString(), string.Empty);
-            // Split the collection by NL
-            var toolpathPaths = toolpathsReadout.Split((char)10);
-            // Take only the toolpath name element from each path that is not a folder
-            var toolpathOrder = (from toolpathPath in toolpathPaths
-                let toolpathPathSplit = toolpathPath.Split('\\')
-                where toolpathPathSplit.Last() != string.Empty
-                select toolpathPathSplit.Last()).ToList();
+            var toolpathOrder = new List<string>();
+            var toolpathsXml = _powerMILL.GetPowerMillParameterXML("extract(folder('TOOLPATH'),'name')").GetElementsByTagName("string");
+            foreach (XmlNode toolpathNode in toolpathsXml)
+            {
+                toolpathOrder.Add(toolpathNode.InnerText);
+            }
+
             // Take a copy of "this" collection, ordered as per the occurrence of the toolpaths'
             // name in the order list
             var toolpathsOrdered = this.OrderBy(x => toolpathOrder.IndexOf(x.Name)).ToList();

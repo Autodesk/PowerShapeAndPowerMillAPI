@@ -26,7 +26,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         internal static PMBoundary CreateEntity(PMAutomation powerMILL, string name)
         {
             switch (
-                powerMILL.DoCommandEx("PRINT PAR TERSE \"entity('boundary', '" + name + "').type\"").ToString().Trim())
+                powerMILL.GetPowerMillEntityParameter("boundary", name ,"type").Trim())
             {
                 case "block":
                     return new PMBoundaryBlock(powerMILL, name);

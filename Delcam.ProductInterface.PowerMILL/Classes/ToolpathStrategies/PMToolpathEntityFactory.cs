@@ -26,9 +26,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         internal static PMToolpath CreateEntity(PMAutomation powerMILL, string name)
         {
             switch (
-                powerMILL.DoCommandEx("PRINT PAR TERSE \"entity('toolpath', '" + name + "').strategy\"")
-                         .ToString()
-                         .Trim())
+                        powerMILL.GetPowerMillEntityParameter("toolpath", name, "strategy").Trim())
             {
                 case "raster":
                     return new PMToolpathRasterFinishing(powerMILL, name);

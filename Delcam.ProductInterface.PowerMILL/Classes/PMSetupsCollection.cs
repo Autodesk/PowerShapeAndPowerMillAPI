@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
@@ -52,27 +53,12 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <returns>The list of the names of all the Setups in PowerMILL.</returns>
         internal List<string> ReadSetups()
         {
-            string[] items;
             var names = new List<string>();
-
-            items = ((string)_powerMILL.DoCommandEx("PRINT ENTITY " + PMSetup.SETUP_IDENTIFIER)).Split(
-                new[] { "\r\n" },
-                StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 1; i < items.Length; i++)
+            var SetupsXml = _powerMILL.GetPowerMillParameterXML("extract(folder('" + PMSetup.SETUP_IDENTIFIER + "'),'name')").GetElementsByTagName("string");
+            foreach (XmlNode SetupNode in SetupsXml)
             {
-                var name = "";
-                var index = items[i].IndexOf("'") + 1;
-                if (index > 0)
-                {
-                    name = items[i].Substring(index, items[i].LastIndexOf("'") - index);
-                }
-
-                if (!string.IsNullOrWhiteSpace(name))
-                {
-                    names.Add(name);
-                }
+                names.Add(SetupNode.InnerText);
             }
-
             return names;
         }
 

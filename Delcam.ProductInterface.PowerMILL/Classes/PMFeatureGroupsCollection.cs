@@ -9,6 +9,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Xml;
 
 namespace Autodesk.ProductInterface.PowerMILL
 {
@@ -52,27 +54,12 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <returns>The list of the names of all the FeatureGroups in PowerMILL.</returns>
         internal List<string> ReadFeatureGroups()
         {
-            string[] items;
             var names = new List<string>();
-
-            items = ((string) _powerMILL.DoCommandEx("PRINT ENTITY " + PMFeatureGroup.FEATUREGROUP_IDENTIFIER)).Split(
-                new[] {"\r\n"},
-                StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 1; i < items.Length; i++)
+            var featureGroupsXml = _powerMILL.GetPowerMillParameterXML("extract(folder('" + PMFeatureGroup.FEATUREGROUP_IDENTIFIER + "'),'name')").GetElementsByTagName("string");
+            foreach (XmlNode featureGroupNode in featureGroupsXml)
             {
-                var name = "";
-                var index = items[i].IndexOf("'") + 1;
-                if (index > 0)
-                {
-                    name = items[i].Substring(index, items[i].LastIndexOf("'") - index);
-                }
-
-                if (!string.IsNullOrWhiteSpace(name))
-                {
-                    names.Add(name);
-                }
+                names.Add(featureGroupNode.InnerText);
             }
-
             return names;
         }
 

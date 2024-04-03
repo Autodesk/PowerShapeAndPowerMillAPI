@@ -68,9 +68,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     Convert.ToDouble(
-                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').length\"")
-                                 .ToString()
-                                 .Trim());
+                        PowerMill.GetPowerMillEntityParameter("tool", Name, "length").Trim());
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" LENGTH \"" + value + "\"", "TOOL ACCEPT"); }
         }
@@ -84,9 +82,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     Convert.ToInt32(
-                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').number\"")
-                                 .ToString()
-                                 .Trim());
+                        PowerMill.GetPowerMillEntityParameter("tool", Name, "number").Trim());
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" NUMBER " + value, "TOOL ACCEPT"); }
         }
@@ -100,9 +96,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     Convert.ToInt32(
-                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').flutes\"")
-                                 .ToString()
-                                 .Trim());
+                        PowerMill.GetPowerMillEntityParameter("tool", Name, "flutes").Trim());
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" NUM_FLUTES \"" + value + "\"", "TOOL ACCEPT"); }
         }
@@ -116,9 +110,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     Convert.ToDouble(
-                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').diameter\"")
-                                 .ToString()
-                                 .Trim());
+                        PowerMill.GetPowerMillEntityParameter("tool", Name, "diameter").Trim());
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" DIAMETER \"" + value + "\"", "TOOL ACCEPT"); }
         }
@@ -132,9 +124,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     Convert.ToDouble(
-                        PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').overhang\"")
-                                 .ToString()
-                                 .Trim());
+                        PowerMill.GetPowerMillEntityParameter("tool", Name, "overhang").Trim());
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" OVERHANG " + value, "TOOL ACCEPT"); }
         }
@@ -147,7 +137,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return
-                    PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').description\"").ToString();
+                        PowerMill.GetPowerMillEntityParameter("tool", Name, "description").Trim();
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" DESCRIPTION \"" + value + "\"", "TOOL ACCEPT"); }
         }
@@ -160,7 +150,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return
-                    PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').holdername\"").ToString();
+                    PowerMill.GetPowerMillEntityParameter("tool", Name, "holdername").Trim();
             }
             set { PowerMill.DoCommand("EDIT TOOL \"" + Name + "\" HOLDER_NAME \"" + value + "\"", "TOOL ACCEPT"); }
         }
@@ -172,7 +162,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             get
             {
-                switch (PowerMill.DoCommandEx("PRINT PAR terse \"entity('tool', '" + Name + "').coolant\"").ToString()
+                switch (PowerMill.GetPowerMillEntityParameter("tool", Name, "coolant").Trim()
                 )
                 {
                     case "none":
@@ -242,8 +232,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 }
                 return
                     Convert.ToInt32(
-                        PowerMill.DoCommandEx("PRINT par terse \"size(entity('tool','" + Name + "').shanksetvalues)\"")
-                                 .ToString());
+                        PowerMill.GetPowerMillParameter("size(entity('tool','" + Name + "').shanksetvalues)"));
             }
         }
 
@@ -258,9 +247,8 @@ namespace Autodesk.ProductInterface.PowerMILL
                     "Shank elementes are not available for this version of PowerMILL.  PowerMILL 15 or greater is required");
             }
             string result =
-                PowerMill.DoCommandEx("PRINT par terse \"entity('tool','" + Name + "').shanksetvalues[" + index +
-                                      "].upperdiameter\"").ToString();
-            if (result.Contains("#ERROR"))
+                PowerMill.GetPowerMillEntityParameter("tool", Name, "shanksetvalues[" + index + "].upperdiameter");
+            if (string.IsNullOrWhiteSpace(result) || result.Contains("#ERROR"))
             {
                 throw new IndexOutOfRangeException(
                     "The specified index is greater than the number of elements in the shank");
@@ -279,9 +267,8 @@ namespace Autodesk.ProductInterface.PowerMILL
                     "Shank elementes are not available for this version of PowerMILL.  PowerMILL 15 or greater is required");
             }
             string result =
-                PowerMill.DoCommandEx("PRINT par terse \"entity('tool','" + Name + "').shanksetvalues[" + index +
-                                      "].lowerdiameter\"").ToString();
-            if (result.Contains("#ERROR"))
+                PowerMill.GetPowerMillEntityParameter("tool", Name, "shanksetvalues[" + index + "].lowerdiameter");
+            if (string.IsNullOrWhiteSpace(result) || result.Contains("#ERROR"))
             {
                 throw new IndexOutOfRangeException(
                     "The specified index is greater than the number of elements in the shank");
@@ -300,9 +287,8 @@ namespace Autodesk.ProductInterface.PowerMILL
                     "Shank elementes are not available for this version of PowerMILL.  PowerMILL 15 or greater is required");
             }
             string result =
-                PowerMill.DoCommandEx("PRINT par terse \"entity('tool','" + Name + "').shanksetvalues[" + index +
-                                      "].length\"").ToString();
-            if (result.Contains("#ERROR"))
+                PowerMill.GetPowerMillEntityParameter("tool", Name, "shanksetvalues[" + index + "].length");
+            if (string.IsNullOrWhiteSpace(result) || result.Contains("#ERROR"))
             {
                 throw new IndexOutOfRangeException(
                     "The specified index is greater than the number of elements in the shank");
@@ -324,8 +310,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 }
                 return
                     Convert.ToInt32(
-                        PowerMill.DoCommandEx("PRINT par terse \"size(entity('tool','" + Name + "').holdersetvalues)\"")
-                                 .ToString());
+                        PowerMill.GetPowerMillParameter("size(entity('tool','" + Name + "').holdersetvalues)"));
             }
         }
 
@@ -340,9 +325,8 @@ namespace Autodesk.ProductInterface.PowerMILL
                     "Holder elements are not available for this version of PowerMILL.  PowerMILL 15 or greater is required");
             }
             string result =
-                PowerMill.DoCommandEx("PRINT par terse \"entity('tool','" + Name + "').holdersetvalues[" + index +
-                                      "].upperdiameter\"").ToString();
-            if (result.Contains("#ERROR"))
+                PowerMill.GetPowerMillEntityParameter("tool", Name, "holdersetvalues[" + index + "].upperdiameter");
+            if (string.IsNullOrWhiteSpace(result) || result.Contains("#ERROR"))
             {
                 throw new IndexOutOfRangeException(
                     "The specified index is greater than the number of elements in the holder");
@@ -361,9 +345,8 @@ namespace Autodesk.ProductInterface.PowerMILL
                     "Holder elementes are not available for this version of PowerMILL.  PowerMILL 15 or greater is required");
             }
             string result =
-                PowerMill.DoCommandEx("PRINT par terse \"entity('tool','" + Name + "').holdersetvalues[" + index +
-                                      "].lowerdiameter\"").ToString();
-            if (result.Contains("#ERROR"))
+                PowerMill.GetPowerMillEntityParameter("tool", Name, "holdersetvalues[" + index + "].lowerdiameter");
+            if (string.IsNullOrWhiteSpace(result) || result.Contains("#ERROR"))
             {
                 throw new IndexOutOfRangeException(
                     "The specified index is greater than the number of elements in the holder");
@@ -382,9 +365,8 @@ namespace Autodesk.ProductInterface.PowerMILL
                     "Holder elementes are not available for this version of PowerMILL.  PowerMILL 15 or greater is required");
             }
             string result =
-                PowerMill.DoCommandEx("PRINT par terse \"entity('tool','" + Name + "').holdersetvalues[" + index +
-                                      "].length\"").ToString();
-            if (result.Contains("#ERROR"))
+                PowerMill.GetPowerMillEntityParameter("tool", Name, "holdersetvalues[" + index + "].length");
+            if (string.IsNullOrWhiteSpace(result) || result.Contains("#ERROR"))
             {
                 throw new IndexOutOfRangeException(
                     "The specified index is greater than the number of elements in the holder");

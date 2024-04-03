@@ -22,7 +22,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <returns>The new tool instance</returns>
         internal static PMTool CreateEntity(PMAutomation powerMILL, string name)
         {
-            var result = powerMILL.DoCommandEx("PRINT PAR terse \"entity('tool', '" + name + "').type\"").ToString().Trim();
+            var result = powerMILL.GetPowerMillEntityParameter("tool", name, "type").Trim();
             switch (result)
             {
                 case "end_mill":
