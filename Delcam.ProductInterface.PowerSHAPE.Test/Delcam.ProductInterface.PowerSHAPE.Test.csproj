@@ -102,6 +102,7 @@
     <Compile Include="DatabaseEntity Tests\Entity Tests\ElectrodeTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\PointTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\Solid Tests\Primitive Tests\SphereTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Solid Tests\SolidPrimitiveTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\SolidTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\BlockTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\ConeTest.cs" />
@@ -186,9 +187,17 @@
     <None Include="Files\SingleMesh.dmt" />
     <None Include="Files\Solid.dgk" />
     <None Include="Files\Solid.x_b" />
+    <None Include="Files\SolidBlock.dgk" />
+    <None Include="Files\SolidCone.dgk" />
+    <None Include="Files\SolidCylinder.dgk" />
     <None Include="Files\SolidDisconnected.dgk" />
+    <None Include="Files\SolidExtrusion.dgk" />
     <None Include="Files\SolidOpen.dgk" />
+    <None Include="Files\SolidRevolution.dgk" />
+    <None Include="Files\SolidSphere.dgk" />
+    <None Include="Files\SolidSpring.dgk" />
     <None Include="Files\SolidToRemove.dgk" />
+    <None Include="Files\SolidTorus.dgk" />
     <None Include="Files\SolidToWrapOnto.dgk" />
     <None Include="Files\Stitch.dgk" />
     <None Include="Files\Stitch.psmodel" />
