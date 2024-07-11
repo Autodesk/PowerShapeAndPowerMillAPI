@@ -14,7 +14,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid cylinder in PowerSHAPE
     /// </summary>
-    public class PSSolidCylinder : PSSolid
+    public class PSSolidCylinder : PSSolidPrimitive
     {
         #region " Fields "
 

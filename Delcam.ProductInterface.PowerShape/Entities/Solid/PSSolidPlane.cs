@@ -14,7 +14,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid plane in PowerSHAPE
     /// </summary>
-    public class PSSolidPlane : PSSolid
+    public class PSSolidPlane : PSSolidPrimitive
     {
         #region " Fields "
 

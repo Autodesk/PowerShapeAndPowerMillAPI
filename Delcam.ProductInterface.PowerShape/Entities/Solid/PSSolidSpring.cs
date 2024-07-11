@@ -14,7 +14,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid spring in PowerSHAPE
     /// </summary>
-    public class PSSolidSpring : PSSolid
+    public class PSSolidSpring : PSSolidPrimitive
     {
         #region " Fields "
 

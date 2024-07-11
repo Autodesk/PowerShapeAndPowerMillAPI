@@ -14,7 +14,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid cone in PowerSHAPE
     /// </summary>
-    public class PSSolidCone : PSSolid
+    public class PSSolidCone : PSSolidPrimitive
     {
         #region " Fields "
 

@@ -14,7 +14,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid block in PowerSHAPE
     /// </summary>
-    public class PSSolidBlock : PSSolid
+    public class PSSolidBlock : PSSolidPrimitive
     {
         #region " Fields "
 
