@@ -1,5 +1,5 @@
-// **********************************************************************
-// *         � COPYRIGHT 2018 Autodesk, Inc.All Rights Reserved         *
+﻿// **********************************************************************
+// *         © COPYRIGHT 2024 Autodesk, Inc.All Rights Reserved         *
 // *                                                                    *
 // *  Use of this software is subject to the terms of the Autodesk      *
 // *  license agreement provided at the time of installation            *
@@ -12,7 +12,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Base class for PowerSHAPE primitives
     /// </summary>
-    public abstract class PSPrimitive : PSSurface, IPSPrimitive
+    public abstract class PSSolidPrimitive : PSSolid, IPSPrimitive
     {
         #region " Fields "
 
@@ -20,11 +20,11 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
         #region " Constructors "
 
-        internal PSPrimitive(PSAutomation powerSHAPE) : base(powerSHAPE)
+        internal PSSolidPrimitive(PSAutomation powerSHAPE) : base(powerSHAPE)
         {
         }
 
-        internal PSPrimitive(PSAutomation powerSHAPE, int id, string name) : base(powerSHAPE, id, name)
+        internal PSSolidPrimitive(PSAutomation powerSHAPE, int id, string name) : base(powerSHAPE, id, name)
         {
         }
 
