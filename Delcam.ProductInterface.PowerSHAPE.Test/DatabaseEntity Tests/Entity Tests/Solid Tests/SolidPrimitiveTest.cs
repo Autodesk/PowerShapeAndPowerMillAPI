@@ -19,58 +19,9 @@ namespace Autodesk.ProductInterface.PowerSHAPETest
     /// to contain all SolidPrimitiveTest Unit Tests
     /// </summary>
     [TestFixture]
-    public class SolidPrimitiveTest: EntityTest<PSSolidPrimitive>
+    public class SolidPrimitiveTest
     {
-        /// <summary>
-        /// A test for Origin
-        /// </summary>
-        [Test]
-        public void OriginTest()
-        {
-            //Automation powerSHAPE = null; // TODO: Initialize to an appropriate value
-            //Primitive target = new Primitive(powerSHAPE); // TODO: Initialize to an appropriate value
-            //Point actual;
-            //actual = target.Origin;
-            //Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        /// A test for XAXis
-        /// </summary>
-        [Test]
-        public void XAXisTest()
-        {
-            //Automation powerSHAPE = null; // TODO: Initialize to an appropriate value
-            //Primitive target = new Primitive(powerSHAPE); // TODO: Initialize to an appropriate value
-            //Vector actual;
-            //actual = target.XAXis;
-            //Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        /// A test for YAxis
-        /// </summary>
-        [Test]
-        public void YAxisTest()
-        {
-            //Automation powerSHAPE = null; // TODO: Initialize to an appropriate value
-            //Primitive target = new Primitive(powerSHAPE); // TODO: Initialize to an appropriate value
-            //Vector actual;
-            //actual = target.YAxis;
-            //Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        /// A test for ZXais
-        /// </summary>
-        [Test]
-        public void ZXaisTest()
-        {
-            //Automation powerSHAPE = null; // TODO: Initialize to an appropriate value
-            //Primitive target = new Primitive(powerSHAPE); // TODO: Initialize to an appropriate value
-            //Vector actual;
-            //actual = target.ZXais;
-            //Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+        //TODO: Unify testing of PSPrimitive and PSSolidPrimitive as implementations of IPSPrimitive
+        //NOTE: _SolidExtrusion.dgk will not import as a primitive, despite being created as such
     }
 }
