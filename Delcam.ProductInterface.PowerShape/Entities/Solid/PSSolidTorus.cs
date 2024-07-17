@@ -12,7 +12,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid torus in PowerSHAPE
     /// </summary>
-    public class PSSolidTorus : PSSolid
+    public class PSSolidTorus : PSSolidPrimitive
     {
         #region " Fields "
 

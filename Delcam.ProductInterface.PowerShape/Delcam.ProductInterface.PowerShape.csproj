@@ -83,6 +83,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Solid\PSSolidPrimitive.cs" />
     <Compile Include="Entities\Wireframe\CompCurve\PSCompCurvesCollection.cs" />
     <Compile Include="Entities\Wireframe\Curve\PSCurvesCollection.cs" />
     <Compile Include="Entities\Annotation\PSAnnotationsCollection.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="Entities\Mesh\MeshDoctorFixOptions.cs" />
     <Compile Include="Entities\Mesh\MeshDoctorRepairTypes.cs" />
     <Compile Include="Entities\Workplane\NewWorkplaneInEntityPositions.cs" />
+    <Compile Include="Helpers\Primitive\IPSPrimitive.cs" />
     <Compile Include="PSAutomation\Modes.cs" />
     <Compile Include="PSAutomation\MultipleViewAngles.cs" />
     <Compile Include="PSAutomation\OptionsSections.cs" />

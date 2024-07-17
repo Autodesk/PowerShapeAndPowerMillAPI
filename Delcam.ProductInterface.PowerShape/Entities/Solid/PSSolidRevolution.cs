@@ -14,7 +14,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid revolution in PowerSHAPE
     /// </summary>
-    public class PSSolidRevolution : PSSolid
+    public class PSSolidRevolution : PSSolidPrimitive
     {
         #region " Fields "
 

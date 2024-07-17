@@ -14,7 +14,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid sphere in PowerSHAPE
     /// </summary>
-    public class PSSolidSphere : PSSolid
+    public class PSSolidSphere : PSSolidPrimitive
     {
         #region " Fields "
 

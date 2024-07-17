@@ -14,7 +14,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
     /// <summary>
     /// Captures a solid extrusion in PowerSHAPE
     /// </summary>
-    public class PSSolidExtrusion : PSSolid
+    public class PSSolidExtrusion : PSSolidPrimitive
     {
         #region " Fields "
 

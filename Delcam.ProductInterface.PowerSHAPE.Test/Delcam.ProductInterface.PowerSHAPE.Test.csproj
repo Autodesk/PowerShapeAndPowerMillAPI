@@ -102,6 +102,7 @@
     <Compile Include="DatabaseEntity Tests\Entity Tests\ElectrodeTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\PointTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\Solid Tests\Primitive Tests\SphereTest.cs" />
+    <Compile Include="DatabaseEntity Tests\Entity Tests\Solid Tests\SolidPrimitiveTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\SolidTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\BlockTest.cs" />
     <Compile Include="DatabaseEntity Tests\Entity Tests\Surface Tests\Primitive Tests\ConeTest.cs" />
@@ -186,9 +187,17 @@
     <None Include="Files\SingleMesh.dmt" />
     <None Include="Files\Solid.dgk" />
     <None Include="Files\Solid.x_b" />
+    <None Include="Files\PrimitiveSolids\SolidBlock.dgk" />
+    <None Include="Files\PrimitiveSolids\SolidCone.dgk" />
+    <None Include="Files\PrimitiveSolids\SolidCylinder.dgk" />
     <None Include="Files\SolidDisconnected.dgk" />
+    <None Include="Files\PrimitiveSolids\_SolidExtrusion.dgk" />
     <None Include="Files\SolidOpen.dgk" />
+    <None Include="Files\PrimitiveSolids\SolidRevolution.dgk" />
+    <None Include="Files\PrimitiveSolids\SolidSphere.dgk" />
+    <None Include="Files\PrimitiveSolids\SolidSpring.dgk" />
     <None Include="Files\SolidToRemove.dgk" />
+    <None Include="Files\PrimitiveSolids\SolidTorus.dgk" />
     <None Include="Files\SolidToWrapOnto.dgk" />
     <None Include="Files\Stitch.dgk" />
     <None Include="Files\Stitch.psmodel" />
@@ -265,5 +274,6 @@
       <Name>Delcam.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
