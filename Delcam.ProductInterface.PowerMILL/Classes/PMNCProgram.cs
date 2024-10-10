@@ -62,7 +62,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             }
             set
             {
-                string cmd = string.Format("EDIT NCPROGRAM '{0}' FILENAME FILESAVE \"{1}\"", Name, value);
+                string cmd = string.Format("EDIT NCPROGRAM \"{0}\" FILENAME FILESAVE \"{1}\"", Name, value);
                 PowerMill.DoCommand(cmd);
             }
         }
@@ -76,7 +76,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return PowerMill.GetPowerMillEntityParameter("NCPROGRAM", Name, "OptionName").Trim();
             }
-            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM '{0}' TAPEOPTIONS \"{1}\"", Name, value)); }
+            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM \"{0}\" TAPEOPTIONS \"{1}\"", Name, value)); }
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return PowerMill.GetPowerMillEntityParameter("NCPROGRAM", Name, "OutputWorkplane.Name").Trim();
             }
-            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM '{0}' SET WORKPLANE \"{1}\"", Name, value)); }
+            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM \"{0}\" SET WORKPLANE \"{1}\"", Name, value)); }
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 int number = int.Parse(result);
                 return number;
             }
-            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM '{0}' NUMBER \"{1}\"", Name, value)); }
+            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM \"{0}\" NUMBER \"{1}\"", Name, value)); }
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return PowerMill.GetPowerMillEntityParameter("NCPROGRAM", Name, "PartName").Trim();
             }
-            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM '{0}' PARTNAME \"{1}\"", Name, value)); }
+            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM \"{0}\" PARTNAME \"{1}\"", Name, value)); }
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 string result = PowerMill.GetPowerMillEntityParameter("NCPROGRAM", Name, "CoordinateType").Trim();
                 return (ToolValues) Enum.Parse(typeof(ToolValues), result, true);
             }
-            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM '{0}' TOOLCOORDS {1}", Name, value)); }
+            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM \"{0}\" TOOLCOORDS {1}", Name, value)); }
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 List<PMToolpath> returnToolpaths = new List<PMToolpath>();
-                var toolpathListXML = PowerMill.GetPowerMillParameterXML("extract(filter(components(entity('ncprogram','" + Name + "')),\"RootType == 'nctoolpath'\"),'name')").GetElementsByTagName("string");
+                var toolpathListXML = PowerMill.GetPowerMillParameterXML("extract(filter(components(entity('ncprogram',\"" + Name + "\")),\"RootType == 'nctoolpath'\"),'name')").GetElementsByTagName("string");
                 foreach (XmlElement toolpathNode in toolpathListXML)
                 {
                     returnToolpaths.Add(PowerMill.ActiveProject.Toolpaths.GetByName(toolpathNode.InnerText.Trim()));
@@ -161,7 +161,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 }
                 return (ToolChanges) Enum.Parse(typeof(ToolChanges), result, true);
             }
-            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM '{0}' TOOLCHANGE {1}", Name, value)); }
+            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM \"{0}\" TOOLCHANGE {1}", Name, value)); }
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 string result = PowerMill.GetPowerMillEntityParameter("NCPROGRAM", Name, "ToolNumberCalculation").Trim();
                 return (ToolNumberings) Enum.Parse(typeof(ToolNumberings), result, true);
             }
-            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM '{0}' LOADTOOL {1}", Name, value)); }
+            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM \"{0}\" LOADTOOL {1}", Name, value)); }
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 string result = PowerMill.GetPowerMillEntityParameter("NCPROGRAM", Name, "ToolChangePosition").Trim();
                 return (ToolChangePositions) Enum.Parse(typeof(ToolChangePositions), result, true);
             }
-            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM '{0}' CHANGE {1}", Name, value)); }
+            set { PowerMill.DoCommand(string.Format("EDIT NCPROGRAM \"{0}\" CHANGE {1}", Name, value)); }
         }
 
         #endregion
@@ -209,7 +209,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="position">The toolpath position on the NC program.</param>
         private void AddToolpathAtPosition(string toolpathName, string position)
         {
-            PowerMill.DoCommand("EDIT NCPROGRAM '" + Name + "' INSERT Toolpath '" + toolpathName + "' " + position);
+            PowerMill.DoCommand("EDIT NCPROGRAM \"" + Name + "\" INSERT Toolpath \"" + toolpathName + "\" " + position);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <remarks></remarks>
         public void RemoveToolpath(string toolpathName)
         {
-            PowerMill.DoCommand("EDIT NCPROGRAM '" + Name + "' TOOLPATH '" + toolpathName + "' DELETE");
+            PowerMill.DoCommand("EDIT NCPROGRAM \"" + Name + "\" TOOLPATH \"" + toolpathName + "\" DELETE");
         }
 
         /// <summary>

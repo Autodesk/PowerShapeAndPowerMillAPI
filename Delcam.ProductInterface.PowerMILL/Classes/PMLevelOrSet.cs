@@ -55,11 +55,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 if (value)
                 {
-                    PowerMill.DoCommand("DRAW LEVEL '" + Name + "'");
+                    PowerMill.DoCommand("DRAW LEVEL \"" + Name + "\"");
                 }
                 else
                 {
-                    PowerMill.DoCommand("UNDRAW LEVEL '" + Name + "'");
+                    PowerMill.DoCommand("UNDRAW LEVEL \"" + Name + "\"");
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <remarks></remarks>
         public void SelectAll()
         {
-            PowerMill.DoCommand("EDIT LEVEL '" + Name + "' SELECT ALL");
+            PowerMill.DoCommand("EDIT LEVEL \"" + Name + "\" SELECT ALL");
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <remarks></remarks>
         public void SelectWireframe()
         {
-            PowerMill.DoCommand("EDIT LEVEL '" + Name + "' SELECT WIREFRAME");
+            PowerMill.DoCommand("EDIT LEVEL \"" + Name + "\" SELECT WIREFRAME");
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <remarks></remarks>
         public void SelectSurfaces()
         {
-            PowerMill.DoCommand("EDIT LEVEL '" + Name + "' SELECT SURFACE");
+            PowerMill.DoCommand("EDIT LEVEL \"" + Name + "\" SELECT SURFACE");
         }
 
         #endregion

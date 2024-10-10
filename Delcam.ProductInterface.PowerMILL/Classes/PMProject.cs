@@ -130,11 +130,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             _projectDirectory = projectDirectory;
             if (openReadOnly)
             {
-                _powerMILL.DoCommand("PROJECT READONLY OPEN '" + projectDirectory.Path + "'");
+                _powerMILL.DoCommand("PROJECT READONLY OPEN \"" + projectDirectory.Path + "\"");
             }
             else
             {
-                _powerMILL.DoCommand("PROJECT OPEN '" + projectDirectory.Path + "'");
+                _powerMILL.DoCommand("PROJECT OPEN \"" + projectDirectory.Path + "\"");
             }
             Initialise();
         }
@@ -486,7 +486,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {                      
             if (file.Extension.ToLower() == "dmt" || file.Extension.ToLower() == "stl")
             {
-                _powerMILL.DoCommand("EXPORT BLOCK ; '" + file + "' YES");
+                _powerMILL.DoCommand("EXPORT BLOCK ; \"" + file + "\" YES");
             }
             else
             {
@@ -712,7 +712,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void SaveAs(Directory projectDirectory)
         {
             _projectDirectory = projectDirectory;
-            _powerMILL.DoCommand("PROJECT SAVE AS '" + _projectDirectory.Path + "'");
+            _powerMILL.DoCommand("PROJECT SAVE AS \"" + _projectDirectory.Path + "\"");
         }
 
         #endregion

@@ -74,7 +74,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 throw new IndexOutOfRangeException("Current number of items is " + Count);
             }
-            _powerMILL.DoCommand("DELETE " + this[index].Identifier + " '" + this[index].Name + "'");
+            _powerMILL.DoCommand("DELETE " + this[index].Identifier + " \"" + this[index].Name + "\"");
             base.RemoveAt(index);
         }
 
@@ -87,7 +87,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             if (Contains(entity))
             {
-                _powerMILL.DoCommand("DELETE " + entity.Identifier + " '" + entity.Name + "'");
+                _powerMILL.DoCommand("DELETE " + entity.Identifier + " \"" + entity.Name + "\"");
             }
             return base.Remove(entity);
         }
@@ -103,11 +103,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 if (useNoQuibble)
                 {
-                    _powerMILL.DoCommand("DELETE " + entity.Identifier + " '" + entity.Name + "' NOQUIBBLE");
+                    _powerMILL.DoCommand("DELETE " + entity.Identifier + " \"" + entity.Name + "\" NOQUIBBLE");
                 }
                 else
                 {
-                    _powerMILL.DoCommand("DELETE " + entity.Identifier + " '" + entity.Name + "'");
+                    _powerMILL.DoCommand("DELETE " + entity.Identifier + " \"" + entity.Name + "\"");
                 }
             }
             return base.Remove(entity);
@@ -120,7 +120,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             foreach (T entity in this)
             {
-                _powerMILL.DoCommand("DELETE " + entity.Identifier + " '" + entity.Name + "'");
+                _powerMILL.DoCommand("DELETE " + entity.Identifier + " \"" + entity.Name + "\"");
             }
             base.Clear();
         }
@@ -159,7 +159,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 {
                     if (GetByName(basePrefix) != null)
                     {
-                        return _powerMILL.GetPowerMillParameter("new_entity_name('" + this[0].Identifier + "','" + basePrefix + "')");
+                        return _powerMILL.GetPowerMillParameter("new_entity_name('" + this[0].Identifier + "',\"" + basePrefix + "\")");
                     }
                     return basePrefix;
                 }

@@ -90,7 +90,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 // Get the name PowerMILL gave to the last boundary
                 newBoundary = (PMBoundary) _powerMILL.ActiveProject.CreatedItems(typeof(PMBoundary)).Last();
                 Add(newBoundary);
-                _powerMILL.DoCommand("EDIT BOUNDARY '" + newBoundary.Name + "' INSERT FILE '" + file.Path + "'");
+                _powerMILL.DoCommand("EDIT BOUNDARY \"" + newBoundary.Name + "\" INSERT FILE \"" + file.Path + "\"");
             }
             return newBoundary;
         }

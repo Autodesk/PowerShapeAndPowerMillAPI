@@ -232,7 +232,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 }
                 return
                     Convert.ToInt32(
-                        PowerMill.GetPowerMillParameter("size(entity('tool','" + Name + "').shanksetvalues)"));
+                        PowerMill.GetPowerMillParameter("size(entity('tool',\"" + Name + "\").shanksetvalues)"));
             }
         }
 
@@ -310,7 +310,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 }
                 return
                     Convert.ToInt32(
-                        PowerMill.GetPowerMillParameter("size(entity('tool','" + Name + "').holdersetvalues)"));
+                        PowerMill.GetPowerMillParameter("size(entity('tool',\"" + Name + "\").holdersetvalues)"));
             }
         }
 

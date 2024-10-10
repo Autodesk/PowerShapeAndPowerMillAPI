@@ -69,7 +69,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 {
                     value = 100;
                 }
-                PowerMill.DoCommand("EDIT MODEL '" + Name + "' TRANSLUCENCY " + value);
+                PowerMill.DoCommand("EDIT MODEL \"" + Name + "\" TRANSLUCENCY " + value);
             }
         }
 
@@ -131,7 +131,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 PowerMill.DoCommand("DEACTIVATE WORKPLANE");
             }
-            PowerMill.DoCommand("EXPORT MODEL '" + Name + "' '" + file.Path + "'");
+            PowerMill.DoCommand("EXPORT MODEL \"" + Name + "\" \"" + file.Path + "\"");
         }
 
         /// <summary>
@@ -167,13 +167,13 @@ namespace Autodesk.ProductInterface.PowerMILL
             switch (plane)
             {
                 case Planes.XY:
-                    PowerMill.DoCommand("TRANSFORM TYPE SCALEZ TRANSFORM SCALEVALUE -1 TRANSFORM MODEL '" + Name + "'");
+                    PowerMill.DoCommand("TRANSFORM TYPE SCALEZ TRANSFORM SCALEVALUE -1 TRANSFORM MODEL \"" + Name + "\"");
                     break;
                 case Planes.ZX:
-                    PowerMill.DoCommand("TRANSFORM TYPE SCALEY TRANSFORM SCALEVALUE -1 TRANSFORM MODEL '" + Name + "'");
+                    PowerMill.DoCommand("TRANSFORM TYPE SCALEY TRANSFORM SCALEVALUE -1 TRANSFORM MODEL \"" + Name + "\"");
                     break;
                 case Planes.YZ:
-                    PowerMill.DoCommand("TRANSFORM TYPE SCALEX TRANSFORM SCALEVALUE -1 TRANSFORM MODEL '" + Name + "'");
+                    PowerMill.DoCommand("TRANSFORM TYPE SCALEX TRANSFORM SCALEVALUE -1 TRANSFORM MODEL \"" + Name + "\"");
                     break;
             }
         }
@@ -247,7 +247,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="file">The file to import.</param>
         public void Reimport(FileSystem.File file)
         {
-            PowerMill.DoCommand(string.Format("EDIT MODEL '{0}' REIMPORT '{1}'", Name, file.Path));
+            PowerMill.DoCommand(string.Format("EDIT MODEL \"{0}\" REIMPORT \"{1}\"", Name, file.Path));
         }
 
         #endregion

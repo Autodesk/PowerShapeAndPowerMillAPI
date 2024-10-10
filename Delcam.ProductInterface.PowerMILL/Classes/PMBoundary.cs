@@ -70,7 +70,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="toolpath">The toolpath to insert into this Boundary.</param>
         public void InsertToolpath(PMToolpath toolpath)
         {
-            PowerMill.DoCommand("EDIT BOUNDARY '" + Name + "' INSERT TOOLPATH \"" + toolpath.Name + "\"");
+            PowerMill.DoCommand("EDIT BOUNDARY \"" + Name + "\" INSERT TOOLPATH \"" + toolpath.Name + "\"");
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="file">The file to insert into this Boundary.</param>
         public void InsertFile(File file)
         {
-            PowerMill.DoCommand("EDIT BOUNDARY '" + Name + "' INSERT FILE \"" + file.Path + "\"");
+            PowerMill.DoCommand("EDIT BOUNDARY \"" + Name + "\" INSERT FILE \"" + file.Path + "\"");
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="file">The file to write to.</param>
         public void WriteToFile(File file)
         {
-            PowerMill.DoCommand("KEEP BOUNDARY '" + Name + "' FILESAVE \"" + file.Path + "\"");
+            PowerMill.DoCommand("KEEP BOUNDARY \"" + Name + "\" FILESAVE \"" + file.Path + "\"");
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             if (boundary == null || !boundary.Exists)
                 throw new ArgumentNullException("boundary", "Boundary not found");
 
-            PowerMill.DoCommand("EDIT BOUNDARY '" + Name + "' INSERT BOUNDARY '" + boundary.Name + "'");
+            PowerMill.DoCommand("EDIT BOUNDARY \"" + Name + "\" INSERT BOUNDARY \"" + boundary.Name + "\"");
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             if (boundary == null || !boundary.Exists)
                 throw new ArgumentNullException("boundary", "Boundary not found");
 
-            PowerMill.DoCommand("EDIT BOUNDARY '" + Name + "' INSERT BOUNDARY '" + boundary.Name + "'");
+            PowerMill.DoCommand("EDIT BOUNDARY \"" + Name + "\" INSERT BOUNDARY \"" + boundary.Name + "\"");
         }
 
         #endregion
