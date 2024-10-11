@@ -141,7 +141,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 // Get the name PowerMILL gave to the last pattern
                 newPattern = (PMPattern) _powerMILL.ActiveProject.CreatedItems(typeof(PMPattern)).Last();
                 Add(newPattern);
-                _powerMILL.DoCommand("EDIT PATTERN '" + newPattern.Name + "' INSERT FILE '" + file.Path + "'");
+                _powerMILL.DoCommand("EDIT PATTERN \"" + newPattern.Name + "\" INSERT FILE \"" + file.Path + "\"");
             }
             return newPattern;
         }

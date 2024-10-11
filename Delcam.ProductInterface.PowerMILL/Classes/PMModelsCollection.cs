@@ -93,7 +93,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             if (file.Exists)
             {
-                _powerMILL.DoCommand("IMPORT REFERENCE_SURFACES '" + file.Path + "'");
+                _powerMILL.DoCommand("IMPORT REFERENCE_SURFACES \"" + file.Path + "\"");
 
                 // Add the model to the list of models.
                 // When you import a model file it can also bring in other items so handles these also
@@ -163,7 +163,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         {
             if (file.Exists)
             {
-                _powerMILL.DoCommand("IMPORT MODEL '" + file.Path + "'");
+                _powerMILL.DoCommand("IMPORT MODEL \"" + file.Path + "\"");
 
                 // Add the model to the list of models.
                 // When you import a model file it can also bring in other items so handles these also

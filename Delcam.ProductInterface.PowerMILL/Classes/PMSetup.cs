@@ -60,7 +60,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 List<PMToolpath> returnToolpaths = new List<PMToolpath>();
-                var toolpathListXML = PowerMill.GetPowerMillParameterXML("components(entity('setup','" + Name + "'))").GetElementsByTagName("Name");
+                var toolpathListXML = PowerMill.GetPowerMillParameterXML("components(entity('setup',\"" + Name + "\"))").GetElementsByTagName("Name");
                 foreach (XmlElement toolpathNode in toolpathListXML)
                 {
                     returnToolpaths.Add(PowerMill.ActiveProject.Toolpaths.GetByName(toolpathNode.InnerText.Trim()));

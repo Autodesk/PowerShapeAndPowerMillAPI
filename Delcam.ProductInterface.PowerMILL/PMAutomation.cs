@@ -763,14 +763,14 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public string GetPowerMillEntityParameter(string pEntityType, string pEntityName, string pParameter)
         {
-            var getParameterString = $"entity('{pEntityType}','{pEntityName}').{pParameter}";
+            var getParameterString = $"entity('{pEntityType}',\"{pEntityName}\").{pParameter}";
             var result = GetPowerMillParameter(getParameterString);
             return result;
         }
 
         public T GetPowerMillEntityParameter<T>(string pEntityType, string pEntityName, string pParameter) where T: IConvertible
         {
-            var getParameterString = $"entity('{pEntityType}','{pEntityName}').{pParameter}";
+            var getParameterString = $"entity('{pEntityType}',\"{pEntityName}\").{pParameter}";
             var result = GetPowerMillParameter<T>(getParameterString);
             return result;
         }

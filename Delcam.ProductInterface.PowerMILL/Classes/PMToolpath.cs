@@ -305,7 +305,7 @@ namespace Autodesk.ProductInterface.PowerMILL
 
                     //will either de-activate all workplanes (i.e. using world) Z axis = 0 0 1
                     //create new workplane or use an existing workplane
-                    PowerMill.DoCommand("ACTIVATE WORKPLANE FROMENTITY TOOLPATH '" + Name + "'");
+                    PowerMill.DoCommand("ACTIVATE WORKPLANE FROMENTITY TOOLPATH \"" + Name + "\"");
                     PowerMill.ActiveProject.Initialise();
 
                     //redo look up
@@ -455,7 +455,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return int.Parse(
-                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', '" + Name + "', 'segments')"));
+                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', \"" + Name + "\", 'segments')"));
             }
         }
 
@@ -469,7 +469,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     (int) double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_point_count(entity('toolpath', '" + Name + "'), " + segmentNumber + ")"));
+                        PowerMill.GetPowerMillParameter("segment_point_count(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ")"));
             }
             throw new IndexOutOfRangeException(
                 $"{segmentNumber} is greater than the {numberOfSegments} segments in this toolpath.");
@@ -482,7 +482,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 return
                     double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_length(entity('toolpath', '" + Name + "'), " + segmentNumber + ")"));
+                        PowerMill.GetPowerMillParameter("segment_get_length(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ")"));
             }
             throw new IndexOutOfRangeException(
                 $"{segmentNumber} is greater than the {numberOfSegments} segments in this toolpath.");
@@ -500,11 +500,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             if (pointNumber < numberOfPoints)
             {
                 var x = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").Position.X"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").Position.X"));
                 var y = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").Position.Y"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").Position.Y"));
                 var z = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").Position.Z"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").Position.Z"));
                 return new Point(x, y, z);
             }
             throw new IndexOutOfRangeException(
@@ -523,11 +523,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             if (pointNumber < numberOfPoints)
             {
                 var i = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").ToolAxis[0]"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").ToolAxis[0]"));
                 var j = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").ToolAxis[1]"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").ToolAxis[1]"));
                 var k = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").ToolAxis[2]"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").ToolAxis[2]"));
                 return new Vector(i, j, k);
             }
             throw new IndexOutOfRangeException(
@@ -546,11 +546,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             if (pointNumber < numberOfPoints)
             {
                 var i = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").OrientationVector[0]"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").OrientationVector[0]"));
                 var j = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").OrientationVector[1]"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").OrientationVector[1]"));
                 var k = double.Parse(
-                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', '" + Name + "'), " + segmentNumber + ", " + pointNumber + ").OrientationVector[2]"));
+                        PowerMill.GetPowerMillParameter("segment_get_point(entity('toolpath', \"" + Name + "\"), " + segmentNumber + ", " + pointNumber + ").OrientationVector[2]"));
                 return new Vector(i, j, k);
             }
             throw new IndexOutOfRangeException(
@@ -565,7 +565,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return int.Parse(
-                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', '" + Name + "', 'leads')"));
+                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', \"" + Name + "\", 'leads')"));
             }
         }
 
@@ -577,7 +577,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             get
             {
                 return int.Parse(
-                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', '" + Name + "', 'links')"));
+                    PowerMill.GetPowerMillParameter("toolpath_component_count('toolpath', \"" + Name + "\", 'links')"));
             }
         }
 
@@ -1014,7 +1014,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             if (GetParameterBooleanValue("Verification.GougeChecked") == false)
             {
                 // Not yet detected so determine if there are any
-                PowerMill.DoCommand("ACTIVATE TOOLPATH '" + Name + "'",
+                PowerMill.DoCommand("ACTIVATE TOOLPATH \"" + Name + "\"",
                                     "EDIT COLLISION TYPE Gouge",
                                     "EDIT COLLISION SCOPE ALL",
                                     "EDIT COLLISION SPLIT_TOOLPATH N",
@@ -1049,7 +1049,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             if (GetParameterBooleanValue("Verification.CollisionChecked") == false)
             {
                 // Not yet detected so determine if there are any
-                PowerMill.DoCommand("ACTIVATE TOOLPATH '" + Name + "'",
+                PowerMill.DoCommand("ACTIVATE TOOLPATH \"" + Name + "\"",
                                     "EDIT COLLISION TYPE Collision",
                                     "EDIT COLLISION SCOPE ALL",
                                     "EDIT COLLISION SPLIT_TOOLPATH N",

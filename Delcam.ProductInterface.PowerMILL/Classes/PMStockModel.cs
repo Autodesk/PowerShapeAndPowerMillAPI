@@ -112,7 +112,7 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 // Get the list of states of the StockModel                
                 var returnStates = new List<string>();
-                var stateListXml = PowerMill.GetPowerMillParameterXML("extract(entity('stockmodel', '" + Name + "').States,'name')").GetElementsByTagName("Name");
+                var stateListXml = PowerMill.GetPowerMillParameterXML("extract(entity('stockmodel', \"" + Name + "\").States,'name')").GetElementsByTagName("Name");
                 foreach (XmlNode state in stateListXml)
                 {
                     returnStates.Add(state.InnerText.Trim());

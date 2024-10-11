@@ -109,7 +109,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 {
                     throw new Exception("Name cannot be an empty string or null.");
                 }
-                PowerMill.DoCommand("RENAME " + Identifier + " '" + _name + "' '" + value + "'");
+                PowerMill.DoCommand("RENAME " + Identifier + " \"" + _name + "\" \"" + value + "\"");
                 _name = value;
             }
         }
@@ -145,7 +145,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 }
                 else
                 {
-                    PowerMill.DoCommand("ACTIVATE " + Identifier + " '" + _name + "'");
+                    PowerMill.DoCommand("ACTIVATE " + Identifier + " \"" + _name + "\"");
                 }
             }
         }
@@ -166,7 +166,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                 {
                     // Ensure dialogs are off before calling
                     PowerMill.DialogsOff();
-                    string result = PowerMill.DoCommandEx("SIZE " + Identifier + " '" + Name + "'").ToString();
+                    string result = PowerMill.DoCommandEx("SIZE " + Identifier + " \"" + Name + "\"").ToString();
 
                     // Remove the first line so the model name isn't detected as containing size values
                     result = result.Substring(result.IndexOf((char) 10));
@@ -328,12 +328,12 @@ namespace Autodesk.ProductInterface.PowerMILL
             // Use Clipboard copy for a model to avoid empty model
             if (Identifier == "MODEL")
             {
-                PowerMill.DoCommand("EDIT MODEL '" + _name + "' CLIPBOARD COPY");
+                PowerMill.DoCommand("EDIT MODEL \"" + _name + "\" CLIPBOARD COPY");
                 PowerMill.DoCommand("CREATE MODEL CLIPBOARD");
             }
             else
             {
-                PowerMill.DoCommand("Copy " + Identifier + " '" + _name + "'");
+                PowerMill.DoCommand("Copy " + Identifier + " \"" + _name + "\"");
             }
 
             List<PMEntity> createdItems = PowerMill.ActiveProject.CreatedItems();

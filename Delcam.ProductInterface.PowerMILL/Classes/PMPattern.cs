@@ -50,11 +50,11 @@ namespace Autodesk.ProductInterface.PowerMILL
             {
                 if (value)
                 {
-                    PowerMill.DoCommand("DRAW PATTERN '" + Name + "'");
+                    PowerMill.DoCommand("DRAW PATTERN \"" + Name + "\"");
                 }
                 else
                 {
-                    PowerMill.DoCommand("UNDRAW PATTERN '" + Name + "'");
+                    PowerMill.DoCommand("UNDRAW PATTERN \"" + Name + "\"");
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public void ReverseSelected()
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' REVERSE");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" REVERSE");
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="tolerance">The Arc fitting tolerance.</param>
         public void ArcFitSelected(double tolerance)
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' ARCFIT " + tolerance);
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" ARCFIT " + tolerance);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="dblTolerance">The spline fitting tolerance.</param>
         public void SplineSelected(double dblTolerance)
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' SPLINE " + dblTolerance);
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" SPLINE " + dblTolerance);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="dblTolerance">The Polygonisation tolerance.</param>
         public void PolygoniseSelected(double dblTolerance)
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' SMASH " + dblTolerance);
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" SMASH " + dblTolerance);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public void SplitSelected()
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' SPLIT");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" SPLIT");
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public void CloseSelected()
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' CLOSE");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" CLOSE");
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public void MergeSelected()
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' MERGE");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" MERGE");
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// </summary>
         public void SelectAll()
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' SELECT ALL");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" SELECT ALL");
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void ReverseAll()
         {
             MergeAll();
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' REVERSE");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" REVERSE");
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void ArcFitAll(double dblTolerance)
         {
             MergeAll();
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' ARCFIT " + dblTolerance);
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" ARCFIT " + dblTolerance);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void SplineAll(double dblTolerance)
         {
             MergeAll();
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' SPLINE " + dblTolerance);
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" SPLINE " + dblTolerance);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void PolygoniseAll(double dblTolerance)
         {
             MergeAll();
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' SMASH " + dblTolerance);
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" SMASH " + dblTolerance);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void SplitAll()
         {
             MergeAll();
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' SPLIT");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" SPLIT");
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void CloseAll()
         {
             MergeAll();
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' CLOSE");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" CLOSE");
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         public void MergeAll()
         {
             SelectAll();
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' MERGE");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" MERGE");
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="toolpath">The toolpath to insert into this Pattern.</param>
         public void InsertToolpath(PMToolpath toolpath)
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' INSERT TOOLPATH \"" + toolpath.Name + "\"");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" INSERT TOOLPATH \"" + toolpath.Name + "\"");
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="file">File to insert into this Pattern</param>
         public void InsertFile(File file)
         {
-            PowerMill.DoCommand("EDIT PATTERN '" + Name + "' INSERT FILE \"" + file.Path + "\"");
+            PowerMill.DoCommand("EDIT PATTERN \"" + Name + "\" INSERT FILE \"" + file.Path + "\"");
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Autodesk.ProductInterface.PowerMILL
         /// <param name="file">The file to write to.</param>
         public void WriteToFile(File file)
         {
-            PowerMill.DoCommand("KEEP PATTERN '" + Name + "' FILESAVE \"" + file.Path + "\"");
+            PowerMill.DoCommand("KEEP PATTERN \"" + Name + "\" FILESAVE \"" + file.Path + "\"");
         }
 
         /// <summary>
