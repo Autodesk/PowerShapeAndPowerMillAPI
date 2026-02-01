@@ -63,7 +63,7 @@ namespace Autodesk.ProductInterface.PowerMILL
                         Convert.ToDouble(
                             PowerMill.GetPowerMillEntityParameter("workplane", Name, "origin.y").Trim()),
                         Convert.ToDouble(
-                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "origin.y").Trim())
+                            PowerMill.GetPowerMillEntityParameter("workplane", Name, "origin.z").Trim())
                         );
             }
         }

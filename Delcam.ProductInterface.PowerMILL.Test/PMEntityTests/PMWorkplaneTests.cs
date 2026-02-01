@@ -47,6 +47,20 @@ namespace Autodesk.ProductInterface.PowerMILLTest.PMEntityTests
 
         #region Test properties
 
+        [Test]
+        public void TestOriginProperty()
+        {
+            var workplane = new Geometry.Workplane
+            {
+                Origin = new Geometry.Point(10, 20, 30)
+            };
+            var pmWorkplane = _powerMill.ActiveProject.Workplanes.CreateWorkplane(workplane);
+            Assert.AreEqual(10, pmWorkplane.Origin.X, 1e-6);
+            Assert.AreEqual(20, pmWorkplane.Origin.Y, 1e-6);
+            Assert.AreEqual(30, pmWorkplane.Origin.Z, 1e-6);
+        }
+
+
         #endregion
 
 
