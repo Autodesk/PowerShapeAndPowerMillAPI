@@ -260,6 +260,7 @@ namespace Autodesk.ProductInterface.PowerSHAPE
 
             set
             {
+                AddToSelection(true);
                 if (value)
                 {
                     _powerSHAPE.DoCommand("MODIFY LOCK ACCEPT");
